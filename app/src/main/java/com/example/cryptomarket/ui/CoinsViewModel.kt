@@ -1,4 +1,4 @@
-package com.example.cryptomarket
+package com.example.cryptomarket.ui
 
 import androidx.lifecycle.ViewModel
 

@@ -1,10 +1,11 @@
-package com.example.cryptomarket
+package com.example.cryptomarket.ui
 
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
+import com.example.cryptomarket.R
 
 /** todo:
  *
@@ -13,7 +14,7 @@ import androidx.core.content.ContextCompat
  * - dataBinding
  * - dependencies
  * - API service
- * -
+ * - Data class for the API
  *
  */
 
