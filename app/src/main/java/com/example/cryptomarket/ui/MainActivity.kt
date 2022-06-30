@@ -9,13 +9,14 @@ import com.example.cryptomarket.R
 
 /** todo:
  *
- * - project file structure
- * - data/backend stuff
  * - dataBinding
  * - dependencies
  * - API service
- * - Data class for the API
+ * - start the viewModel and backend
  *
+ * AFTER
+ * - Data class for the API
+ * - data/backend stuff
  */
 
 /** maybe:
