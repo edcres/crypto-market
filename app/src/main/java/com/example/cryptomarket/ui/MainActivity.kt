@@ -15,6 +15,7 @@ import com.example.cryptomarket.R
  * AFTER
  * - Data class for the API
  * - data/backend stuff
+ * - appbar
  */
 
 /** maybe:
