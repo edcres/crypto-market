@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
+private const val fragmentTAG = "StartFrag__TAG"
+
 class StartFragment : Fragment() {
 
     override fun onCreateView(
