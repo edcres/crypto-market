@@ -9,7 +9,6 @@ import com.example.cryptomarket.R
 
 /** todo:
  *
- * - dataBinding
  * - dependencies
  * - API service
  * - start the viewModel and backend
