@@ -5,7 +5,7 @@ import android.os.Bundle
 
 /** todo:
  *
- * - jetpack navigation
+ * - navigation in the xml
  * - viewModel
  * - project file structure
  * - data/backend stuff
