@@ -8,7 +8,6 @@ import androidx.core.content.ContextCompat
 
 /** todo:
  *
- * - viewModel
  * - project file structure
  * - data/backend stuff
  * - dataBinding
