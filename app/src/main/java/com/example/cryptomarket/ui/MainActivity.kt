@@ -9,9 +9,8 @@ import com.example.cryptomarket.R
 
 /** todo:
  *
- * - dependencies
- * - API service
  * - start the viewModel and backend
+ * - API service
  *
  * AFTER
  * - Data class for the API
