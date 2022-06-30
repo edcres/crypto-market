@@ -11,7 +11,6 @@ class CoinsViewModel: ViewModel() {
     // SETUP //
     fun startApplication() {
         repo = Repository()
-//        collectAllWorkouts()
     }
     // SETUP //
 }

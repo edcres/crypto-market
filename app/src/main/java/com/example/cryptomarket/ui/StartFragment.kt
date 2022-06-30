@@ -30,7 +30,7 @@ class StartFragment : Fragment() {
         binding?.apply {
             lifecycleOwner = viewLifecycleOwner
         }
-        vm.startApplication(requireNotNull(this.activity).application)
+        vm.startApplication()
     }
 
     override fun onDestroy() {
