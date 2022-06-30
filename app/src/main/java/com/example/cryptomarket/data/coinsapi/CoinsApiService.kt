@@ -1,5 +1,10 @@
 package com.example.cryptomarket.data.coinsapi
 
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
+
 private const val BASE_URL = "https://coinpaprika.com"
 
 private val moshi = Moshi.Builder()

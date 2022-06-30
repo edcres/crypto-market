@@ -41,6 +41,8 @@ dependencies {
     def activityVersion = '1.5.0'
     def fragmentVersion = '1.5.0'
     def navigation = '2.4.2'
+    def retrofit = '2.9.0'
+    def moshi = '1.9.3'
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
@@ -66,4 +68,10 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.10"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofit"
+    // MOSHI
+    implementation "com.squareup.moshi:moshi-kotlin:$moshi"
 }
