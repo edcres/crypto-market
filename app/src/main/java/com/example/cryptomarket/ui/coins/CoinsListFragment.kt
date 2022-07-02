@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cryptomarket.databinding.FragmentCoinsListBinding
 import com.example.cryptomarket.ui.CryptoViewModel
 
@@ -15,6 +16,7 @@ class CoinsListFragment : Fragment() {
 
     private var binding: FragmentCoinsListBinding? = null
     private val vm: CryptoViewModel by activityViewModels()
+    private lateinit var coinsListAdapter: CoinsListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,9 +29,13 @@ class CoinsListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        coinsListAdapter = CoinsListAdapter()
         binding?.apply {
             lifecycleOwner = viewLifecycleOwner
+            coinsListRecycler.adapter = coinsListAdapter
+            coinsListRecycler.layoutManager = LinearLayoutManager(requireContext())
         }
+
         vm.startApplication()
     }
 
