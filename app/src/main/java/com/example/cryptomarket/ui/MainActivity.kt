@@ -9,9 +9,10 @@ import com.example.cryptomarket.R
 
 /** todo:
  *
- * - have a fragment for coins list and one for market data
  * - configure the view to display the data (in txt views at first)
  *      - recyclerView for coins list
+ *      - recyclerView for news list
+ *      - widgets for market overview
  * - make bottom navigation
  *
  * - data/backend stuff
@@ -20,6 +21,7 @@ import com.example.cryptomarket.R
  *      - recyclerView for coins list
  *      -
  * - appbar
+ * - animations for transitions between fragments (left: from right, middle: zoom in, zoom out, right: from left)
  *
  * AFTER:
  * - put data in charts

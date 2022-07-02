@@ -5,7 +5,7 @@ import com.example.cryptomarket.data.Repository
 
 private const val TAG = "CoinsVM__TAG"
 
-class CoinsViewModel: ViewModel() {
+class CryptoViewModel: ViewModel() {
     private lateinit var repo: Repository
 
     // SETUP //

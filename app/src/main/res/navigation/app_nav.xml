@@ -9,17 +9,7 @@
         android:id="@+id/startFragment"
         android:name="com.example.cryptomarket.StartFragment"
         android:label="fragment_start"
-        tools:layout="@layout/fragment_start" >
-        <action
-            android:id="@+id/action_startFragment_to_coinsListFragment"
-            app:destination="@id/coinsListFragment" />
-        <action
-            android:id="@+id/action_startFragment_to_marketOverviewFragment"
-            app:destination="@id/marketOverviewFragment" />
-        <action
-            android:id="@+id/action_startFragment_to_newsFragment"
-            app:destination="@id/newsFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_start" />
 
     <fragment
         android:id="@+id/coinsListFragment"
