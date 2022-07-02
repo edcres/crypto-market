@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.cryptomarket.data.DummyDataClass
 import com.example.cryptomarket.databinding.DummyRecyclerItemBinding
 
-class CoinsListAdapter()
-    : ListAdapter<DummyDataClass, CoinsListAdapter.CoinsViewHolder>(CoinsDiffCallback()) {
+class CoinsListAdapter() :
+    ListAdapter<DummyDataClass, CoinsListAdapter.CoinsViewHolder>(CoinsDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CoinsViewHolder {
         return CoinsViewHolder.from(parent)

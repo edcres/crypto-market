@@ -11,11 +11,7 @@ import com.example.cryptomarket.R
  *
  * - configure the view to display the data (in txt views at first)
  *      - recyclerView for news list
- *          - UI
  *          - adapter
- *          - set the adapter in the view.kt file
- *      - widgets for market overview
- *          - UI
  * - make bottom navigation
  *
  * - data/backend stuff
