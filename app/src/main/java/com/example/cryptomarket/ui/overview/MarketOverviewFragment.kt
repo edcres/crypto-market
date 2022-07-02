@@ -21,4 +21,9 @@ class MarketOverviewFragment : Fragment() {
         binding = fragmentBinding
         return fragmentBinding.root
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        binding = null
+    }
 }
