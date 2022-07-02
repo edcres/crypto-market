@@ -6,21 +6,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import com.example.cryptomarket.R
-import com.example.cryptomarket.databinding.FragmentStartBinding
+import com.example.cryptomarket.databinding.FragmentCoinsListBinding
 
-private const val fragmentTAG = "StartFrag__TAG"
+private const val TAG = "CoinsListFrag__TAG"
 
-class StartFragment : Fragment() {
+class CoinsListFragment : Fragment() {
 
-    private var binding: FragmentStartBinding? = null
+    private var binding: FragmentCoinsListBinding? = null
     private val vm: CoinsViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val fragmentBinding = FragmentStartBinding.inflate(inflater, container, false)
+        val fragmentBinding = FragmentCoinsListBinding.inflate(inflater, container, false)
         binding = fragmentBinding
         return fragmentBinding.root
     }

@@ -5,14 +5,14 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-private const val BASE_URL = "https://coinpaprika.com"
+private const val BASE_URL = "https://coinpaprika.com"  // todo: maybe change this
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
     .build()
 private val retrofit = Retrofit.Builder()
-    .addConverterFactory(MoshiConverterFactory.create(moshi))
     .baseUrl(BASE_URL)
+    .addConverterFactory(MoshiConverterFactory.create(moshi))
     .build()
 
 interface CoinsApiService {

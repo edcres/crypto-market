@@ -9,16 +9,25 @@ import com.example.cryptomarket.R
 
 /** todo:
  *
- * - API service
+ * - have a fragment for coins list and one for market data
+ * - configure the view to display the data (in txt views at first)
+ *      - recyclerView for coins list
+ * - make bottom navigation
  *
- * AFTER
- * - Data class for the API
  * - data/backend stuff
+ *      - Data class for the API
+ * - display the data in the view as text
+ *      - recyclerView for coins list
+ *      -
  * - appbar
+ *
+ * AFTER:
+ * - put data in charts
+ * - customize the charts
  */
 
 /** maybe:
- *
+ * - news section
  * - local database
  */
 

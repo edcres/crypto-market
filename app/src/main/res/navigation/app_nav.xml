@@ -7,8 +7,34 @@
 
     <fragment
         android:id="@+id/startFragment"
-        android:name="com.example.cryptomarket.ui.StartFragment"
+        android:name="com.example.cryptomarket.StartFragment"
         android:label="fragment_start"
-        tools:layout="@layout/fragment_start" />
+        tools:layout="@layout/fragment_start" >
+        <action
+            android:id="@+id/action_startFragment_to_coinsListFragment"
+            app:destination="@id/coinsListFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_marketOverviewFragment"
+            app:destination="@id/marketOverviewFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_newsFragment"
+            app:destination="@id/newsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/coinsListFragment"
+        android:name="com.example.cryptomarket.ui.CoinsListFragment"
+        android:label="fragment_coinsList"
+        tools:layout="@layout/fragment_coins_list" />
+    <fragment
+        android:id="@+id/marketOverviewFragment"
+        android:name="com.example.cryptomarket.MarketOverviewFragment"
+        android:label="fragment_market_overview"
+        tools:layout="@layout/fragment_market_overview" />
+    <fragment
+        android:id="@+id/newsFragment"
+        android:name="com.example.cryptomarket.NewsFragment"
+        android:label="fragment_news"
+        tools:layout="@layout/fragment_news" />
 
 </navigation>
