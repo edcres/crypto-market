@@ -10,13 +10,6 @@ import com.example.cryptomarket.R
 /** todo:
  * *
  * - make bottom navigation
- *      - coins
- *          - sheet fragment
- *          - .xml
- *      - news
- *          - sheet fragment
- *          - .xml
- *      - curved edges
  *      - use standard sheet
  *      - figure out how to get it up through the fragment
  *          - activity
