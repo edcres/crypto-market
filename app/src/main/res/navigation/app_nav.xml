@@ -10,7 +10,6 @@
         android:name="com.example.cryptomarket.ui.StartFragment"
         android:label="fragment_start"
         tools:layout="@layout/fragment_start" />
-
     <fragment
         android:id="@+id/coinsListFragment"
         android:name="com.example.cryptomarket.ui.coins.CoinsListFragment"

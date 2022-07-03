@@ -8,19 +8,28 @@ import androidx.core.content.ContextCompat
 import com.example.cryptomarket.R
 
 /** todo:
- *
- * - configure the view to display the data (in txt views at first)
- *      - recyclerView for news list
- *          - adapter
+ * *
  * - make bottom navigation
+ *      - coins
+ *          - sheet fragment
+ *          - .xml
+ *      - news
+ *          - sheet fragment
+ *          - .xml
+ *      - curved edges
+ *      - use standard sheet
+ *      - figure out how to get it up through the fragment
+ *          - activity
+ *          - start fragment (click listener communicates with the activity, probably)
+ * - animations for transitions between fragments (left: from right, middle: zoom in, zoom out, right: from left)
  *
  * - data/backend stuff
  *      - Data class for the API
  * - display the data in the view as text
  *      - recyclerView for coins list
- *      -
+ *      - recyclerView for news list
+ *      - overview data
  * - appbar
- * - animations for transitions between fragments (left: from right, middle: zoom in, zoom out, right: from left)
  *
  * AFTER:
  * - put data in charts
