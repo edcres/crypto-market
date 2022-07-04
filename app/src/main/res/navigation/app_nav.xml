@@ -3,20 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/app_nav"
-    app:startDestination="@id/coinsListFragment">
+    app:startDestination="@id/coins">
 
     <fragment
-        android:id="@+id/coinsListFragment"
+        android:id="@+id/coins"
         android:name="com.example.cryptomarket.ui.coins.CoinsListFragment"
         android:label="fragment_coinsList"
         tools:layout="@layout/fragment_coins_list" />
     <fragment
-        android:id="@+id/marketOverviewFragment"
+        android:id="@+id/market"
         android:name="com.example.cryptomarket.ui.overview.MarketOverviewFragment"
         android:label="fragment_market_overview"
         tools:layout="@layout/fragment_market_overview" />
     <fragment
-        android:id="@+id/newsFragment"
+        android:id="@+id/news"
         android:name="com.example.cryptomarket.ui.news.NewsFragment"
         android:label="fragment_news"
         tools:layout="@layout/fragment_news" />

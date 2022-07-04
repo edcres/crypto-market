@@ -7,9 +7,10 @@
         android:title="@string/market"/>
     <item
         android:id="@+id/coins"
+        android:checked="false"
         android:enabled="true"
         android:icon="@drawable/ic_price_chart_24"
-        android:title="@string/coins"/>
+        android:title="@string/coins" />
     <item
         android:id="@+id/news"
         android:enabled="true"
