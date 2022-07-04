@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentContainerView
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
@@ -14,6 +15,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.example.cryptomarket.R
+import com.example.cryptomarket.utils.FragChosen
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
@@ -21,6 +23,7 @@ private const val TAG = "StartFrag__TAG"
 
 class StartFragment : Fragment() {
 
+    private val vm: CryptoViewModel by activityViewModels()
     private lateinit var bottomNavBar: BottomNavigationView
 
     override fun onCreateView(
@@ -51,26 +54,23 @@ class StartFragment : Fragment() {
 //        val navController = Navigation.findNavController(requireParentFragment().requireView())
 //        val navController = Navigation.findNavController(requireView(), R.id.nav_host_fragment)
 //        view.findViewById<BottomNavigationView>(R.id.bottom_navigation).selectedItemId = R.id.coins
-//        view.findViewById<BottomNavigationView>(R.id.bottom_navigation).setOnItemSelectedListener {
-//            when (it.itemId) {
-//                R.id.market -> {
-////                    val navController = findNavController()
-////                    navController.navigate(R.id.action_coins_to_market)
-//                    true
-//                }
-//                R.id.coins -> {
-////                    val navController = findNavController()
-////                    navController.navigate(R.id.action_market_to_coins)
-//                    true
-//                }
-//                R.id.news -> {
-////                    val navController = findNavController()
-////                    navController.navigate(R.id.action_coins_to_news)
-//                    true
-//                }
-//                else -> false
-//            }
-//        }
+        view.findViewById<BottomNavigationView>(R.id.bottom_navigation).setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.market -> {
+                    vm.setFragChosen(FragChosen.MARKET)
+                    true
+                }
+                R.id.coins -> {
+                    vm.setFragChosen(FragChosen.COINS)
+                    true
+                }
+                R.id.news -> {
+                    vm.setFragChosen(FragChosen.NEWS)
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
 

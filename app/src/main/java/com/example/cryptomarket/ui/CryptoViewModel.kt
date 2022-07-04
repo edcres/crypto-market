@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cryptomarket.data.Repository
+import com.example.cryptomarket.utils.FragChosen
 
 private const val TAG = "CoinsVM__TAG"
 
@@ -18,4 +19,10 @@ class CryptoViewModel: ViewModel() {
         repo = Repository()
     }
     // SETUP //
+
+    // HELPERS //
+    fun setFragChosen(chosenFrag: FragChosen) {
+        _fragChosen.postValue(chosenFrag)
+    }
+    // HELPERS //
 }
