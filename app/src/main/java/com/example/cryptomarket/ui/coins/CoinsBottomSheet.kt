@@ -12,6 +12,8 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 private const val COIN_SHEET_STR_KEY = "Coins companion tag"
 
+// todo: probably get rid of this fragment, i don't think this is used in standard bottom sheet
+
 class CoinsBottomSheet : BottomSheetDialogFragment() {
 
     private lateinit var sheetTxt: TextView

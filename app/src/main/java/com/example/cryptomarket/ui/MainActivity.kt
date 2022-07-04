@@ -8,13 +8,11 @@ import androidx.core.content.ContextCompat
 import com.example.cryptomarket.R
 
 /** todo:
- * *
  * - make bottom navigation
- *      - use standard sheet
- *      - figure out how to get it up through the fragment
- *          - activity
- *          - start fragment (click listener communicates with the activity, probably)
+ *      - host the start frag in the activity
+ *      - host the bottom navigation
  * - animations for transitions between fragments (left: from right, middle: zoom in, zoom out, right: from left)
+ * - test the bottom sheet
  *
  * - data/backend stuff
  *      - Data class for the API
@@ -32,6 +30,11 @@ import com.example.cryptomarket.R
 /** maybe:
  * - news section
  * - local database
+ */
+
+/**
+ * check todos:
+ *
  */
 
 class MainActivity : AppCompatActivity() {

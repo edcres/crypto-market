@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+<!--     todo: probably get rid of this fragment, i don't think this is used in standard bottom sheet-->
     <TextView
         android:id="@+id/coins_sheet_txt"
         android:layout_width="wrap_content"

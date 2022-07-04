@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+<!--     todo: probably get rid of this fragment, i don't think this is used in standard bottom sheet-->
     <TextView
         android:id="@+id/news_sheet_txt"
         style="@style/TextAppearance.Material3.HeadlineMedium"
