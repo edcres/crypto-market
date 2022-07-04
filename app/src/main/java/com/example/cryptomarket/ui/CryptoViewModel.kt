@@ -11,8 +11,8 @@ private const val TAG = "CoinsVM__TAG"
 class CryptoViewModel: ViewModel() {
 
     private lateinit var repo: Repository
-    private var _fragChosen = MutableLiveData<Any>()
-    val fragChosen: LiveData<Any> get() = _fragChosen
+    private var _fragChosen = MutableLiveData<FragChosen>()
+    val fragChosen: LiveData<FragChosen> get() = _fragChosen
 
     // SETUP //
     fun startApplication() {

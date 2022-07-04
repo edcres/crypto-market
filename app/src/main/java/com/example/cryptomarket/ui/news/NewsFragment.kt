@@ -1,6 +1,7 @@
 package com.example.cryptomarket.ui.news
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -55,6 +56,7 @@ class NewsFragment : Fragment() {
             when(it) {
                 FragChosen.MARKET -> navController.navigate(R.id.action_news_to_market)
                 FragChosen.COINS -> navController.navigate(R.id.action_news_to_coins)
+                else -> Log.i(TAG, "setObservers: from News to $it")
             }
         }
     }

@@ -59,15 +59,15 @@ class StartFragment : Fragment() {
         view.findViewById<BottomNavigationView>(R.id.bottom_navigation).setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.market -> {
-                    vm.setFragChosen(FragChosen.MARKET)
+                    if (vm.fragChosen.value != FragChosen.MARKET) vm.setFragChosen(FragChosen.MARKET)
                     true
                 }
                 R.id.coins -> {
-                    vm.setFragChosen(FragChosen.COINS)
+                    if (vm.fragChosen.value != FragChosen.COINS) vm.setFragChosen(FragChosen.COINS)
                     true
                 }
                 R.id.news -> {
-                    vm.setFragChosen(FragChosen.NEWS)
+                    if (vm.fragChosen.value != FragChosen.NEWS) vm.setFragChosen(FragChosen.NEWS)
                     true
                 }
                 else -> false

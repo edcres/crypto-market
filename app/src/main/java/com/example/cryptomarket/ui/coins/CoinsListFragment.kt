@@ -53,10 +53,10 @@ class CoinsListFragment : Fragment() {
     private fun setObservers() {
         vm.fragChosen.observe(viewLifecycleOwner) {
             val navController = findNavController()
-            Log.d(TAG, "onCreateView: called")
             when(it) {
                 FragChosen.MARKET -> navController.navigate(R.id.action_coins_to_market)
                 FragChosen.NEWS -> navController.navigate(R.id.action_coins_to_news)
+                else -> Log.i(TAG, "setObservers: from Coins to $it")
             }
         }
     }
