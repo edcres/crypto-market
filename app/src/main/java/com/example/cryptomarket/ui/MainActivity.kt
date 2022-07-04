@@ -26,6 +26,7 @@ import com.example.cryptomarket.R
  * AFTER:
  * - put data in charts
  * - customize the charts
+ * - colors
  */
 
 /** maybe:
