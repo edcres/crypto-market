@@ -1,23 +1,14 @@
 package com.example.cryptomarket.ui
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentContainerView
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.Navigation
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.example.cryptomarket.R
 import com.example.cryptomarket.utils.FragChosen
 import com.google.android.material.bottomnavigation.BottomNavigationView
-
 
 private const val TAG = "StartFrag__TAG"
 
@@ -35,27 +26,6 @@ class StartFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // Bottom navigation
-//        bottomNavBar = view.findViewById(R.id.bottom_navigation)
-//        val navHostFragment = requireActivity().supportFragmentManager
-//            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment?
-//        if (navHostFragment != null) {
-//            NavigationUI.setupWithNavController(bottomNavBar, navHostFragment.navController)
-//        } else Log.e(TAG, "onCreate: navHostFragment is null")
-
-
-//        val navHostFragment = requireActivity().supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-//        val navController = navHostFragment.navController
-
-//        view.findViewById<FragmentContainerView>(R.id.nav_host_fragment).contro
-//        val navController = Navigation.findNavController(view.findViewById(R.id.nav_host_fragment))
-//        val navController = NavHostFragment.findNavController(this)
-//        val navController = findNavController()
-//        val navController = Navigation.findNavController(requireParentFragment().requireView())
-//        val navController = Navigation.findNavController(requireView(), R.id.nav_host_fragment)
-//        view.findViewById<BottomNavigationView>(R.id.bottom_navigation).selectedItemId = R.id.coins
-        // Bottom bar Navigation is set up through observers so the navController could be used
-        //  to navigate to different fragments. Also makes transition animations simpler.
         view.findViewById<BottomNavigationView>(R.id.bottom_navigation).setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.market -> {
@@ -74,10 +44,4 @@ class StartFragment : Fragment() {
             }
         }
     }
-
-
-//    override fun onResume() {
-//        super.onResume()
-//        val navController = findNavController()
-//    }
 }
