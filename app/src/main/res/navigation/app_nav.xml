@@ -9,12 +9,23 @@
         android:id="@+id/coins"
         android:name="com.example.cryptomarket.ui.coins.CoinsListFragment"
         android:label="fragment_coinsList"
-        tools:layout="@layout/fragment_coins_list" />
+        tools:layout="@layout/fragment_coins_list" >
+        <action
+            android:id="@+id/action_coins_to_market"
+            app:destination="@id/market" />
+        <action
+            android:id="@+id/action_coins_to_news"
+            app:destination="@id/news" />
+    </fragment>
     <fragment
         android:id="@+id/market"
         android:name="com.example.cryptomarket.ui.overview.MarketOverviewFragment"
         android:label="fragment_market_overview"
-        tools:layout="@layout/fragment_market_overview" />
+        tools:layout="@layout/fragment_market_overview" >
+        <action
+            android:id="@+id/action_market_to_coins"
+            app:destination="@id/coins" />
+    </fragment>
     <fragment
         android:id="@+id/news"
         android:name="com.example.cryptomarket.ui.news.NewsFragment"

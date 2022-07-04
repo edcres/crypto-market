@@ -7,7 +7,7 @@
     tools:context=".ui.MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/nav_host_fragment"
+        android:id="@+id/start_fragment_host"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:name="com.example.cryptomarket.ui.StartFragment"

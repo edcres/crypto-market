@@ -1,16 +1,21 @@
 package com.example.cryptomarket.ui
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
+import android.os.PersistableBundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentContainerView
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.example.cryptomarket.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.navigation.NavigationBarView
+
 
 private const val TAG = "StartFrag__TAG"
 
@@ -36,33 +41,41 @@ class StartFragment : Fragment() {
 //        } else Log.e(TAG, "onCreate: navHostFragment is null")
 
 
-        view.findViewById<BottomNavigationView>(R.id.bottom_navigation).selectedItemId = R.id.coins
-        view.findViewById<BottomNavigationView>(R.id.bottom_navigation).setOnItemSelectedListener(NavigationBarView.OnItemSelectedListener {
-            when(it.itemId) {
-                R.id.market -> {
+//        val navHostFragment = requireActivity().supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+//        val navController = navHostFragment.navController
 
-                    true
-                }
-                R.id.coins -> {
-                    // Respond to navigation item 2 reselection
-                    true
-                }
-                R.id.news -> {
-                    true
-                }
-                else -> false
-            }
-        })
-
-//        view.findViewById<BottomNavigationView>(R.id.bottom_navigation).setOnNavigationItemReselectedListener { item ->
-//            when(item.itemId) {
-//                R.id.item1 -> {
-//                    // Respond to navigation item 1 reselection
+//        view.findViewById<FragmentContainerView>(R.id.nav_host_fragment).contro
+//        val navController = Navigation.findNavController(view.findViewById(R.id.nav_host_fragment))
+//        val navController = NavHostFragment.findNavController(this)
+//        val navController = findNavController()
+//        val navController = Navigation.findNavController(requireParentFragment().requireView())
+//        val navController = Navigation.findNavController(requireView(), R.id.nav_host_fragment)
+//        view.findViewById<BottomNavigationView>(R.id.bottom_navigation).selectedItemId = R.id.coins
+//        view.findViewById<BottomNavigationView>(R.id.bottom_navigation).setOnItemSelectedListener {
+//            when (it.itemId) {
+//                R.id.market -> {
+////                    val navController = findNavController()
+////                    navController.navigate(R.id.action_coins_to_market)
+//                    true
 //                }
-//                R.id.item2 -> {
-//                    // Respond to navigation item 2 reselection
+//                R.id.coins -> {
+////                    val navController = findNavController()
+////                    navController.navigate(R.id.action_market_to_coins)
+//                    true
 //                }
+//                R.id.news -> {
+////                    val navController = findNavController()
+////                    navController.navigate(R.id.action_coins_to_news)
+//                    true
+//                }
+//                else -> false
 //            }
 //        }
     }
+
+
+//    override fun onResume() {
+//        super.onResume()
+//        val navController = findNavController()
+//    }
 }
