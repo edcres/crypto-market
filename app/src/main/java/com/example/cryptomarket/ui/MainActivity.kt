@@ -12,6 +12,7 @@ import com.example.cryptomarket.R
  *      - host the start frag in the activity
  *      - host the bottom navigation
  * - animations for transitions between fragments (left: from right, middle: zoom in, zoom out, right: from left)
+ *
  * - test the bottom sheet
  *
  * - data/backend stuff
