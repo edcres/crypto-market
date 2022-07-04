@@ -12,6 +12,7 @@
         tools:layout="@layout/fragment_coins_list" >
         <action
             android:id="@+id/action_coins_to_market"
+            
             app:destination="@id/market" />
         <action
             android:id="@+id/action_coins_to_news"
