@@ -12,10 +12,13 @@
         tools:layout="@layout/fragment_coins_list" >
         <action
             android:id="@+id/action_coins_to_market"
-            
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
             app:destination="@id/market" />
         <action
             android:id="@+id/action_coins_to_news"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
             app:destination="@id/news" />
     </fragment>
     <fragment
@@ -25,9 +28,13 @@
         tools:layout="@layout/fragment_market_overview" >
         <action
             android:id="@+id/action_market_to_coins"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
             app:destination="@id/coins" />
         <action
             android:id="@+id/action_market_to_news"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
             app:destination="@id/news" />
     </fragment>
     <fragment
@@ -37,9 +44,13 @@
         tools:layout="@layout/fragment_news" >
         <action
             android:id="@+id/action_news_to_market"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
             app:destination="@id/market" />
         <action
             android:id="@+id/action_news_to_coins"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
             app:destination="@id/coins" />
     </fragment>
 
