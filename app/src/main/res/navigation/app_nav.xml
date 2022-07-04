@@ -25,11 +25,21 @@
         <action
             android:id="@+id/action_market_to_coins"
             app:destination="@id/coins" />
+        <action
+            android:id="@+id/action_market_to_news"
+            app:destination="@id/news" />
     </fragment>
     <fragment
         android:id="@+id/news"
         android:name="com.example.cryptomarket.ui.news.NewsFragment"
         android:label="fragment_news"
-        tools:layout="@layout/fragment_news" />
+        tools:layout="@layout/fragment_news" >
+        <action
+            android:id="@+id/action_news_to_market"
+            app:destination="@id/market" />
+        <action
+            android:id="@+id/action_news_to_coins"
+            app:destination="@id/coins" />
+    </fragment>
 
 </navigation>

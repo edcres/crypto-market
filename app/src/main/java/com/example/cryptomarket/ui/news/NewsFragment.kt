@@ -6,12 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cryptomarket.R
 import com.example.cryptomarket.databinding.FragmentCoinsListBinding
 import com.example.cryptomarket.databinding.FragmentNewsBinding
 import com.example.cryptomarket.ui.CryptoViewModel
 import com.example.cryptomarket.ui.coins.CoinsListAdapter
+import com.example.cryptomarket.utils.FragChosen
+
+private const val TAG = "NewsListFrag__TAG"
 
 class NewsFragment : Fragment() {
 
@@ -36,10 +40,23 @@ class NewsFragment : Fragment() {
             newsListRecycler.adapter = newsListAdapter
             newsListRecycler.layoutManager = LinearLayoutManager(requireContext())
         }
+        setObservers()
     }
 
     override fun onDestroy() {
         super.onDestroy()
         binding = null
     }
+
+    // SETUP //
+    private fun setObservers() {
+        vm.fragChosen.observe(viewLifecycleOwner) {
+            val navController = findNavController()
+            when(it) {
+                FragChosen.MARKET -> navController.navigate(R.id.action_news_to_market)
+                FragChosen.COINS -> navController.navigate(R.id.action_news_to_coins)
+            }
+        }
+    }
+    // SETUP //
 }

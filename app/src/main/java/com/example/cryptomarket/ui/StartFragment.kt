@@ -54,6 +54,8 @@ class StartFragment : Fragment() {
 //        val navController = Navigation.findNavController(requireParentFragment().requireView())
 //        val navController = Navigation.findNavController(requireView(), R.id.nav_host_fragment)
 //        view.findViewById<BottomNavigationView>(R.id.bottom_navigation).selectedItemId = R.id.coins
+        // Bottom bar Navigation is set up through observers so the navController could be used
+        //  to navigate to different fragments. Also makes transition animations simpler.
         view.findViewById<BottomNavigationView>(R.id.bottom_navigation).setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.market -> {
