@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Crypto Market</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="market">Market</string>
+    <string name="coins">Coins</string>
+    <string name="news">News</string>
 </resources>
