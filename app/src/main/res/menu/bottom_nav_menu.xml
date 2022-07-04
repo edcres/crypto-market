@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/market"
-        android:enabled="true"
-        android:icon="@drawable/ic_pie_chart_24"
-        android:title="@string/market"/>
+
     <item
         android:id="@+id/coins"
-        android:checked="false"
-        android:enabled="true"
+        android:checked="true"
         android:icon="@drawable/ic_price_chart_24"
         android:title="@string/coins" />
+
+    <item
+        android:id="@+id/market"
+        android:icon="@drawable/ic_pie_chart_24"
+        android:title="@string/market"/>
+
     <item
         android:id="@+id/news"
-        android:enabled="true"
         android:icon="@drawable/ic_newspaper_24"
         android:title="@string/news"/>
 </menu>

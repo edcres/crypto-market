@@ -12,9 +12,8 @@ import com.example.cryptomarket.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 /** todo:
- * - make bottom navigation
- *      - host the start frag in the activity
- *      - host the bottom navigation
+ * - bottom navigation bug
+ *      - the first icon is chosen but the coins fragment is up
  * - animations for transitions between fragments (left: from right, middle: zoom in, zoom out, right: from left)
  *
  * - test the bottom sheet
@@ -31,6 +30,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
  * - put data in charts
  * - customize the charts
  * - colors
+ * - app icon
  */
 
 /** maybe:
