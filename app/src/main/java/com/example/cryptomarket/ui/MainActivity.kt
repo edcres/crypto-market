@@ -13,6 +13,17 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 /** todo:
  * - test the bottom sheet
+ *      - make bottom sheet stuff for coins
+ *          - normal (smaller) .xml
+ *          - expanded .xml'
+ *          - adapter
+ *
+ *          - expanded .xml'
+ *          - sheet fragment (the tutorial calls it an adapter)
+ *      - make bottom sheet stuff for news
+ *          - normal (smaller) .xml
+ *          - expanded .xml'
+ *          - adapter
  *
  * - data/backend stuff
  *      - Data class for the API
