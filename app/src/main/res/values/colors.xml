@@ -8,5 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="colorItemContainer">#76FFB4</color>
+    <color name="color_item_container">#76FFB4</color>
+    <color name="color_accent">#FAE206</color>
 </resources>

@@ -12,8 +12,6 @@ import com.example.cryptomarket.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 /** todo:
- * - animations for transitions between fragments (left: from right, middle: zoom in, zoom out, right: from left)
- *
  * - test the bottom sheet
  *
  * - data/backend stuff

@@ -15,7 +15,6 @@ private const val TAG = "StartFrag__TAG"
 class StartFragment : Fragment() {
 
     private val vm: CryptoViewModel by activityViewModels()
-    private lateinit var bottomNavBar: BottomNavigationView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
