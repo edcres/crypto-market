@@ -56,22 +56,48 @@ class CoinsListFragment : Fragment() {
     private fun setBottomSheet() {
         binding?.apply {
             bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetView)
-            // todo: get rid of this
-            bottomSheetBehavior.peekHeight = 150
-            bottomSheetView.setOnClickListener {
-                if (bottomSheetBehavior.state != BottomSheetBehavior.STATE_EXPANDED)
-                bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+            bottomSheetBehavior.peekHeight = 200    // todo: bottomSheetView.height
+            userName.setOnClickListener {
+//                if (bottomSheetBehavior.state != BottomSheetBehavior.STATE_EXPANDED)
+                    bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+                coinsListHeader.text = "sdfghjk"
             }
             coinsListHeader.setOnClickListener {
                 bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
-//                bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
-//                bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
-//                bottomSheetBehavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
-//                val bottomSheet = CoinsBottomSheetFragment()
-//                bottomSheet.show(requireActivity().supportFragmentManager, bottomSheet.tag)
             }
+            val bottomSheetCallback = object : BottomSheetBehavior.BottomSheetCallback() {
+                override fun onStateChanged(bottomSheet: View, newState: Int) {
+                    when (newState) {
+                        BottomSheetBehavior.STATE_EXPANDED -> {
+                            Log.d(TAG, "onStateChanged: STATE_EXPANDED")
+                            toggleAppbar(false)
+                        }
+                        BottomSheetBehavior.STATE_COLLAPSED -> {
+                            Log.d(TAG, "onStateChanged: STATE_COLLAPSED")
+                            toggleAppbar(true)
+                        }
+                        BottomSheetBehavior.STATE_HIDDEN -> {
+                            Log.d(TAG, "onStateChanged: STATE_HIDDEN")
+                        }
+                        BottomSheetBehavior.STATE_DRAGGING -> {
+                            Log.d(TAG, "onStateChanged: STATE_DRAGGING")
+                        }
+                        BottomSheetBehavior.STATE_HALF_EXPANDED -> {
+                            Log.d(TAG, "onStateChanged: STATE_HALF_EXPANDED")
+                        }
+                        BottomSheetBehavior.STATE_SETTLING -> {
+                            Log.d(TAG, "onStateChanged: STATE_SETTLING")
+                        }
+                    }
+                }
+                override fun onSlide(bottomSheet: View, slideOffset: Float) {
+                    Log.d(TAG, "onSlide: ")
+                }
+            }
+            bottomSheetBehavior.addBottomSheetCallback(bottomSheetCallback)
         }
     }
+
     private fun setObservers() {
         vm.fragChosen.observe(viewLifecycleOwner) {
             val navController = findNavController()
@@ -83,4 +109,24 @@ class CoinsListFragment : Fragment() {
         }
     }
     // SETUP //
+
+    // HELPERS
+    private fun toggleAppbar(hideAppbar: Boolean) {
+         binding!!.apply {
+             if (hideAppbar) {
+                 appBarLayout.visibility = View.GONE
+                 profileLayout.visibility = View.VISIBLE
+             } else {
+                 profileLayout.visibility = View.GONE
+                 appBarLayout.visibility = View.VISIBLE
+             }
+         }
+    }
+
+    private fun getActionBarSize(): Int {
+        val array = requireContext().theme
+            .obtainStyledAttributes(intArrayOf(androidx.appcompat.R.attr.actionBarSize))
+        return array.getDimension(0, 0f).toInt()
+    }
+    // HELPERS
 }

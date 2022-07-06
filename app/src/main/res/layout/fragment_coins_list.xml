@@ -50,6 +50,7 @@
 
                 <com.google.android.material.appbar.AppBarLayout
                     android:id="@+id/appBarLayout"
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     android:background="@color/color_accent">

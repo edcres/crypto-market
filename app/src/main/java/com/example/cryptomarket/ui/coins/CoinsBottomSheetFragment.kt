@@ -68,7 +68,7 @@ class CoinsBottomSheetFragment : BottomSheetDialogFragment() {
                 }
             }
             override fun onSlide(bottomSheet: View, slideOffset: Float) {
-                Log.d(TAG, "onSlide: ")
+                Log.d(TAG, "onSlide: called")
             }
         }
         bottomSheetBehavior.addBottomSheetCallback(bottomSheetCallback)
