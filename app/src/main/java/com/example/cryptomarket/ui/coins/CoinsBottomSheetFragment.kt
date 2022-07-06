@@ -1,13 +1,16 @@
 package com.example.cryptomarket.ui.coins
 
 import android.app.Dialog
-import androidx.appcompat.R
 import android.content.res.Resources
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
+import com.example.cryptomarket.R
 import com.example.cryptomarket.databinding.ExpandedBottomSheetBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -29,15 +32,39 @@ class CoinsBottomSheetFragment : BottomSheetDialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val fragmentBinding = ExpandedBottomSheetBinding.inflate(inflater, container, false)
-        binding = fragmentBinding
-        return fragmentBinding.root
+        Log.d(TAG, "1onCreateView: called")
+        return super.onCreateView(inflater, container, savedInstanceState)
     }
+//    override fun onCreateView(
+//        inflater: LayoutInflater,
+//        container: ViewGroup?,
+//        savedInstanceState: Bundle?
+//    ): View? {
+//        Log.d(TAG, "1onCreateView: called")
+//        val fragmentBinding = ExpandedBottomSheetBinding.inflate(inflater, container, false)
+//        binding = fragmentBinding
+//        return fragmentBinding.root
+//    }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        Log.d(TAG, "1onCreateDialog: called")
         dialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog
-        val bottomSheetBehavior = (this.dialog).behavior
+        bottomSheetBehavior = (this.dialog).behavior
 //        bottomSheetBehavior = BottomSheetBehavior.from(binding!!.root)
+
+
+        //inflating layout
+        //inflating layout
+        val view = View.inflate(context, R.layout.expanded_bottom_sheet, null)
+
+        //binding views to data binding.
+
+        //binding views to data binding.
+//        val sdfgh = DataBindingUtil.bind<ViewDataBinding>(view)
+        binding = DataBindingUtil.bind<ViewDataBinding>(view) as ExpandedBottomSheetBinding
+        dialog.setContentView(view)
+        
+
 
         // Setting Peek at the 16:9 ratio keyline of its parent.
         bottomSheetBehavior.peekHeight = BottomSheetBehavior.PEEK_HEIGHT_AUTO
@@ -94,8 +121,8 @@ class CoinsBottomSheetFragment : BottomSheetDialogFragment() {
     }
 
     private fun getActionBarSize(): Int {
-        val array = requireContext()
-            .theme.obtainStyledAttributes(intArrayOf(R.attr.actionBarSize))
+        val array = requireContext().theme
+            .obtainStyledAttributes(intArrayOf(androidx.appcompat.R.attr.actionBarSize))
         return array.getDimension(0, 0f).toInt()
     }
 }
