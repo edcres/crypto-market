@@ -34,6 +34,7 @@ class CoinsBottomSheetFragment : BottomSheetDialogFragment() {
         dialog.setContentView(view)
 
         // Setting Peek at the 16:9 ratio keyline of its parent.
+//        bottomSheetBehavior.peekHeight = 100
         bottomSheetBehavior.peekHeight = BottomSheetBehavior.PEEK_HEIGHT_AUTO
         // Setting max height of bottom sheet
         binding!!.extraSpace.minimumHeight = (Resources.getSystem().displayMetrics.heightPixels) / 2
@@ -42,22 +43,33 @@ class CoinsBottomSheetFragment : BottomSheetDialogFragment() {
             override fun onStateChanged(bottomSheet: View, newState: Int) {
                 when (newState) {
                     BottomSheetBehavior.STATE_EXPANDED -> {
+                        Log.d(TAG, "onStateChanged: STATE_EXPANDED")
                         showView(binding!!.appBarLayout, getActionBarSize())
                         hideAppBar(binding!!.profileLayout)
                     }
                     BottomSheetBehavior.STATE_COLLAPSED -> {
+                        Log.d(TAG, "onStateChanged: STATE_COLLAPSED")
                         hideAppBar(binding!!.appBarLayout)
                         showView(binding!!.profileLayout, getActionBarSize())
                     }
                     BottomSheetBehavior.STATE_HIDDEN -> {
+                        Log.d(TAG, "onStateChanged: STATE_HIDDEN")
                         dismiss()
                     }
-                    BottomSheetBehavior.STATE_DRAGGING -> { }
-                    BottomSheetBehavior.STATE_HALF_EXPANDED -> { }
-                    BottomSheetBehavior.STATE_SETTLING -> { }
+                    BottomSheetBehavior.STATE_DRAGGING -> {
+                        Log.d(TAG, "onStateChanged: STATE_DRAGGING")
+                    }
+                    BottomSheetBehavior.STATE_HALF_EXPANDED -> {
+                        Log.d(TAG, "onStateChanged: STATE_HALF_EXPANDED")
+                    }
+                    BottomSheetBehavior.STATE_SETTLING -> {
+                        Log.d(TAG, "onStateChanged: STATE_SETTLING")
+                    }
                 }
             }
-            override fun onSlide(bottomSheet: View, slideOffset: Float) { }
+            override fun onSlide(bottomSheet: View, slideOffset: Float) {
+                Log.d(TAG, "onSlide: called")
+            }
         }
         bottomSheetBehavior.addBottomSheetCallback(bottomSheetCallback)
 
