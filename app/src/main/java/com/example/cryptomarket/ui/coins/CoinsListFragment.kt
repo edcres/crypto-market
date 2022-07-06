@@ -41,21 +41,10 @@ class CoinsListFragment : Fragment() {
             lifecycleOwner = viewLifecycleOwner
             coinsListRecycler.adapter = coinsListAdapter
             coinsListRecycler.layoutManager = LinearLayoutManager(requireContext())
-            bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetView)
-            // todo: get rid of this
-            coinsListHeader.setOnClickListener {
-                if(bottomSheetBehavior.state != BottomSheetBehavior.STATE_EXPANDED) {
-                    bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED;
-                }
-                else {
-                    bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED;
-                }
-//                val bottomSheet = CoinsBottomSheetFragment()
-//                bottomSheet.show(requireActivity().supportFragmentManager, bottomSheet.tag)
-            }
         }
         vm.startApplication()
         setObservers()
+        setBottomSheet()
     }
 
     override fun onDestroy() {
@@ -65,7 +54,23 @@ class CoinsListFragment : Fragment() {
 
     // SETUP //
     private fun setBottomSheet() {
-
+        binding?.apply {
+            bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetView)
+            // todo: get rid of this
+            bottomSheetBehavior.peekHeight = 150
+            bottomSheetView.setOnClickListener {
+                if (bottomSheetBehavior.state != BottomSheetBehavior.STATE_EXPANDED)
+                bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+            }
+            coinsListHeader.setOnClickListener {
+                bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+//                bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+//                bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+//                bottomSheetBehavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
+//                val bottomSheet = CoinsBottomSheetFragment()
+//                bottomSheet.show(requireActivity().supportFragmentManager, bottomSheet.tag)
+            }
+        }
     }
     private fun setObservers() {
         vm.fragChosen.observe(viewLifecycleOwner) {
