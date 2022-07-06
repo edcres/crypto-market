@@ -5,28 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
 import com.example.cryptomarket.R
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
 /** todo:
- * - test the bottom sheet
- *      - make bottom sheet stuff for coins
- *          - expanded .xml'
- *          - adapter
- *
- *          - expanded .xml'
- *          - sheet fragment (the tutorial calls it an adapter)
- *      - make bottom sheet stuff for news
- *          - normal (smaller) .xml
- *          - expanded .xml'
- *          - adapter
- *
- * - bottom sheet
- *      - make it expanded at first,
- *          then at the bottom when moved down or when drop down btn (to the top left) is clicked
+ * - configure bottom sheets for the API data
+ *      - coins list
+ *      - news
  *
  * - data/backend stuff
  *      - Data class for the API
@@ -34,23 +18,24 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
  *      - recyclerView for coins list
  *      - recyclerView for news list
  *      - overview data
- * - appbar
  *
  * AFTER:
  * - put data in charts
- * - customize the charts
- * - colors
+ *      - customize the charts
+ * - colors dark mode
  * - app icon
+ * - colors light mode
  */
 
 /** maybe:
- * - news section
  * - local database
  */
 
 /**
- * check todos:
- *
+ * check todos
+ * check warnings
+ * Comment code
+ * remove unused imports
  */
 
 class MainActivity : AppCompatActivity() {
