@@ -56,13 +56,8 @@ class CoinsListFragment : Fragment() {
     private fun setBottomSheet() {
         binding?.apply {
             bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetView)
-            bottomSheetBehavior.peekHeight = 200    // todo: bottomSheetView.height
+            bottomSheetBehavior.peekHeight = 240    // todo: bottomSheetView.height
             userName.setOnClickListener {
-//                if (bottomSheetBehavior.state != BottomSheetBehavior.STATE_EXPANDED)
-                    bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
-                coinsListHeader.text = "sdfghjk"
-            }
-            coinsListHeader.setOnClickListener {
                 bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
             }
             val bottomSheetCallback = object : BottomSheetBehavior.BottomSheetCallback() {
@@ -121,12 +116,6 @@ class CoinsListFragment : Fragment() {
                  appBarLayout.visibility = View.VISIBLE
              }
          }
-    }
-
-    private fun getActionBarSize(): Int {
-        val array = requireContext().theme
-            .obtainStyledAttributes(intArrayOf(androidx.appcompat.R.attr.actionBarSize))
-        return array.getDimension(0, 0f).toInt()
     }
     // HELPERS
 }
