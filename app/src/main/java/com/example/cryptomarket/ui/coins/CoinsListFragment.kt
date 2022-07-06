@@ -28,7 +28,6 @@ class CoinsListFragment : Fragment() {
     ): View? {
         val fragmentBinding = FragmentCoinsListBinding.inflate(inflater, container, false)
         binding = fragmentBinding
-        Log.d(TAG, "onCreateView: called")
         return fragmentBinding.root
     }
 

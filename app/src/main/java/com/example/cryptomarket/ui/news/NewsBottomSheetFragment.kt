@@ -1,43 +1,37 @@
-package com.example.cryptomarket.ui.coins
+package com.example.cryptomarket.ui.news
 
 import android.app.Dialog
 import android.content.res.Resources
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.example.cryptomarket.R
-import com.example.cryptomarket.databinding.CoinsBottomSheetBinding
+import com.example.cryptomarket.databinding.NewsBottomSheetBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-//private const val COIN_SHEET_STR_KEY = "Coins companion tag"
-private const val TAG = "CoinsSheet__TAG"
+private const val NEWS_SHEET_STR_KEY = "Coins companion tag"
 
-class CoinsBottomSheetFragment : BottomSheetDialogFragment() {
+class NewsBottomSheetFragment : BottomSheetDialogFragment() {
 
     // todo: vm here
-    private var binding: CoinsBottomSheetBinding? = null
+    private var binding: NewsBottomSheetBinding? = null
     private lateinit var dialog: BottomSheetDialog
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<FrameLayout>
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         dialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog
         bottomSheetBehavior = (this.dialog).behavior
-
-        val view = View.inflate(context, R.layout.coins_bottom_sheet, null)
-
-        binding = DataBindingUtil.bind<ViewDataBinding>(view) as CoinsBottomSheetBinding
+        val view = View.inflate(context, R.layout.news_bottom_sheet, null)
+        binding = DataBindingUtil.bind<ViewDataBinding>(view) as NewsBottomSheetBinding
         dialog.setContentView(view)
-
         // Setting Peek at the 16:9 ratio keyline of its parent.
         bottomSheetBehavior.peekHeight = BottomSheetBehavior.PEEK_HEIGHT_AUTO
         // Setting max height of bottom sheet
         binding!!.extraSpace.minimumHeight = (Resources.getSystem().displayMetrics.heightPixels) / 2
-
         val bottomSheetCallback = object : BottomSheetBehavior.BottomSheetCallback() {
             override fun onStateChanged(bottomSheet: View, newState: Int) {
                 when (newState) {
@@ -60,7 +54,6 @@ class CoinsBottomSheetFragment : BottomSheetDialogFragment() {
             override fun onSlide(bottomSheet: View, slideOffset: Float) { }
         }
         bottomSheetBehavior.addBottomSheetCallback(bottomSheetCallback)
-
         // appBar cancel button clicked
         binding!!.cancelBtn.setOnClickListener { dismiss() }
         hideAppBar(binding!!.appBarLayout);
