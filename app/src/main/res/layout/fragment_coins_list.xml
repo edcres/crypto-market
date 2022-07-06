@@ -49,7 +49,7 @@
                 android:orientation="vertical">
 
                 <com.google.android.material.appbar.AppBarLayout
-                    android:id="@+id/appBarLayout"
+                    android:id="@+id/app_bar_layout"
                     android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
@@ -61,7 +61,7 @@
                         android:orientation="horizontal">
 
                         <ImageButton
-                            android:id="@+id/cancelBtn"
+                            android:id="@+id/cancel_btn"
                             android:layout_width="?attr/actionBarSize"
                             android:layout_height="?attr/actionBarSize"
                             android:background="?attr/selectableItemBackgroundBorderless"
@@ -69,7 +69,7 @@
                             app:tint="@android:color/white" />
 
                         <TextView
-                            android:id="@+id/nameToolbar"
+                            android:id="@+id/name_toolbar"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
@@ -94,20 +94,20 @@
                         android:padding="15dp">
 
                         <LinearLayout
-                            android:id="@+id/profileLayout"
+                            android:id="@+id/profile_layout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center_vertical"
                             android:orientation="horizontal">
 
                             <ImageView
-                                android:id="@+id/userImage"
+                                android:id="@+id/user_image_btn"
                                 android:layout_width="?attr/actionBarSize"
                                 android:layout_height="?attr/actionBarSize"
                                 android:src="@drawable/ic_close_24" />
 
                             <TextView
-                                android:id="@+id/userName"
+                                android:id="@+id/user_name_txt"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="15dp"
@@ -382,7 +382,7 @@
                         </LinearLayout>
 
                         <View
-                            android:id="@+id/extraSpace"
+                            android:id="@+id/extra_space"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
 
