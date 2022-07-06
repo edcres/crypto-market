@@ -57,7 +57,7 @@ class CoinsListFragment : Fragment() {
         binding?.apply {
             bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetView)
             bottomSheetBehavior.peekHeight = 240    // todo: bottomSheetView.height
-            userName.setOnClickListener {
+            userNameTxt.setOnClickListener {
                 bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
             }
             val bottomSheetCallback = object : BottomSheetBehavior.BottomSheetCallback() {
