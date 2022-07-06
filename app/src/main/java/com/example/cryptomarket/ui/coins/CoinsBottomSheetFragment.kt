@@ -11,11 +11,10 @@ import android.widget.FrameLayout
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.example.cryptomarket.R
-import com.example.cryptomarket.databinding.ExpandedBottomSheetBinding
+import com.example.cryptomarket.databinding.CoinsBottomSheetBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-
 
 //private const val COIN_SHEET_STR_KEY = "Coins companion tag"
 private const val TAG = "CoinsSheet__TAG"
@@ -23,7 +22,7 @@ private const val TAG = "CoinsSheet__TAG"
 class CoinsBottomSheetFragment : BottomSheetDialogFragment() {
 
     // todo: vm here
-    private var binding: ExpandedBottomSheetBinding? = null
+    private var binding: CoinsBottomSheetBinding? = null
     private lateinit var dialog: BottomSheetDialog
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<FrameLayout> // BottomSheetBehavior<*>?
 
@@ -35,36 +34,16 @@ class CoinsBottomSheetFragment : BottomSheetDialogFragment() {
         Log.d(TAG, "1onCreateView: called")
         return super.onCreateView(inflater, container, savedInstanceState)
     }
-//    override fun onCreateView(
-//        inflater: LayoutInflater,
-//        container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View? {
-//        Log.d(TAG, "1onCreateView: called")
-//        val fragmentBinding = ExpandedBottomSheetBinding.inflate(inflater, container, false)
-//        binding = fragmentBinding
-//        return fragmentBinding.root
-//    }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         Log.d(TAG, "1onCreateDialog: called")
         dialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog
         bottomSheetBehavior = (this.dialog).behavior
-//        bottomSheetBehavior = BottomSheetBehavior.from(binding!!.root)
 
+        val view = View.inflate(context, R.layout.coins_bottom_sheet, null)
 
-        //inflating layout
-        //inflating layout
-        val view = View.inflate(context, R.layout.expanded_bottom_sheet, null)
-
-        //binding views to data binding.
-
-        //binding views to data binding.
-//        val sdfgh = DataBindingUtil.bind<ViewDataBinding>(view)
-        binding = DataBindingUtil.bind<ViewDataBinding>(view) as ExpandedBottomSheetBinding
+        binding = DataBindingUtil.bind<ViewDataBinding>(view) as CoinsBottomSheetBinding
         dialog.setContentView(view)
-        
-
 
         // Setting Peek at the 16:9 ratio keyline of its parent.
         bottomSheetBehavior.peekHeight = BottomSheetBehavior.PEEK_HEIGHT_AUTO
@@ -94,12 +73,9 @@ class CoinsBottomSheetFragment : BottomSheetDialogFragment() {
         }
         bottomSheetBehavior.addBottomSheetCallback(bottomSheetCallback)
 
-        //aap bar cancel button clicked
-        //aap bar cancel button clicked
+        // appBar cancel button clicked
         binding!!.cancelBtn.setOnClickListener { dismiss() }
-
         hideAppBar(binding!!.appBarLayout);
-
         return dialog
     }
 

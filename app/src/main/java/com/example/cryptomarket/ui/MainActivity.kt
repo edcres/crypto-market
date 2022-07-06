@@ -14,7 +14,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 /** todo:
  * - test the bottom sheet
  *      - make bottom sheet stuff for coins
- *          - normal (smaller) .xml
  *          - expanded .xml'
  *          - adapter
  *
@@ -24,6 +23,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
  *          - normal (smaller) .xml
  *          - expanded .xml'
  *          - adapter
+ *
+ * - bottom sheet
+ *      - make it go only half way at first, then full screen when clicked
  *
  * - data/backend stuff
  *      - Data class for the API
