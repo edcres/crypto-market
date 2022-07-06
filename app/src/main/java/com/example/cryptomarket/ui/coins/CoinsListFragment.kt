@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -13,6 +14,7 @@ import com.example.cryptomarket.R
 import com.example.cryptomarket.databinding.FragmentCoinsListBinding
 import com.example.cryptomarket.ui.CryptoViewModel
 import com.example.cryptomarket.utils.FragChosen
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 private const val TAG = "CoinsListFrag__TAG"
 
@@ -21,6 +23,7 @@ class CoinsListFragment : Fragment() {
     private var binding: FragmentCoinsListBinding? = null
     private val vm: CryptoViewModel by activityViewModels()
     private lateinit var coinsListAdapter: CoinsListAdapter
+    private lateinit var bottomSheetBehavior: BottomSheetBehavior<FrameLayout>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,11 +41,17 @@ class CoinsListFragment : Fragment() {
             lifecycleOwner = viewLifecycleOwner
             coinsListRecycler.adapter = coinsListAdapter
             coinsListRecycler.layoutManager = LinearLayoutManager(requireContext())
-
+            bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetView)
             // todo: get rid of this
             coinsListHeader.setOnClickListener {
-                val bottomSheet = CoinsBottomSheetFragment()
-                bottomSheet.show(requireActivity().supportFragmentManager, bottomSheet.tag)
+                if(bottomSheetBehavior.state != BottomSheetBehavior.STATE_EXPANDED) {
+                    bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED;
+                }
+                else {
+                    bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED;
+                }
+//                val bottomSheet = CoinsBottomSheetFragment()
+//                bottomSheet.show(requireActivity().supportFragmentManager, bottomSheet.tag)
             }
         }
         vm.startApplication()
@@ -55,6 +64,9 @@ class CoinsListFragment : Fragment() {
     }
 
     // SETUP //
+    private fun setBottomSheet() {
+
+    }
     private fun setObservers() {
         vm.fragChosen.observe(viewLifecycleOwner) {
             val navController = findNavController()
