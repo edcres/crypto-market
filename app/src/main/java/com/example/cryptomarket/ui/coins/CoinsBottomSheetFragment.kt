@@ -26,15 +26,6 @@ class CoinsBottomSheetFragment : BottomSheetDialogFragment() {
     private lateinit var dialog: BottomSheetDialog
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<FrameLayout> // BottomSheetBehavior<*>?
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        Log.d(TAG, "1onCreateView: called")
-        return super.onCreateView(inflater, container, savedInstanceState)
-    }
-
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         Log.d(TAG, "1onCreateDialog: called")
         dialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog

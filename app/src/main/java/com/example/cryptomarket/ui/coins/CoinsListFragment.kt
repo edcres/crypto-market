@@ -39,6 +39,8 @@ class CoinsListFragment : Fragment() {
             lifecycleOwner = viewLifecycleOwner
             coinsListRecycler.adapter = coinsListAdapter
             coinsListRecycler.layoutManager = LinearLayoutManager(requireContext())
+
+            // todo: get rid of this
             coinsListHeader.setOnClickListener {
                 val bottomSheet = CoinsBottomSheetFragment()
                 bottomSheet.show(requireActivity().supportFragmentManager, bottomSheet.tag)

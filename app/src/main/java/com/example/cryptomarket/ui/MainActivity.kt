@@ -25,7 +25,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
  *          - adapter
  *
  * - bottom sheet
- *      - make it go only half way at first, then full screen when clicked
+ *      - make it expanded at first,
+ *          then at the bottom when moved down or when drop down btn (to the top left) is clicked
  *
  * - data/backend stuff
  *      - Data class for the API
