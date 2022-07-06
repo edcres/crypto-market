@@ -4,10 +4,13 @@ import android.app.Dialog
 import android.content.res.Resources
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.Fragment
 import com.example.cryptomarket.R
 import com.example.cryptomarket.databinding.CoinsBottomSheetBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -17,16 +20,31 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 //private const val COIN_SHEET_STR_KEY = "Coins companion tag"
 private const val TAG = "CoinsSheet__TAG"
 
-class CoinsBottomSheetFragment : BottomSheetDialogFragment() {
+class CoinsBottomSheetFragment : Fragment() {
 
     // todo: vm here
     private var binding: CoinsBottomSheetBinding? = null
     private lateinit var dialog: BottomSheetDialog
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<FrameLayout>
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val fragmentBinding = CoinsBottomSheetBinding.inflate(inflater, container, false)
+        binding = fragmentBinding
+        return fragmentBinding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+    }
+
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         dialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog
-        bottomSheetBehavior = (this.dialog).behavior
+        bottomSheetBehavior = this.dialog.behavior
 
         val view = View.inflate(context, R.layout.coins_bottom_sheet, null)
 
@@ -77,6 +95,11 @@ class CoinsBottomSheetFragment : BottomSheetDialogFragment() {
         binding!!.cancelBtn.setOnClickListener { dismiss() }
         hideAppBar(binding!!.appBarLayout);
         return dialog
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        binding = null
     }
 
     override fun onStart() {
