@@ -41,6 +41,10 @@ import com.example.cryptomarket.R
 
 /** maybe:
  * - local database
+ * - Consider including OHLC
+ *      - https://api.coinpaprika.com/#tag/Coins/paths/~1coins~1{coin_id}~1ohlcv~1latest~1/get
+ * - list of exchanged
+ * - price converter
  */
 
 /**
