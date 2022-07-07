@@ -14,8 +14,6 @@ import retrofit2.http.Query
 private const val API_VERSION = "v1"
 private const val BASE_URL = "https://api.coinpaprika.com/$API_VERSION/"
 
-// https://api.coinpaprika.com/v1/global
-
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
     .build()

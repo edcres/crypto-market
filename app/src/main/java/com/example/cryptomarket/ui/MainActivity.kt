@@ -8,6 +8,15 @@ import androidx.core.content.ContextCompat
 import com.example.cryptomarket.R
 
 /** todo:
+ * - News
+ *      - API
+ *          - api service file
+ *                  - https://cryptopanic.com/api/v1/posts/?auth_token=03cdeeb873984d7cf7a0723c49cb22676fcd56f6&kind=news
+ *          - Data classes
+ *      - API key
+ *          - to local host
+ *          - to API service
+ *
  * - data/backend stuff
  *      - News
  *          - Data class
@@ -45,6 +54,7 @@ import com.example.cryptomarket.R
  *      - https://api.coinpaprika.com/#tag/Coins/paths/~1coins~1{coin_id}~1ohlcv~1latest~1/get
  * - list of exchanged
  * - price converter
+ * - news article link navigate to the website.
  */
 
 /**
