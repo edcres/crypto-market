@@ -6,7 +6,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 
-// Update interval: Every 5 minute.
 // All endpoints return either a JSON object or array
 // All timestamp related fields are in seconds
 // API errors are formatted as JSON: {"error": "<error message>"}
@@ -25,11 +24,11 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface CoinsApiService {
-//    @GET("$API_V/images/search?mime_types=jpg,png&limit=100")
-//    suspend fun getAllCoins(): List<CatPhoto>
-
     @GET("global")
     suspend fun getGlobalData(): List<GlobalData>
+
+    @GET("coins")
+    suspend fun getCoins(): List<Coin>
 }
 
 object CoinsApi {
