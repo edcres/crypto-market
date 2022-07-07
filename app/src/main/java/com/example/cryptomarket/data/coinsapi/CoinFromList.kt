@@ -2,7 +2,7 @@ package com.example.cryptomarket.data.coinsapi
 
 import com.squareup.moshi.Json
 
-data class Coin (
+data class CoinFromList (
     @Json(name = "id")
     val id: String,
     @Json(name = "name")
