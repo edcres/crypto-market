@@ -18,5 +18,5 @@ data class NewsPost (
     @Json(name = "url")
     val url: String,
     @Json(name = "currencies")
-    val currencies: List<nkasnkn>
+    val currencies: List<NewsCurrency>
 )
