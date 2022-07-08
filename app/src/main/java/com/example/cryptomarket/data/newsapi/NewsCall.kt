@@ -10,5 +10,5 @@ data class NewsCall (
     @Json(name = "previous")
     val previous: String?,
     @Json(name = "results")
-    val results: List<skdk>
+    val results: List<NewsPost>
 )
