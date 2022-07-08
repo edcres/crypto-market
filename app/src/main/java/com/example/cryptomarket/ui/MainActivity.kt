@@ -8,26 +8,15 @@ import androidx.core.content.ContextCompat
 import com.example.cryptomarket.R
 
 /** todo:
- * - News
- *      - API key
- *          - to local host
- *          - to API service
  *
  * - data/backend stuff
- *      - News
- *          - Data class
- *          - API queries
- *          - recyclerView for news list
  *      - Coins
- *          - Data class
+ *          - Data classes
+ *              - tickers
  *          - API queries
- *          - recyclerView for coins list
- *          - try catch (error handling in general)
  *      - Market Overview
  *          - Data class
  *          - API queries
- *          - overview data in views
- *          - try catch (error handling in general)
  * - Get rid of the dummy
  *      - .xml
  *      - data class
@@ -35,12 +24,21 @@ import com.example.cryptomarket.R
  * - Repo
  *
  * - configure bottom sheets for the API data
+ *      - overview data in views
  *      - coins list
+ *          - recyclerView for coins list
  *      - news
+ *          - recyclerView for news list
+ *
+ * - try catch (error handling in general)
+ *      - overall market
+ *      - news
+ *      - coins list
  *
  * AFTER:
  * - put API data in charts
  *      - customize the charts
+ * - decide what more I want to display in market overview
  * - colors dark mode
  * - app icon
  * - colors light mode
