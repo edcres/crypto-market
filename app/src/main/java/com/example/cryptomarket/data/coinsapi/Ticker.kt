@@ -24,5 +24,5 @@ data class Ticker(
     @Json(name = "last_updated")
     val last_updated: String,
     @Json(name = "quotes")
-    val quotes: List<sdss>
+    val quotes: List<PriceData>
 )
