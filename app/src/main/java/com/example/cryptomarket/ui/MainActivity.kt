@@ -9,10 +9,6 @@ import com.example.cryptomarket.R
 
 /** todo:
  * - News
- *      - API
- *          - api service file
- *                  - https://cryptopanic.com/api/v1/posts/?auth_token=03cdeeb873984d7cf7a0723c49cb22676fcd56f6&kind=news
- *          - Data classes
  *      - API key
  *          - to local host
  *          - to API service
@@ -35,6 +31,8 @@ import com.example.cryptomarket.R
  * - Get rid of the dummy
  *      - .xml
  *      - data class
+ *
+ * - Repo
  *
  * - configure bottom sheets for the API data
  *      - coins list
