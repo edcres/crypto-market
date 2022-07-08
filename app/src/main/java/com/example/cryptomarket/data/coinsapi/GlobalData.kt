@@ -2,6 +2,7 @@ package com.example.cryptomarket.data.coinsapi
 
 import com.squareup.moshi.Json
 
+// https://api.coinpaprika.com/#tag/Global
 data class GlobalData (
     @Json(name = "market_cap_usd")
     val marketCapUsd: Double,

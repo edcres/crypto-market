@@ -1,7 +1,9 @@
-package com.example.cryptomarket.data.coinsapi
+package com.example.cryptomarket.data.coinsapi.ticker
 
 import com.squareup.moshi.Json
 
+// https://api.coinpaprika.com/#operation/getTickers
+// https://api.coinpaprika.com/#operation/getTickersById
 data class Ticker(
     @Json(name = "id")
     val id: String,

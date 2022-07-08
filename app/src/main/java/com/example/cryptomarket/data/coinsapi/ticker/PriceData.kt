@@ -1,7 +1,8 @@
-package com.example.cryptomarket.data.coinsapi
+package com.example.cryptomarket.data.coinsapi.ticker
 
 import com.squareup.moshi.Json
 
+// Used in the Ticker data class.
 data class PriceData(
     @Json(name = "price")
     val price: Double,
