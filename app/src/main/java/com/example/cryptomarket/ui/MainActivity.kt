@@ -8,14 +8,19 @@ import androidx.core.content.ContextCompat
 import com.example.cryptomarket.R
 
 /** todo:
- *
- * - data/backend stuff
- *      - Coins
- *          - Data classes
- *              - tickers
+ * - data to view
+ *      - News
  *          - API queries
+ *          - Repo
+ *          - In View
+ *      - Coins
+ *          - API queries
+ *          - Repo
+ *          - In View
  *      - Market Overview
  *          - API queries
+ *          - Repo
+ *          - In View
  * - Get rid of the dummy
  *      - .xml
  *      - data class

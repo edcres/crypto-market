@@ -17,7 +17,8 @@ data class NewsPost(
     @Json(name = "slug")
     val slug: String,
     @Json(name = "url")
-    val url: String,
-    @Json(name = "currencies")
-    val currencies: List<NewsCurrency>
+    val url: String
+    // 'currencies' is used in an API request that will not be used.
+//    @Json(name = "currencies")
+//    val currencies: List<NewsCurrency>
 )
