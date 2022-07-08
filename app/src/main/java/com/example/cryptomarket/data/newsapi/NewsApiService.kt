@@ -16,7 +16,7 @@ private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
     .build()
 private val retrofit = Retrofit.Builder()
-    .baseUrl(com.example.cryptomarket.data.coinsapi.BASE_URL)
+    .baseUrl(BASE_URL)
     .addConverterFactory(MoshiConverterFactory.create(moshi))
     .build()
 
@@ -24,7 +24,7 @@ interface NewsApiService {
     @GET("posts/?auth_token={token}=news")
     suspend fun getNewsPosts(
         @Path("token") id: String,
-    ): List<sdsds>
+    ): List<NewsCall>
 }
 
 object NewsApi {
