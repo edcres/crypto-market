@@ -2,6 +2,7 @@ package com.example.cryptomarket.data.newsapi
 
 import com.squareup.moshi.Json
 
+// Used in NewsPost data class.
 data class NewsCurrency(
     @Json(name = "code")
     val code: String,

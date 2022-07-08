@@ -2,7 +2,8 @@ package com.example.cryptomarket.data.newsapi
 
 import com.squareup.moshi.Json
 
-data class NewsPost (
+// Used in NewsCall data class.
+data class NewsPost(
     @Json(name = "id")
     val id: Int,
     @Json(name = "kind")

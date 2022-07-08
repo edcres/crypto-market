@@ -15,7 +15,6 @@ import com.example.cryptomarket.R
  *              - tickers
  *          - API queries
  *      - Market Overview
- *          - Data class
  *          - API queries
  * - Get rid of the dummy
  *      - .xml
