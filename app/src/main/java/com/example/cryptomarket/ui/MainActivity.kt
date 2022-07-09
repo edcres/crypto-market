@@ -9,8 +9,6 @@ import com.example.cryptomarket.R
 
 /** todo:
  * - data to view
- *      - News
- *          - observer
  *      - Coins
  *          - observer
  *      - Market Overview

@@ -3,6 +3,7 @@ package com.example.cryptomarket.data.coinsapi
 import com.example.cryptomarket.data.coinsapi.coin.CoinData
 import com.example.cryptomarket.data.coinsapi.coin.CoinFromList
 import com.example.cryptomarket.data.coinsapi.ticker.HistoricalTicker
+import com.example.cryptomarket.data.coinsapi.ticker.Ticker
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
@@ -27,6 +28,8 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface CoinsApiService {
+
+    // todo: maybe delete this
     @GET("coins")
     suspend fun getCoins(): List<CoinFromList>
 

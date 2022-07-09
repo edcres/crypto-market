@@ -8,6 +8,7 @@ import com.example.cryptomarket.data.Repository
 import com.example.cryptomarket.data.coinsapi.GlobalData
 import com.example.cryptomarket.data.coinsapi.coin.CoinFromList
 import com.example.cryptomarket.data.coinsapi.ticker.HistoricalTicker
+import com.example.cryptomarket.data.coinsapi.ticker.Ticker
 import com.example.cryptomarket.data.newsapi.NewsCall
 import com.example.cryptomarket.utils.DateFrame
 import com.example.cryptomarket.utils.FragChosen
@@ -23,8 +24,8 @@ class CryptoViewModel : ViewModel() {
     private var _fragChosen = MutableLiveData<FragChosen>()
     val fragChosen: LiveData<FragChosen> get() = _fragChosen
 
-    private var _coinFromList = MutableLiveData<List<CoinFromList>>()
-    val coinFromList: LiveData<List<CoinFromList>> get() = _coinFromList
+    private var _tickers = MutableLiveData<List<Ticker>>()
+    val tickers: LiveData<List<Ticker>> get() = _tickers
     private var _globalData = MutableLiveData<List<GlobalData>>()
     val globalData: LiveData<List<GlobalData>> get() = _globalData
     private var _newsCall = MutableLiveData<NewsCall>()
@@ -33,7 +34,7 @@ class CryptoViewModel : ViewModel() {
     // SETUP //
     fun startApplication() {
         repo = Repository()
-        viewModelScope.launch { _coinFromList.postValue(repo.getCoins()) }
+        viewModelScope.launch { _tickers.postValue(repo.getCoins()) }
         viewModelScope.launch { _globalData.postValue(repo.getGlobalData()) }
         viewModelScope.launch { _newsCall.postValue(repo.getNewsPosts()) }
     }

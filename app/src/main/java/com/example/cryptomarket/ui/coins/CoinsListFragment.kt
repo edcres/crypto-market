@@ -103,7 +103,9 @@ class CoinsListFragment : Fragment() {
                 else -> Log.i(TAG, "setObservers: from Coins to $it")
             }
         }
-
+        vm.tickers.observe(viewLifecycleOwner) {
+            coinsListAdapter.submitList(it)
+        }
     }
     // SETUP //
 
