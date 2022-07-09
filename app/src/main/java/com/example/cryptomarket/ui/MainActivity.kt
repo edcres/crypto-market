@@ -8,10 +8,6 @@ import androidx.core.content.ContextCompat
 import com.example.cryptomarket.R
 
 /** todo:
- * - get the API data (for coins chart) from the viewModel and set up observers
- *      - getHistoricalTickerData
- *      - submitList to adapters
- *
  * - data to view
  *      - News
  *          - API queries

@@ -44,6 +44,8 @@ interface CoinsApiService {
         @Path("startTime") startTime: String,
         @Path("interval") interval: String
     ): List<HistoricalTicker>
+
+    // todo: news
 }
 
 object CoinsApi {

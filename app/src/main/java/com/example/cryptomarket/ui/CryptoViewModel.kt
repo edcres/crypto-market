@@ -5,7 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.cryptomarket.data.Repository
+import com.example.cryptomarket.data.coinsapi.GlobalData
+import com.example.cryptomarket.data.coinsapi.coin.CoinFromList
 import com.example.cryptomarket.data.coinsapi.ticker.HistoricalTicker
+import com.example.cryptomarket.data.newsapi.NewsCall
 import com.example.cryptomarket.utils.DateFrame
 import com.example.cryptomarket.utils.FragChosen
 import com.example.cryptomarket.utils.addZerosToDate
@@ -20,9 +23,20 @@ class CryptoViewModel : ViewModel() {
     private var _fragChosen = MutableLiveData<FragChosen>()
     val fragChosen: LiveData<FragChosen> get() = _fragChosen
 
+    private var _globalData = MutableLiveData<List<GlobalData>>()
+    val globalData: LiveData<List<GlobalData>> get() = _globalData
+    private var _coinFromList = MutableLiveData<List<CoinFromList>>()
+    val coinFromList: LiveData<List<CoinFromList>> get() = _coinFromList
+    private var _newsCall = MutableLiveData<List<NewsCall>>()
+    val newsCall: LiveData<List<NewsCall>> get() = _newsCall
+    // todo: news
+
     // SETUP //
     fun startApplication() {
         repo = Repository()
+        viewModelScope.launch {
+            // todo:
+        }
     }
     // SETUP //
 
