@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cryptomarket.data.DummyDataClass
 import com.example.cryptomarket.data.coinsapi.ticker.Ticker
 import com.example.cryptomarket.databinding.CoinChartRecyclerItemBinding
 
