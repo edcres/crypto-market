@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+        
+        <TextView
+            android:id="@+id/coin_symbol_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="BTC"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/coin_name_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/coin_symbol_txt"
+            tools:text="name" />
+
+        <TextView
+            android:id="@+id/rank_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/coin_name_txt"
+            tools:text="rank" />
+
+        <TextView
+            android:id="@+id/price_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="price" />
+
+        <TextView
+            android:id="@+id/percent_change_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="% change 7d" />
+
+        <TextView
+            android:id="@+id/chart_placeholder_txt"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/color_accent"
+            android:text="chart"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/coin_name_txt"
+            app:layout_constraintTop_toBottomOf="@+id/price_txt" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

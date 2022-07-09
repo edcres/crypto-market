@@ -8,6 +8,9 @@ import androidx.core.content.ContextCompat
 import com.example.cryptomarket.R
 
 /** todo:
+ * - get the API from the viewModel and set up observers
+ *      - submitList to adapters
+ *
  * - data to view
  *      - News
  *          - API queries
