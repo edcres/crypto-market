@@ -1,11 +1,11 @@
 package com.example.cryptomarket.data
 
 import com.example.cryptomarket.data.coinsapi.CoinsApi
-import retrofit2.Response
+import com.example.cryptomarket.data.coinsapi.ticker.HistoricalTicker
 
 class Repository {
 
-    suspend fun getHistoricalTickers(startTime: String, interval: String): Response<String> {
+    suspend fun getHistoricalTickers(startTime: String, interval: String): List<HistoricalTicker> {
         return CoinsApi.coinsApiService.getHistoricalTickers(startTime, interval)
     }
 }
