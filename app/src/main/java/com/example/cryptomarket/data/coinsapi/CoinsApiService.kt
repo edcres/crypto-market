@@ -28,6 +28,8 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface CoinsApiService {
+    @GET("tickers")
+    suspend fun getTickers(): List<Ticker>
 
     // todo: maybe delete this
     @GET("coins")

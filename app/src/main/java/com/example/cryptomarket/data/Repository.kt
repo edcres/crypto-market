@@ -5,7 +5,7 @@ import com.example.cryptomarket.data.coinsapi.ticker.HistoricalTicker
 import com.example.cryptomarket.data.newsapi.NewsApi
 
 class Repository {
-    suspend fun getCoins() = CoinsApi.coinsApiService.getCoins()
+    suspend fun getTickers() = CoinsApi.coinsApiService.getTickers()
 
     suspend fun getGlobalData() = CoinsApi.coinsApiService.getGlobalData()
 
