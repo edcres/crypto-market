@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cryptomarket.data.DummyDataClass
-import com.example.cryptomarket.databinding.DummyRecyclerItemBinding
+import com.example.cryptomarket.databinding.NewsRecyclerItemBinding
 
 class NewsListAdapter() :
     ListAdapter<DummyDataClass, NewsListAdapter.NewsViewHolder>(NewsDiffCallback()) {
@@ -19,7 +19,7 @@ class NewsListAdapter() :
         holder.bind(getItem(position))
 
     class NewsViewHolder private constructor(
-        private val binding: DummyRecyclerItemBinding
+        private val binding: NewsRecyclerItemBinding
     ): RecyclerView.ViewHolder(binding.root) {
 
         fun bind(dummyDataClass: DummyDataClass) {
@@ -32,7 +32,7 @@ class NewsListAdapter() :
         companion object {
             fun from(parent: ViewGroup): NewsViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = DummyRecyclerItemBinding
+                val binding = NewsRecyclerItemBinding
                     .inflate(layoutInflater, parent, false)
                 return NewsViewHolder(binding)
             }

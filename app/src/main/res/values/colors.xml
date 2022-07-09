@@ -11,4 +11,5 @@
     <color name="color_primary">#2D3A67</color>
     <color name="color_item_container">#76FFB4</color>
     <color name="color_accent">#FAE206</color>
+    <color name="cardview_background">#4D5E9A</color>
 </resources>
