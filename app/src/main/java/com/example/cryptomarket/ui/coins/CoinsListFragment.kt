@@ -36,7 +36,7 @@ class CoinsListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        coinsListAdapter = CoinsListAdapter()
+        coinsListAdapter = CoinsListAdapter(vm)
         binding?.apply {
             lifecycleOwner = viewLifecycleOwner
             coinsListRecycler.adapter = coinsListAdapter

@@ -11,10 +11,8 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cryptomarket.R
-import com.example.cryptomarket.databinding.FragmentCoinsListBinding
 import com.example.cryptomarket.databinding.FragmentNewsBinding
 import com.example.cryptomarket.ui.CryptoViewModel
-import com.example.cryptomarket.ui.coins.CoinsListAdapter
 import com.example.cryptomarket.utils.FragChosen
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 

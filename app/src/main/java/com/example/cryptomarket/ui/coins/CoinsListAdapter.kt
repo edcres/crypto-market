@@ -7,19 +7,23 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cryptomarket.data.coinsapi.ticker.Ticker
 import com.example.cryptomarket.databinding.CoinChartRecyclerItemBinding
+import com.example.cryptomarket.ui.CryptoViewModel
 import com.example.cryptomarket.utils.DateFrame
 
-class CoinsListAdapter() :
+class CoinsListAdapter(
+    private val vm: CryptoViewModel
+) :
     ListAdapter<Ticker, CoinsListAdapter.CoinsViewHolder>(CoinsDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CoinsViewHolder {
-        return CoinsViewHolder.from(parent)
+        return CoinsViewHolder.from(vm, parent)
     }
 
     override fun onBindViewHolder(holder: CoinsViewHolder, position: Int) =
         holder.bind(getItem(position))
 
     class CoinsViewHolder private constructor(
+        private val vm: CryptoViewModel,
         private val binding: CoinChartRecyclerItemBinding
     ): RecyclerView.ViewHolder(binding.root) {
 
@@ -45,11 +49,14 @@ class CoinsListAdapter() :
         }
 
         companion object {
-            fun from(parent: ViewGroup): CoinsViewHolder {
+            fun from(
+                vm: CryptoViewModel,
+                parent: ViewGroup
+            ): CoinsViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = CoinChartRecyclerItemBinding
                     .inflate(layoutInflater, parent, false)
-                return CoinsViewHolder(binding)
+                return CoinsViewHolder(vm, binding)
             }
         }
     }
