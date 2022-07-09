@@ -31,9 +31,10 @@ class CryptoViewModel: ViewModel() {
     // REPO QUERIES //
     fun getHistoricalTickerData(timeFrame: DateFrame): List<HistoricalTicker> {
         // todo: make a db query to get the chart data.
-        //  /historical?start=2022-07-01&interval=1d
+        //  /historical?start=2022-07-01         1d
         // if the data frame is 1w, the interval is 1d
         // get the start dat using 'timeFrame: DateFrame' and send the request to the repo
+        return repo.getHistoricalTickers()
     }
     // REPO QUERIES //
 }

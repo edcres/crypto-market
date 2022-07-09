@@ -4,9 +4,11 @@ import com.example.cryptomarket.data.coinsapi.coin.CoinData
 import com.example.cryptomarket.data.coinsapi.coin.CoinFromList
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 // All endpoints return either a JSON object or array
@@ -35,6 +37,13 @@ interface CoinsApiService {
     suspend fun getCoin(
         @Query("id") id: String
     ): List<CoinData>
+
+    // https://api.coinpaprika.com/v1/tickers/btc-bitcoin/historical?start=2022-01-01&interval=1d
+    @GET("tickers/btc-bitcoin/historical?start={startTime}&interval={interval}")
+    suspend fun getHistoricalTickers(
+        @Path("startTime") startTime: String,
+        @Path("interval") interval: String
+    ): Response<String>
 }
 
 object CoinsApi {
