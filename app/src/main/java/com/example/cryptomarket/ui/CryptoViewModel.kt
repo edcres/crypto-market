@@ -23,13 +23,12 @@ class CryptoViewModel : ViewModel() {
     private var _fragChosen = MutableLiveData<FragChosen>()
     val fragChosen: LiveData<FragChosen> get() = _fragChosen
 
-    private var _globalData = MutableLiveData<List<GlobalData>>()
-    val globalData: LiveData<List<GlobalData>> get() = _globalData
     private var _coinFromList = MutableLiveData<List<CoinFromList>>()
     val coinFromList: LiveData<List<CoinFromList>> get() = _coinFromList
+    private var _globalData = MutableLiveData<List<GlobalData>>()
+    val globalData: LiveData<List<GlobalData>> get() = _globalData
     private var _newsCall = MutableLiveData<List<NewsCall>>()
     val newsCall: LiveData<List<NewsCall>> get() = _newsCall
-    // todo: news
 
     // SETUP //
     fun startApplication() {

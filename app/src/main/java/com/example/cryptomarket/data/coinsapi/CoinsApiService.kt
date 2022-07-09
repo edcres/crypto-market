@@ -27,12 +27,13 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface CoinsApiService {
-    @GET("global")
-    suspend fun getGlobalData(): List<GlobalData>
-
     @GET("coins")
     suspend fun getCoins(): List<CoinFromList>
 
+    @GET("global")
+    suspend fun getGlobalData(): List<GlobalData>
+
+    // todo: maybe call this when clicking the recycler item and the bottom sheet pops up
     @GET("coins")
     suspend fun getCoin(
         @Query("id") id: String
