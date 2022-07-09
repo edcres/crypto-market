@@ -49,6 +49,7 @@ import com.example.cryptomarket.R
  * - colors dark mode
  * - app icon
  * - colors light mode
+ * - user can choose if the interval is hr, week, month...
  */
 
 /** maybe:
@@ -58,6 +59,7 @@ import com.example.cryptomarket.R
  * - list of exchanged
  * - price converter
  * - news article link navigate to the website. When click on news recycler item
+ * - calculate percent change from user click in chart, to current price (I love this feature)
  */
 
 /**

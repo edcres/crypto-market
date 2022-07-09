@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cryptomarket.R
 import com.example.cryptomarket.databinding.FragmentCoinsListBinding
 import com.example.cryptomarket.ui.CryptoViewModel
+import com.example.cryptomarket.utils.DateFrame
 import com.example.cryptomarket.utils.FragChosen
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
@@ -36,7 +37,7 @@ class CoinsListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        coinsListAdapter = CoinsListAdapter(vm)
+        coinsListAdapter = CoinsListAdapter(DateFrame.WEEK, vm)
         binding?.apply {
             lifecycleOwner = viewLifecycleOwner
             coinsListRecycler.adapter = coinsListAdapter

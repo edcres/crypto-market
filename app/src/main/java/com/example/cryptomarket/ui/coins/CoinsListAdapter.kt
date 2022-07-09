@@ -9,6 +9,7 @@ import com.example.cryptomarket.data.coinsapi.ticker.Ticker
 import com.example.cryptomarket.databinding.CoinChartRecyclerItemBinding
 import com.example.cryptomarket.ui.CryptoViewModel
 import com.example.cryptomarket.utils.DateFrame
+import com.example.cryptomarket.utils.pickPercentChange
 
 class CoinsListAdapter(
     private val chosenTimeFrame: DateFrame,
@@ -36,11 +37,11 @@ class CoinsListAdapter(
                 rankTxt.text = ticker.rank.toString()
                 if (ticker.quotes.isNotEmpty()) {
                     // todo: possible bug: although in practice it's probably no problem
-                    //      the price might not be in USD
+                    //      the price might not be in USD (position in the list)
                     priceTxt.text = ticker.quotes[0].price.toString()
-                    // todo: percent change should change base on the
-                    //      parameters of the data in the chart (7d, 1m, 1y)
-                    percentChangeTxt.text = ticker.quotes[0].percent_change_7d.toString()
+                    // todo: percent change should change based on the parameters of the data in the chart (7d, 1m, 1y)
+                    percentChangeTxt.text =
+                        pickPercentChange(chosenTimeFrame, ticker.quotes[0])?.toString() ?: ""
                 }
 
                 // todo: make a db query to get the chart data.
