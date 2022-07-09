@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cryptomarket.data.newsapi.NewsPost
 import com.example.cryptomarket.databinding.NewsRecyclerItemBinding
+import com.example.cryptomarket.utils.formatNewsPostDate
 
 class NewsListAdapter :
     ListAdapter<NewsPost, NewsListAdapter.NewsViewHolder>(NewsDiffCallback()) {
@@ -27,7 +28,7 @@ class NewsListAdapter :
                 newsTitleTxt.text = newsPost.title
                 sourceDomain.text = newsPost.domain
                 // todo: turn this into a better date format
-                datePublishedTxt.text = newsPost.publishedAt
+                datePublishedTxt.text = formatNewsPostDate(newsPost.publishedAt)
                 executePendingBindings()
             }
         }

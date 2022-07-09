@@ -22,3 +22,10 @@ fun pickPercentChange(timeFrame: DateFrame, priceData: PriceData) = when(timeFra
         DateFrame.QUARTER -> null
         DateFrame.YEAR -> priceData.percent_change_1y
 }
+
+// 2022-07-08T23:27:51Z
+fun formatNewsPostDate(rawDateString: String): String {
+    val dateList = rawDateString.split("-")
+    val dayOfMonth = "${dateList[2][0]}${dateList[2][1]}"
+    return "${dateList[0]}/${dateList[1]}/$dayOfMonth"
+}
