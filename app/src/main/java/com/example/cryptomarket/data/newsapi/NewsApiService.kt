@@ -23,7 +23,7 @@ private val retrofit = Retrofit.Builder()
 
 interface NewsApiService {
     @GET("posts/?auth_token=$API_TOKEN&kind=news")
-    suspend fun getNewsPosts(): List<NewsCall>
+    suspend fun getNewsPosts(): NewsCall
 }
 
 object NewsApi {
