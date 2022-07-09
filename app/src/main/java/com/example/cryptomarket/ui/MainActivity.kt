@@ -8,14 +8,14 @@ import androidx.core.content.ContextCompat
 import com.example.cryptomarket.R
 
 /** todo:
- * - get the API from the viewModel and set up observers
+ * - get the API data (for coins chart) from the viewModel and set up observers
+ *      - getHistoricalTickerData
  *      - submitList to adapters
  *
  * - data to view
  *      - News
  *          - API queries
  *          - Repo
- *          - In View
  *      - Coins
  *          - API queries
  *          - Repo
@@ -24,9 +24,6 @@ import com.example.cryptomarket.R
  *          - API queries
  *          - Repo
  *          - In View
- * - Get rid of the dummy
- *      - .xml
- *      - data class
  *
  * - Repo
  *

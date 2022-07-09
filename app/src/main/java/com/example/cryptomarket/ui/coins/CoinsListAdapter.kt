@@ -39,13 +39,9 @@ class CoinsListAdapter(
                     // todo: possible bug: although in practice it's probably no problem
                     //      the price might not be in USD (position in the list)
                     priceTxt.text = ticker.quotes[0].price.toString()
-                    // todo: percent change should change based on the parameters of the data in the chart (7d, 1m, 1y)
                     percentChangeTxt.text =
                         pickPercentChange(chosenTimeFrame, ticker.quotes[0])?.toString() ?: ""
                 }
-
-                // todo: make a db query to get the chart data.
-                // todo: pass in a parameter to tell whether the price data is from 7d, 1m, 1y or whatever.
                 chartPlaceholderTxt.text = vm.getHistoricalTickerData(chosenTimeFrame).toString()
                 executePendingBindings()
             }
