@@ -5,11 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cryptomarket.data.DummyDataClass
+import com.example.cryptomarket.data.newsapi.NewsPost
 import com.example.cryptomarket.databinding.NewsRecyclerItemBinding
 
-class NewsListAdapter() :
-    ListAdapter<DummyDataClass, NewsListAdapter.NewsViewHolder>(NewsDiffCallback()) {
+class NewsListAdapter :
+    ListAdapter<NewsPost, NewsListAdapter.NewsViewHolder>(NewsDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
         return NewsViewHolder.from(parent)
@@ -22,7 +22,7 @@ class NewsListAdapter() :
         private val binding: NewsRecyclerItemBinding
     ): RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(dummyDataClass: DummyDataClass) {
+        fun bind(newsPost: NewsPost) {
             binding.apply {
                 // todo:
                 executePendingBindings()
@@ -39,11 +39,11 @@ class NewsListAdapter() :
         }
     }
 
-    class NewsDiffCallback : DiffUtil.ItemCallback<DummyDataClass>() {
-        override fun areItemsTheSame(oldItem: DummyDataClass, newItem: DummyDataClass): Boolean {
-            return oldItem.data == newItem.data
+    class NewsDiffCallback : DiffUtil.ItemCallback<NewsPost>() {
+        override fun areItemsTheSame(oldItem: NewsPost, newItem: NewsPost): Boolean {
+            return oldItem.id == newItem.id
         }
-        override fun areContentsTheSame(oldItem: DummyDataClass, newItem: DummyDataClass): Boolean {
+        override fun areContentsTheSame(oldItem: NewsPost, newItem: NewsPost): Boolean {
             return oldItem == newItem
         }
     }
