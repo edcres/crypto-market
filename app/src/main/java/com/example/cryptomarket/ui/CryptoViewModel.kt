@@ -44,10 +44,7 @@ class CryptoViewModel : ViewModel() {
                 DateFrame.DAY -> currentDate.add(Calendar.DAY_OF_MONTH, -1)
                 DateFrame.WEEK -> currentDate.add(Calendar.DAY_OF_MONTH, -7)
                 DateFrame.MONTH -> currentDate.add(Calendar.MONTH, -1)
-                DateFrame.QUARTER -> currentDate.add(
-                    Calendar.MONTH,
-                    -3
-                )    // Starts three months past
+                DateFrame.QUARTER -> currentDate.add(Calendar.MONTH, -3) // Starts three months past
                 DateFrame.YEAR -> currentDate.add(Calendar.YEAR, -1)
             }
             val startTime =

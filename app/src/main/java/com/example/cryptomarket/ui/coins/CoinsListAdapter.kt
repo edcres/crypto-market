@@ -2,6 +2,7 @@ package com.example.cryptomarket.ui.coins
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -12,19 +13,21 @@ import com.example.cryptomarket.utils.DateFrame
 import com.example.cryptomarket.utils.pickPercentChange
 
 class CoinsListAdapter(
+    private val viewLifecycleOwner: LifecycleOwner,
     private val chosenTimeFrame: DateFrame,
     private val vm: CryptoViewModel
 ) :
     ListAdapter<Ticker, CoinsListAdapter.CoinsViewHolder>(CoinsDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CoinsViewHolder {
-        return CoinsViewHolder.from(chosenTimeFrame, vm, parent)
+        return CoinsViewHolder.from(viewLifecycleOwner, chosenTimeFrame, vm, parent)
     }
 
     override fun onBindViewHolder(holder: CoinsViewHolder, position: Int) =
         holder.bind(getItem(position))
 
     class CoinsViewHolder private constructor(
+        private val viewLifecycleOwner: LifecycleOwner,
         private val chosenTimeFrame: DateFrame,
         private val vm: CryptoViewModel,
         private val binding: CoinChartRecyclerItemBinding
@@ -42,13 +45,16 @@ class CoinsListAdapter(
                     percentChangeTxt.text =
                         pickPercentChange(chosenTimeFrame, ticker.quotes[0])?.toString() ?: ""
                 }
-                chartPlaceholderTxt.text = vm.getHistoricalTickerData(chosenTimeFrame).toString()
+                vm.getHistoricalTickerData(chosenTimeFrame).observe(viewLifecycleOwner) {
+                    chartPlaceholderTxt.text = it.toString()
+                }
                 executePendingBindings()
             }
         }
 
         companion object {
             fun from(
+                viewLifecycleOwner: LifecycleOwner,
                 chosenTimeFrame: DateFrame,
                 vm: CryptoViewModel,
                 parent: ViewGroup
@@ -56,7 +62,7 @@ class CoinsListAdapter(
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = CoinChartRecyclerItemBinding
                     .inflate(layoutInflater, parent, false)
-                return CoinsViewHolder(chosenTimeFrame, vm, binding)
+                return CoinsViewHolder(viewLifecycleOwner, chosenTimeFrame, vm, binding)
             }
         }
     }
