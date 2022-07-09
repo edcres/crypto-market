@@ -28,7 +28,7 @@ fun formatNewsPostDate(rawDateString: String): String {
     // raw date -> y/m/d -> m/d/y
     // raw date -> 2022/07/08 -> 07/08/2022
     val listYMD = rawDateString.split("-").map {
-        if (it.contains(":")) "${it[0]}${it[1]}" else it
+        if (it.contains(":")) it.subSequence(0,2) else it
     }
     return "${listYMD[1]}/${listYMD[2]}/${listYMD[0]}"
 }

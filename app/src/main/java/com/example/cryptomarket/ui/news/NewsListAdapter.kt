@@ -27,7 +27,6 @@ class NewsListAdapter :
             binding.apply {
                 newsTitleTxt.text = newsPost.title
                 sourceDomain.text = newsPost.domain
-                // todo: turn this into a better date format
                 datePublishedTxt.text = formatNewsPostDate(newsPost.publishedAt)
                 executePendingBindings()
             }
