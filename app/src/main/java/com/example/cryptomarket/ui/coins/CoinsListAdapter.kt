@@ -11,18 +11,20 @@ import com.example.cryptomarket.ui.CryptoViewModel
 import com.example.cryptomarket.utils.DateFrame
 
 class CoinsListAdapter(
+    private val chosenTimeFrame: DateFrame,
     private val vm: CryptoViewModel
 ) :
     ListAdapter<Ticker, CoinsListAdapter.CoinsViewHolder>(CoinsDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CoinsViewHolder {
-        return CoinsViewHolder.from(vm, parent)
+        return CoinsViewHolder.from(chosenTimeFrame, vm, parent)
     }
 
     override fun onBindViewHolder(holder: CoinsViewHolder, position: Int) =
         holder.bind(getItem(position))
 
     class CoinsViewHolder private constructor(
+        private val chosenTimeFrame: DateFrame,
         private val vm: CryptoViewModel,
         private val binding: CoinChartRecyclerItemBinding
     ): RecyclerView.ViewHolder(binding.root) {
@@ -43,20 +45,21 @@ class CoinsListAdapter(
 
                 // todo: make a db query to get the chart data.
                 // todo: pass in a parameter to tell whether the price data is from 7d, 1m, 1y or whatever.
-                chartPlaceholderTxt.text = vm.getHistoricalTickerData(, DateFrame.DAY.abbreviation).toString();    // a list of HistoricalTicker
+                chartPlaceholderTxt.text = vm.getHistoricalTickerData(chosenTimeFrame).toString()
                 executePendingBindings()
             }
         }
 
         companion object {
             fun from(
+                chosenTimeFrame: DateFrame,
                 vm: CryptoViewModel,
                 parent: ViewGroup
             ): CoinsViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = CoinChartRecyclerItemBinding
                     .inflate(layoutInflater, parent, false)
-                return CoinsViewHolder(vm, binding)
+                return CoinsViewHolder(chosenTimeFrame, vm, binding)
             }
         }
     }

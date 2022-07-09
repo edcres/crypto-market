@@ -7,7 +7,6 @@ import com.example.cryptomarket.data.Repository
 import com.example.cryptomarket.data.coinsapi.ticker.HistoricalTicker
 import com.example.cryptomarket.utils.DateFrame
 import com.example.cryptomarket.utils.FragChosen
-import java.util.*
 
 private const val TAG = "CoinsVM__TAG"
 
@@ -30,13 +29,10 @@ class CryptoViewModel: ViewModel() {
     // HELPERS //
 
     // REPO QUERIES //
-    fun getHistoricalTickerData(
-        startDate: String,
-        interval: Int,
-        timeFrame: DateFrame
-    ): List<HistoricalTicker> {
+    fun getHistoricalTickerData(timeFrame: DateFrame): List<HistoricalTicker> {
         // todo:
-
+        // if the data frame is 1w, the interval is 1d
+        // get the start dat using 'timeFrame: DateFrame' and send the request to the repo
     }
     // REPO QUERIES //
 }
