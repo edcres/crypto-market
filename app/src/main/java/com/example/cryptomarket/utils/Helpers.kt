@@ -6,8 +6,9 @@ enum class FragChosen {
     MARKET, COINS, NEWS
 }
 // 'abbre' means abbreviation
-// todo: play around with the intervals (test how it looks with the data) (probably get more data for the table)
-enum class DateFrame(val abbre: Char, val interval: String) {
+// todo: play around with the intervals (test how it looks with the data)
+//      (probably get more data for the table)
+enum class DateFrame(val abbrev: Char, val interval: String) {
     DAY('d', "1h"),
     WEEK('w', "1d"),
     MONTH('m', "1d"),
@@ -32,3 +33,10 @@ fun formatNewsPostDate(rawDateString: String): String {
     }
     return "${listYMD[1]}/${listYMD[2]}/${listYMD[0]}"
 }
+
+fun addZerosToDate(baseDate: String) =
+    baseDate.split("/").joinToString("/") {
+        if (it.length == 1) {
+            "0$it"
+        } else it
+    }

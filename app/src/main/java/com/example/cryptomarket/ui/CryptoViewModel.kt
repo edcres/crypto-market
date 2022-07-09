@@ -7,10 +7,12 @@ import com.example.cryptomarket.data.Repository
 import com.example.cryptomarket.data.coinsapi.ticker.HistoricalTicker
 import com.example.cryptomarket.utils.DateFrame
 import com.example.cryptomarket.utils.FragChosen
+import com.example.cryptomarket.utils.addZerosToDate
+import java.util.*
 
 private const val TAG = "CoinsVM__TAG"
 
-class CryptoViewModel: ViewModel() {
+class CryptoViewModel : ViewModel() {
 
     private lateinit var repo: Repository
     private var _fragChosen = MutableLiveData<FragChosen>()
@@ -29,12 +31,25 @@ class CryptoViewModel: ViewModel() {
     // HELPERS //
 
     // REPO QUERIES //
-    fun getHistoricalTickerData(timeFrame: DateFrame): List<HistoricalTicker> {
-        // todo: make a db query to get the chart data.
-        //  /historical?start=2022-07-01         1d
-        // if the data frame is 1w, the interval is 1d
-        // get the start dat using 'timeFrame: DateFrame' and send the request to the repo
-        return repo.getHistoricalTickers()
+    fun getHistoricalTickerData(timeFrame: DateFrame = DateFrame.WEEK):
+            LiveData<List<HistoricalTicker>> {
+        // todo: do this in a background thread
+        // Todo: tests these in API queries
+        // get current date yyyy/mm/dd
+        val currentDate = Calendar.getInstance()
+        when (timeFrame) {
+            DateFrame.DAY -> currentDate.add(Calendar.DAY_OF_MONTH, -1)
+            DateFrame.WEEK -> currentDate.add(Calendar.DAY_OF_MONTH, -7)
+            DateFrame.MONTH -> currentDate.add(Calendar.MONTH, -1)
+            DateFrame.QUARTER -> currentDate.add(Calendar.MONTH, -3)    // Starts three months past
+            DateFrame.YEAR -> currentDate.add(Calendar.YEAR, -1)
+        }
+        val startTime =
+            "${currentDate.get(Calendar.YEAR)}/${currentDate.get(Calendar.MONTH) + 1}/" +
+                    "${currentDate.get(Calendar.DAY_OF_MONTH)}"
+
+        repo.getHistoricalTickers(addZerosToDate(startTime), timeFrame.interval)
+        return
     }
     // REPO QUERIES //
 }

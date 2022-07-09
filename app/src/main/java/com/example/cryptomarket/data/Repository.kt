@@ -5,7 +5,7 @@ import retrofit2.Response
 
 class Repository {
 
-    suspend fun getHistoricalTickers(interval: String, startTime: String): Response<String> {
-        return CoinsApi.coinsApiService.getHistoricalTickers(interval, startTime)
+    suspend fun getHistoricalTickers(startTime: String, interval: String): Response<String> {
+        return CoinsApi.coinsApiService.getHistoricalTickers(startTime, interval)
     }
 }
