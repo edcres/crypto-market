@@ -27,8 +27,8 @@ class CryptoViewModel : ViewModel() {
     val coinFromList: LiveData<List<CoinFromList>> get() = _coinFromList
     private var _globalData = MutableLiveData<List<GlobalData>>()
     val globalData: LiveData<List<GlobalData>> get() = _globalData
-    private var _newsCall = MutableLiveData<List<NewsCall>>()
-    val newsCall: LiveData<List<NewsCall>> get() = _newsCall
+    private var _newsCall = MutableLiveData<NewsCall>()
+    val newsCall: LiveData<NewsCall> get() = _newsCall
 
     // SETUP //
     fun startApplication() {

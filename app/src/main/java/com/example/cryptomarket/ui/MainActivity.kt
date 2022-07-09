@@ -10,20 +10,12 @@ import com.example.cryptomarket.R
 /** todo:
  * - data to view
  *      - News
- *          - API queries
- *          - Repo
  *          - observer
  *      - Coins
- *          - API queries
- *          - Repo
- *          - In View
  *          - observer
  *      - Market Overview
- *          - API queries
- *          - Repo
- *          - In View
  *          - observer
- *
+ *          - In View
  *
  * - Repo
  *

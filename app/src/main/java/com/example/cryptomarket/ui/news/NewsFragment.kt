@@ -100,6 +100,7 @@ class NewsFragment : Fragment() {
                 else -> Log.i(TAG, "setObservers: from News to $it")
             }
         }
+        vm.newsCall.observe(viewLifecycleOwner) { newsListAdapter.submitList(it.results) }
     }
     // SETUP //
 
