@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cryptomarket.data.Repository
+import com.example.cryptomarket.data.coinsapi.ticker.HistoricalTicker
 import com.example.cryptomarket.utils.FragChosen
 
 private const val TAG = "CoinsVM__TAG"
@@ -25,4 +26,10 @@ class CryptoViewModel: ViewModel() {
         _fragChosen.postValue(chosenFrag)
     }
     // HELPERS //
+
+    // REPO QUERIES //
+    fun getHistoricalTickerData(interval: Int, timeFrame: aadsd): List<HistoricalTicker> {
+        // todo:
+    }
+    // REPO QUERIES //
 }

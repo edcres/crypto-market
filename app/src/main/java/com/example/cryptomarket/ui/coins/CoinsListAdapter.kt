@@ -38,7 +38,7 @@ class CoinsListAdapter() :
 
                 // todo: make a db query to get the chart data.
                 // todo: pass in a parameter to tell whether the price data is from 7d, 1m, 1y or whatever.
-                chartPlaceholderTxt.text = ;    // a list of HistoricalTicker
+                chartPlaceholderTxt.text = vm.getHistoricalTickerData().toString();    // a list of HistoricalTicker
                 executePendingBindings()
             }
         }
