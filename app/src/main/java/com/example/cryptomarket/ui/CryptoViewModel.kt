@@ -33,9 +33,9 @@ class CryptoViewModel : ViewModel() {
     // SETUP //
     fun startApplication() {
         repo = Repository()
-        viewModelScope.launch {
-            // todo:
-        }
+        viewModelScope.launch { _coinFromList.postValue(repo.getCoins()) }
+        viewModelScope.launch { _globalData.postValue(repo.getGlobalData()) }
+        viewModelScope.launch { _newsCall.postValue(repo.getNewsPosts()) }
     }
     // SETUP //
 
