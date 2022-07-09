@@ -24,7 +24,10 @@ class NewsListAdapter :
 
         fun bind(newsPost: NewsPost) {
             binding.apply {
-                // todo:
+                newsTitleTxt.text = newsPost.title
+                sourceDomain.text = newsPost.domain
+                // todo: turn this into a better date format
+                datePublishedTxt.text = newsPost.publishedAt
                 executePendingBindings()
             }
         }

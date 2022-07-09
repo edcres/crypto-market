@@ -54,7 +54,7 @@ import com.example.cryptomarket.R
  *      - https://api.coinpaprika.com/#tag/Coins/paths/~1coins~1{coin_id}~1ohlcv~1latest~1/get
  * - list of exchanged
  * - price converter
- * - news article link navigate to the website.
+ * - news article link navigate to the website. When click on news recycler item
  */
 
 /**
