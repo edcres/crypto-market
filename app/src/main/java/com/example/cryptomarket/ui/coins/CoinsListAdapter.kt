@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cryptomarket.data.coinsapi.ticker.Ticker
 import com.example.cryptomarket.databinding.CoinChartRecyclerItemBinding
+import com.example.cryptomarket.utils.DateFrame
 
 class CoinsListAdapter() :
     ListAdapter<Ticker, CoinsListAdapter.CoinsViewHolder>(CoinsDiffCallback()) {
@@ -38,7 +39,7 @@ class CoinsListAdapter() :
 
                 // todo: make a db query to get the chart data.
                 // todo: pass in a parameter to tell whether the price data is from 7d, 1m, 1y or whatever.
-                chartPlaceholderTxt.text = vm.getHistoricalTickerData().toString();    // a list of HistoricalTicker
+                chartPlaceholderTxt.text = vm.getHistoricalTickerData(, DateFrame.DAY.abbreviation).toString();    // a list of HistoricalTicker
                 executePendingBindings()
             }
         }
