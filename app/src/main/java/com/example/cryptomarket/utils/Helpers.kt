@@ -17,11 +17,11 @@ enum class DateFrame(val abbrev: Char, val interval: String) {
 }
 
 fun pickPercentChange(timeFrame: DateFrame, priceData: PriceData) = when(timeFrame) {
-        DateFrame.DAY -> priceData.percent_change_24h
-        DateFrame.WEEK -> priceData.percent_change_7d
-        DateFrame.MONTH -> priceData.percent_change_30d
+        DateFrame.DAY -> priceData.percentChange24h
+        DateFrame.WEEK -> priceData.percentChange7d
+        DateFrame.MONTH -> priceData.percentChange30d
         DateFrame.QUARTER -> null
-        DateFrame.YEAR -> priceData.percent_change_1y
+        DateFrame.YEAR -> priceData.percentChange1y
 }
 
 fun formatNewsPostDate(rawDateString: String): String {

@@ -7,35 +7,35 @@ data class PriceData(
     @Json(name = "price")
     val price: Double,
     @Json(name = "volume_24h")
-    val volume_24h: Double,
+    val volume24h: Double,
     @Json(name = "volume_24h_change_24h")
-    val volume_24h_change_24h: Double,
+    val volume24hChange24h: Double,
     @Json(name = "market_cap")
-    val market_cap: Double,
+    val marketCap: Double,
     @Json(name = "market_cap_change_24h")
-    val market_cap_change_24h: Double,
+    val marketCapChange24h: Double,
     @Json(name = "percent_change_15m")
-    val percent_change_15m: Double,
+    val percentChange15m: Double,
     @Json(name = "percent_change_30m")
-    val percent_change_30m: Double,
+    val percentChange30m: Double,
     @Json(name = "percent_change_1h")
-    val percent_change_1h: Double,
+    val percentChange1h: Double,
     @Json(name = "percent_change_6h")
-    val percent_change_6h: Double,
+    val percentChange6h: Double,
     @Json(name = "percent_change_12h")
-    val percent_change_12h: Double,
+    val percentChange12h: Double,
     @Json(name = "percent_change_24h")
-    val percent_change_24h: Double,
+    val percentChange24h: Double,
     @Json(name = "percent_change_7d")
-    val percent_change_7d: Double,
+    val percentChange7d: Double,
     @Json(name = "percent_change_30d")
-    val percent_change_30d: Double,
+    val percentChange30d: Double,
     @Json(name = "percent_change_1y")
-    val percent_change_1y: Double,
+    val percentChange1y: Double,
     @Json(name = "ath_price")
-    val ath_price: Double,
+    val athPrice: Double,
     @Json(name = "ath_date")
-    val ath_date: String,
+    val athDate: String,
     @Json(name = "percent_from_price_ath")
-    val percent_from_price_ath: Double
+    val percentFromPriceAth: Double
 )

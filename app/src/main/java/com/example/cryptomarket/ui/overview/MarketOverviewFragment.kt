@@ -61,29 +61,15 @@ class MarketOverviewFragment : Fragment() {
     private fun populateView(globalData: GlobalData) {
         // todo:
         binding?.apply {
-            marketCapTxt
-            volume24hrUsdTxt
-            bitcoinDominancePercentageTxt
-            marketCapAthValueTxt
-            marketCapAthDateTxt
-        }
-    }
-    private fun populateMarketCapChart() {
-        // todo:
-        binding?.apply {
-            marketCapShareTxt
-        }
-    }
-    private fun populateTopCoinsPie() {
-        // todo
-        binding?.apply {
-            topCoinsTxt
-        }
-    }
-    private fun populateTotalSupplyPie() {
-        // todo:
-        binding?.apply {
-            totalSupplyTxt
+            marketCapTxt.text = globalData.marketCapUsd.toString()
+            volume24hrUsdTxt.text = globalData.volume24hUsd.toString()
+            bitcoinDominancePercentageTxt.text = globalData.bitcoinDominancePercentage.toString()
+            marketCapAthValueTxt.text = globalData.marketCapAthValue.toString()
+            marketCapAthDateTxt.text = globalData.marketCapAthDate
+
+            marketCapShareTxt.text  // list of PriceData.market_cap of the top 10 coins
+            volume24hTxt.text        // PriceData.volume24h
+            totalSupplyTxt.text     // Ticker.TotalSupply
         }
     }
     // SETUP //
