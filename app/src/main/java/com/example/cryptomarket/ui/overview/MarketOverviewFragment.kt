@@ -57,19 +57,25 @@ class MarketOverviewFragment : Fragment() {
         vm.globalData.observe(viewLifecycleOwner) {
             populateView(it)
         }
+        vm.tickers.observe(viewLifecycleOwner) {
+            // todo: get the top 10 coins (by rank)
+            binding?.apply {
+                val top10 = it.take(10)
+                // todo: figure out what else to do when using you start using charts.
+                //      do in vm and background thread
+                marketCapShareTxt.text = top10.toString()  // list of PriceData.market_cap of the top 10 coins
+                volume24hTxt.text = top10.toString()       // PriceData.volume24h
+                totalSupplyTxt.text = top10.toString()    // Ticker.TotalSupply
+            }
+        }
     }
     private fun populateView(globalData: GlobalData) {
-        // todo:
         binding?.apply {
             marketCapTxt.text = globalData.marketCapUsd.toString()
             volume24hrUsdTxt.text = globalData.volume24hUsd.toString()
             bitcoinDominancePercentageTxt.text = globalData.bitcoinDominancePercentage.toString()
             marketCapAthValueTxt.text = globalData.marketCapAthValue.toString()
             marketCapAthDateTxt.text = globalData.marketCapAthDate
-
-            marketCapShareTxt.text  // list of PriceData.market_cap of the top 10 coins
-            volume24hTxt.text        // PriceData.volume24h
-            totalSupplyTxt.text     // Ticker.TotalSupply
         }
     }
     // SETUP //
