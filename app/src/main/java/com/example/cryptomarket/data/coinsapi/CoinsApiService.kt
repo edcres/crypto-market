@@ -31,12 +31,12 @@ interface CoinsApiService {
     @GET("tickers")
     suspend fun getTickers(): List<Ticker>
 
+    @GET("global")
+    suspend fun getGlobalData(): GlobalData
+
     // todo: maybe delete this
     @GET("coins")
     suspend fun getCoins(): List<CoinFromList>
-
-    @GET("global")
-    suspend fun getGlobalData(): GlobalData
 
     // todo: maybe call this when clicking the recycler item and the bottom sheet pops up
     @GET("coins")
@@ -50,8 +50,6 @@ interface CoinsApiService {
         @Path("startTime") startTime: String,
         @Path("interval") interval: String
     ): List<HistoricalTicker>
-
-    // todo: news
 }
 
 object CoinsApi {

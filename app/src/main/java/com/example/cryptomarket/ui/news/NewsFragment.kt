@@ -23,7 +23,6 @@ class NewsFragment : Fragment() {
     private var binding: FragmentNewsBinding? = null
     private val vm: CryptoViewModel by activityViewModels()
     private lateinit var newsListAdapter: NewsListAdapter
-    private lateinit var bottomSheetBehavior: BottomSheetBehavior<FrameLayout>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,7 +42,6 @@ class NewsFragment : Fragment() {
             newsListRecycler.layoutManager = LinearLayoutManager(requireContext())
         }
         setObservers()
-        setBottomSheet()
     }
 
     override fun onDestroy() {
@@ -52,45 +50,6 @@ class NewsFragment : Fragment() {
     }
 
     // SETUP //
-    private fun setBottomSheet() {
-        binding?.apply {
-            bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetView)
-            bottomSheetBehavior.peekHeight = 240    // todo: bottomSheetView.height
-            userNameTxt.setOnClickListener {
-                bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
-            }
-            val bottomSheetCallback = object : BottomSheetBehavior.BottomSheetCallback() {
-                override fun onStateChanged(bottomSheet: View, newState: Int) {
-                    when (newState) {
-                        BottomSheetBehavior.STATE_EXPANDED -> {
-                            Log.d(TAG, "onStateChanged: STATE_EXPANDED")
-                            toggleAppbar(false)
-                        }
-                        BottomSheetBehavior.STATE_COLLAPSED -> {
-                            Log.d(TAG, "onStateChanged: STATE_COLLAPSED")
-                            toggleAppbar(true)
-                        }
-                        BottomSheetBehavior.STATE_HIDDEN -> {
-                            Log.d(TAG, "onStateChanged: STATE_HIDDEN")
-                        }
-                        BottomSheetBehavior.STATE_DRAGGING -> {
-                            Log.d(TAG, "onStateChanged: STATE_DRAGGING")
-                        }
-                        BottomSheetBehavior.STATE_HALF_EXPANDED -> {
-                            Log.d(TAG, "onStateChanged: STATE_HALF_EXPANDED")
-                        }
-                        BottomSheetBehavior.STATE_SETTLING -> {
-                            Log.d(TAG, "onStateChanged: STATE_SETTLING")
-                        }
-                    }
-                }
-                override fun onSlide(bottomSheet: View, slideOffset: Float) {
-                    Log.d(TAG, "onSlide: ")
-                }
-            }
-            bottomSheetBehavior.addBottomSheetCallback(bottomSheetCallback)
-        }
-    }
     private fun setObservers() {
         vm.fragChosen.observe(viewLifecycleOwner) {
             val navController = findNavController()
@@ -103,18 +62,4 @@ class NewsFragment : Fragment() {
         vm.newsCall.observe(viewLifecycleOwner) { newsListAdapter.submitList(it.results) }
     }
     // SETUP //
-
-    // HELPERS
-    private fun toggleAppbar(hideAppbar: Boolean) {
-        binding!!.apply {
-            if (hideAppbar) {
-                appBarLayout.visibility = View.GONE
-                profileLayout.visibility = View.VISIBLE
-            } else {
-                profileLayout.visibility = View.GONE
-                appBarLayout.visibility = View.VISIBLE
-            }
-        }
-    }
-    // HELPERS
 }

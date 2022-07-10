@@ -10,20 +10,9 @@ import com.example.cryptomarket.R
 // ATH = all time high
 
 /** todo:
- * - data to view
- *      - Market Overview
- *          - observer
- *          - In View
- *              - market share for the top 10 coins
- *
- * - Repo
- *
  * - configure bottom sheets for the API data
- *      - overview data in views
  *      - coins list
- *          - recyclerView for coins list
  *      - news
- *          - recyclerView for news list
  *
  * - try catch (error handling in general)
  *      - overall market

@@ -58,13 +58,12 @@ class MarketOverviewFragment : Fragment() {
             populateView(it)
         }
         vm.tickers.observe(viewLifecycleOwner) {
-            // todo: get the top 10 coins (by rank)
             binding?.apply {
-                val top10 = it.take(10)
+                val top10 = it.take(10) // todo: check if these coins are ordered by rank
                 // todo: figure out what else to do when using you start using charts.
                 //      do in vm and background thread
-                marketCapShareTxt.text = top10.toString()  // list of PriceData.market_cap of the top 10 coins
-                volume24hTxt.text = top10.toString()       // PriceData.volume24h
+                marketCapShareTxt.text = top10.toString()  // list of Ticker.PriceData.market_cap of the top 10 coins
+                volume24hTxt.text = top10.toString()       // Ticker.PriceData.volume24h
                 totalSupplyTxt.text = top10.toString()    // Ticker.TotalSupply
             }
         }
