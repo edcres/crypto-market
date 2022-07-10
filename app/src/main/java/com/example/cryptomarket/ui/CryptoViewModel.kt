@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.cryptomarket.data.Repository
 import com.example.cryptomarket.data.coinsapi.GlobalData
-import com.example.cryptomarket.data.coinsapi.coin.CoinFromList
 import com.example.cryptomarket.data.coinsapi.ticker.HistoricalTicker
 import com.example.cryptomarket.data.coinsapi.ticker.Ticker
 import com.example.cryptomarket.data.newsapi.NewsCall

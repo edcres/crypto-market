@@ -31,14 +31,57 @@
             app:layout_constraintTop_toBottomOf="@+id/overview_header" />
 
         <TextView
-            android:id="@+id/total_volume_txt"
+            android:id="@+id/volume_24hr_usd_txt"
             style="@style/TextAppearance.Material3.BodyLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:text="Total Volume"
+            android:text="volume_24h_usd"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/market_cap_txt" />
+
+        <TextView
+            android:id="@+id/bitcoin_dominance_percentage_txt"
+            style="@style/TextAppearance.Material3.BodyLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="bitcoin_dominance_percentage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/volume_24hr_usd_txt" />
+
+        <TextView
+            android:id="@+id/market_cap_ath_value_txt"
+            style="@style/TextAppearance.Material3.BodyLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="26dp"
+            android:layout_margin="8dp"
+            android:text="marketCapAthValue"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bitcoin_dominance_percentage_txt" />
+
+        <TextView
+            android:id="@+id/market_cap_ath_date_txt"
+            style="@style/TextAppearance.Material3.BodyLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="marketCapAthDate"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/market_cap_ath_value_txt" />
+
+<!--        price data-->
+        <TextView
+            android:id="@+id/market_cap_share_txt"
+            style="@style/TextAppearance.Material3.BodyLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="market_cap_share"
+            app:layout_constraintBottom_toTopOf="@+id/top_coins_txt"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/market_cap_ath_date_txt" />
 
         <TextView
             android:id="@+id/top_coins_txt"
@@ -47,8 +90,21 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:text="Top Coins Pie Chart"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/total_volume_txt" />
+            app:layout_constraintTop_toBottomOf="@+id/market_cap_ath_date_txt" />
+
+<!--        Ticker-->
+        <TextView
+            android:id="@+id/total_supply_txt"
+            style="@style/TextAppearance.Material3.BodyLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="totalSupply"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/market_cap_ath_date_txt" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

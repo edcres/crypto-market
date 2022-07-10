@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.cryptomarket.R
+import com.example.cryptomarket.data.coinsapi.GlobalData
 import com.example.cryptomarket.databinding.FragmentMarketOverviewBinding
 import com.example.cryptomarket.databinding.FragmentNewsBinding
 import com.example.cryptomarket.ui.CryptoViewModel
@@ -52,6 +53,37 @@ class MarketOverviewFragment : Fragment() {
                 FragChosen.NEWS -> navController.navigate(R.id.action_market_to_news)
                 else -> Log.i(TAG, "setObservers: from Market to $it")
             }
+        }
+        vm.globalData.observe(viewLifecycleOwner) {
+            populateView(it)
+        }
+    }
+    private fun populateView(globalData: GlobalData) {
+        // todo:
+        binding?.apply {
+            marketCapTxt
+            volume24hrUsdTxt
+            bitcoinDominancePercentageTxt
+            marketCapAthValueTxt
+            marketCapAthDateTxt
+        }
+    }
+    private fun populateMarketCapChart() {
+        // todo:
+        binding?.apply {
+            marketCapShareTxt
+        }
+    }
+    private fun populateTopCoinsPie() {
+        // todo
+        binding?.apply {
+            topCoinsTxt
+        }
+    }
+    private fun populateTotalSupplyPie() {
+        // todo:
+        binding?.apply {
+            totalSupplyTxt
         }
     }
     // SETUP //

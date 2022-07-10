@@ -7,13 +7,14 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import com.example.cryptomarket.R
 
+// ATH = all time high
+
 /** todo:
  * - data to view
- *      - Coins
- *          - observer
  *      - Market Overview
  *          - observer
  *          - In View
+ *              - market share for the top 10 coins
  *
  * - Repo
  *
