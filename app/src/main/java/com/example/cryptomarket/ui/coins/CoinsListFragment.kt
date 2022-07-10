@@ -11,6 +11,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cryptomarket.R
+import com.example.cryptomarket.data.coinsapi.ticker.Ticker
 import com.example.cryptomarket.databinding.FragmentCoinsListBinding
 import com.example.cryptomarket.ui.CryptoViewModel
 import com.example.cryptomarket.utils.DateFrame
@@ -105,14 +106,19 @@ class CoinsListFragment : Fragment() {
         }
         vm.tickerClicked.observe(viewLifecycleOwner) {
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+            setCoinOnSheet(it)
         }
         vm.tickers.observe(viewLifecycleOwner) {
             coinsListAdapter.submitList(it)
+            setCoinOnSheet(it[0])
         }
     }
     // SETUP //
 
     // HELPERS
+    private fun setCoinOnSheet(ticker: Ticker) {
+        // todo:
+    }
     private fun toggleAppbar(hideAppbar: Boolean) {
          binding!!.apply {
              if (hideAppbar) {
