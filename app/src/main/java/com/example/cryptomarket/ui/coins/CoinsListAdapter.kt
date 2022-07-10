@@ -34,6 +34,16 @@ class CoinsListAdapter(
     ): RecyclerView.ViewHolder(binding.root) {
 
         fun bind(ticker: Ticker) {
+            populateUI(ticker)
+            binding.apply {
+                itemContainer.setOnClickListener {
+                    vm.setTickerClicked(ticker)
+                }
+                executePendingBindings()
+            }
+        }
+
+        private fun populateUI(ticker: Ticker) {
             binding.apply {
                 coinSymbolTxt.text = ticker.symbol
                 coinNameTxt.text = ticker.name
@@ -48,7 +58,6 @@ class CoinsListAdapter(
                 vm.getHistoricalTickerData(chosenTimeFrame).observe(viewLifecycleOwner) {
                     chartPlaceholderTxt.text = it.toString()
                 }
-                executePendingBindings()
             }
         }
 

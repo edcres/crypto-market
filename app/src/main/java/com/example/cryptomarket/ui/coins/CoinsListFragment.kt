@@ -103,6 +103,9 @@ class CoinsListFragment : Fragment() {
                 else -> Log.i(TAG, "setObservers: from Coins to $it")
             }
         }
+        vm.tickerClicked.observe(viewLifecycleOwner) {
+            bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+        }
         vm.tickers.observe(viewLifecycleOwner) {
             coinsListAdapter.submitList(it)
         }

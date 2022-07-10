@@ -12,7 +12,7 @@ import com.example.cryptomarket.R
 /** todo:
  * - configure bottom sheets for the API data
  *      - coins list
- *      - news
+ *          - click listener for list item
  *
  * - try catch (error handling in general)
  *      - overall market
@@ -27,6 +27,7 @@ import com.example.cryptomarket.R
  * - app icon
  * - colors light mode
  * - user can choose if the interval is hr, week, month...
+ * - news article link navigate to the website. When click on news recycler item
  */
 
 /** maybe:
@@ -35,7 +36,6 @@ import com.example.cryptomarket.R
  *      - https://api.coinpaprika.com/#tag/Coins/paths/~1coins~1{coin_id}~1ohlcv~1latest~1/get
  * - list of exchanged
  * - price converter
- * - news article link navigate to the website. When click on news recycler item
  * - calculate percent change from user click in chart, to current price (I love this feature)
  */
 
