@@ -10,9 +10,14 @@ import com.example.cryptomarket.R
 // ATH = all time high
 
 /** todo:
- * - configure bottom sheets for the API data
- *      - coins list
- *          - click listener for list item
+ * - coins bottom sheet
+ *      - UI
+ *          - extended
+ *          - minimized
+ *      - set ticker data to UI
+ *          - everything else
+ *          - chart data
+ *          - delete unused drawables
  *
  * - try catch (error handling in general)
  *      - overall market

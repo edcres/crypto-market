@@ -50,10 +50,10 @@
 
                 <com.google.android.material.appbar.AppBarLayout
                     android:id="@+id/app_bar_layout"
-                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
-                    android:background="@color/color_accent">
+                    android:background="@color/color_accent"
+                    android:visibility="visible">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -61,193 +61,259 @@
                         android:orientation="horizontal">
 
                         <ImageButton
-                            android:id="@+id/cancel_btn"
+                            android:id="@+id/minimize_btn"
                             android:layout_width="?attr/actionBarSize"
                             android:layout_height="?attr/actionBarSize"
                             android:background="?attr/selectableItemBackgroundBorderless"
-                            android:src="@drawable/ic_close_24"
+                            android:src="@drawable/ic_drop_down_24"
                             app:tint="@android:color/white" />
 
                         <TextView
-                            android:id="@+id/name_toolbar"
+                            android:id="@+id/ticker_name_txt"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_marginStart="15dp"
                             android:layout_weight="1"
-                            android:text="Name"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                            android:textColor="@android:color/white" />
+                            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+                            android:textColor="@android:color/white"
+                            tools:text="Name" />
 
                     </LinearLayout>
                 </com.google.android.material.appbar.AppBarLayout>
 
-                <androidx.core.widget.NestedScrollView
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:fillViewport="true">
+                    android:layout_height="500dp">
 
-                    <LinearLayout
+                    <TextView
+                        android:id="@+id/ticker_chart_txt"
                         android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:background="@color/teal_700"
+                        android:gravity="center"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="ticker chart" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/timeframe_picker_container"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="15dp">
+                        android:layout_margin="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/ticker_chart_txt">
 
                         <LinearLayout
-                            android:id="@+id/profile_layout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal">
-
-                            <ImageView
-                                android:id="@+id/user_image_btn"
-                                android:layout_width="?attr/actionBarSize"
-                                android:layout_height="?attr/actionBarSize"
-                                android:src="@drawable/ic_close_24" />
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:paddingStart="16dp"
+                            android:paddingTop="8dp"
+                            android:paddingEnd="16dp"
+                            android:paddingBottom="8dp">
 
                             <TextView
-                                android:id="@+id/user_name_txt"
-                                android:layout_width="0dp"
+                                android:id="@+id/d_txt"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="15dp"
-                                android:layout_weight="1"
-                                android:text="user name"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+                                android:paddingStart="16dp"
+                                android:paddingEnd="16dp"
+                                android:text="1d"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/w_txt"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingStart="16dp"
+                                android:paddingEnd="16dp"
+                                android:text="1w"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/m_txt"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingStart="16dp"
+                                android:paddingEnd="16dp"
+                                android:text="1m"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/q_txt"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingStart="16dp"
+                                android:paddingEnd="16dp"
+                                android:text="1q"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/y_txt"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingStart="16dp"
+                                android:paddingEnd="16dp"
+                                android:text="1y"
+                                android:textStyle="bold" />
 
                         </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.core.widget.NestedScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/timeframe_picker_container">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="10dp"
-                            android:orientation="horizontal">
+                            android:orientation="vertical">
 
-                            <ImageButton
-                                android:layout_width="?attr/actionBarSize"
-                                android:layout_height="?attr/actionBarSize"
-                                android:background="?attr/selectableItemBackgroundBorderless"
-                                android:src="@drawable/ic_close_24" />
-
-                            <LinearLayout
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/price_container"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="10dp"
-                                android:orientation="vertical">
+                                android:layout_margin="8dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/timeframe_picker_container">
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="8dp">
+
+                                    <TextView
+                                        android:id="@+id/ticker_price_txt"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="12434"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent" />
+
+                                    <TextView
+                                        android:id="@+id/percent_change_a_txt"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="123"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent" />
+
+                                    <TextView
+                                        android:id="@+id/percent_change_b_txt"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="123"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintTop_toBottomOf="@+id/percent_change_a_txt" />
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/info_container"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="8dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/price_container">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:orientation="horizontal">
-
-                                    <LinearLayout
-                                        android:layout_width="0dp"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="1"
-                                        android:orientation="vertical">
-
-
-                                        <TextView
-                                            android:id="@+id/number1"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="(000) 000-000"
-                                            android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
-
-                                        <TextView
-                                            android:id="@+id/typeOfNumber1"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="Mobile"
-                                            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
-
-                                    </LinearLayout>
-
-                                    <ImageButton
-                                        android:layout_width="?attr/actionBarSize"
-                                        android:layout_height="?attr/actionBarSize"
-                                        android:background="?attr/selectableItemBackgroundBorderless"
-                                        android:src="@drawable/ic_close_24"
-                                        app:tint="@color/color_primary" />
-
-                                </LinearLayout>
-
-
-                            </LinearLayout>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="15dp"
-                            android:layout_marginBottom="15dp"
-                            android:orientation="horizontal">
-
-                            <View
-                                android:layout_width="?attr/actionBarSize"
-                                android:layout_height="0dp" />
-
-                            <View
-                                android:layout_width="10dp"
-                                android:layout_height="0dp" />
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:background="#e6e6e6" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <ImageButton
-                                android:layout_width="?attr/actionBarSize"
-                                android:layout_height="?attr/actionBarSize"
-                                android:background="?attr/selectableItemBackgroundBorderless"
-                                android:src="@drawable/ic_close_24"
-                                app:tint="@color/color_accent" />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
-                                android:orientation="vertical">
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="?attr/actionBarSize"
-                                    android:layout_marginStart="10dp"
-                                    android:orientation="vertical">
+                                    android:orientation="vertical"
+                                    android:padding="8dp">
 
                                     <TextView
-                                        android:id="@+id/address1"
+                                        android:id="@+id/rank_txt"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="ABC Street Sector 1/2"
-                                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+                                        android:text="1" />
 
                                     <TextView
-                                        android:id="@+id/country1"
+                                        android:id="@+id/symbol_txt"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="XYZ Country"
-                                        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+                                        android:text="symbol" />
+
+                                    <TextView
+                                        android:id="@+id/type_txt"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="coin" />
+
+                                    <TextView
+                                        android:id="@+id/team_txt"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="sakoshi nakamoto" />
+
+                                    <TextView
+                                        android:id="@+id/description_txt"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="adads das dasda dadada dasda asdada" />
+
+                                    <TextView
+                                        android:id="@+id/open_source_txt"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="open source" />
+
+                                    <TextView
+                                        android:id="@+id/started_at_txt"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="23/54/646" />
+
+                                    <TextView
+                                        android:id="@+id/proof_Type_txt"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="proof of stake" />
+
+                                    <TextView
+                                        android:id="@+id/org_structure_txt"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="asda asda" />
+
+                                    <TextView
+                                        android:id="@+id/hash_algorithm_txt"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="asdasda sda dasda" />
+
+                                    <TextView
+                                        android:id="@+id/ath_price_txt"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="13453425" />
+
+                                    <TextView
+                                        android:id="@+id/ath_date_txt"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="12/45/6855" />
 
                                 </LinearLayout>
-                            </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
                         </LinearLayout>
-
-                        <View
-                            android:id="@+id/extra_space"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
-
-                    </LinearLayout>
-                </androidx.core.widget.NestedScrollView>
+                    </androidx.core.widget.NestedScrollView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
         </FrameLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

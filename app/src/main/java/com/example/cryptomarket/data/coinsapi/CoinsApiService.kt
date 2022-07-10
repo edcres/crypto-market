@@ -34,7 +34,7 @@ interface CoinsApiService {
     @GET("global")
     suspend fun getGlobalData(): GlobalData
 
-    // todo: maybe delete this
+    // todo: replace this with CoinData <getCoinById>.
     @GET("coins")
     suspend fun getCoins(): List<CoinFromList>
 

@@ -117,7 +117,7 @@ class CoinsListFragment : Fragment() {
 
     // HELPERS
     private fun setCoinOnSheet(ticker: Ticker) {
-        // todo:
+        // todo: ticker ticker data to the UI
     }
     private fun toggleAppbar(hideAppbar: Boolean) {
          binding!!.apply {
