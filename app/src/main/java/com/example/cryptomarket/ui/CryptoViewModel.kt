@@ -25,8 +25,8 @@ class CryptoViewModel : ViewModel() {
 
     private var _tickers = MutableLiveData<List<Ticker>>()
     val tickers: LiveData<List<Ticker>> get() = _tickers
-    private var _globalData = MutableLiveData<List<GlobalData>>()
-    val globalData: LiveData<List<GlobalData>> get() = _globalData
+    private var _globalData = MutableLiveData<GlobalData>()
+    val globalData: LiveData<GlobalData> get() = _globalData
     private var _newsCall = MutableLiveData<NewsCall>()
     val newsCall: LiveData<NewsCall> get() = _newsCall
 

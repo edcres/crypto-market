@@ -36,7 +36,7 @@ interface CoinsApiService {
     suspend fun getCoins(): List<CoinFromList>
 
     @GET("global")
-    suspend fun getGlobalData(): List<GlobalData>
+    suspend fun getGlobalData(): GlobalData
 
     // todo: maybe call this when clicking the recycler item and the bottom sheet pops up
     @GET("coins")
