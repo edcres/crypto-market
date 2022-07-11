@@ -29,6 +29,7 @@ import com.example.cryptomarket.R
  * - colors light mode
  * - user can choose if the interval is hr, week, month...
  * - news article link navigate to the website. When click on news recycler item
+ * - maybe put more logic in the viewModel
  */
 
 /** maybe:

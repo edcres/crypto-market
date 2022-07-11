@@ -34,14 +34,10 @@ interface CoinsApiService {
     @GET("global")
     suspend fun getGlobalData(): GlobalData
 
-    // todo: replace this with CoinData <getCoinById>.
-    @GET("coins")
-    suspend fun getCoins(): List<CoinFromList>
-
-    // todo: maybe call this when clicking the recycler item and the bottom sheet pops up
-    @GET("coins")
+    // id = btc-bitcoin
+    @GET("coins/{id}")
     suspend fun getCoin(
-        @Query("id") id: String
+        @Path("id") id: String
     ): List<CoinData>
 
     // https://api.coinpaprika.com/v1/tickers/btc-bitcoin/historical?start=2022-01-01&interval=1d

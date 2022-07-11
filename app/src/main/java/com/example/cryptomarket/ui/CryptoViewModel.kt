@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.cryptomarket.data.Repository
 import com.example.cryptomarket.data.coinsapi.GlobalData
+import com.example.cryptomarket.data.coinsapi.coin.CoinData
 import com.example.cryptomarket.data.coinsapi.ticker.HistoricalTicker
 import com.example.cryptomarket.data.coinsapi.ticker.Ticker
 import com.example.cryptomarket.data.newsapi.NewsCall
@@ -72,6 +73,13 @@ class CryptoViewModel : ViewModel() {
                 .postValue(repo.getHistoricalTickers(addZerosToDate(startTime), timeFrame.interval))
         }
         return tickerData
+    }
+    fun getCoinData(coinID: String): LiveData<CoinData> {
+        val coinData = MutableLiveData<CoinData>()
+        viewModelScope.launch {
+            repo.getCoinData(coinID)
+        }
+        return coinData
     }
     // REPO QUERIES //
 }

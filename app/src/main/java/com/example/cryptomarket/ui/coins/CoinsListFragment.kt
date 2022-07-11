@@ -115,7 +115,7 @@ class CoinsListFragment : Fragment() {
 
     // HELPERS
     private fun setCoinOnSheet(ticker: Ticker) {
-        // todo: ticker ticker data to the UI       resources.getColor(R.color.black)
+        // todo: ticker data to the UI       resources.getColor(R.color.black)
         val percentChange1w = "1w: ${ticker.quotes[0].percentChange7d}"
         val percentChange1m = "1m: ${ticker.quotes[0].percentChange30d}"
 
@@ -133,7 +133,7 @@ class CoinsListFragment : Fragment() {
             percentChangeATxt.text = percentChange1w
             percentChangeBTxt.text = percentChange1m
 
-            setMoreInfoDataToUI()
+            setMoreInfoDataToUI(ticker.id)
         }
     }
     private fun timeFrameClickListeners() {
@@ -147,7 +147,7 @@ class CoinsListFragment : Fragment() {
             yTxt
         }
     }
-    private fun setMoreInfoDataToUI() {
+    private fun setMoreInfoDataToUI(coinID: String) {
         // todo: do a query to get CoinData data class
         binding?.apply {
             rankTxt.text
