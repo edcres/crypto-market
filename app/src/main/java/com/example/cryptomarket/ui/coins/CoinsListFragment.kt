@@ -118,7 +118,6 @@ class CoinsListFragment : Fragment() {
 
     // HELPERS
     private fun setCoinOnSheet(ticker: Ticker) {
-        // todo:       resources.getColor(R.color.black)
         val percentChange1w = "1w: ${ticker.quotes[0].percentChange7d}"
         val percentChange1m = "1m: ${ticker.quotes[0].percentChange30d}"
 
@@ -145,9 +144,7 @@ class CoinsListFragment : Fragment() {
             timeframeBtnGroup.addOnButtonCheckedListener { _, checkedId, isChecked ->
                 if (isChecked) {
                     when (checkedId) {
-                        dBtn.id -> {
-                            vm.getHistoricalTickerData(DateFrame.DAY)
-                        }
+                        dBtn.id -> populateCharts(vm.getHistoricalTickerData(DateFrame.DAY))
                         wBtn.id -> vm.getHistoricalTickerData(DateFrame.WEEK)
                         mBtn.id -> vm.getHistoricalTickerData(DateFrame.MONTH)
                         qBtn.id -> vm.getHistoricalTickerData(DateFrame.QUARTER)
@@ -178,7 +175,10 @@ class CoinsListFragment : Fragment() {
 
     private fun populateCharts(tickerData : LiveData<List<HistoricalTicker>>) {
         binding?.apply {
-
+            tickerData.observe(viewLifecycleOwner) {
+                tickerChartCollapsedTxt.text = it.toString()
+                tickerChartExpandedTxt.text = it.toString()
+            }
         }
     }
 
