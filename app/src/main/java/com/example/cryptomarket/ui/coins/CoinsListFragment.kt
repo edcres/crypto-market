@@ -59,7 +59,7 @@ class CoinsListFragment : Fragment() {
     private fun setBottomSheetBehavior() {
         binding?.apply {
             bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetView)
-            bottomSheetBehavior.peekHeight = 240    // todo: bottomSheetView.height
+            bottomSheetBehavior.peekHeight = collapsedDataContainer.height
             val bottomSheetCallback = object : BottomSheetBehavior.BottomSheetCallback() {
                 override fun onStateChanged(bottomSheet: View, newState: Int) {
                     when (newState) {
@@ -115,11 +115,9 @@ class CoinsListFragment : Fragment() {
 
     // HELPERS
     private fun setCoinOnSheet(ticker: Ticker) {
-        // todo: ticker ticker data to the UI
-        resources.getColor(R.color.black)
+        // todo: ticker ticker data to the UI       resources.getColor(R.color.black)
         val percentChange1w = "1w: ${ticker.quotes[0].percentChange7d}"
         val percentChange1m = "1m: ${ticker.quotes[0].percentChange30d}"
-        val rankString = "Rank: ${ticker.rank}"
 
         binding?.apply {
             tickerNameTxt.text = ticker.name
