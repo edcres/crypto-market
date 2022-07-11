@@ -14,7 +14,6 @@ import com.example.cryptomarket.R
  *      - set ticker data to UI
  *          - everything else
  *          - chart data
- *          - delete unused drawables
  *
  * - try catch (error handling in general)
  *      - overall market

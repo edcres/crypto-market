@@ -1,6 +1,5 @@
 package com.example.cryptomarket.ui.coins
 
-import android.content.res.Resources
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -47,7 +46,8 @@ class CoinsListFragment : Fragment() {
         }
         vm.startApplication()
         setObservers()
-        setBottomSheet()
+        setBottomSheetBehavior()
+        timeFrameClickListeners()
     }
 
     override fun onDestroy() {
@@ -56,7 +56,7 @@ class CoinsListFragment : Fragment() {
     }
 
     // SETUP //
-    private fun setBottomSheet() {
+    private fun setBottomSheetBehavior() {
         binding?.apply {
             bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetView)
             bottomSheetBehavior.peekHeight = 240    // todo: bottomSheetView.height
@@ -117,6 +117,53 @@ class CoinsListFragment : Fragment() {
     private fun setCoinOnSheet(ticker: Ticker) {
         // todo: ticker ticker data to the UI
         resources.getColor(R.color.black)
+        val percentChange1w = "1w: ${ticker.quotes[0].percentChange7d}"
+        val percentChange1m = "1m: ${ticker.quotes[0].percentChange30d}"
+        val rankString = "Rank: ${ticker.rank}"
+
+        binding?.apply {
+            tickerNameTxt.text = ticker.name
+            sheetSymbolTxt.text = ticker.symbol
+            totalSupplyTxt.text = ticker.totalSupply.toString()
+            percentChange7dTxt.text = ticker.quotes[0].percentChange7d.toString()
+
+            // todo: probably have a vm. variable containing chart data, and it changes when the timeframebtns are clicked
+            tickerChartCollapsedTxt.text = ;    // todo: use the data from the query for tickerChartExpandedTxt (right below)
+            tickerChartExpandedTxt.text = ;     // todo: do a query to get the historical ticker data.
+
+            tickerPriceTxt.text = ticker.quotes[0].price.toString()
+            percentChangeATxt.text = percentChange1w
+            percentChangeBTxt.text = percentChange1m
+
+            setMoreInfoDataToUI()
+        }
+    }
+    private fun timeFrameClickListeners() {
+        // todo: change the color of txt btns after click
+        binding?.apply {
+            // todo: set click listeners no time frame btns
+            dTxt
+            wTxt
+            mTxt
+            qTxt
+            yTxt
+        }
+    }
+    private fun setMoreInfoDataToUI() {
+        // todo: do a query to get CoinData data class
+        binding?.apply {
+            rankTxt.text
+            typeTxt.text
+            teamTxt.text
+            descriptionTxt.text
+            openSourceTxt.text
+            startedAtTxt.text
+            proofTypeTxt.text
+            orgStructureTxt.text
+            hashAlgorithmTxt.text
+            athPriceTxt.text
+            athDateTxt.text
+        }
     }
     private fun toggleAppbar(hideAppbar: Boolean) {
          binding!!.apply {
