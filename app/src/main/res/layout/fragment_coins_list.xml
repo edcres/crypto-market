@@ -172,50 +172,50 @@
                             android:paddingEnd="16dp"
                             android:paddingBottom="8dp">
 
-                            <TextView
-                                android:id="@+id/d_txt"
+                            <com.google.android.material.button.MaterialButtonToggleGroup
+                                android:id="@+id/timeframe_btn_group"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:paddingStart="16dp"
-                                android:paddingEnd="16dp"
-                                android:text="1d"
-                                android:textStyle="bold" />
+                                android:orientation="horizontal"
+                                app:singleSelection="true">
 
-                            <TextView
-                                android:id="@+id/w_txt"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:paddingStart="16dp"
-                                android:paddingEnd="16dp"
-                                android:text="1w"
-                                android:textStyle="bold" />
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/d_btn"
+                                    android:layout_width="60sp"
+                                    android:layout_height="wrap_content"
+                                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                                    android:text="1d" />
 
-                            <TextView
-                                android:id="@+id/m_txt"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:paddingStart="16dp"
-                                android:paddingEnd="16dp"
-                                android:text="1m"
-                                android:textStyle="bold" />
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/w_btn"
+                                    android:layout_width="60sp"
+                                    android:layout_height="wrap_content"
+                                    android:checked="true"
+                                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                                    android:text="1w" />
 
-                            <TextView
-                                android:id="@+id/q_txt"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:paddingStart="16dp"
-                                android:paddingEnd="16dp"
-                                android:text="1q"
-                                android:textStyle="bold" />
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/m_btn"
+                                    android:layout_width="60sp"
+                                    android:layout_height="wrap_content"
+                                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                                    android:text="1m" />
 
-                            <TextView
-                                android:id="@+id/y_txt"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:paddingStart="16dp"
-                                android:paddingEnd="16dp"
-                                android:text="1y"
-                                android:textStyle="bold" />
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/q_btn"
+                                    android:layout_width="60sp"
+                                    android:layout_height="wrap_content"
+                                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                                    android:text="1q" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/y_btn"
+                                    android:layout_width="60sp"
+                                    android:layout_height="wrap_content"
+                                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                                    android:text="1y" />
+
+                            </com.google.android.material.button.MaterialButtonToggleGroup>
 
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>

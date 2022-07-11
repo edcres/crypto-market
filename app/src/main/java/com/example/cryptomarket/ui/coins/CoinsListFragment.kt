@@ -8,9 +8,11 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.LiveData
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cryptomarket.R
+import com.example.cryptomarket.data.coinsapi.ticker.HistoricalTicker
 import com.example.cryptomarket.data.coinsapi.ticker.PriceData
 import com.example.cryptomarket.data.coinsapi.ticker.Ticker
 import com.example.cryptomarket.databinding.FragmentCoinsListBinding
@@ -116,7 +118,7 @@ class CoinsListFragment : Fragment() {
 
     // HELPERS
     private fun setCoinOnSheet(ticker: Ticker) {
-        // todo: ticker data to the UI       resources.getColor(R.color.black)
+        // todo:       resources.getColor(R.color.black)
         val percentChange1w = "1w: ${ticker.quotes[0].percentChange7d}"
         val percentChange1m = "1m: ${ticker.quotes[0].percentChange30d}"
 
@@ -139,14 +141,20 @@ class CoinsListFragment : Fragment() {
     }
 
     private fun timeFrameClickListeners() {
-        // todo: change the color of txt btns after click
         binding?.apply {
-            // todo: set click listeners no time frame btns
-            dTxt
-            wTxt
-            mTxt
-            qTxt
-            yTxt
+            timeframeBtnGroup.addOnButtonCheckedListener { _, checkedId, isChecked ->
+                if (isChecked) {
+                    when (checkedId) {
+                        dBtn.id -> {
+                            vm.getHistoricalTickerData(DateFrame.DAY)
+                        }
+                        wBtn.id -> vm.getHistoricalTickerData(DateFrame.WEEK)
+                        mBtn.id -> vm.getHistoricalTickerData(DateFrame.MONTH)
+                        qBtn.id -> vm.getHistoricalTickerData(DateFrame.QUARTER)
+                        yBtn.id -> vm.getHistoricalTickerData(DateFrame.YEAR)
+                    }
+                } else wBtn.isChecked = true
+            }
         }
     }
 
@@ -165,6 +173,12 @@ class CoinsListFragment : Fragment() {
                 athPriceTxt.text = displayATHPrice(priceData.athPrice)
                 athDateTxt.text = displayATHDate(priceData.athDate)
             }
+        }
+    }
+
+    private fun populateCharts(tickerData : LiveData<List<HistoricalTicker>>) {
+        binding?.apply {
+
         }
     }
 

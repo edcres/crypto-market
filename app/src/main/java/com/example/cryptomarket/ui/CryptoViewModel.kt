@@ -52,7 +52,7 @@ class CryptoViewModel : ViewModel() {
     // HELPERS //
 
     // REPO QUERIES //
-    fun getHistoricalTickerData(timeFrame: DateFrame = DateFrame.WEEK):
+    fun getHistoricalTickerData(timeFrame: DateFrame):
             LiveData<List<HistoricalTicker>> {
         val tickerData = MutableLiveData<List<HistoricalTicker>>()
         viewModelScope.launch {
