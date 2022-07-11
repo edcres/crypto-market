@@ -11,9 +11,6 @@ import com.example.cryptomarket.R
 
 /** todo:
  * - coins bottom sheet
- *      - UI
- *          - extended
- *          - minimized
  *      - set ticker data to UI
  *          - everything else
  *          - chart data
@@ -42,6 +39,7 @@ import com.example.cryptomarket.R
  * - list of exchanged
  * - price converter
  * - calculate percent change from user click in chart, to current price (I love this feature)
+ * - add rank to bottom sheet info
  */
 
 /**

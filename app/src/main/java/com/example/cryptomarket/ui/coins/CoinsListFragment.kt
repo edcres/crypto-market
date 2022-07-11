@@ -1,5 +1,6 @@
 package com.example.cryptomarket.ui.coins
 
+import android.content.res.Resources
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -59,9 +60,6 @@ class CoinsListFragment : Fragment() {
         binding?.apply {
             bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetView)
             bottomSheetBehavior.peekHeight = 240    // todo: bottomSheetView.height
-            userNameTxt.setOnClickListener {
-                bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
-            }
             val bottomSheetCallback = object : BottomSheetBehavior.BottomSheetCallback() {
                 override fun onStateChanged(bottomSheet: View, newState: Int) {
                     when (newState) {
@@ -118,14 +116,15 @@ class CoinsListFragment : Fragment() {
     // HELPERS
     private fun setCoinOnSheet(ticker: Ticker) {
         // todo: ticker ticker data to the UI
+        resources.getColor(R.color.black)
     }
     private fun toggleAppbar(hideAppbar: Boolean) {
          binding!!.apply {
              if (hideAppbar) {
                  appBarLayout.visibility = View.GONE
-                 profileLayout.visibility = View.VISIBLE
+                 collapsedDataContainer.visibility = View.VISIBLE
              } else {
-                 profileLayout.visibility = View.GONE
+                 collapsedDataContainer.visibility = View.GONE
                  appBarLayout.visibility = View.VISIBLE
              }
          }
