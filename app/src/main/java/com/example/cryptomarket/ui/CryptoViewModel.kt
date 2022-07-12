@@ -80,10 +80,7 @@ class CryptoViewModel : ViewModel() {
     }
     fun getCoinData(coinID: String): LiveData<CoinData> {
         val coinData = MutableLiveData<CoinData>()
-        viewModelScope.launch {
-            // todo: use coin data for something
-            repo.getCoinData(coinID)
-        }
+        viewModelScope.launch { coinData.postValue(repo.getCoinData(coinID)) }
         return coinData
     }
     // REPO QUERIES //
