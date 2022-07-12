@@ -46,7 +46,6 @@ class CoinsListFragment : Fragment() {
             coinsListRecycler.adapter = coinsListAdapter
             coinsListRecycler.layoutManager = LinearLayoutManager(requireContext())
         }
-        vm.startApplication()
         setObservers()
         setBottomSheetBehavior()
         timeFrameClickListeners()

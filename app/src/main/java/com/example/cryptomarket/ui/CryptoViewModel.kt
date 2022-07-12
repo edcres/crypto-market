@@ -1,5 +1,6 @@
 package com.example.cryptomarket.ui
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -33,8 +34,15 @@ class CryptoViewModel : ViewModel() {
     private var _newsCall = MutableLiveData<NewsCall>()
     val newsCall: LiveData<NewsCall> get() = _newsCall
 
+    init {
+        // todo: make sure this is only inited once (check when creating other fragments)
+        Log.d(TAG, "vm inited")
+        startApplication()
+    }
+
     // SETUP //
     fun startApplication() {
+        Log.d(TAG, "startApplication called")
         repo = Repository()
         viewModelScope.launch { _tickers.postValue(repo.getTickers()) }
         viewModelScope.launch { _globalData.postValue(repo.getGlobalData()) }

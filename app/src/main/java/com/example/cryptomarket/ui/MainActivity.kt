@@ -11,6 +11,12 @@ import com.example.cryptomarket.R
 
 /** todo:
  * - test app
+ *      - bugs:
+ *          - 429 looks like API queries are being triggered too many times
+ *              - maybe bc: the fragment it being created too many times, causing unnecessary queries to be made
+ *              - or the recyclerview is querying too much
+ *          - 402 might be doing a query that's not free
+ *      - uncomment the code for queries
  *
  * - try catch (error handling in general)
  *      - overall market
