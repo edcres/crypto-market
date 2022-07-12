@@ -40,11 +40,15 @@ interface CoinsApiService {
         @Path("id") id: String
     ): List<CoinData>
 
-    // https://api.coinpaprika.com/v1/tickers/btc-bitcoin/historical?start=2022-01-01&interval=1d
-    @GET("tickers/btc-bitcoin/historical?start={startTime}&interval={interval}")
+    // tickers/btc-bitcoin/historical?start=2022-01-01&interval=1d
+//    @GET("tickers/btc-bitcoin/historical?start={startTime}&interval={interval}")
+    @GET("tickers/btc-bitcoin/historical")
     suspend fun getHistoricalTickers(
-        @Path("startTime") startTime: String,
-        @Path("interval") interval: String
+        @Query("start") startTime: String,
+        @Query("interval") interval: String
+
+//        @Path("startTime") startTime: String,
+//        @Path("interval") interval: String
     ): List<HistoricalTicker>
 }
 
