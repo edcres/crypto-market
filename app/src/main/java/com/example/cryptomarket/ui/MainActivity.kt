@@ -11,12 +11,6 @@ import com.example.cryptomarket.R
 
 /** todo:
  * - test app
- *      - bugs:
- *          - 402 might be doing a query that's not free
- *              - HistoricalTicker
- *                  - consider only doing one queries and filtering the
- *                          data to display it depending the timeframe the
- *                          user selects (or a few queries with different intervals)
  *      - uncomment the code for queries
  *
  * - Don't do an API query every time a recycler item is loaded, Store it in a variable (maybe a map)

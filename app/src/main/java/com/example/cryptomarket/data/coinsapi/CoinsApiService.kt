@@ -38,10 +38,9 @@ interface CoinsApiService {
     @GET("coins/{id}")
     suspend fun getCoin(
         @Path("id") id: String
-    ): List<CoinData>
+    ): CoinData
 
     // tickers/btc-bitcoin/historical?start=2022-01-01&interval=1d
-//    @GET("tickers/btc-bitcoin/historical?start={startTime}&interval={interval}")
     @GET("tickers/btc-bitcoin/historical")
     suspend fun getHistoricalTickers(
         @Query("start") startTime: String,

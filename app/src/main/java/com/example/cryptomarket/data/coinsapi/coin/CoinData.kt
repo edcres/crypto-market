@@ -10,27 +10,27 @@ data class CoinData (
     @Json(name = "name")
     val name: String,
     @Json(name = "symbol")
-    val symbol: String,              // todo
+    val symbol: String,
     @Json(name = "rank")
-    val rank: Int,              // todo
+    val rank: Int,
     @Json(name = "is_new")
     val isNew: Boolean,
     @Json(name = "is_active")
     val isActive: Boolean,
     @Json(name = "type")
-    val type: String,              // todo
+    val type: String,
     @Json(name = "team")
-    val team: List<TeamMember>,              // todo
+    val team: List<TeamMember>,
     @Json(name = "description")
-    val description: String,              // todo
+    val description: String,
     @Json(name = "open_source")
-    val openSource: Boolean,              // todo
+    val openSource: Boolean,
     @Json(name = "started_at")
-    val startedAt: String,              // todo
+    val startedAt: String,
     @Json(name = "proof_type")
-    val proofType: String,              // todo
+    val proofType: String,
     @Json(name = "org_structure")
-    val orgStructure: String,              // todo
+    val orgStructure: String,
     @Json(name = "hash_algorithm")
-    val hashAlgorithm: String              // todo
+    val hashAlgorithm: String
 )
