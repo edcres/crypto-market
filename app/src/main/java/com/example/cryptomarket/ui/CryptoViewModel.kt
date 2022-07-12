@@ -34,11 +34,7 @@ class CryptoViewModel : ViewModel() {
     private var _newsCall = MutableLiveData<NewsCall>()
     val newsCall: LiveData<NewsCall> get() = _newsCall
 
-    init {
-        // todo: make sure this is only inited once (check when creating other fragments)
-        Log.d(TAG, "vm inited")
-        startApplication()
-    }
+    init { startApplication() }
 
     // SETUP //
     fun startApplication() {

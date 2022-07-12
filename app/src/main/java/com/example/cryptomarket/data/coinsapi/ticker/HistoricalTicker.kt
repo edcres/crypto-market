@@ -9,7 +9,7 @@ data class HistoricalTicker(
     @Json(name = "price")
     val price: Double,
     @Json(name = "volume_24h")
-    val volume24h: Int,
+    val volume24h: Long,
     @Json(name = "market_cap")
-    val marketCap: Int
+    val marketCap: Long
 )

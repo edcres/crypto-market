@@ -16,6 +16,7 @@ class Repository {
 //    suspend fun getTickers() = CoinsApi.coinsApiService.getTickers()
     suspend fun getTickers(): List<Ticker> {
         Log.d(TAG, "getTickers: called")
+//        val asdfg = listOf<Ticker>()
         val asdfg = CoinsApi.coinsApiService.getTickers()
         return asdfg
     }
@@ -32,14 +33,15 @@ class Repository {
 
     suspend fun getCoinData(coinID: String): List<CoinData> {
         Log.d(TAG, "getCoinData: called")
-        return CoinsApi.coinsApiService.getCoin(coinID)
+        return listOf()
+//        return CoinsApi.coinsApiService.getCoin(coinID)
     }
 
     suspend fun getHistoricalTickers(startTime: String, interval: String): List<HistoricalTicker> {
         Log.d(TAG, "getHistoricalTickers: called")
         Log.d(TAG, "getHistoricalTickers: \nStart=$startTime\t-\tinterval=$interval")
         val response = CoinsApi.coinsApiService.getHistoricalTickers(startTime, interval)
-        Log.d(TAG, "getHistoricalTickers3: $response")
         return response
+//        return listOf()
     }
 }

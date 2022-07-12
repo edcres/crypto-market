@@ -12,11 +12,14 @@ import com.example.cryptomarket.R
 /** todo:
  * - test app
  *      - bugs:
- *          - 429 looks like API queries are being triggered too many times
- *              - maybe bc: the fragment it being created too many times, causing unnecessary queries to be made
- *              - or the recyclerview is querying too much
  *          - 402 might be doing a query that's not free
+ *              - HistoricalTicker
+ *                  - consider only doing one queries and filtering the
+ *                          data to display it depending the timeframe the
+ *                          user selects (or a few queries with different intervals)
  *      - uncomment the code for queries
+ *
+ * - Don't do an API query every time a recycler item is loaded, Store it in a variable (maybe a map)
  *
  * - try catch (error handling in general)
  *      - overall market
@@ -33,6 +36,15 @@ import com.example.cryptomarket.R
  * - user can choose if the interval is hr, week, month...
  * - news article link navigate to the website. When click on news recycler item
  * - maybe put more logic in the viewModel
+ */
+
+/** maybe:
+ * - historical ticker giving 402 error
+ * - bottom sheet gets disappeared and not minimized
+ * - right of the bottom sheet does not have rounded corners
+ * - when btn is not picked at first (the but is set to selected in the xml).
+ *      - when w btn is picked, it can't be un-clicked
+ * - start fragment is created twice at startup. Maybe other views too
  */
 
 /** maybe:

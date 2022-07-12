@@ -36,7 +36,7 @@ fun formatNewsPostDate(rawDateString: String): String {
 }
 
 fun addZerosToDate(baseDate: String) =
-    baseDate.split("/").joinToString("/") {
+    baseDate.split("/").joinToString("-") {
         if (it.length == 1) {
             "0$it"
         } else it

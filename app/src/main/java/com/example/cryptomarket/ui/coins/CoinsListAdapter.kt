@@ -31,7 +31,7 @@ class CoinsListAdapter(
         private val chosenTimeFrame: DateFrame,
         private val vm: CryptoViewModel,
         private val binding: CoinChartRecyclerItemBinding
-    ): RecyclerView.ViewHolder(binding.root) {
+    ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(ticker: Ticker) {
             populateUI(ticker)
@@ -79,6 +79,7 @@ class CoinsListAdapter(
         override fun areItemsTheSame(oldItem: Ticker, newItem: Ticker): Boolean {
             return oldItem.id == newItem.id
         }
+
         override fun areContentsTheSame(oldItem: Ticker, newItem: Ticker): Boolean {
             return oldItem == newItem
         }
