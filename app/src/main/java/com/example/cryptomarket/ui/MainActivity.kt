@@ -10,10 +10,7 @@ import com.example.cryptomarket.R
 // ATH = all time high
 
 /** todo:
- * - coins bottom sheet
- *      - set ticker data to UI
- *          - everything else
- *          - chart data
+ * - test app
  *
  * - try catch (error handling in general)
  *      - overall market

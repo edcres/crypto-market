@@ -107,35 +107,30 @@ class CoinsListFragment : Fragment() {
         }
         vm.tickerClicked.observe(viewLifecycleOwner) {
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
-            setCoinOnSheet(it)
+//            setCoinOnSheet(it)        todo
         }
         vm.tickers.observe(viewLifecycleOwner) {
             coinsListAdapter.submitList(it)
-            setCoinOnSheet(it[0])
+//            setCoinOnSheet(it[0])     todo
         }
     }
     // SETUP //
 
     // HELPERS
     private fun setCoinOnSheet(ticker: Ticker) {
-        val percentChange1w = "1w: ${ticker.quotes[0].percentChange7d}"
-        val percentChange1m = "1m: ${ticker.quotes[0].percentChange30d}"
-
+        val percentChange1w = "1w: ${ticker.quotes.usd.percentChange7d}"
+        val percentChange1m = "1m: ${ticker.quotes.usd.percentChange30d}"
         binding?.apply {
             tickerNameTxt.text = ticker.name
             sheetSymbolTxt.text = ticker.symbol
             totalSupplyTxt.text = ticker.totalSupply.toString()
-            percentChange7dTxt.text = ticker.quotes[0].percentChange7d.toString()
+            percentChange7dTxt.text = ticker.quotes.usd.percentChange7d.toString()
 
-            // todo: probably have a vm. variable containing chart data, and it changes when the timeframebtns are clicked
-            tickerChartCollapsedTxt.text =;    // todo: use the data from the query for tickerChartExpandedTxt (right below)
-            tickerChartExpandedTxt.text =;     // todo: do a query to get the historical ticker data.
-
-            tickerPriceTxt.text = ticker.quotes[0].price.toString()
+            tickerPriceTxt.text = ticker.quotes.usd.price.toString()
             percentChangeATxt.text = percentChange1w
             percentChangeBTxt.text = percentChange1m
 
-            setMoreInfoDataToUI(ticker.quotes[0], ticker.id)
+            setMoreInfoDataToUI(ticker.quotes.usd, ticker.id)
         }
     }
 
