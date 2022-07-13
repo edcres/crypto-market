@@ -10,9 +10,6 @@ import com.example.cryptomarket.R
 // ATH = all time high
 /** todo:
  * - fix some UI
- *      - news
- *          - put the list below the text
- *          - padding and margins on the list
  *      - coins
  *          - make coins list chart a fixed width (or at least equal to all other chart in the list)
  *          - bottom sheet scrolling thing

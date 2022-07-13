@@ -153,72 +153,53 @@
                         app:layout_constraintTop_toTopOf="parent"
                         tools:text="ticker chart" />
 
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/timeframe_picker_container"
+                    <com.google.android.material.button.MaterialButtonToggleGroup
+                        android:id="@+id/timeframe_btn_group"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
+                        android:orientation="horizontal"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/ticker_chart_expanded_txt">
+                        app:layout_constraintTop_toBottomOf="@+id/ticker_chart_expanded_txt"
+                        app:singleSelection="true">
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/d_btn"
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                            android:layout_width="60sp"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:orientation="horizontal"
-                            android:paddingStart="16dp"
-                            android:paddingTop="8dp"
-                            android:paddingEnd="16dp"
-                            android:paddingBottom="8dp">
+                            android:text="1d" />
 
-                            <com.google.android.material.button.MaterialButtonToggleGroup
-                                android:id="@+id/timeframe_btn_group"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                app:singleSelection="true">
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/w_btn"
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                            android:layout_width="60sp"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:text="1w" />
 
-                                <com.google.android.material.button.MaterialButton
-                                    android:id="@+id/d_btn"
-                                    android:layout_width="60sp"
-                                    android:layout_height="wrap_content"
-                                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                                    android:text="1d" />
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/m_btn"
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                            android:layout_width="60sp"
+                            android:layout_height="wrap_content"
+                            android:text="1m" />
 
-                                <com.google.android.material.button.MaterialButton
-                                    android:id="@+id/w_btn"
-                                    android:layout_width="60sp"
-                                    android:layout_height="wrap_content"
-                                    android:checked="true"
-                                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                                    android:text="1w" />
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/q_btn"
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                            android:layout_width="60sp"
+                            android:layout_height="wrap_content"
+                            android:text="1q" />
 
-                                <com.google.android.material.button.MaterialButton
-                                    android:id="@+id/m_btn"
-                                    android:layout_width="60sp"
-                                    android:layout_height="wrap_content"
-                                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                                    android:text="1m" />
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/y_btn"
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                            android:layout_width="60sp"
+                            android:layout_height="wrap_content"
+                            android:text="1y" />
 
-                                <com.google.android.material.button.MaterialButton
-                                    android:id="@+id/q_btn"
-                                    android:layout_width="60sp"
-                                    android:layout_height="wrap_content"
-                                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                                    android:text="1q" />
-
-                                <com.google.android.material.button.MaterialButton
-                                    android:id="@+id/y_btn"
-                                    android:layout_width="60sp"
-                                    android:layout_height="wrap_content"
-                                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                                    android:text="1y" />
-
-                            </com.google.android.material.button.MaterialButtonToggleGroup>
-
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
+                    </com.google.android.material.button.MaterialButtonToggleGroup>
 
                     <androidx.core.widget.NestedScrollView
                         android:layout_width="match_parent"
@@ -226,7 +207,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/timeframe_picker_container">
+                        app:layout_constraintTop_toBottomOf="@+id/timeframe_btn_group">
 
                         <LinearLayout
                             android:layout_width="match_parent"
