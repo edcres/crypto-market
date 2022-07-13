@@ -22,6 +22,8 @@ import com.example.cryptomarket.R
  *      - news
  *      - coins list
  *
+ * display moreInfo better (maybe say the info is unavailable) (also, empty list still shows [])
+ *
  * AFTER:
  * - put API data in charts
  *      - customize the charts

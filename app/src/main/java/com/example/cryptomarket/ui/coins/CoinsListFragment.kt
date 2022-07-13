@@ -153,14 +153,14 @@ class CoinsListFragment : Fragment() {
         vm.getCoinData(coinID).observe(viewLifecycleOwner) {
             binding?.apply {
                 rankTxt.text = it.rank.toString()
-                typeTxt.text = it.type
-                teamTxt.text = it.team.toString()
-                descriptionTxt.text = it.description
+                typeTxt.text = it.type ?: ""
+                teamTxt.text = displayTeam(it.team)
+                descriptionTxt.text = it.description ?: ""
                 openSourceTxt.text = displayIsOpenSource(it.openSource)
                 startedAtTxt.text = displayStartedAt(it.startedAt)
-                proofTypeTxt.text = it.proofType
-                orgStructureTxt.text = it.orgStructure
-                hashAlgorithmTxt.text = it.hashAlgorithm
+                proofTypeTxt.text = it.proofType ?: ""
+                orgStructureTxt.text = it.orgStructure ?: ""
+                hashAlgorithmTxt.text = it.hashAlgorithm ?: ""
                 athPriceTxt.text = displayATHPrice(priceData.athPrice)
                 athDateTxt.text = displayATHDate(priceData.athDate)
             }

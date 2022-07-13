@@ -1,5 +1,6 @@
 package com.example.cryptomarket.utils
 
+import com.example.cryptomarket.data.coinsapi.TeamMember
 import com.example.cryptomarket.data.coinsapi.ticker.PriceData
 
 enum class FragChosen {
@@ -42,8 +43,17 @@ fun addZerosToDate(baseDate: String) =
         } else it
     }
 
-fun displayIsOpenSource(isOpenSource: Boolean) =
-    if (isOpenSource) "Open Source" else "Not open source."
+fun displayTeam(team: List<TeamMember>?): String =
+    // todo: make it presentable
+    if (team != null) {
+        if (team.isEmpty()) team.toString() else ""
+    } else ""
+
+fun displayIsOpenSource(isOpenSource: Boolean?) = when (isOpenSource) {
+    true -> "Open Source"
+    false -> "Not open source."
+    else -> ""
+}
 
 fun displayStartedAt(startDate: String?) = if(startDate != null) "Started at $startDate" else ""
 
