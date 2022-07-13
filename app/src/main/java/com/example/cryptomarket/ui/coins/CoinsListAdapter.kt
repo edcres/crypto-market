@@ -48,12 +48,9 @@ class CoinsListAdapter(
                 coinSymbolTxt.text = ticker.symbol
                 coinNameTxt.text = ticker.name
                 rankTxt.text = ticker.rank.toString()
-//                if (ticker.quotes.isNotEmpty()) { todo
-//                    // todo: possible bug: although in practice it's probably no problem
-//                    //      the price might not be in USD (position in the list)
-////                    priceTxt.text = ticker.quotes[0].price.toString() todo
-////                    percentChangeTxt.text = pickPercentChange(chosenTimeFrame, ticker.quotes[0])?.toString() ?: ""    todo
-//                }
+                priceTxt.text = ticker.quotes.usd.price.toString()
+                percentChangeTxt.text =
+                    pickPercentChange(chosenTimeFrame, ticker.quotes.usd)?.toString() ?: ""
                 vm.getHistoricalTickerData(chosenTimeFrame).observe(viewLifecycleOwner) {
                     chartPlaceholderTxt.text = it.toString()
                 }
