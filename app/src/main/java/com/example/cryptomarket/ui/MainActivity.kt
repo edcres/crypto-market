@@ -10,14 +10,15 @@ import com.example.cryptomarket.R
 // ATH = all time high
 
 /** todo:
- * - test app
- *      - uncomment the code for queries
- *
  * - Don't do an API query every time a recycler item is loaded, Store it in a variable (maybe a map)
+ *
  * - bugs
  * - remove logs
  *
  * - try catch (error handling in general)
+ *      - test for a bad connection
+ *          - at startup
+ *          - when the connection goes out at runtime
  *      - overall market
  *      - news
  *      - coins list

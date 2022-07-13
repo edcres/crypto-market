@@ -34,6 +34,9 @@ class CryptoViewModel : ViewModel() {
     private var _newsCall = MutableLiveData<NewsCall>()
     val newsCall: LiveData<NewsCall> get() = _newsCall
 
+    // Used to store the data of chart queries, to avoid extra API queries.
+    val chartsData = mutableMapOf<String, List<HistoricalTicker>>()
+
     init { startApplication() }
 
     // SETUP //
@@ -52,25 +55,33 @@ class CryptoViewModel : ViewModel() {
     // HELPERS //
 
     // REPO QUERIES //
-    fun getHistoricalTickerData(timeFrame: DateFrame):
+    fun getHistoricalTickerData(tickerId: String, timeFrame: DateFrame):
             LiveData<List<HistoricalTicker>> {
         val tickerData = MutableLiveData<List<HistoricalTicker>>()
         viewModelScope.launch {
-            // Todo: tests these in API queries
-            // get current date yyyy/mm/dd
-            val currentDate = Calendar.getInstance()
-            when (timeFrame) {
-                DateFrame.DAY -> currentDate.add(Calendar.DAY_OF_MONTH, -1)
-                DateFrame.WEEK -> currentDate.add(Calendar.DAY_OF_MONTH, -7)
-                DateFrame.MONTH -> currentDate.add(Calendar.MONTH, -1)
-                DateFrame.QUARTER -> currentDate.add(Calendar.MONTH, -3) // Starts three months past
-                DateFrame.YEAR -> currentDate.add(Calendar.YEAR, -1)
-            }
-            val startTime =
-                "${currentDate.get(Calendar.YEAR)}/${currentDate.get(Calendar.MONTH) + 1}/" +
+            // Check if chartsData contains tickerID,
+            //  if not then do an API query and add the data to chartsData.
+            if (chartsData.contains(tickerId)) {
+                tickerData.postValue(chartsData[tickerId])
+            } else {
+                // Todo: tests these in API queries
+                // get current date yyyy/mm/dd
+                val currentDate = Calendar.getInstance()
+                when (timeFrame) {
+                    DateFrame.DAY -> currentDate.add(Calendar.DAY_OF_MONTH, -1)
+                    DateFrame.WEEK -> currentDate.add(Calendar.DAY_OF_MONTH, -7)
+                    DateFrame.MONTH -> currentDate.add(Calendar.MONTH, -1)
+                    DateFrame.QUARTER -> currentDate.add(Calendar.MONTH, -3) // Starts three months past
+                    DateFrame.YEAR -> currentDate.add(Calendar.YEAR, -1)
+                }
+                val startTime = "${currentDate.get(Calendar.YEAR)}/" +
+                        "${currentDate.get(Calendar.MONTH) + 1}/" +
                         "${currentDate.get(Calendar.DAY_OF_MONTH)}"
-            tickerData
-                .postValue(repo.getHistoricalTickers(addZerosToDate(startTime), timeFrame.interval))
+                val historicalData =
+                    repo.getHistoricalTickers(addZerosToDate(startTime), timeFrame.interval)
+                tickerData.postValue(historicalData)
+                chartsData[tickerId] = historicalData
+            }
         }
         return tickerData
     }
