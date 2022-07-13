@@ -11,7 +11,6 @@ import com.example.cryptomarket.R
 /** todo:
  * - fix some UI
  *      - coins
- *          - display Ticker data on the bottom sheet
  *          - bottom sheet displaying chart when clicking the time frame btns
  * - bugs
  * - remove logs

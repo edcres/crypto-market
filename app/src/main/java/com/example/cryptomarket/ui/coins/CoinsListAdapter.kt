@@ -52,9 +52,10 @@ class CoinsListAdapter(
                 percentChangeTxt.text =
                     pickPercentChange(chosenTimeFrame, ticker.quotes.usd)?.toString() ?: ""
                 chartPlaceholderTxt.text = "none"
-                vm.getHistoricalTickerData(ticker.id, chosenTimeFrame).observe(viewLifecycleOwner) {
-                    chartPlaceholderTxt.text = it.toString()
-                }
+                vm.getHistoricalTickerData(false, ticker.id, chosenTimeFrame)
+                    .observe(viewLifecycleOwner) {
+                        chartPlaceholderTxt.text = it.toString()
+                    }
             }
         }
 

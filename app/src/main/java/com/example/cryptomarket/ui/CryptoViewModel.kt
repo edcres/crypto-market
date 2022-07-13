@@ -56,15 +56,20 @@ class CryptoViewModel : ViewModel() {
     // HELPERS //
 
     // REPO QUERIES //
-    fun getHistoricalTickerData(tickerId: String, timeFrame: DateFrame):
+    fun getHistoricalTickerData(forSheet: Boolean, tickerId: String, timeFrame: DateFrame):
             LiveData<List<HistoricalTicker>> {
+        Log.d(TAG, "getHistoricalTickerData: \n$tickerId\n$timeFrame")
         val tickerData = MutableLiveData<List<HistoricalTicker>>()
         viewModelScope.launch {
             // Check if chartsData contains tickerID,
             //  if not then do an API query and add the data to chartsData.
-            if (chartsData.contains(tickerId)) {
+            if (chartsData.contains(tickerId) && !forSheet) {
+                Log.d(TAG, "contains id: true")
+                // Only works for week
+                //  (To use a different timeframe, use a different map or delete the week data)
                 tickerData.postValue(chartsData[tickerId])
             } else {
+                Log.d(TAG, "contains id: false")
                 // Todo: tests these in API queries
                 // get current date yyyy/mm/dd
                 val currentDate = Calendar.getInstance()

@@ -112,7 +112,7 @@ class CoinsListFragment : Fragment() {
             coinsListAdapter.submitList(it)
             setCoinOnSheet(it[0])
             timeFrameClickListeners(it[0].id)
-            populateCharts(vm.getHistoricalTickerData(it[0].id, DateFrame.WEEK))
+            populateCharts(vm.getHistoricalTickerData(true, it[0].id, DateFrame.WEEK))
         }
     }
     // SETUP //
@@ -141,16 +141,21 @@ class CoinsListFragment : Fragment() {
             timeframeBtnGroup.addOnButtonCheckedListener { _, checkedId, isChecked ->
                 if (isChecked) {
                     when (checkedId) {
-                        dBtn.id ->
-                            populateCharts(vm.getHistoricalTickerData(tickerID, DateFrame.DAY))
-                        wBtn.id ->
-                            populateCharts(vm.getHistoricalTickerData(tickerID, DateFrame.WEEK))
-                        mBtn.id ->
-                            populateCharts(vm.getHistoricalTickerData(tickerID, DateFrame.MONTH))
-                        qBtn.id ->
-                            populateCharts(vm.getHistoricalTickerData(tickerID, DateFrame.QUARTER))
-                        yBtn.id ->
-                            populateCharts(vm.getHistoricalTickerData(tickerID, DateFrame.YEAR))
+                        dBtn.id -> populateCharts(
+                            vm.getHistoricalTickerData(true, tickerID, DateFrame.DAY)
+                        )
+                        wBtn.id -> populateCharts(
+                            vm.getHistoricalTickerData(true, tickerID, DateFrame.WEEK)
+                        )
+                        mBtn.id -> populateCharts(
+                            vm.getHistoricalTickerData(true, tickerID, DateFrame.MONTH)
+                            )
+                        qBtn.id -> populateCharts(
+                                vm.getHistoricalTickerData(true, tickerID, DateFrame.QUARTER)
+                            )
+                        yBtn.id -> populateCharts(
+                            vm.getHistoricalTickerData(true, tickerID, DateFrame.YEAR)
+                        )
                     }
                 }
             }
@@ -181,6 +186,7 @@ class CoinsListFragment : Fragment() {
         Log.d(TAG, "populateCharts: called")
         binding?.apply {
             tickerData.observe(viewLifecycleOwner) {
+                Log.d(TAG, "tickerData: observed\nsize = ${it.size}")
                 tickerChartCollapsedTxt.text = it.toString()
                 tickerChartExpandedTxt.text = it.toString()
             }
