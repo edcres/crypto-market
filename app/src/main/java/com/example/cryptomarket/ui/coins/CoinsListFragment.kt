@@ -90,6 +90,8 @@ class CoinsListFragment : Fragment() {
                     Log.d(TAG, "onSlide: ")
                     if (appBarLayout.visibility == View.VISIBLE)
                         appBarLayout.visibility = View.INVISIBLE
+                    if (collapsedDataContainer.visibility == View.VISIBLE)
+                        collapsedDataContainer.visibility = View.INVISIBLE
                 }
             }
             bottomSheetBehavior.addBottomSheetCallback(bottomSheetCallback)
