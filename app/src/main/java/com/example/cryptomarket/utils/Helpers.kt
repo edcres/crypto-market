@@ -45,7 +45,7 @@ fun addZerosToDate(baseDate: String) =
 fun displayIsOpenSource(isOpenSource: Boolean) =
     if (isOpenSource) "Open Source" else "Not open source."
 
-fun displayStartedAt(startDate: String) = "Started at $startDate"
+fun displayStartedAt(startDate: String?) = if(startDate != null) "Started at $startDate" else ""
 
 fun displayATHPrice(athPrice: Double) = "ATH $${athPrice}"
 

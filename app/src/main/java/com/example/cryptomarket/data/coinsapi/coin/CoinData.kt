@@ -26,7 +26,7 @@ data class CoinData (
     @Json(name = "open_source")
     val openSource: Boolean,
     @Json(name = "started_at")
-    val startedAt: String,
+    val startedAt: String?,
     @Json(name = "proof_type")
     val proofType: String,
     @Json(name = "org_structure")
