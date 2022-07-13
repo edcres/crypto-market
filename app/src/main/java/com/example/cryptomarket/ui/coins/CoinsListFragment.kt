@@ -76,16 +76,17 @@ class CoinsListFragment : Fragment() {
                             Log.i(TAG, "onStateChanged: STATE_DRAGGING")
                         }
                         BottomSheetBehavior.STATE_SETTLING -> {
+                            if (collapsedDataContainer.visibility == View.VISIBLE)
+                                collapsedDataContainer.visibility = View.INVISIBLE
+                            if (collapsedDataContainer.visibility == View.VISIBLE)
+                                collapsedDataContainer.visibility = View.INVISIBLE
                             Log.i(TAG, "onStateChanged: STATE_SETTLING")
                         }
                     }
                 }
 
                 override fun onSlide(bottomSheet: View, slideOffset: Float) {
-                    if (appBarLayout.visibility == View.VISIBLE)
-                        appBarLayout.visibility = View.INVISIBLE
-                    if (collapsedDataContainer.visibility == View.VISIBLE)
-                        collapsedDataContainer.visibility = View.INVISIBLE
+                    Log.d(TAG, "onSlide: called")
                 }
             }
             bottomSheetBehavior.addBottomSheetCallback(bottomSheetCallback)
