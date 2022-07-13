@@ -106,11 +106,11 @@ class CoinsListFragment : Fragment() {
         }
         vm.tickerClicked.observe(viewLifecycleOwner) {
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
-//            setCoinOnSheet(it)        todo
+            setCoinOnSheet(it)
         }
         vm.tickers.observe(viewLifecycleOwner) {
             coinsListAdapter.submitList(it)
-//            setCoinOnSheet(it[0])     todo
+            setCoinOnSheet(it[0])
         }
     }
     // SETUP //

@@ -14,6 +14,8 @@ import com.example.cryptomarket.R
  *      - uncomment the code for queries
  *
  * - Don't do an API query every time a recycler item is loaded, Store it in a variable (maybe a map)
+ * - bugs
+ * - remove logs
  *
  * - try catch (error handling in general)
  *      - overall market
@@ -33,7 +35,7 @@ import com.example.cryptomarket.R
  */
 
 /** maybe:
- * - historical ticker giving 402 error
+ * - hide minimised chart when opening bottom sheet
  * - bottom sheet gets disappeared and not minimized
  * - right of the bottom sheet does not have rounded corners
  * - when btn is not picked at first (the but is set to selected in the xml).

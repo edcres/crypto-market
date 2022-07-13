@@ -47,12 +47,8 @@ class CryptoViewModel : ViewModel() {
     // SETUP //
 
     // HELPERS //
-    fun setTickerClicked(ticker: Ticker) {
-        _tickerClicked.postValue(ticker)
-    }
-    fun setFragChosen(chosenFrag: FragChosen) {
-        _fragChosen.postValue(chosenFrag)
-    }
+    fun setTickerClicked(ticker: Ticker) { _tickerClicked.postValue(ticker) }
+    fun setFragChosen(chosenFrag: FragChosen) { _fragChosen.postValue(chosenFrag) }
     // HELPERS //
 
     // REPO QUERIES //
