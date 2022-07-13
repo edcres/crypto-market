@@ -11,6 +11,7 @@ import com.example.cryptomarket.R
 
 /** todo:
  * - Don't do an API query every time a recycler item is loaded, Store it in a variable (maybe a map)
+ * - major bug: set the coin id on the api query
  *
  * - bugs
  * - remove logs

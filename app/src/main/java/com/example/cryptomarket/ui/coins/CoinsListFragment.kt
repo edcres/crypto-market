@@ -48,7 +48,6 @@ class CoinsListFragment : Fragment() {
         }
         setObservers()
         setBottomSheetBehavior()
-        timeFrameClickListeners()
     }
 
     override fun onDestroy() {
@@ -107,6 +106,7 @@ class CoinsListFragment : Fragment() {
         vm.tickerClicked.observe(viewLifecycleOwner) {
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
             setCoinOnSheet(it)
+            timeFrameClickListeners(it.id)
         }
         vm.tickers.observe(viewLifecycleOwner) {
             coinsListAdapter.submitList(it)
@@ -133,16 +133,21 @@ class CoinsListFragment : Fragment() {
         }
     }
 
-    private fun timeFrameClickListeners() {
+    private fun timeFrameClickListeners(tickerID: String) {
         binding?.apply {
             timeframeBtnGroup.addOnButtonCheckedListener { _, checkedId, isChecked ->
                 if (isChecked) {
                     when (checkedId) {
-                        dBtn.id -> populateCharts(vm.getHistoricalTickerData(DateFrame.DAY))
-                        wBtn.id -> vm.getHistoricalTickerData(DateFrame.WEEK)
-                        mBtn.id -> vm.getHistoricalTickerData(DateFrame.MONTH)
-                        qBtn.id -> vm.getHistoricalTickerData(DateFrame.QUARTER)
-                        yBtn.id -> vm.getHistoricalTickerData(DateFrame.YEAR)
+                        dBtn.id ->
+                            populateCharts(vm.getHistoricalTickerData(tickerID, DateFrame.DAY))
+                        wBtn.id ->
+                            populateCharts(vm.getHistoricalTickerData(tickerID, DateFrame.WEEK))
+                        mBtn.id ->
+                            populateCharts(vm.getHistoricalTickerData(tickerID, DateFrame.MONTH))
+                        qBtn.id ->
+                            populateCharts(vm.getHistoricalTickerData(tickerID, DateFrame.QUARTER))
+                        yBtn.id ->
+                            populateCharts(vm.getHistoricalTickerData(tickerID, DateFrame.YEAR))
                     }
                 } else wBtn.isChecked = true
             }

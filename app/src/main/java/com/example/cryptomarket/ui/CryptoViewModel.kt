@@ -62,8 +62,10 @@ class CryptoViewModel : ViewModel() {
             // Check if chartsData contains tickerID,
             //  if not then do an API query and add the data to chartsData.
             if (chartsData.contains(tickerId)) {
+                Log.d(TAG, "getHistoricalTickerData: contains true")
                 tickerData.postValue(chartsData[tickerId])
             } else {
+                Log.d(TAG, "getHistoricalTickerData: contains false")
                 // Todo: tests these in API queries
                 // get current date yyyy/mm/dd
                 val currentDate = Calendar.getInstance()
