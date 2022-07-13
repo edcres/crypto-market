@@ -15,7 +15,9 @@ import com.example.cryptomarket.utils.DateFrame
 import com.example.cryptomarket.utils.FragChosen
 import com.example.cryptomarket.utils.addZerosToDate
 import kotlinx.coroutines.launch
+import retrofit2.HttpException
 import java.util.*
+import java.util.concurrent.ExecutionException
 
 private const val TAG = "CoinsVM__TAG"
 
@@ -79,10 +81,15 @@ class CryptoViewModel : ViewModel() {
                 val startTime = "${currentDate.get(Calendar.YEAR)}/" +
                         "${currentDate.get(Calendar.MONTH) + 1}/" +
                         "${currentDate.get(Calendar.DAY_OF_MONTH)}"
-                val historicalData = repo
-                    .getHistoricalTickers(tickerId, addZerosToDate(startTime), timeFrame.interval)
-                tickerData.postValue(historicalData)
-                chartsData[tickerId] = historicalData
+                // Handle when the API rejects the request when making too many.
+                try {
+                    val historicalData = repo
+                        .getHistoricalTickers(tickerId, addZerosToDate(startTime), timeFrame.interval)
+                    tickerData.postValue(historicalData)
+                    chartsData[tickerId] = historicalData
+                } catch (e: HttpException) {
+                    Log.e(TAG, "getHistoricalTickerData: \n$e")
+                }
             }
         }
         return tickerData

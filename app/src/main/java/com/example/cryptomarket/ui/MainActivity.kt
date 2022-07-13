@@ -10,8 +10,10 @@ import com.example.cryptomarket.R
 // ATH = all time high
 
 /** todo:
- * - Don't do an API query every time a recycler item is loaded, Store it in a variable (maybe a map)
- * - major bug: set the coin id on the api query
+ * - to many requests: probably when getting historical data from different coins
+ *      - happens when scrolling too fast
+ *          - do a try catch and make it specific to that exception.
+ *
  *
  * - bugs
  * - remove logs
@@ -38,13 +40,17 @@ import com.example.cryptomarket.R
  * - maybe put more logic in the viewModel
  */
 
-/** maybe:
+/** bugs:
  * - hide minimised chart when opening bottom sheet
  * - bottom sheet gets disappeared and not minimized
- * - right of the bottom sheet does not have rounded corners
+ * - the top right of the bottom sheet does not have rounded corners
  * - when btn is not picked at first (the but is set to selected in the xml).
  *      - when w btn is picked, it can't be un-clicked
  * - start fragment is created twice at startup. Maybe other views too
+ * - Some charts are not loaded within a good amount of time, idk what triggers eventually
+ *      - put the queries that make it crash in a queue to be don later and store the in the vm map (I don't need this put it's cool)
+ *          - maybe override onViewRecycled(on the adapter)
+ *          - maybe a map <id, request>
  */
 
 /** maybe:
