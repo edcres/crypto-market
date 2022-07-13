@@ -12,8 +12,7 @@ import com.example.cryptomarket.R
  * - fix some UI
  *      - coins
  *          - make coins list chart a fixed width (or at least equal to all other chart in the list)
- *          - bottom sheet scrolling thing
- *          - hide the hidden chart and display it when appropriate
+ *          - display the hidden chart when appropriate
  *          - make bottom sheet not hide all the way
  *          - bottom sheet displaying chart when clicking the time frame btns
  * - display Ticker data on the bottom sheet
@@ -55,6 +54,9 @@ import com.example.cryptomarket.R
  *          - maybe a map <id, request>
  *          - maybe there's something in retrofit or another library that queues requests
  * When clicking on coin items, sometimes the wrong coin is displayed when expanded.
+ * When the bottom sheet is collapsed and I click on it, the coin behind it is selected
+ * In fragmentCoinsList.xml, don't use px, use dp instead.
+ *      Then set bottomSheetBehavior.peekHeight to the same dp (from px)
  */
 
 /** maybe:

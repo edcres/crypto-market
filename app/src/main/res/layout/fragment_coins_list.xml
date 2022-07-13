@@ -85,8 +85,9 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/collapsed_data_container"
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:visibility="gone"
+                    android:layout_height="210px"
+                    android:visibility="visible"
+                    android:layout_marginTop="20px"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">

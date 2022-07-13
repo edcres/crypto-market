@@ -59,7 +59,7 @@ class CoinsListFragment : Fragment() {
     private fun setBottomSheetBehavior() {
         binding?.apply {
             bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetView)
-            bottomSheetBehavior.peekHeight = collapsedDataContainer.height
+            bottomSheetBehavior.peekHeight = 230        // should be the same height as collapsedDataContainer
             val bottomSheetCallback = object : BottomSheetBehavior.BottomSheetCallback() {
                 override fun onStateChanged(bottomSheet: View, newState: Int) {
                     when (newState) {
