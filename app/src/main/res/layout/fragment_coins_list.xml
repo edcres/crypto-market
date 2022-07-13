@@ -140,7 +140,7 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="500dp">
+                    android:layout_height="match_parent">
 
                     <TextView
                         android:id="@+id/ticker_chart_expanded_txt"
@@ -201,141 +201,138 @@
 
                     </com.google.android.material.button.MaterialButtonToggleGroup>
 
-                    <androidx.core.widget.NestedScrollView
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/price_container"
                         android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/timeframe_btn_group">
 
-                        <LinearLayout
+                        <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                            android:padding="8dp">
 
-                            <androidx.cardview.widget.CardView
-                                android:id="@+id/price_container"
+                            <TextView
+                                android:id="@+id/ticker_price_txt"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="12434"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/percent_change_a_txt"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="123"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/percent_change_b_txt"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="123"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/percent_change_a_txt" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/info_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_margin="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/price_container">
+
+                        <androidx.core.widget.NestedScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_margin="8dp">
+                                android:orientation="vertical"
+                                android:padding="8dp">
 
-                                <androidx.constraintlayout.widget.ConstraintLayout
-                                    android:layout_width="match_parent"
+                                <TextView
+                                    android:id="@+id/rank_txt"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:padding="8dp">
+                                    android:text="1" />
 
-                                    <TextView
-                                        android:id="@+id/ticker_price_txt"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="12434"
-                                        app:layout_constraintBottom_toBottomOf="parent"
-                                        app:layout_constraintStart_toStartOf="parent"
-                                        app:layout_constraintTop_toTopOf="parent" />
-
-                                    <TextView
-                                        android:id="@+id/percent_change_a_txt"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="123"
-                                        app:layout_constraintEnd_toEndOf="parent"
-                                        app:layout_constraintTop_toTopOf="parent" />
-
-                                    <TextView
-                                        android:id="@+id/percent_change_b_txt"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="123"
-                                        app:layout_constraintBottom_toBottomOf="parent"
-                                        app:layout_constraintEnd_toEndOf="parent"
-                                        app:layout_constraintTop_toBottomOf="@+id/percent_change_a_txt" />
-
-                                </androidx.constraintlayout.widget.ConstraintLayout>
-                            </androidx.cardview.widget.CardView>
-
-                            <androidx.cardview.widget.CardView
-                                android:id="@+id/info_container"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="8dp">
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
+                                <TextView
+                                    android:id="@+id/type_txt"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:orientation="vertical"
-                                    android:padding="8dp">
+                                    android:text="coin" />
 
-                                    <TextView
-                                        android:id="@+id/rank_txt"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="1" />
+                                <TextView
+                                    android:id="@+id/team_txt"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="sakoshi nakamoto" />
 
-                                    <TextView
-                                        android:id="@+id/type_txt"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="coin" />
+                                <TextView
+                                    android:id="@+id/description_txt"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="adads das dasda dadada dasda asdada" />
 
-                                    <TextView
-                                        android:id="@+id/team_txt"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="sakoshi nakamoto" />
+                                <TextView
+                                    android:id="@+id/open_source_txt"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="open source" />
 
-                                    <TextView
-                                        android:id="@+id/description_txt"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="adads das dasda dadada dasda asdada" />
+                                <TextView
+                                    android:id="@+id/started_at_txt"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="23/54/646" />
 
-                                    <TextView
-                                        android:id="@+id/open_source_txt"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="open source" />
+                                <TextView
+                                    android:id="@+id/proof_Type_txt"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="proof of stake" />
 
-                                    <TextView
-                                        android:id="@+id/started_at_txt"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="23/54/646" />
+                                <TextView
+                                    android:id="@+id/org_structure_txt"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="asda asda" />
 
-                                    <TextView
-                                        android:id="@+id/proof_Type_txt"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="proof of stake" />
+                                <TextView
+                                    android:id="@+id/hash_algorithm_txt"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="asdasda sda dasda" />
 
-                                    <TextView
-                                        android:id="@+id/org_structure_txt"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="asda asda" />
+                                <TextView
+                                    android:id="@+id/ath_price_txt"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="13453425" />
 
-                                    <TextView
-                                        android:id="@+id/hash_algorithm_txt"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="asdasda sda dasda" />
+                                <TextView
+                                    android:id="@+id/ath_date_txt"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="12/45/6855" />
 
-                                    <TextView
-                                        android:id="@+id/ath_price_txt"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="13453425" />
-
-                                    <TextView
-                                        android:id="@+id/ath_date_txt"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="12/45/6855" />
-
-                                </LinearLayout>
-                            </androidx.cardview.widget.CardView>
-                        </LinearLayout>
-                    </androidx.core.widget.NestedScrollView>
+                            </LinearLayout>
+                        </androidx.core.widget.NestedScrollView>
+                    </androidx.cardview.widget.CardView>
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
         </FrameLayout>
