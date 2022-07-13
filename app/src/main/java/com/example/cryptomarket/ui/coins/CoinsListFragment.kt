@@ -1,5 +1,6 @@
 package com.example.cryptomarket.ui.coins
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -61,33 +62,21 @@ class CoinsListFragment : Fragment() {
             bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetView)
             bottomSheetBehavior.peekHeight = 230  // Should be the same height as collapsedDataContainer
             val bottomSheetCallback = object : BottomSheetBehavior.BottomSheetCallback() {
+                @SuppressLint("SwitchIntDef")
                 override fun onStateChanged(bottomSheet: View, newState: Int) {
                     when (newState) {
-                        BottomSheetBehavior.STATE_EXPANDED -> {
-                            Log.d(TAG, "onStateChanged: STATE_EXPANDED")
-                            toggleAppbar(false)
-                        }
-                        BottomSheetBehavior.STATE_COLLAPSED -> {
-                            Log.d(TAG, "onStateChanged: STATE_COLLAPSED")
-                            toggleAppbar(true)
-                        }
-                        BottomSheetBehavior.STATE_HIDDEN -> {
-                            Log.d(TAG, "onStateChanged: STATE_HIDDEN")
-                        }
+                        BottomSheetBehavior.STATE_EXPANDED -> { toggleAppbar(false) }
+                        BottomSheetBehavior.STATE_COLLAPSED -> { toggleAppbar(true) }
                         BottomSheetBehavior.STATE_DRAGGING -> {
-                            Log.d(TAG, "onStateChanged: STATE_DRAGGING")
-                        }
-                        BottomSheetBehavior.STATE_HALF_EXPANDED -> {
-                            Log.d(TAG, "onStateChanged: STATE_HALF_EXPANDED")
+                            Log.i(TAG, "onStateChanged: STATE_DRAGGING")
                         }
                         BottomSheetBehavior.STATE_SETTLING -> {
-                            Log.d(TAG, "onStateChanged: STATE_SETTLING")
+                            Log.i(TAG, "onStateChanged: STATE_SETTLING")
                         }
                     }
                 }
 
                 override fun onSlide(bottomSheet: View, slideOffset: Float) {
-                    Log.d(TAG, "onSlide: ")
                     if (appBarLayout.visibility == View.VISIBLE)
                         appBarLayout.visibility = View.INVISIBLE
                     if (collapsedDataContainer.visibility == View.VISIBLE)
@@ -95,6 +84,9 @@ class CoinsListFragment : Fragment() {
                 }
             }
             bottomSheetBehavior.addBottomSheetCallback(bottomSheetCallback)
+            collapsedDataContainer.setOnClickListener {
+                bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+            }
         }
     }
 
