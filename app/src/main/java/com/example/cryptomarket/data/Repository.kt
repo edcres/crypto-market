@@ -19,7 +19,6 @@ class Repository {
 
     suspend fun getCoinData(coinID: String): CoinData = CoinsApi.coinsApiService.getCoin(coinID)
 
-    suspend fun getHistoricalTickers(startTime: String, interval: String): List<HistoricalTicker> {
-        return CoinsApi.coinsApiService.getHistoricalTickers(startTime, interval)
-    }
+    suspend fun getHistoricalTickers(tickerId: String, startTime: String, interval: String) =
+        CoinsApi.coinsApiService.getHistoricalTickers(tickerId, startTime, interval)
 }

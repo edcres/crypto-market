@@ -79,8 +79,8 @@ class CryptoViewModel : ViewModel() {
                 val startTime = "${currentDate.get(Calendar.YEAR)}/" +
                         "${currentDate.get(Calendar.MONTH) + 1}/" +
                         "${currentDate.get(Calendar.DAY_OF_MONTH)}"
-                val historicalData =
-                    repo.getHistoricalTickers(addZerosToDate(startTime), timeFrame.interval)
+                val historicalData = repo
+                    .getHistoricalTickers(tickerId, addZerosToDate(startTime), timeFrame.interval)
                 tickerData.postValue(historicalData)
                 chartsData[tickerId] = historicalData
             }
