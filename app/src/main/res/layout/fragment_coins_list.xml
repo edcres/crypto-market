@@ -177,7 +177,6 @@
                             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                             android:layout_width="60sp"
                             android:layout_height="wrap_content"
-                            android:checked="true"
                             android:text="1w" />
 
                         <com.google.android.material.button.MaterialButton

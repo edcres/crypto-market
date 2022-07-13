@@ -113,6 +113,7 @@ class CoinsListFragment : Fragment() {
         vm.tickers.observe(viewLifecycleOwner) {
             coinsListAdapter.submitList(it)
             setCoinOnSheet(it[0])
+            timeFrameClickListeners(it[0].id)
         }
     }
     // SETUP //
@@ -137,6 +138,7 @@ class CoinsListFragment : Fragment() {
 
     private fun timeFrameClickListeners(tickerID: String) {
         binding?.apply {
+//            wBtn.isChecked = true
             timeframeBtnGroup.addOnButtonCheckedListener { _, checkedId, isChecked ->
                 if (isChecked) {
                     when (checkedId) {
@@ -151,12 +153,14 @@ class CoinsListFragment : Fragment() {
                         yBtn.id ->
                             populateCharts(vm.getHistoricalTickerData(tickerID, DateFrame.YEAR))
                     }
-                } else wBtn.isChecked = true
+                }
             }
+            Log.d(TAG, "timeFrameClickListeners: set")
         }
     }
 
     private fun setMoreInfoDataToUI(priceData: PriceData, coinID: String) {
+        Log.d(TAG, "setMoreInfoDataToUI: called")
         vm.getCoinData(coinID).observe(viewLifecycleOwner) {
             binding?.apply {
                 rankTxt.text = it.rank.toString()
@@ -175,6 +179,7 @@ class CoinsListFragment : Fragment() {
     }
 
     private fun populateCharts(tickerData: LiveData<List<HistoricalTicker>>) {
+        Log.d(TAG, "populateCharts: called")
         binding?.apply {
             tickerData.observe(viewLifecycleOwner) {
                 tickerChartCollapsedTxt.text = it.toString()
