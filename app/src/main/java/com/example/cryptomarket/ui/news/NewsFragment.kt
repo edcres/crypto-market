@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,7 +13,6 @@ import com.example.cryptomarket.R
 import com.example.cryptomarket.databinding.FragmentNewsBinding
 import com.example.cryptomarket.ui.CryptoViewModel
 import com.example.cryptomarket.utils.FragChosen
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 private const val TAG = "NewsListFrag__TAG"
 

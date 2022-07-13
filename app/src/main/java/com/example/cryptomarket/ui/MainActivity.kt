@@ -8,13 +8,18 @@ import androidx.core.content.ContextCompat
 import com.example.cryptomarket.R
 
 // ATH = all time high
-
 /** todo:
- * - to many requests: probably when getting historical data from different coins
- *      - happens when scrolling too fast
- *          - do a try catch and make it specific to that exception.
- *
- *
+ * - fix some UI
+ *      - news
+ *          - put the list below the text
+ *          - padding and margins on the list
+ *      - coins
+ *          - make coins list chart a fixed width (or at least equal to all other chart in the list)
+ *          - bottom sheet scrolling thing
+ *          - hide the hidden chart and display it when appropriate
+ *          - make bottom sheet not hide all the way
+ *          - bottom sheet displaying chart when clicking the time frame btns
+ * - display Ticker data on the bottom sheet
  * - bugs
  * - remove logs
  *
@@ -51,15 +56,18 @@ import com.example.cryptomarket.R
  *      - put the queries that make it crash in a queue to be don later and store the in the vm map (I don't need this put it's cool)
  *          - maybe override onViewRecycled(on the adapter)
  *          - maybe a map <id, request>
+ *          - maybe there's something in retrofit or another library that queues requests
+ * When clicking on coin items, sometimes the wrong coin is displayed when expanded.
  */
 
 /** maybe:
+ * - calculate percent change from user click in chart, to current price (I love this feature)
  * - local database
+ *      - maybe for favorites
  * - Consider including OHLC
  *      - https://api.coinpaprika.com/#tag/Coins/paths/~1coins~1{coin_id}~1ohlcv~1latest~1/get
- * - list of exchanged
+ * - list of exchanges
  * - price converter
- * - calculate percent change from user click in chart, to current price (I love this feature)
  * - add rank to bottom sheet info
  */
 
