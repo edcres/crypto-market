@@ -85,9 +85,7 @@ class CoinsListFragment : Fragment() {
                     }
                 }
 
-                override fun onSlide(bottomSheet: View, slideOffset: Float) {
-                    Log.d(TAG, "onSlide: called")
-                }
+                override fun onSlide(bottomSheet: View, slideOffset: Float) {}
             }
             bottomSheetBehavior.addBottomSheetCallback(bottomSheetCallback)
             collapsedDataContainer.setOnClickListener {
@@ -114,6 +112,7 @@ class CoinsListFragment : Fragment() {
             coinsListAdapter.submitList(it)
             setCoinOnSheet(it[0])
             timeFrameClickListeners(it[0].id)
+            populateCharts(vm.getHistoricalTickerData(it[0].id, DateFrame.WEEK))
         }
     }
     // SETUP //
@@ -138,7 +137,7 @@ class CoinsListFragment : Fragment() {
 
     private fun timeFrameClickListeners(tickerID: String) {
         binding?.apply {
-//            wBtn.isChecked = true
+            wBtn.isChecked = true
             timeframeBtnGroup.addOnButtonCheckedListener { _, checkedId, isChecked ->
                 if (isChecked) {
                     when (checkedId) {
