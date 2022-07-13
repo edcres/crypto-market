@@ -60,13 +60,18 @@ class CoinsListFragment : Fragment() {
     private fun setBottomSheetBehavior() {
         binding?.apply {
             bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetView)
-            bottomSheetBehavior.peekHeight = 230  // Should be the same height as collapsedDataContainer
+            bottomSheetBehavior.peekHeight =
+                230  // Should be the same height as collapsedDataContainer
             val bottomSheetCallback = object : BottomSheetBehavior.BottomSheetCallback() {
                 @SuppressLint("SwitchIntDef")
                 override fun onStateChanged(bottomSheet: View, newState: Int) {
                     when (newState) {
-                        BottomSheetBehavior.STATE_EXPANDED -> { toggleAppbar(false) }
-                        BottomSheetBehavior.STATE_COLLAPSED -> { toggleAppbar(true) }
+                        BottomSheetBehavior.STATE_EXPANDED -> {
+                            toggleAppbar(false)
+                        }
+                        BottomSheetBehavior.STATE_COLLAPSED -> {
+                            toggleAppbar(true)
+                        }
                         BottomSheetBehavior.STATE_DRAGGING -> {
                             Log.i(TAG, "onStateChanged: STATE_DRAGGING")
                         }
@@ -168,7 +173,7 @@ class CoinsListFragment : Fragment() {
         }
     }
 
-    private fun populateCharts(tickerData : LiveData<List<HistoricalTicker>>) {
+    private fun populateCharts(tickerData: LiveData<List<HistoricalTicker>>) {
         binding?.apply {
             tickerData.observe(viewLifecycleOwner) {
                 tickerChartCollapsedTxt.text = it.toString()

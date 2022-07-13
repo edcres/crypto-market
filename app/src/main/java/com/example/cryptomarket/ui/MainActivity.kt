@@ -12,7 +12,6 @@ import com.example.cryptomarket.R
  * - fix some UI
  *      - coins
  *          - make coins list chart a fixed width (or at least equal to all other chart in the list)
- *          - display the hidden chart when appropriate
  *          - bottom sheet displaying chart when clicking the time frame btns
  * - display Ticker data on the bottom sheet
  * - bugs
