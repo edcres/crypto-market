@@ -10,11 +10,11 @@ import com.example.cryptomarket.R
 // ATH = all time high
 /** todo:
  * - UI
- *      - display ticker BTC when bottom sheet is expanded.
+ *      - give functionality to the drop down btn
  *      - make some texts smaller (like the collapsed bottom sheet ticker abbreviation, some go to the next line)
+ *      - display numbers in an appropriate way (45.0 -> 45) (0.3242432423 -> 0.13)
  *      - display texts in a better way
  *      - add paddings and margins
- *      - display numbers in an appropriate way (45.0 -> 45) (0.3242432423 -> 0.13)
  *
  * - remove logs
  *

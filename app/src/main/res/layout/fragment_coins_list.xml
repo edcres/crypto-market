@@ -87,7 +87,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="210px"
                     android:layout_marginTop="20px"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -103,7 +103,7 @@
 
                         <TextView
                             android:id="@+id/collapsed_symbol_txt"
-                            style="@style/TextAppearance.Material3.HeadlineMedium"
+                            style="@style/TextAppearance.Material3.HeadlineSmall"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="BTC" />
@@ -111,7 +111,7 @@
                         <!--                    Ticker-->
                         <TextView
                             android:id="@+id/total_supply_txt"
-                            style="@style/TextAppearance.Material3.TitleSmall"
+                            style="@style/TextAppearance.Material3.LabelMedium"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="345687654" />
@@ -119,7 +119,7 @@
                         <!--price data-->
                         <TextView
                             android:id="@+id/percent_change_7d_txt"
-                            style="@style/TextAppearance.Material3.TitleSmall"
+                            style="@style/TextAppearance.Material3.LabelMedium"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="7.6%" />
