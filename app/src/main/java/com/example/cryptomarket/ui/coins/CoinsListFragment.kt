@@ -127,8 +127,8 @@ class CoinsListFragment : Fragment() {
         val percentChange1w = "1w: ${ticker.quotes.usd.percentChange7d}"
         val percentChange1m = "1m: ${ticker.quotes.usd.percentChange30d}"
         binding?.apply {
-            tickerNameTxt.text = ticker.name
-            sheetSymbolTxt.text = ticker.symbol
+            tickerSymbolTxt.text = ticker.symbol
+            collapsedSymbolTxt.text = ticker.symbol
             totalSupplyTxt.text = ticker.totalSupply.toString()
             percentChange7dTxt.text = ticker.quotes.usd.percentChange7d.toString()
 

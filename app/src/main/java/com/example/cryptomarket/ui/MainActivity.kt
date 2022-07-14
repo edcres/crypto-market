@@ -10,13 +10,12 @@ import com.example.cryptomarket.R
 // ATH = all time high
 /** todo:
  * - UI
- *      - display ticker when bottom sheet is expanded.
+ *      - display ticker BTC when bottom sheet is expanded.
  *      - make some texts smaller (like the collapsed bottom sheet ticker abbreviation, some go to the next line)
  *      - display texts in a better way
  *      - add paddings and margins
  *      - display numbers in an appropriate way (45.0 -> 45) (0.3242432423 -> 0.13)
  *
- * - bugs
  * - remove logs
  *
  * - try catch (error handling in general)
@@ -27,7 +26,7 @@ import com.example.cryptomarket.R
  *      - news
  *      - coins list
  *
- * display moreInfo better (maybe say the info is unavailable) (also, empty list still shows [])
+ * - display moreInfo better (maybe say the info is unavailable) (also, empty list still shows [])
  *
  * AFTER:
  * - put API data in charts
@@ -38,28 +37,26 @@ import com.example.cryptomarket.R
  * - colors light mode
  * - news article link navigate to the website. When click on news recycler item
  * - maybe put more logic in the viewModel
+ * bugs (maybe just leave them for "eventually")
  */
 
 /** bugs:
+ * - Make more data class attributes optionals. Sometime API data is null
+ * - When the bottom sheet is expanded and I click somewhere where there's a recycler item behind,
+ *      the coin behind it is displayed on the bottom sheet.
+ *          - doesn't happen if im clicking on a cardView or a widget with a click listener
+ *          - maybe add a click listener on the background (the container view)
+ *                  and it doesn't do anything
+ *
  * - start fragment is created twice at startup. Maybe other views are too
  * - Some charts are not loaded within a good amount of time, idk what triggers eventually
- *      - put the queries that make it crash in a queue to be don later and store the in the vm map (I don't need this put it's cool)
+ *      - put the queries that make it crash in a queue to be don later and store the
+ *                  in the vm map (I don't need this put it's cool)
  *          - maybe override onViewRecycled(on the adapter)
  *          - maybe a map <id, request>
  *          - maybe there's something in retrofit or another library that queues requests
- * When the bottom sheet is collapsed and I click on it, the coin behind it is selected
- * Make more data class attributes optionals. Sometime API data is null
- * Sometimes when traveling to the coins fragment, the sheet is expanded and the collapsed view is displayed while the expanded toolbar is hidden
- */
-
-/** maybe:
- * - calculate percent change from user click in chart, to current price (I love this feature)
- * - local database
- *      - maybe for favorites
- * - Consider including OHLC
- *      - https://api.coinpaprika.com/#tag/Coins/paths/~1coins~1{coin_id}~1ohlcv~1latest~1/get
- * - list of exchanges
- * - price converter
+ *      - quick fix (kind of): click on the item,
+ *              when its loaded on the sheet load it to the recycler item
  */
 
 /**
