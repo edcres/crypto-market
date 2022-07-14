@@ -57,6 +57,6 @@ fun displayIsOpenSource(isOpenSource: Boolean?) = when (isOpenSource) {
 
 fun displayStartedAt(startDate: String?) = if(startDate != null) "Started at $startDate" else ""
 
-fun displayATHPrice(athPrice: Double) = "ATH $${athPrice}"
+fun displayATHPrice(athPrice: Double?) = if (athPrice != null) { "ATH $${athPrice}" } else ""
 
-fun displayATHDate(athDate: String) = "ATH $${athDate}"
+fun displayATHDate(athDate: String?) = if (athDate != null) { "ATH $${athDate}" } else ""
