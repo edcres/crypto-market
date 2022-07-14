@@ -9,8 +9,13 @@ import com.example.cryptomarket.R
 
 // ATH = all time high
 /** todo:
- * - add 6 months
- * 
+ * - UI
+ *      - display ticker when bottom sheet is expanded.
+ *      - make some texts smaller (like the collapsed bottom sheet ticker abbreviation, some go to the next line)
+ *      - display texts in a better way
+ *      - add paddings and margins
+ *      - display numbers in an appropriate way (45.0 -> 45) (0.3242432423 -> 0.13)
+ *
  * - bugs
  * - remove logs
  *
@@ -31,27 +36,20 @@ import com.example.cryptomarket.R
  * - colors dark mode
  * - app icon
  * - colors light mode
- * - user can choose if the interval is hr, week, month...
  * - news article link navigate to the website. When click on news recycler item
  * - maybe put more logic in the viewModel
  */
 
 /** bugs:
- * - hide minimised chart when opening bottom sheet
- * - bottom sheet gets disappeared and not minimized
- * - the top right of the bottom sheet does not have rounded corners
- * - when btn is not picked at first (the but is set to selected in the xml).
- *      - when w btn is picked, it can't be un-clicked
- * - start fragment is created twice at startup. Maybe other views too
+ * - start fragment is created twice at startup. Maybe other views are too
  * - Some charts are not loaded within a good amount of time, idk what triggers eventually
  *      - put the queries that make it crash in a queue to be don later and store the in the vm map (I don't need this put it's cool)
  *          - maybe override onViewRecycled(on the adapter)
  *          - maybe a map <id, request>
  *          - maybe there's something in retrofit or another library that queues requests
- * When clicking on coin items, sometimes the wrong coin is displayed when expanded.
  * When the bottom sheet is collapsed and I click on it, the coin behind it is selected
- * In fragmentCoinsList.xml, don't use px, use dp instead.
- *      Then set bottomSheetBehavior.peekHeight to the same dp (from px)
+ * Make more data class attributes optionals. Sometime API data is null
+ * Sometimes when traveling to the coins fragment, the sheet is expanded and the collapsed view is displayed while the expanded toolbar is hidden
  */
 
 /** maybe:
@@ -62,7 +60,6 @@ import com.example.cryptomarket.R
  *      - https://api.coinpaprika.com/#tag/Coins/paths/~1coins~1{coin_id}~1ohlcv~1latest~1/get
  * - list of exchanges
  * - price converter
- * - add rank to bottom sheet info
  */
 
 /**

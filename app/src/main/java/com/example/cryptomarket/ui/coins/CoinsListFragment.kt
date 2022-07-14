@@ -51,6 +51,14 @@ class CoinsListFragment : Fragment() {
         setBottomSheetBehavior()
     }
 
+    override fun onResume() {
+        super.onResume()
+        if (bottomSheetBehavior.state == BottomSheetBehavior.STATE_EXPANDED) {
+            binding!!.collapsedDataContainer.visibility = View.GONE
+            binding!!.appBarLayout.visibility = View.VISIBLE
+        }
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         binding = null
