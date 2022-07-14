@@ -11,9 +11,10 @@ import androidx.navigation.fragment.findNavController
 import com.example.cryptomarket.R
 import com.example.cryptomarket.data.coinsapi.GlobalData
 import com.example.cryptomarket.databinding.FragmentMarketOverviewBinding
-import com.example.cryptomarket.databinding.FragmentNewsBinding
 import com.example.cryptomarket.ui.CryptoViewModel
 import com.example.cryptomarket.utils.FragChosen
+import com.example.cryptomarket.utils.displayPercent
+import com.example.cryptomarket.utils.presentPriceFormatUSD
 
 private const val TAG = "MarketListFrag__TAG"
 
@@ -69,12 +70,18 @@ class MarketOverviewFragment : Fragment() {
         }
     }
     private fun populateView(globalData: GlobalData) {
+        val marketCapATHDateString = "Market Cap ATH Date: ${globalData.marketCapAthDate}"
         binding?.apply {
-            marketCapTxt.text = globalData.marketCapUsd.toString()
-            volume24hrUsdTxt.text = globalData.volume24hUsd.toString()
-            bitcoinDominancePercentageTxt.text = globalData.bitcoinDominancePercentage.toString()
-            marketCapAthValueTxt.text = globalData.marketCapAthValue.toString()
-            marketCapAthDateTxt.text = globalData.marketCapAthDate
+            marketCapTxt.text = presentPriceFormatUSD("Market Cap", globalData.marketCapUsd)
+            volume24hrUsdTxt.text =
+                presentPriceFormatUSD("Volume 24hr", globalData.volume24hUsd)
+            bitcoinDominancePercentageTxt.text = displayPercent(
+                "Bitcoin Dominance",
+                globalData.bitcoinDominancePercentage
+            )
+            marketCapAthValueTxt.text =
+                presentPriceFormatUSD("Market Cap ATH", globalData.marketCapAthValue)
+            marketCapAthDateTxt.text = marketCapATHDateString
         }
     }
     // SETUP //

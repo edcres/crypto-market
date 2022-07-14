@@ -166,13 +166,6 @@
                         app:layout_constraintTop_toBottomOf="@+id/ticker_chart_expanded_txt"
                         app:singleSelection="true">
 
-                        <!--                        <com.google.android.material.button.MaterialButton-->
-                        <!--                            android:id="@+id/d_btn"-->
-                        <!--                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
-                        <!--                            android:layout_width="60sp"-->
-                        <!--                            android:layout_height="wrap_content"-->
-                        <!--                            android:text="1d" />-->
-
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/w_btn"
                             style="@style/Widget.MaterialComponents.Button.OutlinedButton"

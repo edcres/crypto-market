@@ -2,6 +2,8 @@ package com.example.cryptomarket.utils
 
 import com.example.cryptomarket.data.coinsapi.TeamMember
 import com.example.cryptomarket.data.coinsapi.ticker.PriceData
+import java.text.DecimalFormat
+import java.util.*
 
 enum class FragChosen {
     MARKET, COINS, NEWS
@@ -73,6 +75,10 @@ fun removeTrailingZeros(num: Double): String {
     }
 }
 
-fun roundToNDecimals(num:Double, n: Int): String {
-    return "%.${n}f".format(num)
-}
+fun roundToNDecimals(num:Double, n: Int) = "%.${n}f".format(num)
+
+// Note: it doesn't round up the decimals, it just cuts the rest off.
+fun presentPriceFormatUSD(label: String, num: Double) =
+    "$label: ${"%,.2f".format(Locale.ENGLISH, num)}"
+
+fun displayPercent(label: String, num: Double) = "$label: ${removeTrailingZeros(num)}%"
