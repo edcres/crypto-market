@@ -11,8 +11,7 @@ import com.example.cryptomarket.R
 /** todo:
  * - UI
  *      - display numbers in an appropriate way (45.0 -> 45) (0.3242432423 -> 0.13)
- *          - news
- *              - hide the chart data
+ *          - market overview
  *              - format the rest of the numbers
  *          - coins
  *              - coin item
@@ -38,6 +37,7 @@ import com.example.cryptomarket.R
  * AFTER:
  * - put API data in charts
  *      - customize the charts
+ *      - put a scrollview in overview below overall data, it'll hold the pie charts
  * - decide what more I want to display in market overview
  * - colors dark mode
  * - app icon
