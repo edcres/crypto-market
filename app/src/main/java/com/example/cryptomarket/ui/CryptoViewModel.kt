@@ -85,7 +85,7 @@ class CryptoViewModel : ViewModel() {
                 }
                 val startTime = "${currentDate.get(Calendar.YEAR)}/" +
                         "${currentDate.get(Calendar.MONTH) + 1}/" +
-                        "${currentDate.get(Calendar.DAY_OF_MONTH)}"
+                        "${currentDate.get(Calendar.DAY_OF_MONTH) + 1}"
                 // Handle when the API rejects the request when making too many.
                 try {
                     val historicalData = repo
