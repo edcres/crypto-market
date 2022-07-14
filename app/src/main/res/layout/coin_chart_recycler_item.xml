@@ -13,6 +13,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="BTC"
+            style="@style/TextAppearance.Material3.BodyMedium"
             app:layout_constraintBottom_toTopOf="@+id/coin_name_txt"
             app:layout_constraintStart_toStartOf="parent"/>
 
@@ -20,6 +21,7 @@
             android:id="@+id/coin_name_txt"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
+            style="@style/TextAppearance.Material3.LabelMedium"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -29,6 +31,7 @@
             android:id="@+id/rank_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/TextAppearance.Material3.LabelMedium"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/coin_name_txt"
             tools:text="rank" />
@@ -37,6 +40,7 @@
             android:id="@+id/price_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/TextAppearance.Material3.LabelMedium"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -46,6 +50,7 @@
             android:id="@+id/percent_change_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/TextAppearance.Material3.LabelMedium"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="% change 7d" />
