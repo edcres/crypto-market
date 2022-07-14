@@ -97,6 +97,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
+                        android:layout_marginStart="8dp"
                         app:layout_constraintEnd_toStartOf="@+id/ticker_chart_collapsed_txt"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
@@ -108,7 +109,7 @@
                             android:layout_height="wrap_content"
                             android:text="BTC" />
 
-                        <!--                    Ticker-->
+                        <!--Ticker-->
                         <TextView
                             android:id="@+id/total_supply_txt"
                             style="@style/TextAppearance.Material3.LabelMedium"
