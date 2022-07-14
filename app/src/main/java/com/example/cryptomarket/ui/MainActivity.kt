@@ -9,6 +9,7 @@ import com.example.cryptomarket.R
 
 // ATH = all time high
 /** todo:
+ * - add 6 months
  * - fix some UI
  *      - coins
  *          - bottom sheet displaying chart when clicking the time frame btns

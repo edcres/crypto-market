@@ -1,5 +1,6 @@
 package com.example.cryptomarket.data
 
+import android.util.Log
 import com.example.cryptomarket.data.coinsapi.CoinsApi
 import com.example.cryptomarket.data.coinsapi.GlobalData
 import com.example.cryptomarket.data.coinsapi.coin.CoinData
@@ -19,6 +20,8 @@ class Repository {
 
     suspend fun getCoinData(coinID: String): CoinData = CoinsApi.coinsApiService.getCoin(coinID)
 
-    suspend fun getHistoricalTickers(tickerId: String, startTime: String, interval: String) =
-        CoinsApi.coinsApiService.getHistoricalTickers(tickerId, startTime, interval)
+    suspend fun getHistoricalTickers(tickerId: String, startTime: String, interval: String): List<HistoricalTicker> {
+        Log.d(TAG, "getHistoricalTickers: \nid=$tickerId\n$startTime\n$interval")
+        return CoinsApi.coinsApiService.getHistoricalTickers(tickerId, startTime, interval)
+    }
 }

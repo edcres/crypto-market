@@ -141,9 +141,9 @@ class CoinsListFragment : Fragment() {
             timeframeBtnGroup.addOnButtonCheckedListener { _, checkedId, isChecked ->
                 if (isChecked) {
                     when (checkedId) {
-                        dBtn.id -> populateCharts(
-                            vm.getHistoricalTickerData(true, tickerID, DateFrame.DAY)
-                        )
+//                        dBtn.id -> populateCharts(
+//                            vm.getHistoricalTickerData(true, tickerID, DateFrame.DAY)
+//                        )
                         wBtn.id -> populateCharts(
                             vm.getHistoricalTickerData(true, tickerID, DateFrame.WEEK)
                         )

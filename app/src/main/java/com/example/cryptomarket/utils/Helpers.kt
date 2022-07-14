@@ -11,15 +11,15 @@ enum class FragChosen {
 // todo: play around with the intervals (test how it looks with the data)
 //      (probably get more data for the table)
 enum class DateFrame(val abbrev: Char, val interval: String) {
-    DAY('d', "1h"),
+//    DAY('d', "1h"),
     WEEK('w', "1d"),
     MONTH('m', "1d"),
-    QUARTER('q', "1w"),
-    YEAR('y', "1w")
+    QUARTER('q', "7d"),
+    YEAR('y', "7d")
 }
 
 fun pickPercentChange(timeFrame: DateFrame, priceData: PriceData) = when (timeFrame) {
-    DateFrame.DAY -> priceData.percentChange24h
+//    DateFrame.DAY -> priceData.percentChange24h
     DateFrame.WEEK -> priceData.percentChange7d
     DateFrame.MONTH -> priceData.percentChange30d
     DateFrame.QUARTER -> null
