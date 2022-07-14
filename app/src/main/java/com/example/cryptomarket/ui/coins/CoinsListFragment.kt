@@ -46,6 +46,9 @@ class CoinsListFragment : Fragment() {
             lifecycleOwner = viewLifecycleOwner
             coinsListRecycler.adapter = coinsListAdapter
             coinsListRecycler.layoutManager = LinearLayoutManager(requireContext())
+            minimizeBtn.setOnClickListener {
+                bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+            }
         }
         setObservers()
         setBottomSheetBehavior()
@@ -90,7 +93,10 @@ class CoinsListFragment : Fragment() {
                     }
                 }
 
-                override fun onSlide(bottomSheet: View, slideOffset: Float) {}
+                override fun onSlide(bottomSheet: View, slideOffset: Float) {
+                    if (appBarLayout.visibility == View.VISIBLE)
+                        appBarLayout.visibility = View.INVISIBLE
+                }
             }
             bottomSheetBehavior.addBottomSheetCallback(bottomSheetCallback)
             collapsedDataContainer.setOnClickListener {
@@ -146,9 +152,6 @@ class CoinsListFragment : Fragment() {
             timeframeBtnGroup.addOnButtonCheckedListener { _, checkedId, isChecked ->
                 if (isChecked) {
                     when (checkedId) {
-//                        dBtn.id -> populateCharts(
-//                            vm.getHistoricalTickerData(true, tickerID, DateFrame.DAY)
-//                        )
                         wBtn.id -> populateCharts(
                             vm.getHistoricalTickerData(true, tickerID, DateFrame.WEEK)
                         )
