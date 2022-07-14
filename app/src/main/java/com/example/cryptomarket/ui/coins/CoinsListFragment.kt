@@ -149,10 +149,13 @@ class CoinsListFragment : Fragment() {
                         )
                         mBtn.id -> populateCharts(
                             vm.getHistoricalTickerData(true, tickerID, DateFrame.MONTH)
-                            )
+                        )
                         qBtn.id -> populateCharts(
-                                vm.getHistoricalTickerData(true, tickerID, DateFrame.QUARTER)
-                            )
+                            vm.getHistoricalTickerData(true, tickerID, DateFrame.QUARTER)
+                        )
+                        sixMBtn.id -> populateCharts(
+                            vm.getHistoricalTickerData(true, tickerID, DateFrame.HALF_YEAR)
+                        )
                         yBtn.id -> populateCharts(
                             vm.getHistoricalTickerData(true, tickerID, DateFrame.YEAR)
                         )

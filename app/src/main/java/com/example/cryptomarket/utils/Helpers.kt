@@ -15,6 +15,7 @@ enum class DateFrame(val abbrev: Char, val interval: String) {
     WEEK('w', "1d"),
     MONTH('m', "1d"),
     QUARTER('q', "7d"),
+    HALF_YEAR('/', "7d"),
     YEAR('y', "7d")
 }
 
@@ -23,6 +24,7 @@ fun pickPercentChange(timeFrame: DateFrame, priceData: PriceData) = when (timeFr
     DateFrame.WEEK -> priceData.percentChange7d
     DateFrame.MONTH -> priceData.percentChange30d
     DateFrame.QUARTER -> null
+    DateFrame.HALF_YEAR -> null
     DateFrame.YEAR -> priceData.percentChange1y
 }
 

@@ -194,6 +194,13 @@
                             android:text="1q" />
 
                         <com.google.android.material.button.MaterialButton
+                            android:id="@+id/six_m_btn"
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                            android:layout_width="60sp"
+                            android:layout_height="wrap_content"
+                            android:text="6m" />
+
+                        <com.google.android.material.button.MaterialButton
                             android:id="@+id/y_btn"
                             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                             android:layout_width="60sp"
