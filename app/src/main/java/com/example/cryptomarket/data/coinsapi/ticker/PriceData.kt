@@ -37,5 +37,5 @@ data class PriceData(
     @Json(name = "ath_date")
     val athDate: String?,
     @Json(name = "percent_from_price_ath")
-    val percentFromPriceAth: Double
+    val percentFromPriceAth: Double?
 )
