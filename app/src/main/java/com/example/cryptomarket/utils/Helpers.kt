@@ -62,3 +62,17 @@ fun displayStartedAt(startDate: String?) = if(startDate != null) "Started at $st
 fun displayATHPrice(athPrice: Double?) = if (athPrice != null) { "ATH $${athPrice}" } else ""
 
 fun displayATHDate(athDate: String?) = if (athDate != null) { "ATH $${athDate}" } else ""
+
+fun removeTrailingZeros(num: Double): String {
+    return if (num.toString().contains(".")){
+        val decimals = num.toString().split(".").last()
+        if (decimals.length == 1 && decimals.first() == '0') num.toInt().toString()
+        else num.toString()
+    } else {
+        num.toString()
+    }
+}
+
+fun roundToNDecimals(num:Double, n: Int): String {
+    return "%.${n}f".format(num)
+}

@@ -10,10 +10,18 @@ import com.example.cryptomarket.R
 // ATH = all time high
 /** todo:
  * - UI
- *      - add a separator at the top of recycler items
  *      - display numbers in an appropriate way (45.0 -> 45) (0.3242432423 -> 0.13)
+ *          - news
+ *              - hide the chart data
+ *              - format the rest of the numbers
+ *          - coins
+ *              - coin item
+ *              - sheet collapsed
+ *              - sheet expanded
  *      - display texts in a better way
- *      - add paddings and margins
+ *          - with their label
+ *          - coins
+ *          - news
  *
  * - remove logs
  *
