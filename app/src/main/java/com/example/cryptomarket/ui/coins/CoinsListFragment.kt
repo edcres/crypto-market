@@ -172,27 +172,21 @@ class CoinsListFragment : Fragment() {
     }
 
     private fun setMoreInfoDataToUI(priceData: PriceData, coinID: String) {
-        Log.d(TAG, "setMoreInfoDataToUI: called")
+        val notAvailable = "not available"
         vm.getCoinData(coinID).observe(viewLifecycleOwner) {
             binding?.apply {
                 rankTxt.text = it.rank.toString()
                 coinName2Txt.text = it.name
-                typeTxt.text = it.type?.replaceFirstChar { it.titlecase() } ?: ""
+                typeTxt.text = it.type?.replaceFirstChar { it.titlecase() } ?: "Type $notAvailable"
                 teamTxt.text = displayTeam(it.team)
-                descriptionTxt.text = it.description ?: ""
+                descriptionTxt.text = it.description ?: "Description $notAvailable"
                 openSourceTxt.text = displayIsOpenSource(it.openSource)
-                startedAtTxt.text = displayMoreInfo(
-                    "Started at",
-                     reformatDate(it.startedAt)
-                )
-                proofTypeTxt.text = it.proofType ?: ""
-                orgStructureTxt.text = it.orgStructure ?: ""
-                hashAlgorithmTxt.text = it.hashAlgorithm ?: ""
+                startedAtTxt.text = displayMoreInfo("Started at", reformatDate(it.startedAt))
+                proofTypeTxt.text = it.proofType ?: "Proof type $notAvailable"
+                orgStructureTxt.text = it.orgStructure ?: "Org structure $notAvailable"
+                hashAlgorithmTxt.text = it.hashAlgorithm ?: "Hash algorithm $notAvailable"
                 athPriceTxt.text = presentPriceFormatUSD("- ", priceData.athPrice)
-                athDateTxt.text = displayMoreInfo(
-                    "-",
-                    reformatDate(priceData.athDate)
-                )
+                athDateTxt.text = displayMoreInfo("-", reformatDate(priceData.athDate))
             }
         }
     }
