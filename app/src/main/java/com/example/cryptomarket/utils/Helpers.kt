@@ -31,10 +31,11 @@ fun pickPercentChange(timeFrame: DateFrame, priceData: PriceData) = when (timeFr
     DateFrame.YEAR -> "${priceData.percentChange1y}%"
 }
 
-fun reformatDate(rawDateString: String): String {
+fun reformatDate(rawDateString: String?): String {
     // raw date = 2022-07-08T23:27:51Z
     // raw date -> y/m/d -> m/d/y
     // raw date -> 2022/07/08 -> 07/08/2022
+    if (rawDateString == null) return "date not available"
     val listYMD = rawDateString.split("-").map {
         Log.d(GLOBAL_TAG, "reformatDate: $it")
         if (it.contains(":")) it.subSequence(0, 2) else it
@@ -50,16 +51,24 @@ fun addZerosToDate(baseDate: String) =
         } else it
     }
 
-fun displayTeam(team: List<TeamMember>?): String =
+fun displayTeam(team: List<TeamMember>?): String {
     // todo: make it presentable
-    if (team != null) {
-        if (team.isEmpty()) team.toString() else ""
-    } else ""
+    val altLabel = "Team not available"
+    return if (team != null) {
+        if (team.isEmpty()) team.toString() else altLabel
+    } else altLabel
+}
 
 fun displayIsOpenSource(isOpenSource: Boolean?) = when (isOpenSource) {
     true -> "Open Source"
     false -> "Not open source."
     else -> ""
+}
+
+fun displayMoreInfo(label: String, info: String?): String {
+    return if (info != null) {
+        "$label $info"
+    } else "$label not available"
 }
 
 fun displayStartedAt(startDate: String?) = if (startDate != null) "Started at $startDate" else ""
@@ -80,9 +89,11 @@ fun removeTrailing2Zeros(num: String): String {
 fun roundToNDecimals(num: Double, n: Int) = "%.${n}f".format(num)
 
 // Note: it doesn't round up the decimals, it just cuts the rest off.
-fun presentPriceFormatUSD(label: String, num: Double) =
-    if (num < 10) "$label$${"%,.6f".format(Locale.ENGLISH, num)}"
-    else "$label$${"%,.2f".format(Locale.ENGLISH, num)}"
+fun presentPriceFormatUSD(label: String, num: Double?) =
+    if (num != null){
+        if (num < 10) "$label$${"%,.6f".format(Locale.ENGLISH, num)}"
+        else "$label$${"%,.2f".format(Locale.ENGLISH, num)}"
+    } else "$label price not available"
 
 fun displayLong(num: Long): String {
     val dec = DecimalFormat("#,###,###")

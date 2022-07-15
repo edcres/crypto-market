@@ -253,7 +253,6 @@
                         <androidx.core.widget.NestedScrollView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:padding="8dp"
                             android:fadeScrollbars="false"
                             android:scrollbars="vertical">
 
@@ -261,7 +260,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical"
-                                android:padding="8dp">
+                                android:padding="16dp">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -294,13 +293,6 @@
                                     android:background="@color/divider" />
 
                                 <TextView
-                                    android:id="@+id/type_txt"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    style="@style/TextAppearance.Material3.BodyLarge"
-                                    android:text="coin" />
-
-                                <TextView
                                     android:id="@+id/open_source_txt"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -328,6 +320,13 @@
                                     style="@style/TextAppearance.Material3.BodyLarge"
                                     android:text="Hash Algorithm: SHA256" />
 
+                                <TextView
+                                    android:id="@+id/type_txt"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    style="@style/TextAppearance.Material3.BodyLarge"
+                                    android:text="coin" />
+
                                 <View
                                     android:id="@+id/expanded_divider_2"
                                     android:layout_width="match_parent"
@@ -346,12 +345,14 @@
                                     android:id="@+id/description_txt"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
                                     android:text="Bitcoin is a worldwide payment system." />
 
                                 <TextView
                                     android:id="@+id/started_at_txt"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
                                     android:text="Started at 23/54/646" />
 
                                 <View
@@ -366,7 +367,7 @@
                                     android:id="@+id/ath_label_txt"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    style="@style/TextAppearance.Material3.BodyLarge"
+                                    style="@style/TextAppearance.Material3.BodySmall"
                                     android:textSize="20sp"
                                     android:text="All Time High" />
 
