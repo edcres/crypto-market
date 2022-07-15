@@ -1,9 +1,12 @@
 package com.example.cryptomarket.utils
 
+import android.util.Log
 import com.example.cryptomarket.data.coinsapi.TeamMember
 import com.example.cryptomarket.data.coinsapi.ticker.PriceData
 import java.text.DecimalFormat
 import java.util.*
+
+const val GLOBAL_TAG = "Global__TAG"
 
 enum class FragChosen {
     MARKET, COINS, NEWS
@@ -30,13 +33,15 @@ fun pickPercentChange(timeFrame: DateFrame, priceData: PriceData) = when (timeFr
     DateFrame.YEAR -> priceData.percentChange1y
 }
 
-fun formatNewsPostDate(rawDateString: String): String {
+fun reformatDate(rawDateString: String): String {
     // raw date = 2022-07-08T23:27:51Z
     // raw date -> y/m/d -> m/d/y
     // raw date -> 2022/07/08 -> 07/08/2022
     val listYMD = rawDateString.split("-").map {
+        Log.d(GLOBAL_TAG, "reformatDate: $it")
         if (it.contains(":")) it.subSequence(0, 2) else it
     }
+    Log.d(GLOBAL_TAG, "reformatDate: $listYMD")
     return "${listYMD[1]}/${listYMD[2]}/${listYMD[0]}"
 }
 
@@ -70,15 +75,13 @@ fun removeTrailingZeros(num: Double): String {
         val decimals = num.toString().split(".").last()
         if (decimals.length == 1 && decimals.first() == '0') num.toInt().toString()
         else num.toString()
-    } else {
-        num.toString()
-    }
+    } else num.toString()
 }
 
 fun roundToNDecimals(num:Double, n: Int) = "%.${n}f".format(num)
 
 // Note: it doesn't round up the decimals, it just cuts the rest off.
 fun presentPriceFormatUSD(label: String, num: Double) =
-    "$label: ${"%,.2f".format(Locale.ENGLISH, num)}"
+    "$label: $${"%,.2f".format(Locale.ENGLISH, num)}"
 
 fun displayPercent(label: String, num: Double) = "$label: ${removeTrailingZeros(num)}%"

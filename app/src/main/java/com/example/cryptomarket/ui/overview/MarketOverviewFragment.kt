@@ -14,6 +14,7 @@ import com.example.cryptomarket.databinding.FragmentMarketOverviewBinding
 import com.example.cryptomarket.ui.CryptoViewModel
 import com.example.cryptomarket.utils.FragChosen
 import com.example.cryptomarket.utils.displayPercent
+import com.example.cryptomarket.utils.reformatDate
 import com.example.cryptomarket.utils.presentPriceFormatUSD
 
 private const val TAG = "MarketListFrag__TAG"
@@ -49,7 +50,7 @@ class MarketOverviewFragment : Fragment() {
     private fun setObservers() {
         vm.fragChosen.observe(viewLifecycleOwner) {
             val navController = findNavController()
-            when(it) {
+            when (it) {
                 FragChosen.COINS -> navController.navigate(R.id.action_market_to_coins)
                 FragChosen.NEWS -> navController.navigate(R.id.action_market_to_news)
                 else -> Log.i(TAG, "setObservers: from Market to $it")
@@ -63,14 +64,18 @@ class MarketOverviewFragment : Fragment() {
                 val top10 = it.take(10) // todo: check if these coins are ordered by rank
                 // todo: figure out what else to do when using you start using charts.
                 //      do in vm and background thread
-                marketCapShareTxt.text = top10.toString()  // list of Ticker.PriceData.market_cap of the top 10 coins
+                marketCapShareTxt.text =
+                    top10.toString()  // list of Ticker.PriceData.market_cap of the top 10 coins
                 volume24hTxt.text = top10.toString()       // Ticker.PriceData.volume24h
                 totalSupplyTxt.text = top10.toString()    // Ticker.TotalSupply
             }
         }
     }
+
     private fun populateView(globalData: GlobalData) {
-        val marketCapATHDateString = "Market Cap ATH Date: ${globalData.marketCapAthDate}"
+        val marketCapATHDateString = "Market Cap ATH Date: ${
+            reformatDate(globalData.marketCapAthDate)
+        }"
         binding?.apply {
             marketCapTxt.text = presentPriceFormatUSD("Market Cap", globalData.marketCapUsd)
             volume24hrUsdTxt.text =
