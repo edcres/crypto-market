@@ -49,6 +49,10 @@ class CoinsListFragment : Fragment() {
             minimizeBtn.setOnClickListener {
                 bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
             }
+            expandedSheetMainContainer.setOnClickListener {
+                // The purpose of this click listener is to cover
+                //  up a bug clicking list items behind the sheet.
+            }
         }
         setObservers()
         setBottomSheetBehavior()

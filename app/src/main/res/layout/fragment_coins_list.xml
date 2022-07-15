@@ -132,6 +132,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/expanded_sheet_main_container"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 

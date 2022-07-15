@@ -13,14 +13,7 @@ import com.example.cryptomarket.R
  *      - display numbers in an appropriate way (45.0 -> 45) (0.3242432423 -> 0.13)
  *          - coins
  *              - sheet expanded
- *                  - string resources, tools:
  *                  - display team
- *      - display coin texts in a better way
- *          - with their label
- *          - use string resources
- *          - list item
- *          - sheet collapsed
- *          - sheet expanded
  *
  * - remove logs
  *
