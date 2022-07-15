@@ -4,4 +4,10 @@
     <string name="market">Market</string>
     <string name="coins">Coins</string>
     <string name="news">News</string>
+
+    <!--    Market Overview-->
+    <string name="market_cap">Market Cap</string>
+    <string name="volume_24hr">Volume 24hr</string>
+    <string name="market_cap_ath">Market Cap ATH</string>
+    <string name="bitcoin_dominance">Bitcoin Dominance</string>
 </resources>

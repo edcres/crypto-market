@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="Market Cap"
+            android:text="@string/market_cap"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:text="$86525"
+            tools:text="$86525"
             app:layout_constraintStart_toStartOf="@+id/market_cap_label"
             app:layout_constraintTop_toBottomOf="@+id/market_cap_label" />
 
@@ -45,7 +45,7 @@
             style="@style/TextAppearance.Material3.HeadlineSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Volume 24hr"
+            android:text="@string/volume_24hr"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/market_cap_label"
             app:layout_constraintTop_toTopOf="@+id/market_cap_label" />
@@ -56,7 +56,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:text="$2134"
+            tools:text="$2134"
             app:layout_constraintStart_toStartOf="@+id/volume_24hr_label"
             app:layout_constraintTop_toBottomOf="@+id/volume_24hr_label" />
 
@@ -67,7 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="45%"
+            tools:text="45%"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/divider_3" />
 
@@ -78,7 +78,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginBottom="2dp"
-            android:text="Bitcoin Dominance"
+            android:text="@string/bitcoin_dominance"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@+id/bitcoin_dominance_percentage_txt"
             app:layout_constraintStart_toEndOf="@+id/bitcoin_dominance_percentage_txt" />
@@ -102,7 +102,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="Market Cap ATH"
+            android:text="@string/market_cap_ath"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/divider_2" />
 
@@ -112,7 +112,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:text="$14732"
+            tools:text="$14732"
             app:layout_constraintStart_toStartOf="@+id/market_cap_ath_label"
             app:layout_constraintTop_toBottomOf="@+id/market_cap_ath_label" />
 
@@ -122,7 +122,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:text="12/03/2018"
+            tools:text="12/03/2018"
             app:layout_constraintStart_toStartOf="@+id/market_cap_ath_label"
             app:layout_constraintTop_toBottomOf="@+id/market_cap_ath_value_txt" />
 
@@ -157,7 +157,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:layout_margin="8dp"
-                    android:text="market_cap_share"
+                    tools:text="market_cap_share"
                     app:layout_constraintBottom_toTopOf="@+id/volume_24h_txt"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/market_cap_ath_date_txt" />
@@ -168,7 +168,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:layout_margin="8dp"
-                    android:text="volume24h"
+                    tools:text="volume24h"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
 
@@ -178,7 +178,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:layout_margin="8dp"
-                    android:text="totalSupply"
+                    tools:text="totalSupply"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
 
