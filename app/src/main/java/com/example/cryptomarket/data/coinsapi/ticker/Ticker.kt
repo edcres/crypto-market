@@ -16,7 +16,7 @@ data class Ticker(
     @Json(name = "circulating_supply")
     val circulatingSupply: Double,
     @Json(name = "total_supply")
-    val totalSupply: Double,
+    val totalSupply: Long,
     @Json(name = "max_supply")
     val maxSupply: Double,
     @Json(name = "beta_value")

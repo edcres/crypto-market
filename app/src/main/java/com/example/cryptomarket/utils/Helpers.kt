@@ -3,6 +3,7 @@ package com.example.cryptomarket.utils
 import android.util.Log
 import com.example.cryptomarket.data.coinsapi.TeamMember
 import com.example.cryptomarket.data.coinsapi.ticker.PriceData
+import java.text.DecimalFormat
 import java.util.*
 
 const val GLOBAL_TAG = "Global__TAG"
@@ -15,7 +16,7 @@ enum class FragChosen {
 // todo: play around with the intervals (test how it looks with the data)
 //      (probably get more data for the table)
 enum class DateFrame(val abbrev: String, val interval: String) {
-//    DAY('d', "1h"),
+    //    DAY('d', "1h"),
     WEEK("1w", "1d"),
     MONTH("1m", "1d"),
     QUARTER("1q", "7d"),
@@ -25,11 +26,11 @@ enum class DateFrame(val abbrev: String, val interval: String) {
 
 fun pickPercentChange(timeFrame: DateFrame, priceData: PriceData) = when (timeFrame) {
 //    DateFrame.DAY -> priceData.percentChange24h
-    DateFrame.WEEK -> priceData.percentChange7d
-    DateFrame.MONTH -> priceData.percentChange30d
+    DateFrame.WEEK -> "${priceData.percentChange7d}%"
+    DateFrame.MONTH -> "${priceData.percentChange30d}%"
     DateFrame.QUARTER -> null
     DateFrame.HALF_YEAR -> null
-    DateFrame.YEAR -> priceData.percentChange1y
+    DateFrame.YEAR -> "${priceData.percentChange1y}%"
 }
 
 fun reformatDate(rawDateString: String): String {
@@ -63,24 +64,34 @@ fun displayIsOpenSource(isOpenSource: Boolean?) = when (isOpenSource) {
     else -> ""
 }
 
-fun displayStartedAt(startDate: String?) = if(startDate != null) "Started at $startDate" else ""
+fun displayStartedAt(startDate: String?) = if (startDate != null) "Started at $startDate" else ""
 
-fun displayATHPrice(athPrice: Double?) = if (athPrice != null) { "ATH $${athPrice}" } else ""
+fun displayATHPrice(athPrice: Double?) = if (athPrice != null) {
+    "ATH $${athPrice}"
+} else ""
 
-fun displayATHDate(athDate: String?) = if (athDate != null) { "ATH $${athDate}" } else ""
+fun displayATHDate(athDate: String?) = if (athDate != null) {
+    "ATH $${athDate}"
+} else ""
 
-fun removeTrailingZeros(num: Double): String {
-    return if (num.toString().contains(".")){
-        val decimals = num.toString().split(".").last()
-        if (decimals.length == 1 && decimals.first() == '0') num.toInt().toString()
-        else num.toString()
-    } else num.toString()
+fun removeTrailing2Zeros(num: String): String {
+    return if (num.contains('.')) {
+        val decimals = num.split('.').last()
+        if (decimals.length <= 2 && decimals.first() == '0' && decimals.last() == '0') {
+            num.split('.')[0]
+        } else num
+    } else num
 }
 
-fun roundToNDecimals(num:Double, n: Int) = "%.${n}f".format(num)
+fun roundToNDecimals(num: Double, n: Int) = "%.${n}f".format(num)
 
 // Note: it doesn't round up the decimals, it just cuts the rest off.
 fun presentPriceFormatUSD(label: String, num: Double) =
-    "$label: $${"%,.2f".format(Locale.ENGLISH, num)}"
+    "$label$${"%,.2f".format(Locale.ENGLISH, num)}"
 
-fun displayPercent(label: String, num: Double) = "$label: ${removeTrailingZeros(num)}%"
+fun displayLong(num: Long): String {
+    val dec = DecimalFormat("#,###,###")
+    return dec.format(num)
+}
+
+fun displayPercent(label: String, num: Double) = "$label${removeTrailing2Zeros(num.toString())}%"

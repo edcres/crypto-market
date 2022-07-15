@@ -132,7 +132,7 @@ class CoinsListFragment : Fragment() {
         binding?.apply {
             tickerSymbolTxt.text = ticker.symbol
             collapsedSymbolTxt.text = ticker.symbol
-            totalSupplyTxt.text = ticker.totalSupply.toString()
+            totalSupplyTxt.text = displayLong(ticker.totalSupply)
             percentChange7dTxt.text = ticker.quotes.usd.percentChange7d.toString()
 
             tickerPriceTxt.text = ticker.quotes.usd.price.toString()

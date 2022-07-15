@@ -12,7 +12,6 @@ import com.example.cryptomarket.R
  * - UI
  *      - display numbers in an appropriate way (45.0 -> 45) (0.3242432423 -> 0.13)
  *          - coins
- *              - coin item
  *              - sheet collapsed
  *              - sheet expanded
  *      - display coin texts in a better way

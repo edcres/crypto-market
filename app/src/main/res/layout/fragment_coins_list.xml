@@ -100,10 +100,12 @@
                         <!--Ticker-->
                         <TextView
                             android:id="@+id/total_supply_txt"
-                            style="@style/TextAppearance.Material3.LabelMedium"
+                            style="@style/TextAppearance.Material3.LabelSmall"
+
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="345687654" />
+<!--                        style="@style/TextAppearance.Material3.LabelSmall"-->
 
                         <!--price data-->
                         <TextView

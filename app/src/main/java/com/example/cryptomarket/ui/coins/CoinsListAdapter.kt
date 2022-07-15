@@ -12,7 +12,7 @@ import com.example.cryptomarket.ui.CryptoViewModel
 import com.example.cryptomarket.utils.DateFrame
 import com.example.cryptomarket.utils.pickPercentChange
 import com.example.cryptomarket.utils.presentPriceFormatUSD
-import com.example.cryptomarket.utils.removeTrailingZeros
+import com.example.cryptomarket.utils.removeTrailing2Zeros
 
 class CoinsListAdapter(
     private val viewLifecycleOwner: LifecycleOwner,
@@ -49,9 +49,8 @@ class CoinsListAdapter(
             binding.apply {
                 coinSymbolTxt.text = ticker.symbol
                 coinNameTxt.text = ticker.name
-                rankTxt.text = removeTrailingZeros(ticker.rank)
+                rankTxt.text = removeTrailing2Zeros(ticker.rank.toString())
                 priceTxt.text = presentPriceFormatUSD("", ticker.quotes.usd.price)
-
 
                 // todo: test if the time frame changes in the list when i click the time frame btns
                 timeFrame.text = chosenTimeFrame.abbrev

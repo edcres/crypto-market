@@ -67,7 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="4dp"
+            android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toStartOf="@+id/percent_change_txt"
             app:layout_constraintTop_toTopOf="@id/divider_2"
             tools:text="7d:" />

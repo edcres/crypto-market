@@ -41,7 +41,7 @@ class CryptoViewModel : ViewModel() {
     init { startApplication() }
 
     // SETUP //
-    fun startApplication() {
+    private fun startApplication() {
         Log.d(TAG, "startApplication called")
         repo = Repository()
         viewModelScope.launch { _tickers.postValue(repo.getTickers()) }
