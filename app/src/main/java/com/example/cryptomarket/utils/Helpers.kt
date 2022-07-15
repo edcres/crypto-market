@@ -87,7 +87,8 @@ fun roundToNDecimals(num: Double, n: Int) = "%.${n}f".format(num)
 
 // Note: it doesn't round up the decimals, it just cuts the rest off.
 fun presentPriceFormatUSD(label: String, num: Double) =
-    "$label$${"%,.2f".format(Locale.ENGLISH, num)}"
+    if (num < 10) "$label$${"%,.6f".format(Locale.ENGLISH, num)}"
+    else "$label$${"%,.2f".format(Locale.ENGLISH, num)}"
 
 fun displayLong(num: Long): String {
     val dec = DecimalFormat("#,###,###")
