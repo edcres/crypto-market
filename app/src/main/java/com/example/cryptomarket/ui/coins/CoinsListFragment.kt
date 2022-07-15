@@ -180,7 +180,7 @@ class CoinsListFragment : Fragment() {
                 startedAtTxt.text = displayMoreInfo("Started at", reformatDate(it.startedAt))
                 proofTypeTxt.text = it.proofType ?: "Proof type $notAvailable"
                 orgStructureTxt.text = it.orgStructure ?: "Org structure $notAvailable"
-                hashAlgorithmTxt.text = it.hashAlgorithm ?: "Hash algorithm $notAvailable"
+                hashAlgorithmTxt.text = displayHashAlgorithm(it.hashAlgorithm)
                 athPriceTxt.text = presentPriceFormatUSD("- ", priceData.athPrice)
                 athDateTxt.text = displayMoreInfo("-", reformatDate(priceData.athDate))
             }

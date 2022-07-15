@@ -53,6 +53,7 @@ fun addZerosToDate(baseDate: String) =
 
 fun displayTeam(team: List<TeamMember>?): String {
     // todo: make it presentable
+    // todo: bug (rank 16 Polygon displays [] for team members)
     val altLabel = "Team not available"
     return if (team != null) {
         if (team.isEmpty()) team.toString() else altLabel
@@ -101,3 +102,9 @@ fun displayLong(num: Long): String {
 }
 
 fun displayPercent(label: String, num: Double) = "$label${removeTrailing2Zeros(num.toString())}%"
+
+fun displayHashAlgorithm(hash: String?): String {
+    return if (hash != null) {
+        "Hash algorithm: $hash"
+    } else "Hash algorithm not available"
+}
