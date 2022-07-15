@@ -120,7 +120,7 @@
                     <TextView
                         android:id="@+id/ticker_chart_collapsed_txt"
                         android:layout_width="300dp"
-                        android:layout_height="0dp"
+                        android:layout_height="81dp"
                         android:background="@color/purple_200"
                         android:gravity="center"
                         android:visibility="visible"
@@ -253,6 +253,7 @@
                         <androidx.core.widget.NestedScrollView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:padding="8dp"
                             android:fadeScrollbars="false"
                             android:scrollbars="vertical">
 
@@ -283,6 +284,14 @@
                                         android:text="Bitcoin"/>
 
                                 </LinearLayout>
+
+                                <View
+                                    android:id="@+id/expanded_divider_1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0.5dp"
+                                    android:layout_marginBottom="8dp"
+                                    android:layout_marginTop="8dp"
+                                    android:background="@color/divider" />
 
                                 <TextView
                                     android:id="@+id/type_txt"
@@ -319,7 +328,13 @@
                                     style="@style/TextAppearance.Material3.BodyLarge"
                                     android:text="Hash Algorithm: SHA256" />
 
-                                <!-- todo: separator here-->
+                                <View
+                                    android:id="@+id/expanded_divider_2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0.5dp"
+                                    android:layout_marginBottom="8dp"
+                                    android:layout_marginTop="8dp"
+                                    android:background="@color/divider" />
 
                                 <TextView
                                     android:id="@+id/team_txt"
@@ -339,7 +354,13 @@
                                     android:layout_height="wrap_content"
                                     android:text="Started at 23/54/646" />
 
-<!--                                todo: separator here-->
+                                <View
+                                    android:id="@+id/expanded_divider_3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0.5dp"
+                                    android:layout_marginBottom="8dp"
+                                    android:layout_marginTop="8dp"
+                                    android:background="@color/divider" />
 
                                 <TextView
                                     android:id="@+id/ath_label_txt"
