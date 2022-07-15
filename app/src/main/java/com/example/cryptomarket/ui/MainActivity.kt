@@ -15,11 +15,12 @@ import com.example.cryptomarket.R
  *              - coin item
  *              - sheet collapsed
  *              - sheet expanded
- *      - display texts in a better way
+ *      - display coin texts in a better way
  *          - with their label
  *          - use string resources
- *          - coins
- *          - overall market
+ *          - list item
+ *          - sheet collapsed
+ *          - sheet expanded
  *
  * - remove logs
  *

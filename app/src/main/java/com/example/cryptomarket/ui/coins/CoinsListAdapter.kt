@@ -11,6 +11,8 @@ import com.example.cryptomarket.databinding.CoinChartRecyclerItemBinding
 import com.example.cryptomarket.ui.CryptoViewModel
 import com.example.cryptomarket.utils.DateFrame
 import com.example.cryptomarket.utils.pickPercentChange
+import com.example.cryptomarket.utils.presentPriceFormatUSD
+import com.example.cryptomarket.utils.removeTrailingZeros
 
 class CoinsListAdapter(
     private val viewLifecycleOwner: LifecycleOwner,
@@ -47,10 +49,13 @@ class CoinsListAdapter(
             binding.apply {
                 coinSymbolTxt.text = ticker.symbol
                 coinNameTxt.text = ticker.name
-                rankTxt.text = ticker.rank.toString()
-                priceTxt.text = ticker.quotes.usd.price.toString()
-                percentChangeTxt.text =
-                    pickPercentChange(chosenTimeFrame, ticker.quotes.usd)?.toString() ?: ""
+                rankTxt.text = removeTrailingZeros(ticker.rank)
+                priceTxt.text = presentPriceFormatUSD("", ticker.quotes.usd.price)
+
+
+                // todo: test if the time frame changes in the list when i click the time frame btns
+                timeFrame.text = chosenTimeFrame.abbrev
+                percentChangeTxt.text = pickPercentChange(chosenTimeFrame, ticker.quotes.usd)?.toString() ?: ""
                 chartPlaceholderTxt.text = "none"
                 vm.getHistoricalTickerData(false, ticker.id, chosenTimeFrame)
                     .observe(viewLifecycleOwner) {
