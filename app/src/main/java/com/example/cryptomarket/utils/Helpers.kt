@@ -8,9 +8,7 @@ import java.util.*
 
 const val GLOBAL_TAG = "Global__TAG"
 
-enum class FragChosen {
-    MARKET, COINS, NEWS
-}
+enum class FragChosen { MARKET, COINS, NEWS }
 
 // 'abbre' means abbreviation
 // todo: play around with the intervals (test how it looks with the data)
@@ -66,13 +64,9 @@ fun displayIsOpenSource(isOpenSource: Boolean?) = when (isOpenSource) {
 
 fun displayStartedAt(startDate: String?) = if (startDate != null) "Started at $startDate" else ""
 
-fun displayATHPrice(athPrice: Double?) = if (athPrice != null) {
-    "ATH $${athPrice}"
-} else ""
+fun displayATHPrice(athPrice: Double?) = if (athPrice != null) "ATH $${athPrice}" else ""
 
-fun displayATHDate(athDate: String?) = if (athDate != null) {
-    "ATH $${athDate}"
-} else ""
+fun displayATHDate(athDate: String?) = if (athDate != null) "ATH $${athDate}" else ""
 
 fun removeTrailing2Zeros(num: String): String {
     return if (num.contains('.')) {

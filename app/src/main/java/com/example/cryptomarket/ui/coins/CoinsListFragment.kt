@@ -135,7 +135,7 @@ class CoinsListFragment : Fragment() {
             totalSupplyTxt.text = displayLong(ticker.totalSupply)
             percentChange7dTxt.text = ticker.quotes.usd.percentChange7d.toString()
 
-            tickerPriceTxt.text = ticker.quotes.usd.price.toString()
+            tickerPriceTxt.text = presentPriceFormatUSD("", ticker.quotes.usd.price)
             percentChangeATxt.text = percentChange1w
             percentChangeBTxt.text = percentChange1m
 
@@ -176,6 +176,7 @@ class CoinsListFragment : Fragment() {
         vm.getCoinData(coinID).observe(viewLifecycleOwner) {
             binding?.apply {
                 rankTxt.text = it.rank.toString()
+                coinName2Txt.text = it.name
                 typeTxt.text = it.type ?: ""
                 teamTxt.text = displayTeam(it.team)
                 descriptionTxt.text = it.description ?: ""

@@ -205,12 +205,16 @@
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:padding="8dp">
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp">
 
                             <TextView
                                 android:id="@+id/ticker_price_txt"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                style="@style/TextAppearance.Material3.HeadlineSmall"
                                 android:text="12434"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -267,12 +271,15 @@
                                         android:id="@+id/rank_txt"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
+                                        style="@style/TextAppearance.Material3.TitleLarge"
                                         android:text="1" />
 
                                     <TextView
                                         android:id="@+id/coin_name_2_txt"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
+                                        android:layout_marginStart="8dp"
+                                        style="@style/TextAppearance.Material3.TitleLarge"
                                         android:text="Bitcoin"/>
 
                                 </LinearLayout>
@@ -281,60 +288,81 @@
                                     android:id="@+id/type_txt"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    style="@style/TextAppearance.Material3.BodyLarge"
                                     android:text="coin" />
-
-                                <TextView
-                                    android:id="@+id/team_txt"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="sakoshi nakamoto" />
-
-                                <TextView
-                                    android:id="@+id/description_txt"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="adads das dasda dadada dasda asdada" />
 
                                 <TextView
                                     android:id="@+id/open_source_txt"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    style="@style/TextAppearance.Material3.BodyLarge"
                                     android:text="open source" />
-
-                                <TextView
-                                    android:id="@+id/started_at_txt"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="23/54/646" />
 
                                 <TextView
                                     android:id="@+id/proof_Type_txt"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    style="@style/TextAppearance.Material3.BodyLarge"
                                     android:text="proof of stake" />
 
                                 <TextView
                                     android:id="@+id/org_structure_txt"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="asda asda" />
+                                    style="@style/TextAppearance.Material3.BodyLarge"
+                                    android:text="Decentralized" />
 
                                 <TextView
                                     android:id="@+id/hash_algorithm_txt"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="asdasda sda dasda" />
+                                    style="@style/TextAppearance.Material3.BodyLarge"
+                                    android:text="Hash Algorithm: SHA256" />
+
+                                <!-- todo: separator here-->
+
+                                <TextView
+                                    android:id="@+id/team_txt"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Satoshi Nakamoto" />
+
+                                <TextView
+                                    android:id="@+id/description_txt"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Bitcoin is a worldwide payment system." />
+
+                                <TextView
+                                    android:id="@+id/started_at_txt"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Started at 23/54/646" />
+
+<!--                                todo: separator here-->
+
+                                <TextView
+                                    android:id="@+id/ath_label_txt"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    style="@style/TextAppearance.Material3.BodyLarge"
+                                    android:textSize="20sp"
+                                    android:text="All Time High" />
 
                                 <TextView
                                     android:id="@+id/ath_price_txt"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    style="@style/TextAppearance.Material3.BodyLarge"
                                     android:text="13453425" />
 
                                 <TextView
                                     android:id="@+id/ath_date_txt"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    style="@style/TextAppearance.Material3.BodyLarge"
                                     android:text="12/45/6855" />
 
                             </LinearLayout>
