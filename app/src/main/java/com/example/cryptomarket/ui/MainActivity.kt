@@ -11,17 +11,15 @@ import com.example.cryptomarket.R
 /** todo:
  * - UI
  *      - display numbers in an appropriate way (45.0 -> 45) (0.3242432423 -> 0.13)
- *          - market overview
- *              - display the textViews better
- *              - make string R vars
  *          - coins
  *              - coin item
  *              - sheet collapsed
  *              - sheet expanded
  *      - display texts in a better way
  *          - with their label
+ *          - use string resources
  *          - coins
- *          - news
+ *          - overall market
  *
  * - remove logs
  *
@@ -37,15 +35,14 @@ import com.example.cryptomarket.R
  *
  * AFTER:
  * - put API data in charts
- *      - customize the charts
- *      - put a scrollview in overview below overall data, it'll hold the pie charts
- * - decide what more I want to display in market overview
+ *      - overall market
  * - colors dark mode
  * - app icon
  * - colors light mode
  * - news article link navigate to the website. When click on news recycler item
+ * - customize the charts
  * - maybe put more logic in the viewModel
- * bugs (maybe just leave them for "eventually")
+ * - bugs (at least the first 2, maybe just leave the rest for "eventually")
  */
 
 /** bugs:

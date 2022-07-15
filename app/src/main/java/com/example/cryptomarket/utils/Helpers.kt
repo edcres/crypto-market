@@ -3,7 +3,6 @@ package com.example.cryptomarket.utils
 import android.util.Log
 import com.example.cryptomarket.data.coinsapi.TeamMember
 import com.example.cryptomarket.data.coinsapi.ticker.PriceData
-import java.text.DecimalFormat
 import java.util.*
 
 const val GLOBAL_TAG = "Global__TAG"
