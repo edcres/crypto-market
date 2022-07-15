@@ -127,18 +127,14 @@ class CoinsListFragment : Fragment() {
 
     // HELPERS
     private fun setCoinOnSheet(ticker: Ticker) {
-        val percentChange1w = "1w: ${ticker.quotes.usd.percentChange7d}"
-        val percentChange1m = "1m: ${ticker.quotes.usd.percentChange30d}"
         binding?.apply {
             tickerSymbolTxt.text = ticker.symbol
             collapsedSymbolTxt.text = ticker.symbol
             totalSupplyTxt.text = displayLong(ticker.totalSupply)
             percentChange7dTxt.text = ticker.quotes.usd.percentChange7d.toString()
-
             tickerPriceTxt.text = presentPriceFormatUSD("", ticker.quotes.usd.price)
-            percentChangeATxt.text = percentChange1w
-            percentChangeBTxt.text = percentChange1m
-
+            percentChangeATxt.text = displayPercent("1w: ", ticker.quotes.usd.percentChange7d)
+            percentChangeBTxt.text = displayPercent("1m: ", ticker.quotes.usd.percentChange30d)
             setMoreInfoDataToUI(ticker.quotes.usd, ticker.id)
         }
     }
