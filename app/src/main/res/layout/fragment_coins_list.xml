@@ -95,7 +95,7 @@
                             style="@style/TextAppearance.Material3.HeadlineSmall"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="BTC" />
+                            tools:text="BTC" />
 
                         <!--Ticker-->
                         <TextView
@@ -104,7 +104,7 @@
 
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="345687654" />
+                            tools:text="345687654" />
 <!--                        style="@style/TextAppearance.Material3.LabelSmall"-->
 
                         <!--price data-->
@@ -113,7 +113,7 @@
                             style="@style/TextAppearance.Material3.LabelMedium"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="7.6%" />
+                            tools:text="7.6%" />
 
                     </LinearLayout>
 
@@ -161,35 +161,35 @@
                             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                             android:layout_width="60sp"
                             android:layout_height="wrap_content"
-                            android:text="1w" />
+                            android:text="@string/w_btn" />
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/m_btn"
                             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                             android:layout_width="60sp"
                             android:layout_height="wrap_content"
-                            android:text="1m" />
+                            android:text="@string/m_btn" />
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/q_btn"
                             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                             android:layout_width="60sp"
                             android:layout_height="wrap_content"
-                            android:text="1q" />
+                            android:text="@string/q_btn" />
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/six_m_btn"
                             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                             android:layout_width="60sp"
                             android:layout_height="wrap_content"
-                            android:text="6m" />
+                            android:text="@string/six_m_btn" />
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/y_btn"
                             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                             android:layout_width="60sp"
                             android:layout_height="wrap_content"
-                            android:text="1y" />
+                            android:text="@string/y_btn" />
 
                     </com.google.android.material.button.MaterialButtonToggleGroup>
 
@@ -215,7 +215,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 style="@style/TextAppearance.Material3.HeadlineSmall"
-                                android:text="12434"
+                                tools:text="12434"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
@@ -224,7 +224,7 @@
                                 android:id="@+id/percent_change_a_txt"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="123"
+                                tools:text="1w 12%"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -232,7 +232,7 @@
                                 android:id="@+id/percent_change_b_txt"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="123"
+                                tools:text="1m -8%"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintTop_toBottomOf="@+id/percent_change_a_txt" />
@@ -272,7 +272,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         style="@style/TextAppearance.Material3.TitleLarge"
-                                        android:text="1" />
+                                        tools:text="1" />
 
                                     <TextView
                                         android:id="@+id/coin_name_2_txt"
@@ -280,7 +280,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginStart="8dp"
                                         style="@style/TextAppearance.Material3.TitleLarge"
-                                        android:text="Bitcoin"/>
+                                        tools:text="Bitcoin"/>
 
                                 </LinearLayout>
 
@@ -297,35 +297,35 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     style="@style/TextAppearance.Material3.BodyLarge"
-                                    android:text="open source" />
+                                    tools:text="Open Source" />
 
                                 <TextView
                                     android:id="@+id/proof_Type_txt"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     style="@style/TextAppearance.Material3.BodyLarge"
-                                    android:text="proof of stake" />
+                                    tools:text="Proof of Stake" />
 
                                 <TextView
                                     android:id="@+id/org_structure_txt"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     style="@style/TextAppearance.Material3.BodyLarge"
-                                    android:text="Decentralized" />
+                                    tools:text="Decentralized" />
 
                                 <TextView
                                     android:id="@+id/hash_algorithm_txt"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     style="@style/TextAppearance.Material3.BodyLarge"
-                                    android:text="Hash Algorithm: SHA256" />
+                                    tools:text="Hash Algorithm: SHA256" />
 
                                 <TextView
                                     android:id="@+id/type_txt"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     style="@style/TextAppearance.Material3.BodyLarge"
-                                    android:text="coin" />
+                                    tools:text="Coin" />
 
                                 <View
                                     android:id="@+id/expanded_divider_2"
@@ -339,21 +339,21 @@
                                     android:id="@+id/team_txt"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Satoshi Nakamoto" />
+                                    tools:text="Satoshi Nakamoto" />
 
                                 <TextView
                                     android:id="@+id/description_txt"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="4dp"
-                                    android:text="Bitcoin is a worldwide payment system." />
+                                    tools:text="Bitcoin is a worldwide payment system." />
 
                                 <TextView
                                     android:id="@+id/started_at_txt"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="4dp"
-                                    android:text="Started at 23/54/646" />
+                                    tools:text="Started at 23/54/646" />
 
                                 <View
                                     android:id="@+id/expanded_divider_3"
@@ -369,15 +369,16 @@
                                     android:layout_height="wrap_content"
                                     style="@style/TextAppearance.Material3.BodySmall"
                                     android:textSize="20sp"
-                                    android:text="All Time High" />
+                                    android:text="@string/ath_label" />
 
                                 <TextView
                                     android:id="@+id/ath_price_txt"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
                                     android:layout_marginStart="8dp"
                                     style="@style/TextAppearance.Material3.BodyLarge"
-                                    android:text="13453425" />
+                                    tools:text="- $13,453.42" />
 
                                 <TextView
                                     android:id="@+id/ath_date_txt"
@@ -385,7 +386,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="8dp"
                                     style="@style/TextAppearance.Material3.BodyLarge"
-                                    android:text="12/45/6855" />
+                                    tools:text="- 12/45/6855" />
 
                             </LinearLayout>
                         </androidx.core.widget.NestedScrollView>

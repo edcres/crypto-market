@@ -10,4 +10,12 @@
     <string name="volume_24hr">Volume 24hr</string>
     <string name="market_cap_ath">Market Cap ATH</string>
     <string name="bitcoin_dominance">Bitcoin Dominance</string>
+
+    <!--    Coins Sheet-->
+    <string name="w_btn">1w</string>
+    <string name="m_btn">1m</string>
+    <string name="q_btn">1q</string>
+    <string name="six_m_btn">6m</string>
+    <string name="y_btn">1y</string>
+    <string name="ath_label">All Time High</string>
 </resources>
