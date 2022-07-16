@@ -37,10 +37,8 @@ fun reformatDate(rawDateString: String?): String {
     // raw date -> 2022/07/08 -> 07/08/2022
     if (rawDateString == null) return "date not available"
     val listYMD = rawDateString.split("-").map {
-        Log.d(GLOBAL_TAG, "reformatDate: $it")
         if (it.contains(":")) it.subSequence(0, 2) else it
     }
-    Log.d(GLOBAL_TAG, "reformatDate: $listYMD")
     return "${listYMD[1]}/${listYMD[2]}/${listYMD[0]}"
 }
 

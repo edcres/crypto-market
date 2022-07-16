@@ -9,11 +9,6 @@ import com.example.cryptomarket.R
 
 // ATH = all time high
 /** todo:
- * - UI
- *      - coins
- *          - sheet expanded
- *              - display team
- *
  * - remove logs
  *
  * - try catch (error handling in general)

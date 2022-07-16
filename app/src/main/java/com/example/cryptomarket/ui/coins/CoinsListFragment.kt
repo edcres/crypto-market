@@ -92,7 +92,6 @@ class CoinsListFragment : Fragment() {
                                 collapsedDataContainer.visibility = View.INVISIBLE
                             if (appBarLayout.visibility == View.VISIBLE)
                                 appBarLayout.visibility = View.INVISIBLE
-                            Log.i(TAG, "onStateChanged: STATE_SETTLING")
                         }
                     }
                 }
@@ -167,7 +166,6 @@ class CoinsListFragment : Fragment() {
                     }
                 }
             }
-            Log.d(TAG, "timeFrameClickListeners: set")
         }
     }
 
@@ -192,10 +190,8 @@ class CoinsListFragment : Fragment() {
     }
 
     private fun populateCharts(tickerData: LiveData<List<HistoricalTicker>>) {
-        Log.d(TAG, "populateCharts: called")
         binding?.apply {
             tickerData.observe(viewLifecycleOwner) {
-                Log.d(TAG, "tickerData: observed\nsize = ${it.size}")
                 tickerChartCollapsedTxt.text = it.toString()
                 tickerChartExpandedTxt.text = it.toString()
             }
