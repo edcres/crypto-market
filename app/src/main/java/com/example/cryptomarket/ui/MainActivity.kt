@@ -10,10 +10,9 @@ import com.example.cryptomarket.R
 // ATH = all time high
 /** todo:
  * - UI
- *      - display numbers in an appropriate way (45.0 -> 45) (0.3242432423 -> 0.13)
- *          - coins
- *              - sheet expanded
- *                  - display team
+ *      - coins
+ *          - sheet expanded
+ *              - display team
  *
  * - remove logs
  *
@@ -25,11 +24,12 @@ import com.example.cryptomarket.R
  *      - news
  *      - coins list
  *
- * - display moreInfo better (maybe say the info is unavailable) (also, empty list still shows [])
- *
  * AFTER:
  * - put API data in charts
- *      - overall market
+ *      - overall market (pie charts)
+ *      - coins list item
+ *      - sheet expanded
+ *      - sheet collapsed
  * - colors dark mode
  * - app icon
  * - colors light mode
@@ -41,14 +41,9 @@ import com.example.cryptomarket.R
 
 /** bugs:
  * - Make more data class attributes optionals. Sometime API data is null
- * - When the bottom sheet is expanded and I click somewhere where there's a recycler item behind,
- *      the coin behind it is displayed on the bottom sheet.
- *          - doesn't happen if im clicking on a cardView or a widget with a click listener
- *          - maybe add a click listener on the background (the container view)
- *                  and it doesn't do anything
  *
- * - start fragment is created twice at startup. Maybe other views are too
- * - Some charts are not loaded within a good amount of time, idk what triggers eventually
+ * - Start fragment is created twice at startup. Maybe other views are too
+ * - Some chart data are not loaded within a good amount of time, idk what triggers eventual loading (some seem to never load)
  *      - put the queries that make it crash in a queue to be don later and store the
  *                  in the vm map (I don't need this put it's cool)
  *          - maybe override onViewRecycled(on the adapter)
@@ -62,7 +57,7 @@ import com.example.cryptomarket.R
  * check todos
  * check warnings
  * Comment code
- * remove unused imports
+ * Remove unused imports
  */
 
 class MainActivity : AppCompatActivity() {

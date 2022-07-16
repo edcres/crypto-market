@@ -52,12 +52,16 @@ fun addZerosToDate(baseDate: String) =
     }
 
 fun displayTeam(team: List<TeamMember>?): String {
-    // todo: make it presentable
-    // todo: bug (rank 16 Polygon displays [] for team members)
+    val teamList = mutableListOf<String>()
     val altLabel = "Team not available"
-    return if (team != null) {
-        if (team.isEmpty()) team.toString() else altLabel
-    } else altLabel
+    if (team != null) {
+        if (team.isNotEmpty()) {
+            for (i in team) {
+                teamList.add("${i.position}, ${i.name}")
+            }
+        } else return altLabel
+    } else return altLabel
+    return teamList.joinToString("\n")
 }
 
 fun displayIsOpenSource(isOpenSource: Boolean?) = when (isOpenSource) {
@@ -66,11 +70,9 @@ fun displayIsOpenSource(isOpenSource: Boolean?) = when (isOpenSource) {
     else -> ""
 }
 
-fun displayMoreInfo(label: String, info: String?): String {
-    return if (info != null) {
+fun displayMoreInfo(label: String, info: String?) = if (info != null) {
         "$label $info"
     } else "$label not available"
-}
 
 fun displayStartedAt(startDate: String?) = if (startDate != null) "Started at $startDate" else ""
 
@@ -103,8 +105,6 @@ fun displayLong(num: Long): String {
 
 fun displayPercent(label: String, num: Double) = "$label${removeTrailing2Zeros(num.toString())}%"
 
-fun displayHashAlgorithm(hash: String?): String {
-    return if (hash != null) {
+fun displayHashAlgorithm(hash: String?) = if (hash != null) {
         "Hash algorithm: $hash"
     } else "Hash algorithm not available"
-}
