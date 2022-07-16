@@ -16,13 +16,14 @@ import com.example.cryptomarket.utils.FragChosen
 import com.example.cryptomarket.utils.addZerosToDate
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
+import java.net.UnknownHostException
 import java.util.*
 
 private const val TAG = "CoinsVM__TAG"
 
 class CryptoViewModel : ViewModel() {
 
-    private lateinit var repo: Repository
+    private var repo: Repository = Repository()
     private var _fragChosen = MutableLiveData<FragChosen>()
     val fragChosen: LiveData<FragChosen> get() = _fragChosen
     private var _tickerClicked = MutableLiveData<Ticker>()
@@ -38,16 +39,26 @@ class CryptoViewModel : ViewModel() {
     // Used to store the data of chart queries, to avoid extra API queries.
     val chartsData = mutableMapOf<String, List<HistoricalTicker>>()
 
-    init { startApplication() }
-
-    // SETUP //
-    private fun startApplication() {
-        repo = Repository()
-        viewModelScope.launch { _tickers.postValue(repo.getTickers()) }
-        viewModelScope.launch { _globalData.postValue(repo.getGlobalData()) }
-        viewModelScope.launch { _newsCall.postValue(repo.getNewsPosts()) }
+    init {
+            viewModelScope.launch {
+                try { _tickers.postValue(repo.getTickers()) }
+                catch (e: UnknownHostException) {
+                    Log.e(TAG, "Error getting tickers data: $e")
+                }
+            }
+            viewModelScope.launch {
+                try { _globalData.postValue(repo.getGlobalData()) }
+                catch (e: UnknownHostException) {
+                    Log.e(TAG, "Error getting global data: $e")
+                }
+            }
+            viewModelScope.launch {
+                try { _newsCall.postValue(repo.getNewsPosts()) }
+                catch (e: UnknownHostException) {
+                    Log.e(TAG, "Error getting news data: $e")
+                }
+            }
     }
-    // SETUP //
 
     // HELPERS //
     fun setTickerClicked(ticker: Ticker) { _tickerClicked.postValue(ticker) }
@@ -83,13 +94,22 @@ class CryptoViewModel : ViewModel() {
                         "${currentDate.get(Calendar.MONTH) + 1}/" +
                         "${currentDate.get(Calendar.DAY_OF_MONTH) + 1}"
                 // Handle when the API rejects the request when making too many.
+
                 try {
-                    val historicalData = repo
-                        .getHistoricalTickers(tickerId, addZerosToDate(startTime), timeFrame.interval)
-                    tickerData.postValue(historicalData)
-                    chartsData[tickerId] = historicalData
-                } catch (e: HttpException) {
-                    Log.e(TAG, "getHistoricalTickerData: \n$e")
+                    try {
+                        val historicalData = repo
+                            .getHistoricalTickers(
+                                tickerId,
+                                addZerosToDate(startTime),
+                                timeFrame.interval
+                            )
+                        tickerData.postValue(historicalData)
+                        chartsData[tickerId] = historicalData
+                    } catch (e: HttpException) {
+                        Log.e(TAG, "getHistoricalTickerData: \n$e")
+                    }
+                } catch (e: UnknownHostException) {
+                    Log.e(TAG, "Error Getting Historical Ticker Data $e")
                 }
             }
         }
@@ -97,7 +117,13 @@ class CryptoViewModel : ViewModel() {
     }
     fun getCoinData(coinID: String): LiveData<CoinData> {
         val coinData = MutableLiveData<CoinData>()
-        viewModelScope.launch { coinData.postValue(repo.getCoinData(coinID)) }
+        viewModelScope.launch {
+            try {
+                coinData.postValue(repo.getCoinData(coinID))
+            } catch (e: UnknownHostException) {
+                Log.e(TAG, "Error getting coin data $e")
+            }
+        }
         return coinData
     }
     // REPO QUERIES //

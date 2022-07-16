@@ -9,8 +9,6 @@ import com.example.cryptomarket.R
 
 // ATH = all time high
 /** todo:
- * - remove logs
- *
  * - try catch (error handling in general)
  *      - test for a bad connection
  *          - at startup
@@ -31,7 +29,7 @@ import com.example.cryptomarket.R
  * - news article link navigate to the website. When click on news recycler item
  * - customize the charts
  * - maybe put more logic in the viewModel
- * - bugs (at least the first 2, maybe just leave the rest for "eventually")
+ * - bugs (at least the first 1, maybe just leave the rest for "eventually")
  */
 
 /** bugs:
