@@ -3,21 +3,13 @@ package com.example.cryptomarket.ui
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import com.example.cryptomarket.R
 
 // ATH = all time high
 /** todo:
- * - try catch (error handling in general)
- *      - test for a bad connection
- *          - at startup
- *          - when the connection goes out at runtime
- *      - overall market
- *      - news
- *      - coins list
- *
- * AFTER:
  * - put API data in charts
  *      - overall market (pie charts)
  *      - coins list item
