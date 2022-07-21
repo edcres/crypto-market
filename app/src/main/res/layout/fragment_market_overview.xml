@@ -153,7 +153,7 @@
                 <com.github.mikephil.charting.charts.PieChart
                     android:id="@+id/market_cap_pie"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp" />
+                    android:layout_height="350dp" />
 
                 <TextView
                     android:id="@+id/market_cap_share_txt"
@@ -169,7 +169,7 @@
                 <com.github.mikephil.charting.charts.PieChart
                     android:id="@+id/volume_24h_pie"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp" />
+                    android:layout_height="300dp" />
 
                 <TextView
                     android:id="@+id/volume_24h_txt"
@@ -184,7 +184,7 @@
                 <com.github.mikephil.charting.charts.PieChart
                     android:id="@+id/total_supply_pie"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp" />
+                    android:layout_height="300dp" />
 
                 <TextView
                     android:id="@+id/total_supply_txt"

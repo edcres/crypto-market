@@ -112,16 +112,18 @@ class MarketOverviewFragment : Fragment() {
             for (pieChart in piesToMake) {
 
                 pieChart.setUsePercentValues(true)
-                pieChart.description.isEnabled = true
+                pieChart.description.isEnabled = false
                 pieChart.setExtraOffsets(5f, 10f, 5f, 5f)
-                pieChart.dragDecelerationFrictionCoef = 0.95f
-                pieChart.centerText = generateCenterSpannableText()
+                pieChart.dragDecelerationFrictionCoef = 0.85f
+                pieChart.centerText = generateCenterSpannableText(pieChart)
 
                 pieChart.isDrawHoleEnabled = true
                 pieChart.setHoleColor(Color.WHITE)
                 pieChart.setTransparentCircleColor(Color.WHITE)
-                pieChart.setTransparentCircleAlpha(110)
-                pieChart.holeRadius = 58f
+//                pieChart.setTransparentCircleAlpha(110)
+                pieChart.setTransparentCircleAlpha(0)
+//                pieChart.holeRadius = 58f
+                pieChart.holeRadius = 50f
                 pieChart.transparentCircleRadius = 61f
 
                 pieChart.setDrawCenterText(true)
@@ -131,14 +133,14 @@ class MarketOverviewFragment : Fragment() {
 //            pieChart.setOnChartValueSelectedListener(this)
                 pieChart.animateY(1400, Easing.EaseInOutQuad)
 
-                val l: Legend = pieChart.legend
-                l.verticalAlignment = Legend.LegendVerticalAlignment.TOP
-                l.horizontalAlignment = Legend.LegendHorizontalAlignment.RIGHT
-                l.orientation = Legend.LegendOrientation.VERTICAL
-                l.setDrawInside(false)
-                l.xEntrySpace = 7f
-                l.yEntrySpace = 0f
-                l.yOffset = 0f
+//                val l: Legend = pieChart.legend
+//                l.verticalAlignment = Legend.LegendVerticalAlignment.TOP
+//                l.horizontalAlignment = Legend.LegendHorizontalAlignment.RIGHT
+//                l.orientation = Legend.LegendOrientation.VERTICAL
+//                l.setDrawInside(false)
+//                l.xEntrySpace = 7f
+//                l.yEntrySpace = 0f
+//                l.yOffset = 0f
 
                 pieChart.setEntryLabelColor(Color.WHITE)
                 pieChart.setEntryLabelTextSize(12f)
@@ -202,14 +204,19 @@ class MarketOverviewFragment : Fragment() {
 
     // for pie chart
     // todo: change what this says
-    private fun generateCenterSpannableText(): SpannableString? {
-        val s = SpannableString("MPAndroidChart\ndeveloped by Philipp Jahoda")
-        s.setSpan(RelativeSizeSpan(1.7f), 0, 14, 0)
-        s.setSpan(StyleSpan(Typeface.NORMAL), 14, s.length - 15, 0)
-        s.setSpan(ForegroundColorSpan(Color.GRAY), 14, s.length - 15, 0)
-        s.setSpan(RelativeSizeSpan(.8f), 14, s.length - 15, 0)
-        s.setSpan(StyleSpan(Typeface.ITALIC), s.length - 14, s.length, 0)
-        s.setSpan(ForegroundColorSpan(ColorTemplate.getHoloBlue()), s.length - 14, s.length, 0)
+    private fun generateCenterSpannableText(chart: PieChart): SpannableString? {
+        val s = when (chart.id) {
+            binding!!.marketCapPie.id -> SpannableString("Market Cap")
+            binding!!.volume24hPie.id -> SpannableString("Volume\n24 Hour")
+            binding!!.totalSupplyPie.id -> SpannableString("Total Supply")
+            else -> SpannableString("")
+        }
+//        s.setSpan(RelativeSizeSpan(1.7f), 0, 14, 0)
+//        s.setSpan(StyleSpan(Typeface.NORMAL), 14, s.length - 15, 0)
+//        s.setSpan(ForegroundColorSpan(Color.GRAY), 14, s.length - 15, 0)
+//        s.setSpan(RelativeSizeSpan(.8f), 14, s.length - 15, 0)
+//        s.setSpan(StyleSpan(Typeface.ITALIC), s.length - 14, s.length, 0)
+//        s.setSpan(ForegroundColorSpan(ColorTemplate.getHoloBlue()), s.length - 14, s.length, 0)
         return s
     }
     // MAKE CHARTS //
