@@ -1,5 +1,6 @@
 package com.example.cryptomarket.ui.overview
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -84,4 +85,32 @@ class MarketOverviewFragment : Fragment() {
         }
     }
     // SETUP //
+
+    // MAKE CHARTS //
+    private fun makePieChart() {
+        binding?.apply {
+            marketCapPie.setUsePercentValues(true)
+            marketCapPie.description.isEnabled = true
+            marketCapPie.setExtraOffsets(5f,10f,5f,5f)
+            marketCapPie.dragDecelerationFrictionCoef = 0.95f
+//            marketCapPie.centerText = generateCenterSpannableText()
+
+            marketCapPie.isDrawHoleEnabled = true
+            marketCapPie.setHoleColor(Color.WHITE)
+            marketCapPie.setTransparentCircleColor(Color.WHITE)
+            marketCapPie.setTransparentCircleAlpha(110)
+            marketCapPie.holeRadius = 58f
+            marketCapPie.transparentCircleRadius = 61f
+
+            marketCapPie.setDrawCenterText(true)
+            marketCapPie.rotationAngle = 0f
+            marketCapPie.isRotationEnabled = true
+            marketCapPie.isHighlightPerTapEnabled = true
+            marketCapPie.setOnChartValueSelectedListener(this)
+            marketCapPie
+            marketCapPie
+            marketCapPie
+        }
+    }
+    // MAKE CHARTS //
 }

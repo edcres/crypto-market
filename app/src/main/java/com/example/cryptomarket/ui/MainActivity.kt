@@ -12,6 +12,9 @@ import com.example.cryptomarket.R
 /** todo:
  * - put API data in charts
  *      - overall market (pie charts)
+ *          - makePieChart
+ *          - setPieData
+ *          - generateCenterSpannableText
  *      - coins list item
  *      - sheet expanded
  *      - sheet collapsed
