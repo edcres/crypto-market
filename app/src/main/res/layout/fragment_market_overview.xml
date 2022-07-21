@@ -150,6 +150,11 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/market_cap_pie"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp" />
+
                 <TextView
                     android:id="@+id/market_cap_share_txt"
                     style="@style/TextAppearance.Material3.BodyLarge"
@@ -161,6 +166,11 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/market_cap_ath_date_txt" />
 
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/volume_24h_pie"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp" />
+
                 <TextView
                     android:id="@+id/volume_24h_txt"
                     style="@style/TextAppearance.Material3.BodyLarge"
@@ -170,6 +180,11 @@
                     tools:text="volume24h"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
+
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/total_supply_pie"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp" />
 
                 <TextView
                     android:id="@+id/total_supply_txt"
