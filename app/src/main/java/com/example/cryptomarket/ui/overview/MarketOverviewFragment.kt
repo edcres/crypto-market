@@ -16,19 +16,17 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.cryptomarket.R
 import com.example.cryptomarket.data.coinsapi.GlobalData
+import com.example.cryptomarket.data.coinsapi.ticker.Ticker
 import com.example.cryptomarket.databinding.FragmentMarketOverviewBinding
 import com.example.cryptomarket.ui.CryptoViewModel
 import com.example.cryptomarket.utils.*
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.components.Legend
-import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.PercentFormatter
-import com.github.mikephil.charting.highlight.Highlight
-import com.github.mikephil.charting.listener.OnChartValueSelectedListener
 import com.github.mikephil.charting.utils.ColorTemplate
 import com.github.mikephil.charting.utils.MPPointF
 
@@ -76,13 +74,17 @@ class MarketOverviewFragment : Fragment() {
         }
         vm.tickers.observe(viewLifecycleOwner) {
             binding?.apply {
-                val top10 = it.take(10) // todo: check if these coins are ordered by rank
+                val top10Tickers = it.take(10) // todo: check if these coins are ordered by rank
                 // todo: figure out what else to do when using you start using charts.
                 //      do in vm and background thread
-                marketCapShareTxt.text =
-                    top10.toString()  // list of Ticker.PriceData.market_cap of the top 10 coins
-                volume24hTxt.text = top10.toString()       // Ticker.PriceData.volume24h
-                totalSupplyTxt.text = top10.toString()    // Ticker.TotalSupply
+                // list of Ticker.PriceData.market_cap of the top 10 coins
+                marketCapShareTxt.text = top10Tickers.toString()
+                // Ticker.PriceData.volume24h
+                volume24hTxt.text = top10Tickers.toString()
+                // Ticker.TotalSupply
+                totalSupplyTxt.text = top10Tickers.toString()
+
+                makePieCharts(top10Tickers)
             }
         }
     }
@@ -104,7 +106,7 @@ class MarketOverviewFragment : Fragment() {
     // SETUP //
 
     // MAKE CHARTS //
-    private fun makePieCharts() {
+    private fun makePieCharts(top10Tickers: List<Ticker>) {
         binding?.apply {
             val piesToMake = listOf(marketCapPie, volume24hPie, totalSupplyPie)
             for (pieChart in piesToMake) {
@@ -142,21 +144,30 @@ class MarketOverviewFragment : Fragment() {
                 pieChart.setEntryLabelTextSize(12f)
 
                 // todo: set the items and the number of items for that pie
-                setPiesData(pieChart, 1, 14f)
+                setPiesData(top10Tickers, pieChart, 14f)
             }
         }
     }
 
     // todo: edit all of this class, and maybe don't even pass the values as parameters
-    private fun setPiesData(pieChart: PieChart, count: Int, range: Float) {
+    private fun setPiesData(
+        top10Tickers: List<Ticker>, pieChart: PieChart, range: Float
+    ) {
         val entries = ArrayList<PieEntry>()
-        // todo: edit the pie entries to the crypto data
-        for (i in 0 until count) {
+        for (i in top10Tickers.indices) {
             entries.add(
                 PieEntry(
                     (Math.random() * range + range / 5).toFloat(),
-                    parties[i % parties.size],
-                    resources.getDrawable(R.drawable.star)
+                    when (pieChart.id) {
+                        binding!!.marketCapPie.id -> top10Tickers[i % top10Tickers.size].quotes.usd
+                            .marketCap
+                        binding!!.volume24hPie.id -> top10Tickers[i % top10Tickers.size].quotes.usd
+                            .volume24h
+                        binding!!.totalSupplyPie.id -> top10Tickers[i % top10Tickers.size]
+                            .totalSupply
+                        else -> 0.0
+                    }
+//                    resources.getDrawable(R.drawable.star)
                 )
             )
         }
