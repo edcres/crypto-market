@@ -15,6 +15,8 @@ import com.example.cryptomarket.R
  *          - makePieChart
  *          - setPieData
  *          - generateCenterSpannableText
+ *          - onValueSelected
+ *          - onNothingSelected
  *      - coins list item
  *      - sheet expanded
  *      - sheet collapsed

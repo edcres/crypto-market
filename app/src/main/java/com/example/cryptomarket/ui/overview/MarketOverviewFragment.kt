@@ -14,6 +14,12 @@ import com.example.cryptomarket.data.coinsapi.GlobalData
 import com.example.cryptomarket.databinding.FragmentMarketOverviewBinding
 import com.example.cryptomarket.ui.CryptoViewModel
 import com.example.cryptomarket.utils.*
+import com.github.mikephil.charting.animation.Easing
+import com.github.mikephil.charting.charts.PieChart
+import com.github.mikephil.charting.components.Legend
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.highlight.Highlight
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener
 
 private const val TAG = "MarketListFrag__TAG"
 
@@ -87,30 +93,50 @@ class MarketOverviewFragment : Fragment() {
     // SETUP //
 
     // MAKE CHARTS //
-    private fun makePieChart() {
+    private fun makePieCharts() {
         binding?.apply {
-            marketCapPie.setUsePercentValues(true)
-            marketCapPie.description.isEnabled = true
-            marketCapPie.setExtraOffsets(5f,10f,5f,5f)
-            marketCapPie.dragDecelerationFrictionCoef = 0.95f
-//            marketCapPie.centerText = generateCenterSpannableText()
+            val piesToMake = listOf(marketCapPie, volume24hPie, totalSupplyPie)
+            for (pieChart in piesToMake) {
 
-            marketCapPie.isDrawHoleEnabled = true
-            marketCapPie.setHoleColor(Color.WHITE)
-            marketCapPie.setTransparentCircleColor(Color.WHITE)
-            marketCapPie.setTransparentCircleAlpha(110)
-            marketCapPie.holeRadius = 58f
-            marketCapPie.transparentCircleRadius = 61f
+                pieChart.setUsePercentValues(true)
+                pieChart.description.isEnabled = true
+                pieChart.setExtraOffsets(5f, 10f, 5f, 5f)
+                pieChart.dragDecelerationFrictionCoef = 0.95f
+//            pieChart.centerText = generateCenterSpannableText()
 
-            marketCapPie.setDrawCenterText(true)
-            marketCapPie.rotationAngle = 0f
-            marketCapPie.isRotationEnabled = true
-            marketCapPie.isHighlightPerTapEnabled = true
-            marketCapPie.setOnChartValueSelectedListener(this)
-            marketCapPie
-            marketCapPie
-            marketCapPie
+                pieChart.isDrawHoleEnabled = true
+                pieChart.setHoleColor(Color.WHITE)
+                pieChart.setTransparentCircleColor(Color.WHITE)
+                pieChart.setTransparentCircleAlpha(110)
+                pieChart.holeRadius = 58f
+                pieChart.transparentCircleRadius = 61f
+
+                pieChart.setDrawCenterText(true)
+                pieChart.rotationAngle = 0f
+                pieChart.isRotationEnabled = true
+                pieChart.isHighlightPerTapEnabled = true
+//            pieChart.setOnChartValueSelectedListener(this)
+                pieChart.animateY(1400, Easing.EaseInOutQuad)
+
+                val l: Legend = pieChart.legend
+                l.verticalAlignment = Legend.LegendVerticalAlignment.TOP
+                l.horizontalAlignment = Legend.LegendHorizontalAlignment.RIGHT
+                l.orientation = Legend.LegendOrientation.VERTICAL
+                l.setDrawInside(false)
+                l.xEntrySpace = 7f
+                l.yEntrySpace = 0f
+                l.yOffset = 0f
+
+                pieChart.setEntryLabelColor(Color.WHITE)
+                pieChart.setEntryLabelTextSize(12f)
+
+                setPiesData(pieChart, 6, 14f)
+            }
         }
+    }
+
+    private fun setPiesData(pieChart: PieChart, count: Int, range: Float) {
+        
     }
     // MAKE CHARTS //
 }
