@@ -137,7 +137,7 @@ class MarketOverviewFragment : Fragment() {
 //                pieChart.setEntryLabelColor(Color.WHITE)
                 pieChart.setEntryLabelTextSize(12f)
 
-//                pieChart.legend.isEnabled = false
+                pieChart.legend.isEnabled = false
                 // todo: set the items and the number of items for that pie
                 setPiesData(top10Tickers, pieChart)
             }
