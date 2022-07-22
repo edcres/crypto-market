@@ -74,16 +74,7 @@ class MarketOverviewFragment : Fragment() {
         }
         vm.tickers.observe(viewLifecycleOwner) {
             binding?.apply {
-                val top10Tickers = it.take(10) // todo: check if these coins are ordered by rank
-                // todo: figure out what else to do when using you start using charts.
-                //      do in vm and background thread
-                // list of Ticker.PriceData.market_cap of the top 10 coins
-                marketCapShareTxt.text = top10Tickers.toString()
-                // Ticker.PriceData.volume24h
-                volume24hTxt.text = top10Tickers.toString()
-                // Ticker.TotalSupply
-                totalSupplyTxt.text = top10Tickers.toString()
-
+                val top10Tickers = it.take(10)
                 makePieCharts(top10Tickers)
             }
         }
@@ -142,22 +133,23 @@ class MarketOverviewFragment : Fragment() {
 //                l.yEntrySpace = 0f
 //                l.yOffset = 0f
 
-                pieChart.setEntryLabelColor(Color.WHITE)
+
+//                pieChart.setEntryLabelColor(Color.WHITE)
                 pieChart.setEntryLabelTextSize(12f)
 
+//                pieChart.legend.isEnabled = false
                 // todo: set the items and the number of items for that pie
-                setPiesData(top10Tickers, pieChart, 14f)
+                setPiesData(top10Tickers, pieChart)
             }
         }
     }
 
-    // todo: probaby send this to the vm
+    // todo: probably send this to the vm
     // todo: edit all of this class, and maybe don't even pass the values as parameters
-    private fun setPiesData(
-        top10Tickers: List<Ticker>, pieChart: PieChart, range: Float
-    ) {
+    private fun setPiesData(top10Tickers: List<Ticker>, pieChart: PieChart) {
         val entries = ArrayList<PieEntry>()
         for (i in top10Tickers.indices) {
+            // todo: what is (i % top10Tickers.size)?
             val thisTicker = top10Tickers[i % top10Tickers.size]
             binding?.apply {
                 entries.add(
@@ -175,11 +167,6 @@ class MarketOverviewFragment : Fragment() {
                     }
                 )
             }
-            Log.d(TAG, "setPiesData: $i remainder:\n${i % top10Tickers.size}")
-            Log.d(
-                TAG, "setPiesData: $i market cap:" +
-                        "\n${top10Tickers[i % top10Tickers.size].quotes.usd.marketCap}"
-            )
         }
 
         // todo: change the data set to the crypto data
@@ -211,11 +198,10 @@ class MarketOverviewFragment : Fragment() {
     }
 
     // for pie chart
-    // todo: change what this says
     private fun generateCenterSpannableText(chart: PieChart): SpannableString? {
         val s = when (chart.id) {
             binding!!.marketCapPie.id -> SpannableString("Market Cap")
-            binding!!.volume24hPie.id -> SpannableString("Volume\n24 Hour")
+            binding!!.volume24hPie.id -> SpannableString("Volume\n24 Hours")
             binding!!.totalSupplyPie.id -> SpannableString("Total Supply")
             else -> SpannableString("")
         }

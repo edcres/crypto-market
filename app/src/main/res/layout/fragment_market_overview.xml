@@ -155,46 +155,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="350dp" />
 
-                <TextView
-                    android:id="@+id/market_cap_share_txt"
-                    style="@style/TextAppearance.Material3.BodyLarge"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_margin="8dp"
-                    tools:text="market_cap_share"
-                    app:layout_constraintBottom_toTopOf="@+id/volume_24h_txt"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/market_cap_ath_date_txt" />
-
                 <com.github.mikephil.charting.charts.PieChart
                     android:id="@+id/volume_24h_pie"
                     android:layout_width="match_parent"
                     android:layout_height="300dp" />
 
-                <TextView
-                    android:id="@+id/volume_24h_txt"
-                    style="@style/TextAppearance.Material3.BodyLarge"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_margin="8dp"
-                    tools:text="volume24h"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
-
                 <com.github.mikephil.charting.charts.PieChart
                     android:id="@+id/total_supply_pie"
                     android:layout_width="match_parent"
                     android:layout_height="300dp" />
-
-                <TextView
-                    android:id="@+id/total_supply_txt"
-                    style="@style/TextAppearance.Material3.BodyLarge"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_margin="8dp"
-                    tools:text="totalSupply"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
 
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
