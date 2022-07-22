@@ -151,26 +151,34 @@ class MarketOverviewFragment : Fragment() {
         }
     }
 
+    // todo: probaby send this to the vm
     // todo: edit all of this class, and maybe don't even pass the values as parameters
     private fun setPiesData(
         top10Tickers: List<Ticker>, pieChart: PieChart, range: Float
     ) {
         val entries = ArrayList<PieEntry>()
         for (i in top10Tickers.indices) {
-            entries.add(
-                PieEntry(
-                    (Math.random() * range + range / 5).toFloat(),
+            val thisTicker = top10Tickers[i % top10Tickers.size]
+            binding?.apply {
+                entries.add(
                     when (pieChart.id) {
-                        binding!!.marketCapPie.id -> top10Tickers[i % top10Tickers.size].quotes.usd
-                            .marketCap
-                        binding!!.volume24hPie.id -> top10Tickers[i % top10Tickers.size].quotes.usd
-                            .volume24h
-                        binding!!.totalSupplyPie.id -> top10Tickers[i % top10Tickers.size]
-                            .totalSupply
-                        else -> 0.0
+                        // Market Cap chart
+                        marketCapPie.id ->
+                            PieEntry(thisTicker.quotes.usd.marketCap.toFloat(), thisTicker.symbol)
+                        // 24h Volume chart
+                        volume24hPie.id ->
+                            PieEntry(thisTicker.quotes.usd.volume24h.toFloat(), thisTicker.symbol)
+                        // Total Supply chart
+                        totalSupplyPie.id ->
+                            PieEntry(thisTicker.totalSupply.toFloat(), thisTicker.symbol)
+                        else -> PieEntry(0f, "");
                     }
-//                    resources.getDrawable(R.drawable.star)
                 )
+            }
+            Log.d(TAG, "setPiesData: $i remainder:\n${i % top10Tickers.size}")
+            Log.d(
+                TAG, "setPiesData: $i market cap:" +
+                        "\n${top10Tickers[i % top10Tickers.size].quotes.usd.marketCap}"
             )
         }
 

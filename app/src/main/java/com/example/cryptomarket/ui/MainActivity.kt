@@ -13,10 +13,10 @@ import com.example.cryptomarket.R
  * - put API data in charts
  *      - overall market (pie charts)
  *          - makePieChart
- *          - setPieData
- *          - generateCenterSpannableText
- *          - onValueSelected
- *          - onNothingSelected
+ *              - Make sure the correct numbers are displayed (no bugs there)
+ *              - Display middle text prettier
+ *              - Display coin data outside of the chart (like in their sample app)
+ *              - Display the coin name (display percentage where appropriate)
  *      - coins list item
  *      - sheet expanded
  *      - sheet collapsed
