@@ -13,4 +13,10 @@
     <color name="color_accent">#FAE206</color>
     <color name="cardview_background">#4D5E9A</color>
     <color name="divider">#AB4A4A4A</color>
+
+    <!--Pies-->
+    <color name="pies_background">#AB4A4A4A</color>
+    <color name="pies_labels">#220E0E</color>
+    <color name="pies_inner_circle">#FFFFFF</color>
+    <color name="pie_hole">#AB737373</color>
 </resources>

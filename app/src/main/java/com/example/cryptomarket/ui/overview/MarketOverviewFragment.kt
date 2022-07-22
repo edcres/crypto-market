@@ -1,6 +1,5 @@
 package com.example.cryptomarket.ui.overview
 
-import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
 import android.text.SpannableString
@@ -8,10 +7,10 @@ import android.text.style.ForegroundColorSpan
 import android.text.style.RelativeSizeSpan
 import android.text.style.StyleSpan
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.cryptomarket.R
@@ -28,6 +27,7 @@ import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.PercentFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
 import com.github.mikephil.charting.utils.MPPointF
+import java.text.DecimalFormat
 
 private const val TAG = "MarketListFrag__TAG"
 
@@ -108,22 +108,22 @@ class MarketOverviewFragment : Fragment() {
                 pieChart.centerText = generateCenterSpannableText(pieChart)
 
                 pieChart.isDrawHoleEnabled = true
-                pieChart.setHoleColor(Color.WHITE)
-                pieChart.setTransparentCircleColor(Color.WHITE)
-//                pieChart.setTransparentCircleAlpha(110)
-                pieChart.setTransparentCircleAlpha(0)
-//                pieChart.holeRadius = 58f
+                pieChart.setHoleColor(resources.getColor(R.color.pie_hole))
                 pieChart.holeRadius = 50f
-                pieChart.transparentCircleRadius = 61f
+                pieChart.setTransparentCircleColor(resources.getColor(R.color.pies_inner_circle))
+//                pieChart.setTransparentCircleAlpha(0)
+//                pieChart.transparentCircleRadius = 62f
 
                 pieChart.setDrawCenterText(true)
+//                pieChart.setCenterTextColor(resources.getColor(R.color.pies_labels))
+//                pieChart.setCenterTextColor(Color.WHITE)
                 pieChart.rotationAngle = 0f
                 pieChart.isRotationEnabled = true
                 pieChart.isHighlightPerTapEnabled = true
-//            pieChart.setOnChartValueSelectedListener(this)
+//                pieChart.setOnChartValueSelectedListener(this)
                 pieChart.animateY(1400, Easing.EaseInOutQuad)
 
-//                pieChart.setEntryLabelColor(Color.WHITE)
+                pieChart.setEntryLabelColor(resources.getColor(R.color.pies_labels))
                 pieChart.setEntryLabelTextSize(12f)
 
                 pieChart.legend.isEnabled = false
@@ -159,7 +159,7 @@ class MarketOverviewFragment : Fragment() {
         }
 
         // todo: change the data set to the crypto data
-        val dataSet = PieDataSet(entries, "Election Results")
+        val dataSet = PieDataSet(entries, "Top 10 Coins")
         dataSet.setDrawIcons(false)
         dataSet.sliceSpace = 3f
         dataSet.iconsOffset = MPPointF(0f, 40f)
@@ -174,11 +174,14 @@ class MarketOverviewFragment : Fragment() {
         colors.add(ColorTemplate.getHoloBlue())
         dataSet.colors = colors
 
+        dataSet.xValuePosition = PieDataSet.ValuePosition.OUTSIDE_SLICE
+        // todo: get percentage mark on the y stuff
+//        dataSet.yValuePosition = PieDataSet.ValuePosition.OUTSIDE_SLICE
+
         val data = PieData(dataSet)
-        data.setValueFormatter(PercentFormatter())
+        data.setValueFormatter(PercentFormatter(pieChart))
         data.setValueTextSize(11f)
-        data.setValueTextColor(Color.WHITE)
-        //        data.setValueTypeface(tfLight)
+        data.setValueTextColor(resources.getColor(R.color.pies_labels))
         pieChart.data = data
 
         // undo all highlights
@@ -196,7 +199,7 @@ class MarketOverviewFragment : Fragment() {
         }
         string.setSpan(RelativeSizeSpan(1.5f), 0, string.length, 0)
         string.setSpan(StyleSpan(Typeface.BOLD), 0, string.length, 0)
-        string.setSpan(ForegroundColorSpan(Color.GRAY), 0, string.length, 0)
+        string.setSpan(ForegroundColorSpan(resources.getColor(R.color.pies_labels)), 0, string.length, 0)
 //        s.setSpan(RelativeSizeSpan(.8f), 14, s.length - 15, 0)
 //        s.setSpan(StyleSpan(Typeface.ITALIC), s.length - 14, s.length, 0)
 //        s.setSpan(ForegroundColorSpan(ColorTemplate.getHoloBlue()), s.length - 14, s.length, 0)
