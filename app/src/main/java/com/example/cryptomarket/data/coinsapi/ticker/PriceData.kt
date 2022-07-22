@@ -11,7 +11,7 @@ data class PriceData(
     @Json(name = "volume_24h_change_24h")
     val volume24hChange24h: Double,
     @Json(name = "market_cap")
-    val marketCap: Double,
+    val marketCap: Long,
     @Json(name = "market_cap_change_24h")
     val marketCapChange24h: Double,
     @Json(name = "percent_change_15m")
