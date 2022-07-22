@@ -22,7 +22,6 @@ import com.example.cryptomarket.ui.CryptoViewModel
 import com.example.cryptomarket.utils.*
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.PieChart
-import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
@@ -189,19 +188,19 @@ class MarketOverviewFragment : Fragment() {
 
     // for pie chart
     private fun generateCenterSpannableText(chart: PieChart): SpannableString? {
-        val s = when (chart.id) {
+        val string = when (chart.id) {
             binding!!.marketCapPie.id -> SpannableString("Market Cap")
             binding!!.volume24hPie.id -> SpannableString("Volume\n24 Hours")
             binding!!.totalSupplyPie.id -> SpannableString("Total Supply")
             else -> SpannableString("")
         }
-//        s.setSpan(RelativeSizeSpan(1.7f), 0, 14, 0)
-//        s.setSpan(StyleSpan(Typeface.NORMAL), 14, s.length - 15, 0)
-//        s.setSpan(ForegroundColorSpan(Color.GRAY), 14, s.length - 15, 0)
+        string.setSpan(RelativeSizeSpan(1.5f), 0, string.length, 0)
+        string.setSpan(StyleSpan(Typeface.BOLD), 0, string.length, 0)
+        string.setSpan(ForegroundColorSpan(Color.GRAY), 0, string.length, 0)
 //        s.setSpan(RelativeSizeSpan(.8f), 14, s.length - 15, 0)
 //        s.setSpan(StyleSpan(Typeface.ITALIC), s.length - 14, s.length, 0)
 //        s.setSpan(ForegroundColorSpan(ColorTemplate.getHoloBlue()), s.length - 14, s.length, 0)
-        return s
+        return string
     }
     // MAKE CHARTS //
 }
