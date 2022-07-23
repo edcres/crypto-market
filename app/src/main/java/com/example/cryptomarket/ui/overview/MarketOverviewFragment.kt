@@ -27,7 +27,6 @@ import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.PercentFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
 import com.github.mikephil.charting.utils.MPPointF
-import java.text.DecimalFormat
 
 private const val TAG = "MarketListFrag__TAG"
 
@@ -127,14 +126,12 @@ class MarketOverviewFragment : Fragment() {
                 pieChart.setEntryLabelTextSize(12f)
 
                 pieChart.legend.isEnabled = false
-                // todo: set the items and the number of items for that pie
                 setPiesData(top10Tickers, pieChart)
             }
         }
     }
 
     // todo: probably send this to the vm
-    // todo: edit all of this class, and maybe don't even pass the values as parameters
     private fun setPiesData(top10Tickers: List<Ticker>, pieChart: PieChart) {
         val entries = ArrayList<PieEntry>()
         for (i in top10Tickers.indices) {
@@ -157,11 +154,9 @@ class MarketOverviewFragment : Fragment() {
                 )
             }
         }
-
-        // todo: change the data set to the crypto data
         val dataSet = PieDataSet(entries, "Top 10 Coins")
         dataSet.setDrawIcons(false)
-        dataSet.sliceSpace = 3f
+        dataSet.sliceSpace = 1f
         dataSet.iconsOffset = MPPointF(0f, 40f)
         dataSet.selectionShift = 5f
         // todo: add custom colors
@@ -173,10 +168,7 @@ class MarketOverviewFragment : Fragment() {
         for (c in ColorTemplate.PASTEL_COLORS) colors.add(c)
         colors.add(ColorTemplate.getHoloBlue())
         dataSet.colors = colors
-
         dataSet.xValuePosition = PieDataSet.ValuePosition.OUTSIDE_SLICE
-        // todo: get percentage mark on the y stuff
-//        dataSet.yValuePosition = PieDataSet.ValuePosition.OUTSIDE_SLICE
 
         val data = PieData(dataSet)
         data.setValueFormatter(PercentFormatter(pieChart))
@@ -199,10 +191,10 @@ class MarketOverviewFragment : Fragment() {
         }
         string.setSpan(RelativeSizeSpan(1.5f), 0, string.length, 0)
         string.setSpan(StyleSpan(Typeface.BOLD), 0, string.length, 0)
-        string.setSpan(ForegroundColorSpan(resources.getColor(R.color.pies_labels)), 0, string.length, 0)
-//        s.setSpan(RelativeSizeSpan(.8f), 14, s.length - 15, 0)
-//        s.setSpan(StyleSpan(Typeface.ITALIC), s.length - 14, s.length, 0)
-//        s.setSpan(ForegroundColorSpan(ColorTemplate.getHoloBlue()), s.length - 14, s.length, 0)
+        string.setSpan(
+            ForegroundColorSpan(resources.getColor(R.color.pies_labels)),
+            0, string.length, 0
+        )
         return string
     }
     // MAKE CHARTS //
