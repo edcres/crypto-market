@@ -8,7 +8,8 @@
     <!--    Market Overview-->
     <string name="market_cap">Market Cap</string>
     <string name="volume_24hr">Volume 24hr</string>
-    <string name="market_cap_ath">Market Cap ATH</string>
+    <string name="top_10_coins">Top 10 Coins</string>
+    <string name="market_cap_ath">All Time High</string>
     <string name="bitcoin_dominance">Bitcoin Dominance</string>
 
     <!--    Coins Sheet-->

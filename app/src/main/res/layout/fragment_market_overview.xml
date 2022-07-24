@@ -33,10 +33,11 @@
             android:id="@+id/divider_1"
             android:layout_width="0.5dp"
             android:layout_height="0dp"
-            android:layout_margin="16dp"
+            android:layout_marginTop="8dp"
             android:background="@color/divider"
-            app:layout_constraintBottom_toTopOf="@+id/divider_2"
-            app:layout_constraintEnd_toStartOf="@+id/volume_24hr_label"
+            app:layout_constraintBottom_toBottomOf="@+id/bitcoin_dominance_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -44,9 +45,9 @@
             style="@style/TextAppearance.Material3.HeadlineSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:text="@string/volume_24hr"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/market_cap_label"
+            app:layout_constraintStart_toEndOf="@+id/divider_1"
             app:layout_constraintTop_toTopOf="@+id/market_cap_label" />
 
         <TextView
@@ -76,34 +77,34 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginBottom="2dp"
             android:text="@string/bitcoin_dominance"
             android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/bitcoin_dominance_percentage_txt"
-            app:layout_constraintStart_toEndOf="@+id/bitcoin_dominance_percentage_txt" />
+            app:layout_constraintStart_toStartOf="@+id/bitcoin_dominance_percentage_txt"
+            app:layout_constraintTop_toBottomOf="@+id/bitcoin_dominance_percentage_txt" />
 
         <View
             android:id="@+id/divider_2"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="0.5dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:background="@color/divider"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/divider_1"
             app:layout_constraintTop_toBottomOf="@id/market_cap_txt" />
 
         <TextView
             android:id="@+id/market_cap_ath_label"
-            style="@style/TextAppearance.Material3.HeadlineSmall"
+            style="@style/TextAppearance.Material3.TitleLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
             android:text="@string/market_cap_ath"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider_2" />
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/market_cap_label"
+            app:layout_constraintTop_toBottomOf="@+id/market_cap_txt" />
 
         <TextView
             android:id="@+id/market_cap_ath_value_txt"
@@ -127,37 +128,48 @@
 
         <View
             android:id="@+id/divider_3"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="0.5dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:background="@color/divider"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/divider_1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/market_cap_ath_date_txt" />
+
+        <TextView
+            android:id="@+id/top_10_label"
+            style="@style/TextAppearance.Material3.HeadlineSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/top_10_coins"
+            app:layout_constraintStart_toEndOf="@+id/divider_1"
+            app:layout_constraintTop_toBottomOf="@+id/divider_2" />
 
         <View
             android:id="@+id/divider_4"
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:background="@color/divider"
-            app:layout_constraintBottom_toTopOf="@+id/nestedScrollView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider_1" />
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/nestedScrollView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:background="@color/pies_background"
             android:fadeScrollbars="false"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bitcoin_dominance_percentage_txt">
+            app:layout_constraintTop_toBottomOf="@+id/divider_4">
 
             <LinearLayout
                 android:layout_width="match_parent"

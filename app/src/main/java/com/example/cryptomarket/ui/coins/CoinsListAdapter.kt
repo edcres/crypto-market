@@ -157,7 +157,21 @@ class CoinsListAdapter(
                 // text size of values
                 set1.valueTextSize = 9f
 
+                // todo: take out the grids using this (probably)
+//                xAxis = lineChart.xAxis
+////        xAxis.enableGridDashedLine(10f, 10f, 0f)
+//                yAxis = lineChart.axisLeft
+////        // disable dual axis (only use LEFT axis)
+//                lineChart.axisRight.isEnabled = false
+////        // horizontal grid lines
+////        yAxis.enableGridDashedLine(10f, 10f, 0f)
+////        // axis range
+//                yAxis.axisMaximum = 200f
+//                yAxis.axisMinimum = -50f
+//                xAxis.setDrawGridLines(false)
+//                yAxis.setDrawGridLines(false)
                 chart.axisRight.isEnabled = false
+
 
 
                 val dataSets = ArrayList<ILineDataSet>()

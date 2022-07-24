@@ -10,8 +10,15 @@ import com.example.cryptomarket.R
 
 // ATH = all time high
 /** todo:
+ * - Improve market overview UI (display top 10 ranked coins).
  * - put API data in charts
  *      - coins list item
+ *          - take out the grid
+ *          - take out the numbers to the left and top
+ *          - take out the label
+ *          - take out the legend
+ *          - make sure the entire chart is displayed (cuts of at the right. ACTUALLY, maybe it doesn't, maybe it's just the grid)
+ *          - take out the click listener to display the price
  *      - sheet expanded
  *      - sheet collapsed
  * - colors dark mode
