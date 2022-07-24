@@ -30,8 +30,6 @@ import com.github.mikephil.charting.utils.MPPointF
 
 private const val TAG = "MarketListFrag__TAG"
 
-// todo: fill up the names of top 10 coins
-
 class MarketOverviewFragment : Fragment() {
 
     private var binding: FragmentMarketOverviewBinding? = null
@@ -76,6 +74,7 @@ class MarketOverviewFragment : Fragment() {
             binding?.apply {
                 val top10Tickers = it.take(10)
                 makePieCharts(top10Tickers)
+                fillTop10List(top10Tickers)
             }
         }
     }
@@ -92,6 +91,21 @@ class MarketOverviewFragment : Fragment() {
             marketCapAthValueTxt.text =
                 removeTrailing2Zeros(presentPriceFormatUSD("", globalData.marketCapAthValue))
             marketCapAthDateTxt.text = marketCapATHDateString
+        }
+    }
+
+    private fun fillTop10List(top10Tickers: List<Ticker>) {
+        binding?.apply {
+            topCoin1.text = top10Tickers[0].name
+            topCoin2.text = top10Tickers[1].name
+            topCoin3.text = top10Tickers[2].name
+            topCoin4.text = top10Tickers[3].name
+            topCoin5.text = top10Tickers[4].name
+            topCoin6.text = top10Tickers[5].name
+            topCoin7.text = top10Tickers[6].name
+            topCoin8.text = top10Tickers[7].name
+            topCoin9.text = top10Tickers[8].name
+            topCoin10.text = top10Tickers[9].name
         }
     }
     // SETUP //

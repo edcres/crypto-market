@@ -181,6 +181,7 @@
                     <TextView
                         android:id="@+id/top_coin_1"
                         style="@style/TextAppearance.Material3.BodyMedium"
+                        tools:text="Bitcoin"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
@@ -200,6 +201,7 @@
                     <TextView
                         android:id="@+id/top_coin_2"
                         style="@style/TextAppearance.Material3.BodyMedium"
+                        tools:text="Ethereum"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
