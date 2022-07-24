@@ -30,6 +30,8 @@ import com.github.mikephil.charting.utils.MPPointF
 
 private const val TAG = "MarketListFrag__TAG"
 
+// todo: fill up the names of top 10 coins
+
 class MarketOverviewFragment : Fragment() {
 
     private var binding: FragmentMarketOverviewBinding? = null

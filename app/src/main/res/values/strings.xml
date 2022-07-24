@@ -11,6 +11,16 @@
     <string name="top_10_coins">Top 10 Coins</string>
     <string name="market_cap_ath">All Time High</string>
     <string name="bitcoin_dominance">Bitcoin Dominance</string>
+    <string name="one_1">1.</string>
+    <string name="one_2">2.</string>
+    <string name="one_3">3.</string>
+    <string name="one_4">4.</string>
+    <string name="one_5">5.</string>
+    <string name="one_6">6.</string>
+    <string name="one_7">7.</string>
+    <string name="one_8">8.</string>
+    <string name="one_9">9.</string>
+    <string name="one_10">10.</string>
 
     <!--    Coins Sheet-->
     <string name="w_btn">1w</string>
