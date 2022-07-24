@@ -84,13 +84,10 @@
             app:layout_constraintTop_toTopOf="@id/collapsed_divider"
             tools:text="-23%" />
 
-        <TextView
-            android:id="@+id/chart_placeholder_txt"
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/item_line_chart"
             android:layout_width="300dp"
             android:layout_height="0dp"
-            android:background="@color/color_accent"
-            android:gravity="center"
-            android:text="chart"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/price_txt" />

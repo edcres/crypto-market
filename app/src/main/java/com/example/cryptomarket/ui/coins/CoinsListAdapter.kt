@@ -6,6 +6,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.cryptomarket.data.coinsapi.ticker.HistoricalTicker
 import com.example.cryptomarket.data.coinsapi.ticker.Ticker
 import com.example.cryptomarket.databinding.CoinChartRecyclerItemBinding
 import com.example.cryptomarket.ui.CryptoViewModel
@@ -13,6 +14,7 @@ import com.example.cryptomarket.utils.DateFrame
 import com.example.cryptomarket.utils.pickPercentChange
 import com.example.cryptomarket.utils.presentPriceFormatUSD
 import com.example.cryptomarket.utils.removeTrailing2Zeros
+import com.github.mikephil.charting.charts.LineChart
 
 class CoinsListAdapter(
     private val viewLifecycleOwner: LifecycleOwner,
@@ -55,13 +57,21 @@ class CoinsListAdapter(
                 // todo: test if the time frame changes in the list when i click the time frame btns
                 timeFrame.text = chosenTimeFrame.abbrev
                 percentChangeTxt.text = pickPercentChange(chosenTimeFrame, ticker.quotes.usd)?.toString() ?: ""
-                chartPlaceholderTxt.text = "none"
+
+
                 vm.getHistoricalTickerData(false, ticker.id, chosenTimeFrame)
                     .observe(viewLifecycleOwner) {
-                        chartPlaceholderTxt.text = it.toString()
+                        makePieChart(itemLineChart, it)
                     }
             }
         }
+
+        // SETUP LINE CHART //
+        private fun makePieChart(chart: LineChart, tickerData: List<HistoricalTicker>) {
+        }
+        private fun setPiesData() {
+        }
+        // SETUP LINE CHART //
 
         companion object {
             fun from(
