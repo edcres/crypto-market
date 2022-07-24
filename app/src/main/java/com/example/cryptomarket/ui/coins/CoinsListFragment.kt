@@ -41,7 +41,9 @@ class CoinsListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        coinsListAdapter = CoinsListAdapter(viewLifecycleOwner, DateFrame.WEEK, resources, vm)
+        val linearMarker = LinearMarker(requireContext(), R.layout.line_chart_marker)
+        coinsListAdapter =
+            CoinsListAdapter(viewLifecycleOwner, DateFrame.WEEK, resources, linearMarker, vm)
         binding?.apply {
             lifecycleOwner = viewLifecycleOwner
             coinsListRecycler.adapter = coinsListAdapter

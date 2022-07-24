@@ -1,12 +1,17 @@
 package com.example.cryptomarket.ui.coins
 
 import android.content.res.Resources
+import android.graphics.Color
+import android.graphics.DashPathEffect
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.cryptomarket.R
 import com.example.cryptomarket.data.coinsapi.ticker.HistoricalTicker
 import com.example.cryptomarket.data.coinsapi.ticker.Ticker
 import com.example.cryptomarket.databinding.CoinChartRecyclerItemBinding
@@ -17,18 +22,26 @@ import com.example.cryptomarket.utils.presentPriceFormatUSD
 import com.example.cryptomarket.utils.removeTrailing2Zeros
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.Legend
-import com.github.mikephil.charting.components.LimitLine
+import com.github.mikephil.charting.components.XAxis
+import com.github.mikephil.charting.components.YAxis
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.data.LineData
+import com.github.mikephil.charting.data.LineDataSet
+import com.github.mikephil.charting.formatter.IFillFormatter
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 
 class CoinsListAdapter(
     private val viewLifecycleOwner: LifecycleOwner,
     private val chosenTimeFrame: DateFrame,
     private val resources: Resources,
+    private val linearMarker: LinearMarker,
     private val vm: CryptoViewModel
 ) :
     ListAdapter<Ticker, CoinsListAdapter.CoinsViewHolder>(CoinsDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CoinsViewHolder {
-        return CoinsViewHolder.from(viewLifecycleOwner, chosenTimeFrame, resources, vm, parent)
+        return CoinsViewHolder
+            .from(viewLifecycleOwner, chosenTimeFrame, resources, linearMarker, vm, parent)
     }
 
     override fun onBindViewHolder(holder: CoinsViewHolder, position: Int) =
@@ -38,6 +51,7 @@ class CoinsListAdapter(
         private val viewLifecycleOwner: LifecycleOwner,
         private val chosenTimeFrame: DateFrame,
         private val resources: Resources,
+        private val linearMarker: LinearMarker,
         private val vm: CryptoViewModel,
         private val binding: CoinChartRecyclerItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
@@ -60,79 +74,38 @@ class CoinsListAdapter(
                 priceTxt.text = presentPriceFormatUSD("", ticker.quotes.usd.price)
                 // todo: Test if the time frame changes in the list when I click the time frame btns
                 timeFrame.text = chosenTimeFrame.abbrev
-                percentChangeTxt.text = pickPercentChange(chosenTimeFrame, ticker.quotes.usd)?.toString() ?: ""
+                percentChangeTxt.text =
+                    pickPercentChange(chosenTimeFrame, ticker.quotes.usd)?.toString() ?: ""
                 vm.getHistoricalTickerData(false, ticker.id, chosenTimeFrame)
                     .observe(viewLifecycleOwner) { tickerData ->
-                        makePieChart(itemLineChart, tickerData)
+                        makeLineChart(itemLineChart, tickerData)
                     }
             }
         }
 
         // SETUP LINE CHART //
-        private fun makePieChart(chart: LineChart, tickerData: List<HistoricalTicker>) {
+        private fun makeLineChart(chart: LineChart, tickerData: List<HistoricalTicker>) {
             chart.setBackgroundColor(resources.getColor(R.color.white))
-//        lineChart.description.isEnabled = false
-            chart.setTouchEnabled(true)
+//            chart.setTouchEnabled(true)
 
-            chart.setOnChartValueSelectedListener(this)
             chart.setDrawGridBackground(false)
 
             // create marker to display box when values are selected
-            val mv = LinearMarker(requireContext(), R.layout.custom_marker_view)
             // Set the marker to the chart
-            mv.chartView = chart
-            chart.marker = mv
+            linearMarker.chartView = chart
+            chart.marker = linearMarker
 
             // enable scaling and dragging
-            chart.isDragEnabled = true
-            chart.setScaleEnabled(true)
+//            chart.isDragEnabled = true
+            chart.setScaleEnabled(false)
             // chart.setScaleXEnabled(true);
             // chart.setScaleYEnabled(true);
 
             // force pinch zoom along both axis
-            chart.setPinchZoom(true)
-
-            xAxis = chart.xAxis
-            xAxis.enableGridDashedLine(10f, 10f, 0f)
-
-            yAxis = chart.axisLeft
-            // disable dual axis (only use LEFT axis)
-            chart.axisRight.isEnabled = false
-            // horizontal grid lines
-            yAxis.enableGridDashedLine(10f, 10f, 0f)
-            // axis range
-            yAxis.axisMaximum = 200f
-            yAxis.axisMinimum = -50f
-
-            // Create Limit Lines
-            llXAxis = LimitLine(9f, "Index 10")
-            llXAxis.lineWidth = 4f
-            llXAxis.enableDashedLine(10f, 10f, 0f)
-            llXAxis.labelPosition = LimitLine.LimitLabelPosition.RIGHT_BOTTOM
-            llXAxis.textSize = 10f
-//        llXAxis.typeface = tfRegular
-            ll1 = LimitLine(150f, "Upper Limit")
-            ll1.lineWidth = 4f
-            ll1.enableDashedLine(10f, 10f, 0f)
-            ll1.labelPosition = LimitLine.LimitLabelPosition.RIGHT_TOP
-            ll1.textSize = 10f
-//        ll1.typeface = tfRegular
-            ll2 = LimitLine(-30f, "Lower Limit")
-            ll2.lineWidth = 4f
-            ll2.enableDashedLine(10f, 10f, 0f)
-            ll2.labelPosition = LimitLine.LimitLabelPosition.RIGHT_BOTTOM
-            ll2.textSize = 10f
-//        ll2.typeface = tfRegular
-            // draw limit lines behind data instead of on top
-            yAxis.setDrawLimitLinesBehindData(true)
-            xAxis.setDrawLimitLinesBehindData(true)
-            // add limit lines
-            yAxis.addLimitLine(ll1)
-            yAxis.addLimitLine(ll2)
-            //xAxis.addLimitLine(llXAxis);
+//            chart.setPinchZoom(true)
 
             // add data
-            setLinearData(45, 180f)
+            setLinearData(chart, tickerData)
             // draw points over time
             chart.animateX(1500)
             // get the legend (only possible after setting data)
@@ -140,7 +113,60 @@ class CoinsListAdapter(
             // draw legend entries as lines
             l.form = Legend.LegendForm.LINE
         }
-        private fun setPiesData() {
+
+        private fun setLinearData(chart: LineChart, tickerData: List<HistoricalTicker>) {
+            val set1: LineDataSet?
+            val entries = ArrayList<Entry>()
+
+            for (i in tickerData.indices) {
+                entries.add(
+                    Entry(i.toFloat(), tickerData[i].price.toFloat())
+                )
+            }
+
+            if (chart.data != null && chart.data.dataSetCount > 0) {
+                // If data has already been created.
+                set1 = chart.data.getDataSetByIndex(0) as LineDataSet
+                set1.values = entries
+                set1.notifyDataSetChanged()
+                chart.data.notifyDataChanged()
+                chart.notifyDataSetChanged()
+            } else {
+                // create a dataset and give it a type
+                set1 = LineDataSet(entries, "DataSet 1")
+                set1.setDrawIcons(false)
+                // draw dashed line
+//                set1.enableDashedLine(10f, 5f, 0f)
+                // black lines and points
+                set1.color = Color.BLACK        // todo: change the color of the line
+                // line thickness and point size
+                set1.lineWidth = 1f     // todo: change the width of the line
+
+//                set1.setCircleColor(Color.BLACK)
+//                set1.circleRadius = 3f
+//                set1.setDrawCircleHole(false)
+                set1.setDrawCircles(false)
+
+                // customize legend entry
+                // todo: take out legend
+//                set1.formLineWidth = 1f
+//                set1.formLineDashEffect = DashPathEffect(floatArrayOf(10f, 5f), 0f)
+//                set1.formSize = 15f
+
+                // todo: get rid of this text (for the value of the data in the line)
+                // text size of values
+                set1.valueTextSize = 9f
+
+                chart.axisRight.isEnabled = false
+
+
+                val dataSets = ArrayList<ILineDataSet>()
+                dataSets.add(set1) // add the data sets
+                // create a data object with the data sets
+                val data = LineData(dataSets)
+                // set data
+                chart.data = data
+            }
         }
         // SETUP LINE CHART //
 
@@ -149,13 +175,17 @@ class CoinsListAdapter(
                 viewLifecycleOwner: LifecycleOwner,
                 chosenTimeFrame: DateFrame,
                 resources: Resources,
+                linearMarker: LinearMarker,
                 vm: CryptoViewModel,
                 parent: ViewGroup
             ): CoinsViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = CoinChartRecyclerItemBinding
                     .inflate(layoutInflater, parent, false)
-                return CoinsViewHolder(viewLifecycleOwner, chosenTimeFrame, resources, vm, binding)
+                return CoinsViewHolder(
+                    viewLifecycleOwner, chosenTimeFrame, resources,
+                    linearMarker, vm, binding
+                )
             }
         }
     }
