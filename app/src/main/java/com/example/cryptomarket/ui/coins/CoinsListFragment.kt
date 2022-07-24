@@ -19,6 +19,7 @@ import com.example.cryptomarket.data.coinsapi.ticker.Ticker
 import com.example.cryptomarket.databinding.FragmentCoinsListBinding
 import com.example.cryptomarket.ui.CryptoViewModel
 import com.example.cryptomarket.utils.*
+import com.github.mikephil.charting.charts.LineChart
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 private const val TAG = "CoinsListFrag__TAG"
@@ -33,7 +34,7 @@ class CoinsListFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val fragmentBinding = FragmentCoinsListBinding.inflate(inflater, container, false)
         binding = fragmentBinding
         return fragmentBinding.root
@@ -194,10 +195,26 @@ class CoinsListFragment : Fragment() {
     private fun populateCharts(tickerData: LiveData<List<HistoricalTicker>>) {
         binding?.apply {
             tickerData.observe(viewLifecycleOwner) {
-                tickerChartCollapsedTxt.text = it.toString()
-                tickerChartExpandedTxt.text = it.toString()
+                makeCollapsedChart(tickerChartCollapsed, it)
+                makeExpandedChart(tickerChartExpanded, it)
             }
         }
+    }
+
+    private fun makeCollapsedChart(chart: LineChart, tickerData: List<HistoricalTicker>) {
+        // todo
+    }
+
+    private fun makeExpandedChart(chart: LineChart, tickerData: List<HistoricalTicker>) {
+        // todo
+    }
+
+    private fun setCollapsedChartData() {
+        // todo
+    }
+
+    private fun setExpandedChartData() {
+        // todo
     }
 
     private fun toggleAppbar(hideAppbar: Boolean) {

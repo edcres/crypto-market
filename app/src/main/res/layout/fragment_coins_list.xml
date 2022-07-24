@@ -86,7 +86,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:layout_marginStart="8dp"
-                        app:layout_constraintEnd_toStartOf="@+id/ticker_chart_collapsed_txt"
+                        app:layout_constraintEnd_toStartOf="@+id/ticker_chart_collapsed"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
@@ -117,17 +117,13 @@
 
                     </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/ticker_chart_collapsed_txt"
+                    <com.github.mikephil.charting.charts.LineChart
+                        android:id="@+id/ticker_chart_collapsed"
                         android:layout_width="300dp"
                         android:layout_height="81dp"
-                        android:background="@color/purple_200"
-                        android:gravity="center"
-                        android:visibility="visible"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:text="ticker chart" />
+                        app:layout_constraintTop_toTopOf="parent"/>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -136,16 +132,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <TextView
-                        android:id="@+id/ticker_chart_expanded_txt"
+                    <com.github.mikephil.charting.charts.LineChart
+                        android:id="@+id/ticker_chart_expanded"
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
-                        android:background="@color/teal_700"
-                        android:gravity="center"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:text="ticker chart" />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <com.google.android.material.button.MaterialButtonToggleGroup
                         android:id="@+id/timeframe_btn_group"
@@ -154,7 +147,7 @@
                         android:orientation="horizontal"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/ticker_chart_expanded_txt"
+                        app:layout_constraintTop_toBottomOf="@+id/ticker_chart_expanded"
                         app:singleSelection="true">
 
                         <com.google.android.material.button.MaterialButton
