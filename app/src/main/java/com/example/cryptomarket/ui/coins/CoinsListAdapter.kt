@@ -107,11 +107,10 @@ class CoinsListAdapter(
             // add data
             setLinearData(chart, tickerData)
             // draw points over time
-            chart.animateX(1500)
+            chart.animateX(750)
             // get the legend (only possible after setting data)
-            val l: Legend = chart.legend
-            // draw legend entries as lines
-            l.form = Legend.LegendForm.LINE
+            chart.legend.isEnabled = false
+            chart.description.isEnabled = false
         }
 
         private fun setLinearData(chart: LineChart, tickerData: List<HistoricalTicker>) {
@@ -159,10 +158,8 @@ class CoinsListAdapter(
 
                 // todo: take out the grids using this (probably)
                 val xAxis: XAxis = chart.xAxis
-                xAxis.isEnabled = false
-//        xAxis.enableGridDashedLine(10f, 10f, 0f)
                 val yAxis: YAxis = chart.axisLeft
-//        // disable dual axis (only use LEFT axis)
+                xAxis.isEnabled = false
                 chart.axisRight.isEnabled = false
                 chart.axisLeft.isEnabled = false
 
@@ -171,8 +168,6 @@ class CoinsListAdapter(
 //        // axis range
                 xAxis.setDrawGridLines(false)
                 yAxis.setDrawGridLines(false)
-
-
 
                 val dataSets = ArrayList<ILineDataSet>()
                 dataSets.add(set1) // add the data sets
