@@ -158,19 +158,19 @@ class CoinsListAdapter(
                 set1.valueTextSize = 9f
 
                 // todo: take out the grids using this (probably)
-//                xAxis = lineChart.xAxis
-////        xAxis.enableGridDashedLine(10f, 10f, 0f)
-//                yAxis = lineChart.axisLeft
-////        // disable dual axis (only use LEFT axis)
-//                lineChart.axisRight.isEnabled = false
-////        // horizontal grid lines
-////        yAxis.enableGridDashedLine(10f, 10f, 0f)
-////        // axis range
-//                yAxis.axisMaximum = 200f
-//                yAxis.axisMinimum = -50f
-//                xAxis.setDrawGridLines(false)
-//                yAxis.setDrawGridLines(false)
+                lateinit var xAxis: XAxis
+                lateinit var yAxis: YAxis
+                xAxis = chart.xAxis
+//        xAxis.enableGridDashedLine(10f, 10f, 0f)
+                yAxis = chart.axisLeft
+//        // disable dual axis (only use LEFT axis)
                 chart.axisRight.isEnabled = false
+                chart.axisLeft.isEnabled = false
+//        // horizontal grid lines
+//        yAxis.enableGridDashedLine(10f, 10f, 0f)
+//        // axis range
+                xAxis.setDrawGridLines(false)
+                yAxis.setDrawGridLines(false)
 
 
 

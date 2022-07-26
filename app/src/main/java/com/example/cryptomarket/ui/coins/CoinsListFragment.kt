@@ -1,6 +1,7 @@
 package com.example.cryptomarket.ui.coins
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -20,6 +21,11 @@ import com.example.cryptomarket.databinding.FragmentCoinsListBinding
 import com.example.cryptomarket.ui.CryptoViewModel
 import com.example.cryptomarket.utils.*
 import com.github.mikephil.charting.charts.LineChart
+import com.github.mikephil.charting.components.Legend
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.data.LineData
+import com.github.mikephil.charting.data.LineDataSet
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 private const val TAG = "CoinsListFrag__TAG"
@@ -30,6 +36,7 @@ class CoinsListFragment : Fragment() {
     private val vm: CryptoViewModel by activityViewModels()
     private lateinit var coinsListAdapter: CoinsListAdapter
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<FrameLayout>
+    private lateinit var linearMarker: LinearMarker
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,7 +49,7 @@ class CoinsListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val linearMarker = LinearMarker(requireContext(), R.layout.line_chart_marker)
+        linearMarker = LinearMarker(requireContext(), R.layout.line_chart_marker)
         coinsListAdapter =
             CoinsListAdapter(viewLifecycleOwner, DateFrame.WEEK, resources, linearMarker, vm)
         binding?.apply {
@@ -137,7 +144,9 @@ class CoinsListFragment : Fragment() {
             tickerSymbolTxt.text = ticker.symbol
             collapsedSymbolTxt.text = ticker.symbol
             totalSupplyTxt.text = displayLong(ticker.totalSupply)
-            percentChange7dTxt.text = ticker.quotes.usd.percentChange7d.toString()
+
+            percentChange7dTxt.text = displayPercent("1w: ", ticker.quotes.usd.percentChange7d)
+
             tickerPriceTxt.text = presentPriceFormatUSD("", ticker.quotes.usd.price)
             percentChangeATxt.text = displayPercent("1w: ", ticker.quotes.usd.percentChange7d)
             percentChangeBTxt.text = displayPercent("1m: ", ticker.quotes.usd.percentChange30d)
@@ -203,18 +212,204 @@ class CoinsListFragment : Fragment() {
 
     private fun makeCollapsedChart(chart: LineChart, tickerData: List<HistoricalTicker>) {
         // todo
+        chart.setBackgroundColor(resources.getColor(R.color.white))
+//            chart.setTouchEnabled(true)
+
+        chart.setDrawGridBackground(false)
+
+        // create marker to display box when values are selected
+        // Set the marker to the chart
+        linearMarker.chartView = chart
+        chart.marker = linearMarker
+
+        // enable scaling and dragging
+//            chart.isDragEnabled = true
+        chart.setScaleEnabled(false)
+        // chart.setScaleXEnabled(true);
+        // chart.setScaleYEnabled(true);
+
+        // force pinch zoom along both axis
+//            chart.setPinchZoom(true)
+
+        // add data
+        setCollapsedChartData(chart, tickerData)
+        // draw points over time
+        chart.animateX(1500)
+        // get the legend (only possible after setting data)
+        val l: Legend = chart.legend
+        // draw legend entries as lines
+        l.form = Legend.LegendForm.LINE
     }
 
     private fun makeExpandedChart(chart: LineChart, tickerData: List<HistoricalTicker>) {
         // todo
+        chart.setBackgroundColor(resources.getColor(R.color.white))
+//            chart.setTouchEnabled(true)
+
+        chart.setDrawGridBackground(false)
+
+        // create marker to display box when values are selected
+        // Set the marker to the chart
+        linearMarker.chartView = chart
+        chart.marker = linearMarker
+
+        // enable scaling and dragging
+//            chart.isDragEnabled = true
+        chart.setScaleEnabled(false)
+        // chart.setScaleXEnabled(true);
+        // chart.setScaleYEnabled(true);
+
+        // force pinch zoom along both axis
+//            chart.setPinchZoom(true)
+
+        // add data
+        setExpandedChartData(chart, tickerData)
+        // draw points over time
+        chart.animateX(1500)
+        // get the legend (only possible after setting data)
+        val l: Legend = chart.legend
+        // draw legend entries as lines
+        l.form = Legend.LegendForm.LINE
     }
 
-    private fun setCollapsedChartData() {
+    private fun setCollapsedChartData(chart: LineChart, tickerData: List<HistoricalTicker>) {
         // todo
+        val set1: LineDataSet?
+        val entries = ArrayList<Entry>()
+
+        for (i in tickerData.indices) {
+            entries.add(
+                Entry(i.toFloat(), tickerData[i].price.toFloat())
+            )
+        }
+
+        if (chart.data != null && chart.data.dataSetCount > 0) {
+            // If data has already been created.
+            set1 = chart.data.getDataSetByIndex(0) as LineDataSet
+            set1.values = entries
+            set1.notifyDataSetChanged()
+            chart.data.notifyDataChanged()
+            chart.notifyDataSetChanged()
+        } else {
+            // create a dataset and give it a type
+            set1 = LineDataSet(entries, "DataSet 1")
+            set1.setDrawIcons(false)
+            // draw dashed line
+//                set1.enableDashedLine(10f, 5f, 0f)
+            // black lines and points
+            set1.color = Color.BLACK        // todo: change the color of the line
+            // line thickness and point size
+            set1.lineWidth = 1f     // todo: change the width of the line
+
+//                set1.setCircleColor(Color.BLACK)
+//                set1.circleRadius = 3f
+//                set1.setDrawCircleHole(false)
+            set1.setDrawCircles(false)
+
+            // customize legend entry
+            // todo: take out legend
+//                set1.formLineWidth = 1f
+//                set1.formLineDashEffect = DashPathEffect(floatArrayOf(10f, 5f), 0f)
+//                set1.formSize = 15f
+
+            // todo: get rid of this text (for the value of the data in the line)
+            // text size of values
+            set1.valueTextSize = 9f
+
+            // todo: take out the grids using this (probably)
+//                xAxis = lineChart.xAxis
+////        xAxis.enableGridDashedLine(10f, 10f, 0f)
+//                yAxis = lineChart.axisLeft
+////        // disable dual axis (only use LEFT axis)
+//                lineChart.axisRight.isEnabled = false
+////        // horizontal grid lines
+////        yAxis.enableGridDashedLine(10f, 10f, 0f)
+////        // axis range
+//                yAxis.axisMaximum = 200f
+//                yAxis.axisMinimum = -50f
+//                xAxis.setDrawGridLines(false)
+//                yAxis.setDrawGridLines(false)
+            chart.axisRight.isEnabled = false
+
+
+
+            val dataSets = ArrayList<ILineDataSet>()
+            dataSets.add(set1) // add the data sets
+            // create a data object with the data sets
+            val data = LineData(dataSets)
+            // set data
+            chart.data = data
+        }
     }
 
-    private fun setExpandedChartData() {
+    private fun setExpandedChartData(chart: LineChart, tickerData: List<HistoricalTicker>) {
         // todo
+        val set1: LineDataSet?
+        val entries = ArrayList<Entry>()
+
+        for (i in tickerData.indices) {
+            entries.add(
+                Entry(i.toFloat(), tickerData[i].price.toFloat())
+            )
+        }
+
+        if (chart.data != null && chart.data.dataSetCount > 0) {
+            // If data has already been created.
+            set1 = chart.data.getDataSetByIndex(0) as LineDataSet
+            set1.values = entries
+            set1.notifyDataSetChanged()
+            chart.data.notifyDataChanged()
+            chart.notifyDataSetChanged()
+        } else {
+            // create a dataset and give it a type
+            set1 = LineDataSet(entries, "DataSet 1")
+            set1.setDrawIcons(false)
+            // draw dashed line
+//                set1.enableDashedLine(10f, 5f, 0f)
+            // black lines and points
+            set1.color = Color.BLACK        // todo: change the color of the line
+            // line thickness and point size
+            set1.lineWidth = 1f     // todo: change the width of the line
+
+//                set1.setCircleColor(Color.BLACK)
+//                set1.circleRadius = 3f
+//                set1.setDrawCircleHole(false)
+            set1.setDrawCircles(false)
+
+            // customize legend entry
+            // todo: take out legend
+//                set1.formLineWidth = 1f
+//                set1.formLineDashEffect = DashPathEffect(floatArrayOf(10f, 5f), 0f)
+//                set1.formSize = 15f
+
+            // todo: get rid of this text (for the value of the data in the line)
+            // text size of values
+            set1.valueTextSize = 9f
+
+            // todo: take out the grids using this (probably)
+//                xAxis = lineChart.xAxis
+////        xAxis.enableGridDashedLine(10f, 10f, 0f)
+//                yAxis = lineChart.axisLeft
+////        // disable dual axis (only use LEFT axis)
+//                lineChart.axisRight.isEnabled = false
+////        // horizontal grid lines
+////        yAxis.enableGridDashedLine(10f, 10f, 0f)
+////        // axis range
+//                yAxis.axisMaximum = 200f
+//                yAxis.axisMinimum = -50f
+//                xAxis.setDrawGridLines(false)
+//                yAxis.setDrawGridLines(false)
+            chart.axisRight.isEnabled = false
+
+
+
+            val dataSets = ArrayList<ILineDataSet>()
+            dataSets.add(set1) // add the data sets
+            // create a data object with the data sets
+            val data = LineData(dataSets)
+            // set data
+            chart.data = data
+        }
     }
 
     private fun toggleAppbar(hideAppbar: Boolean) {
