@@ -158,14 +158,14 @@ class CoinsListAdapter(
                 set1.valueTextSize = 9f
 
                 // todo: take out the grids using this (probably)
-                lateinit var xAxis: XAxis
-                lateinit var yAxis: YAxis
-                xAxis = chart.xAxis
+                val xAxis: XAxis = chart.xAxis
+                xAxis.isEnabled = false
 //        xAxis.enableGridDashedLine(10f, 10f, 0f)
-                yAxis = chart.axisLeft
+                val yAxis: YAxis = chart.axisLeft
 //        // disable dual axis (only use LEFT axis)
                 chart.axisRight.isEnabled = false
                 chart.axisLeft.isEnabled = false
+
 //        // horizontal grid lines
 //        yAxis.enableGridDashedLine(10f, 10f, 0f)
 //        // axis range
