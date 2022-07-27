@@ -10,13 +10,12 @@ import com.example.cryptomarket.R
 
 // ATH = all time high
 /** todo:
- * - Improve market overview UI (display top 10 ranked coins).
  * - put API data in charts
  *      - sheet expanded
- *      - sheet collapsed
- * - colors dark mode
+ *      - make the collapsed and list item charts cubic
  * - app icon
  * - colors light mode
+ * - colors dark mode
  * - news article link navigate to the website. When click on news recycler item
  * - customize the charts
  * - maybe put more logic in the viewModel

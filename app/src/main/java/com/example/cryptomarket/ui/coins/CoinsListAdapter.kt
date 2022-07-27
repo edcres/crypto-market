@@ -88,27 +88,15 @@ class CoinsListAdapter(
             chart.setBackgroundColor(resources.getColor(R.color.white))
             chart.setTouchEnabled(false)
             chart.setDrawGridBackground(false)
-
-            // todo
-            // create marker to display box when values are selected
-            // Set the marker to the chart
+            // Create marker to display box when values are selected.
+            // Set the marker to the chart.
             linearMarker.chartView = chart
             chart.marker = linearMarker
-
-            // enable scaling and dragging
-//            chart.isDragEnabled = true
-//            chart.setScaleEnabled(false)
-            // chart.setScaleXEnabled(true);
-            // chart.setScaleYEnabled(true);
-
-            // force pinch zoom along both axis
-//            chart.setPinchZoom(true)
-
-            // add data
+            // Add data to chart
             setLinearData(chart, tickerData)
-            // draw points over time
-            chart.animateX(750)
-            // get the legend (only possible after setting data)
+            // Draw points over time animation
+            chart.animateX(650)
+            // Get the legend (only possible after setting data).
             chart.legend.isEnabled = false
             chart.description.isEnabled = false
         }
@@ -116,11 +104,9 @@ class CoinsListAdapter(
         private fun setLinearData(chart: LineChart, tickerData: List<HistoricalTicker>) {
             val set1: LineDataSet?
             val entries = ArrayList<Entry>()
-
             for (i in tickerData.indices) entries.add(
                 Entry(i.toFloat(), tickerData[i].price.toFloat())
             )
-
             if (chart.data != null && chart.data.dataSetCount > 0) {
                 // If data has already been created.
                 set1 = chart.data.getDataSetByIndex(0) as LineDataSet
@@ -129,49 +115,27 @@ class CoinsListAdapter(
                 chart.data.notifyDataChanged()
                 chart.notifyDataSetChanged()
             } else {
-                // create a dataset and give it a type
+                // Create a dataset and give it a type.
                 set1 = LineDataSet(entries, "DataSet 1")
                 set1.setDrawIcons(false)
-                // draw dashed line
-//                set1.enableDashedLine(10f, 5f, 0f)
-                // black lines and points
                 set1.color = Color.BLACK        // todo: change the color of the line
-                // line thickness and point size
-                set1.lineWidth = 1f     // todo: change the width of the line
-
-//                set1.setCircleColor(Color.BLACK)
-//                set1.circleRadius = 3f
-//                set1.setDrawCircleHole(false)
+                // Line thickness and point size.
+                set1.lineWidth = 1f         // todo: change the width of the line
                 set1.setDrawCircles(false)
-
-                // customize legend entry
-                // todo: take out legend
-//                set1.formLineWidth = 1f
-//                set1.formLineDashEffect = DashPathEffect(floatArrayOf(10f, 5f), 0f)
-//                set1.formSize = 15f
-
-                // todo: get rid of this text (for the value of the data in the line)
-                // text size of values
                 set1.valueTextSize = 9f
                 set1.setDrawValues(false)
-
                 val xAxis: XAxis = chart.xAxis
                 val yAxis: YAxis = chart.axisLeft
                 xAxis.isEnabled = false
                 chart.axisRight.isEnabled = false
                 chart.axisLeft.isEnabled = false
-
-//        // horizontal grid lines
-//        yAxis.enableGridDashedLine(10f, 10f, 0f)
-//        // axis range
                 xAxis.setDrawGridLines(false)
                 yAxis.setDrawGridLines(false)
-
                 val dataSets = ArrayList<ILineDataSet>()
                 dataSets.add(set1) // add the data sets
-                // create a data object with the data sets
+                // Create a data object with the data sets.
                 val data = LineData(dataSets)
-                // set data
+                // Set data
                 chart.data = data
             }
         }

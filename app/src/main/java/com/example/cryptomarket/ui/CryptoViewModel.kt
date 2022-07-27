@@ -37,7 +37,7 @@ class CryptoViewModel : ViewModel() {
     val newsCall: LiveData<NewsCall> get() = _newsCall
 
     // Used to store the data of chart queries, to avoid extra API queries.
-    val chartsData = mutableMapOf<String, List<HistoricalTicker>>()
+    private val chartsData = mutableMapOf<String, List<HistoricalTicker>>()
 
     init {
             viewModelScope.launch {

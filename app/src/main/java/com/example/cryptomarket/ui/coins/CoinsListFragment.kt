@@ -22,6 +22,8 @@ import com.example.cryptomarket.ui.CryptoViewModel
 import com.example.cryptomarket.utils.*
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.Legend
+import com.github.mikephil.charting.components.XAxis
+import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
@@ -143,7 +145,6 @@ class CoinsListFragment : Fragment() {
         binding?.apply {
             tickerSymbolTxt.text = ticker.symbol
             collapsedSymbolTxt.text = ticker.symbol
-
             collapsedPriceTxt.text = presentPriceFormatUSD("", ticker.quotes.usd.price)
             percentChange7dTxt.text = displayPercent("1w: ", ticker.quotes.usd.percentChange7d)
             tickerPriceTxt.text = presentPriceFormatUSD("", ticker.quotes.usd.price)
@@ -210,34 +211,21 @@ class CoinsListFragment : Fragment() {
     }
 
     private fun makeCollapsedChart(chart: LineChart, tickerData: List<HistoricalTicker>) {
-        // todo
         chart.setBackgroundColor(resources.getColor(R.color.white))
-//            chart.setTouchEnabled(true)
-
+        chart.setTouchEnabled(false)
         chart.setDrawGridBackground(false)
-
-        // create marker to display box when values are selected
+        // Create marker to display box when values are selected
         // Set the marker to the chart
         linearMarker.chartView = chart
         chart.marker = linearMarker
-
-        // enable scaling and dragging
-//            chart.isDragEnabled = true
-        chart.setScaleEnabled(false)
-        // chart.setScaleXEnabled(true);
-        // chart.setScaleYEnabled(true);
-
-        // force pinch zoom along both axis
-//            chart.setPinchZoom(true)
-
-        // add data
+        chart.setBackgroundColor(resources.getColor(R.color.color_item_container))
+        // Add data to chart
         setCollapsedChartData(chart, tickerData)
-        // draw points over time
-        chart.animateX(1500)
+        // Draw points over time animation
+        chart.animateX(650)
         // get the legend (only possible after setting data)
-        val l: Legend = chart.legend
-        // draw legend entries as lines
-        l.form = Legend.LegendForm.LINE
+        chart.legend.isEnabled = false
+        chart.description.isEnabled = false
     }
 
     private fun makeExpandedChart(chart: LineChart, tickerData: List<HistoricalTicker>) {
@@ -272,16 +260,11 @@ class CoinsListFragment : Fragment() {
     }
 
     private fun setCollapsedChartData(chart: LineChart, tickerData: List<HistoricalTicker>) {
-        // todo
         val set1: LineDataSet?
         val entries = ArrayList<Entry>()
-
-        for (i in tickerData.indices) {
-            entries.add(
-                Entry(i.toFloat(), tickerData[i].price.toFloat())
-            )
-        }
-
+        for (i in tickerData.indices) entries.add(
+            Entry(i.toFloat(), tickerData[i].price.toFloat())
+        )
         if (chart.data != null && chart.data.dataSetCount > 0) {
             // If data has already been created.
             set1 = chart.data.getDataSetByIndex(0) as LineDataSet
@@ -290,53 +273,28 @@ class CoinsListFragment : Fragment() {
             chart.data.notifyDataChanged()
             chart.notifyDataSetChanged()
         } else {
-            // create a dataset and give it a type
+            // Create a dataset and give it a type.
             set1 = LineDataSet(entries, "DataSet 1")
             set1.setDrawIcons(false)
-            // draw dashed line
-//                set1.enableDashedLine(10f, 5f, 0f)
-            // black lines and points
             set1.color = Color.BLACK        // todo: change the color of the line
-            // line thickness and point size
-            set1.lineWidth = 1f     // todo: change the width of the line
-
-//                set1.setCircleColor(Color.BLACK)
-//                set1.circleRadius = 3f
-//                set1.setDrawCircleHole(false)
+            // Line thickness and point size.
+            set1.lineWidth = 1f         // todo: change the width of the line
             set1.setDrawCircles(false)
-
-            // customize legend entry
-            // todo: take out legend
-//                set1.formLineWidth = 1f
-//                set1.formLineDashEffect = DashPathEffect(floatArrayOf(10f, 5f), 0f)
-//                set1.formSize = 15f
-
-            // todo: get rid of this text (for the value of the data in the line)
-            // text size of values
-            set1.valueTextSize = 9f
-
-            // todo: take out the grids using this (probably)
-//                xAxis = lineChart.xAxis
-////        xAxis.enableGridDashedLine(10f, 10f, 0f)
-//                yAxis = lineChart.axisLeft
-////        // disable dual axis (only use LEFT axis)
-//                lineChart.axisRight.isEnabled = false
-////        // horizontal grid lines
-////        yAxis.enableGridDashedLine(10f, 10f, 0f)
-////        // axis range
-//                yAxis.axisMaximum = 200f
-//                yAxis.axisMinimum = -50f
-//                xAxis.setDrawGridLines(false)
-//                yAxis.setDrawGridLines(false)
+//            set1.valueTextSize = 9f
+//            set1.valueTextColor = Color.WHITE
+            set1.setDrawValues(false)
+            val xAxis: XAxis = chart.xAxis
+            val yAxis: YAxis = chart.axisLeft
+            xAxis.isEnabled = false
             chart.axisRight.isEnabled = false
-
-
-
+            chart.axisLeft.isEnabled = false
+            xAxis.setDrawGridLines(false)
+            yAxis.setDrawGridLines(false)
             val dataSets = ArrayList<ILineDataSet>()
             dataSets.add(set1) // add the data sets
-            // create a data object with the data sets
+            // Create a data object with the data sets.
             val data = LineData(dataSets)
-            // set data
+            // Set data
             chart.data = data
         }
     }
