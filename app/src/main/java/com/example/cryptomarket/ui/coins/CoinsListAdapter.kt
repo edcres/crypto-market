@@ -72,10 +72,8 @@ class CoinsListAdapter(
                 coinNameTxt.text = ticker.name
                 rankTxt.text = removeTrailing2Zeros(ticker.rank.toString())
                 priceTxt.text = presentPriceFormatUSD("", ticker.quotes.usd.price)
-                // todo: Test if the time frame changes in the list when I click the time frame btns
                 timeFrame.text = chosenTimeFrame.abbrev
-                percentChangeTxt.text =
-                    pickPercentChange(chosenTimeFrame, ticker.quotes.usd)?.toString() ?: ""
+                percentChangeTxt.text = pickPercentChange(chosenTimeFrame, ticker.quotes.usd) ?: ""
                 vm.getHistoricalTickerData(false, ticker.id, chosenTimeFrame)
                     .observe(viewLifecycleOwner) { tickerData ->
                         makeLineChart(itemLineChart, tickerData)
@@ -94,8 +92,6 @@ class CoinsListAdapter(
             chart.marker = linearMarker
             // Add data to chart
             setLinearData(chart, tickerData)
-            // Draw points over time animation
-//            chart.animateX(650)
             // Get the legend (only possible after setting data).
             chart.legend.isEnabled = false
             chart.description.isEnabled = false

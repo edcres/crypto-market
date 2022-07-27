@@ -11,7 +11,11 @@ import com.example.cryptomarket.R
 // ATH = all time high
 /** todo:
  * - put API data in charts
- *      - sheet expanded
+ *      - sheet expanded chart
+ * - turn % changes red/green
+ *      - in list items
+ *      - collapsed sheet
+ *      - expanded sheet
  * - app icon
  * - colors light mode
  * - colors dark mode
@@ -26,7 +30,9 @@ import com.example.cryptomarket.R
  * - Make more data class attributes optionals. Sometime API data is null
  *
  * - Start fragment is created twice at startup. Maybe other views are too
- * - Some chart data are not loaded within a good amount of time, idk what triggers eventual loading (some seem to never load)
+ * - (Looks like this is fixed now, maybe it was a problem
+ *      displaying too big strings in the textViews) Some chart data are not loaded
+ *      within a good amount of time, idk what triggers eventual loading (some seem to never load)
  *      - put the queries that make it crash in a queue to be don later and store the
  *                  in the vm map (I don't need this put it's cool)
  *          - maybe override onViewRecycled(on the adapter)

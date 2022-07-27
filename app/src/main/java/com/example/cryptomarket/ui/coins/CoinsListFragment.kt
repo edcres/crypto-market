@@ -218,7 +218,7 @@ class CoinsListFragment : Fragment() {
         // Set the marker to the chart
         linearMarker.chartView = chart
         chart.marker = linearMarker
-        chart.setBackgroundColor(resources.getColor(R.color.color_item_container))
+        chart.setBackgroundColor(resources.getColor(R.color.sheet_background))
         // Add data to chart
         setCollapsedChartData(chart, tickerData)
         // Draw points over time animation
@@ -230,7 +230,7 @@ class CoinsListFragment : Fragment() {
 
     private fun makeExpandedChart(chart: LineChart, tickerData: List<HistoricalTicker>) {
         // todo
-        chart.setBackgroundColor(resources.getColor(R.color.white))
+        chart.setBackgroundColor(resources.getColor(R.color.sheet_background))
 //            chart.setTouchEnabled(true)
 
         chart.setDrawGridBackground(false)
@@ -252,7 +252,7 @@ class CoinsListFragment : Fragment() {
         // add data
         setExpandedChartData(chart, tickerData)
         // draw points over time
-        chart.animateX(1500)
+        chart.animateX(1000)
         // get the legend (only possible after setting data)
         val l: Legend = chart.legend
         // draw legend entries as lines
@@ -342,6 +342,7 @@ class CoinsListFragment : Fragment() {
             // todo: get rid of this text (for the value of the data in the line)
             // text size of values
             set1.valueTextSize = 9f
+            set1.setDrawValues(false)
 
             // todo: take out the grids using this (probably)
 //                xAxis = lineChart.xAxis

@@ -9,7 +9,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="color_primary">#2D3A67</color>
-    <color name="color_item_container">#76FFB4</color>
+    <color name="sheet_background">#76FFB4</color>
     <color name="color_accent">#FAE206</color>
     <color name="cardview_background">#4D5E9A</color>
     <color name="divider">#AB4A4A4A</color>
@@ -19,4 +19,6 @@
     <color name="pies_labels">#220E0E</color>
     <color name="pies_inner_circle">#FFFFFF</color>
     <color name="pie_hole">#AB737373</color>
+
+    <!--News-->
 </resources>
