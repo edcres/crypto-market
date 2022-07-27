@@ -88,7 +88,7 @@ class CoinsListAdapter(
 
         // SETUP LINE CHART //
         private fun makeLineChart(chart: LineChart, tickerData: List<HistoricalTicker>) {
-            chart.setBackgroundColor(resources.getColor(R.color.white))
+            chart.setBackgroundColor(resources.getColor(R.color.color_background))
             chart.setTouchEnabled(false)
             chart.setDrawGridBackground(false)
             // Create marker to display box when values are selected.

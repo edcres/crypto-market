@@ -147,6 +147,7 @@ class CoinsListFragment : Fragment() {
             collapsedSymbolTxt.text = ticker.symbol
             collapsedPriceTxt.text = presentPriceFormatUSD("", ticker.quotes.usd.price)
             tickerPriceTxt.text = presentPriceFormatUSD("", ticker.quotes.usd.price)
+
             // todo: change this according to timeFrame (in collapsed sheet)
             percentChange7dTxt.text = displayPercent("1w: ", ticker.quotes.usd.percentChange7d)
             displayPercentChangeColor(percentChange7dTxt, ticker.quotes.usd.percentChange7d)

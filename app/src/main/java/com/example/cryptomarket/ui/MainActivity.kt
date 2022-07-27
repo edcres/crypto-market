@@ -10,10 +10,7 @@ import com.example.cryptomarket.R
 
 // ATH = all time high
 /** todo:
- * - turn % changes red/green
- *      - in list items
- *      - collapsed sheet
- *      - expanded sheet
+ * - Make pie hole bigger
  * - colors light mode
  * - market overview layout (maybe)
  *      - smaller text size

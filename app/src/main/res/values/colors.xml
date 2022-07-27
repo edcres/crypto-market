@@ -8,19 +8,27 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="color_primary">#2D3A67</color>
-    <color name="sheet_background">#76FFB4</color>
-    <color name="color_accent">#FAE206</color>
-    <color name="cardview_background">#4D5E9A</color>
+    <color name="color_background">#D7DFF8</color>
+    <color name="main_dark">#4C536A</color>
+    <color name="color_accent">#f9f871</color>
+    <color name="sheet_top_bar">#9BB0EF</color>
+    <!--    todo: these 2 are the same-->
+    <color name="sheet_background">#B5C6FD</color>
+    <color name="cardview_background">#B5C6FD</color>
+
+    <!--Dark Theme-->
+    <color name="color_background_dark">#2D3A67</color>
+    <color name="sheet_background_dark">#76FFB4</color>
+    <color name="color_accent_dark">#FAE206</color>
+    <color name="cardview_background_dark">#4D5E9A</color>
+
     <color name="divider">#AB4A4A4A</color>
     <color name="positive_green">#2BED00</color>
     <color name="negative_red">#F10000</color>
 
     <!--Pies-->
-    <color name="pies_background">#AB4A4A4A</color>
+    <color name="pies_background">#BEC9EC</color>
     <color name="pies_labels">#220E0E</color>
     <color name="pies_inner_circle">#FFFFFF</color>
-    <color name="pie_hole">#AB737373</color>
-
-    <!--News-->
+    <color name="pie_hole">#C3CDEC</color>
 </resources>
