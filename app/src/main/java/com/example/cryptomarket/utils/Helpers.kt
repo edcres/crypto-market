@@ -102,6 +102,7 @@ fun displayLong(num: Long): String {
     return dec.format(num)
 }
 
+// todo: maybe get rid of this
 fun displayPercent(label: String, num: Double) = "$label${removeTrailing2Zeros(num.toString())}%"
 
 fun displayHashAlgorithm(hash: String?) = if (hash != null) {

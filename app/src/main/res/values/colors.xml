@@ -13,8 +13,8 @@
     <color name="color_accent">#FAE206</color>
     <color name="cardview_background">#4D5E9A</color>
     <color name="divider">#AB4A4A4A</color>
-    <color name="positive_green">#F10000</color>
-    <color name="negative_red">#2BED00</color>
+    <color name="positive_green">#2BED00</color>
+    <color name="negative_red">#F10000</color>
 
     <!--Pies-->
     <color name="pies_background">#AB4A4A4A</color>

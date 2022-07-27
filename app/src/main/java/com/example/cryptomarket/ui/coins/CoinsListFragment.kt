@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LiveData
@@ -21,7 +22,6 @@ import com.example.cryptomarket.databinding.FragmentCoinsListBinding
 import com.example.cryptomarket.ui.CryptoViewModel
 import com.example.cryptomarket.utils.*
 import com.github.mikephil.charting.charts.LineChart
-import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.Entry
@@ -146,11 +146,24 @@ class CoinsListFragment : Fragment() {
             tickerSymbolTxt.text = ticker.symbol
             collapsedSymbolTxt.text = ticker.symbol
             collapsedPriceTxt.text = presentPriceFormatUSD("", ticker.quotes.usd.price)
-            percentChange7dTxt.text = displayPercent("1w: ", ticker.quotes.usd.percentChange7d)
             tickerPriceTxt.text = presentPriceFormatUSD("", ticker.quotes.usd.price)
+            // todo: change this according to timeFrame (in collapsed sheet)
+            percentChange7dTxt.text = displayPercent("1w: ", ticker.quotes.usd.percentChange7d)
+            displayPercentChangeColor(percentChange7dTxt, ticker.quotes.usd.percentChange7d)
+
             percentChangeATxt.text = displayPercent("1w: ", ticker.quotes.usd.percentChange7d)
             percentChangeBTxt.text = displayPercent("1m: ", ticker.quotes.usd.percentChange30d)
+            displayPercentChangeColor(percentChangeATxt, ticker.quotes.usd.percentChange7d)
+            displayPercentChangeColor(percentChangeBTxt, ticker.quotes.usd.percentChange30d)
             setMoreInfoDataToUI(ticker.quotes.usd, ticker.id)
+        }
+    }
+
+    private fun displayPercentChangeColor(percentChangeTxt: TextView, percentChange: Double) {
+        if (percentChange > 0.0) {
+            percentChangeTxt.setTextColor(resources.getColor(R.color.positive_green))
+        } else if (percentChange < 0.0) {
+            percentChangeTxt.setTextColor(resources.getColor(R.color.negative_red))
         }
     }
 
