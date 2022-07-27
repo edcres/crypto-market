@@ -86,10 +86,10 @@ class CoinsListAdapter(
         // SETUP LINE CHART //
         private fun makeLineChart(chart: LineChart, tickerData: List<HistoricalTicker>) {
             chart.setBackgroundColor(resources.getColor(R.color.white))
-//            chart.setTouchEnabled(true)
-
+            chart.setTouchEnabled(false)
             chart.setDrawGridBackground(false)
 
+            // todo
             // create marker to display box when values are selected
             // Set the marker to the chart
             linearMarker.chartView = chart
@@ -97,7 +97,7 @@ class CoinsListAdapter(
 
             // enable scaling and dragging
 //            chart.isDragEnabled = true
-            chart.setScaleEnabled(false)
+//            chart.setScaleEnabled(false)
             // chart.setScaleXEnabled(true);
             // chart.setScaleYEnabled(true);
 
@@ -117,11 +117,9 @@ class CoinsListAdapter(
             val set1: LineDataSet?
             val entries = ArrayList<Entry>()
 
-            for (i in tickerData.indices) {
-                entries.add(
-                    Entry(i.toFloat(), tickerData[i].price.toFloat())
-                )
-            }
+            for (i in tickerData.indices) entries.add(
+                Entry(i.toFloat(), tickerData[i].price.toFloat())
+            )
 
             if (chart.data != null && chart.data.dataSetCount > 0) {
                 // If data has already been created.
@@ -155,8 +153,8 @@ class CoinsListAdapter(
                 // todo: get rid of this text (for the value of the data in the line)
                 // text size of values
                 set1.valueTextSize = 9f
+                set1.setDrawValues(false)
 
-                // todo: take out the grids using this (probably)
                 val xAxis: XAxis = chart.xAxis
                 val yAxis: YAxis = chart.axisLeft
                 xAxis.isEnabled = false
