@@ -1,6 +1,7 @@
 package com.example.cryptomarket.ui
 
 import android.util.Log
+import android.widget.TextView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,11 +10,13 @@ import com.example.cryptomarket.data.Repository
 import com.example.cryptomarket.data.coinsapi.GlobalData
 import com.example.cryptomarket.data.coinsapi.coin.CoinData
 import com.example.cryptomarket.data.coinsapi.ticker.HistoricalTicker
+import com.example.cryptomarket.data.coinsapi.ticker.PriceData
 import com.example.cryptomarket.data.coinsapi.ticker.Ticker
 import com.example.cryptomarket.data.newsapi.NewsCall
 import com.example.cryptomarket.utils.DateFrame
 import com.example.cryptomarket.utils.FragChosen
 import com.example.cryptomarket.utils.addZerosToDate
+import com.example.cryptomarket.utils.pickPercentChange
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.net.UnknownHostException

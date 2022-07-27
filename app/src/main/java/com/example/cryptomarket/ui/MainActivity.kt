@@ -10,23 +10,33 @@ import com.example.cryptomarket.R
 
 // ATH = all time high
 /** todo:
- * - put API data in charts
- *      - sheet expanded chart
- *      - label, legend
  * - turn % changes red/green
  *      - in list items
  *      - collapsed sheet
  *      - expanded sheet
- * - app icon
  * - colors light mode
+ * - market overview layout (maybe)
+ *      - smaller text size
+ * - app icon
  * - colors dark mode
  * - news article link navigate to the website. When click on news recycler item
  * - customize the charts
+ *      - thicker lines
+ *      - color lines
+ *      - expanded chart
+ *          - fading background below the line
+ *          - remove y-axis (horizontal) marker line
+ *          - marker lines color
+ *          - marker text color
+ *          - put the x-axis numbers at the bottom
+ *          - remove the x-axis (vertical) background grid lines
+ *          - maybe put a circle at the center of the marker lines
  * - maybe put more logic in the viewModel
- * - bugs (at least the first 1, maybe just leave the rest for "eventually")
+ * - bugs (at least the first 2, maybe just leave the rest for "eventually")
  */
 
 /** bugs:
+ * - collapsed sheet '1w: -3.24%' does not update with timeframe change
  * - MAJOR: Wrong data is displayed on the expanded sheet sometimes.
  * - Make more data class attributes optionals. Sometime API data is null
  *

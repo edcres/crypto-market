@@ -2,32 +2,26 @@ package com.example.cryptomarket.ui.coins
 
 import android.content.res.Resources
 import android.graphics.Color
-import android.graphics.DashPathEffect
-import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
+import android.widget.TextView
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cryptomarket.R
 import com.example.cryptomarket.data.coinsapi.ticker.HistoricalTicker
+import com.example.cryptomarket.data.coinsapi.ticker.PriceData
 import com.example.cryptomarket.data.coinsapi.ticker.Ticker
 import com.example.cryptomarket.databinding.CoinChartRecyclerItemBinding
 import com.example.cryptomarket.ui.CryptoViewModel
-import com.example.cryptomarket.utils.DateFrame
-import com.example.cryptomarket.utils.pickPercentChange
-import com.example.cryptomarket.utils.presentPriceFormatUSD
-import com.example.cryptomarket.utils.removeTrailing2Zeros
+import com.example.cryptomarket.utils.*
 import com.github.mikephil.charting.charts.LineChart
-import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
-import com.github.mikephil.charting.formatter.IFillFormatter
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 
 class CoinsListAdapter(
@@ -73,13 +67,24 @@ class CoinsListAdapter(
                 rankTxt.text = removeTrailing2Zeros(ticker.rank.toString())
                 priceTxt.text = presentPriceFormatUSD("", ticker.quotes.usd.price)
                 timeFrame.text = chosenTimeFrame.abbrev
-                percentChangeTxt.text = pickPercentChange(chosenTimeFrame, ticker.quotes.usd) ?: ""
+                displayPercentChange(percentChangeTxt, ticker.quotes.usd)
                 vm.getHistoricalTickerData(false, ticker.id, chosenTimeFrame)
                     .observe(viewLifecycleOwner) { tickerData ->
                         makeLineChart(itemLineChart, tickerData)
                     }
             }
         }
+
+        // HELPERS //
+        private fun displayPercentChange(percentChangeTxt: TextView, priceData: PriceData) {
+            val percentChangeText = pickPercentChange(chosenTimeFrame, priceData) ?: ""
+            percentChangeTxt.text = percentChangeText
+            if (getPercentChangeNum(percentChangeText) > 0.0)
+                percentChangeTxt.setTextColor(resources.getColor(R.color.positive_green))
+            else if (getPercentChangeNum(percentChangeText) < 0.0)
+                percentChangeTxt.setTextColor(resources.getColor(R.color.negative_red))
+        }
+        // HELPERS //
 
         // SETUP LINE CHART //
         private fun makeLineChart(chart: LineChart, tickerData: List<HistoricalTicker>) {

@@ -47,6 +47,9 @@ fun addZerosToDate(baseDate: String) =
         } else it
     }
 
+fun getPercentChangeNum(percentChangeString: String) : Double =
+    percentChangeString.split("%")[0].toDouble()
+
 fun displayTeam(team: List<TeamMember>?): String {
     val teamList = mutableListOf<String>()
     val altLabel = "Team not available"
