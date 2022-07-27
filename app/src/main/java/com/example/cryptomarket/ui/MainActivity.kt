@@ -12,7 +12,6 @@ import com.example.cryptomarket.R
 /** todo:
  * - put API data in charts
  *      - sheet expanded
- *      - make the collapsed and list item charts cubic
  * - app icon
  * - colors light mode
  * - colors dark mode
