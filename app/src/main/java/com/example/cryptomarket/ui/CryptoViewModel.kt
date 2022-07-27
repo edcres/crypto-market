@@ -94,7 +94,6 @@ class CryptoViewModel : ViewModel() {
                         "${currentDate.get(Calendar.MONTH) + 1}/" +
                         "${currentDate.get(Calendar.DAY_OF_MONTH) + 1}"
                 // Handle when the API rejects the request when making too many.
-
                 try {
                     try {
                         val historicalData = repo

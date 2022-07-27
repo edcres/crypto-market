@@ -23,6 +23,7 @@ import com.example.cryptomarket.R
  */
 
 /** bugs:
+ * - MAJOR: Wrong data is displayed on the expanded sheet sometimes.
  * - Make more data class attributes optionals. Sometime API data is null
  *
  * - Start fragment is created twice at startup. Maybe other views are too

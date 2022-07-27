@@ -95,7 +95,7 @@ class CoinsListAdapter(
             // Add data to chart
             setLinearData(chart, tickerData)
             // Draw points over time animation
-            chart.animateX(650)
+//            chart.animateX(650)
             // Get the legend (only possible after setting data).
             chart.legend.isEnabled = false
             chart.description.isEnabled = false

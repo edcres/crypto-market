@@ -53,7 +53,7 @@ class CoinsListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         linearMarker = LinearMarker(requireContext(), R.layout.line_chart_marker)
         coinsListAdapter =
-            CoinsListAdapter(viewLifecycleOwner, DateFrame.WEEK, resources, linearMarker, vm)
+            CoinsListAdapter(viewLifecycleOwner, DateFrame.MONTH, resources, linearMarker, vm)
         binding?.apply {
             lifecycleOwner = viewLifecycleOwner
             coinsListRecycler.adapter = coinsListAdapter
@@ -135,7 +135,7 @@ class CoinsListFragment : Fragment() {
             coinsListAdapter.submitList(it)
             setCoinOnSheet(it[0])
             timeFrameClickListeners(it[0].id)
-            populateCharts(vm.getHistoricalTickerData(true, it[0].id, DateFrame.WEEK))
+            populateCharts(vm.getHistoricalTickerData(true, it[0].id, DateFrame.MONTH))
         }
     }
     // SETUP //
@@ -156,7 +156,7 @@ class CoinsListFragment : Fragment() {
 
     private fun timeFrameClickListeners(tickerID: String) {
         binding?.apply {
-            wBtn.isChecked = true
+            mBtn.isChecked = true
             timeframeBtnGroup.addOnButtonCheckedListener { _, checkedId, isChecked ->
                 if (isChecked) {
                     when (checkedId) {
