@@ -99,10 +99,11 @@
 
                         <!--Ticker-->
                         <TextView
-                            android:id="@+id/total_supply_txt"
+                            android:id="@+id/collapsed_price_txt"
                             style="@style/TextAppearance.Material3.LabelSmall"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
                             tools:text="345687654" />
 
                         <!--price data-->
@@ -111,6 +112,7 @@
                             style="@style/TextAppearance.Material3.LabelMedium"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
                             tools:text="7.6%" />
 
                     </LinearLayout>

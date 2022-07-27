@@ -143,10 +143,9 @@ class CoinsListFragment : Fragment() {
         binding?.apply {
             tickerSymbolTxt.text = ticker.symbol
             collapsedSymbolTxt.text = ticker.symbol
-            totalSupplyTxt.text = displayLong(ticker.totalSupply)
 
+            collapsedPriceTxt.text = presentPriceFormatUSD("", ticker.quotes.usd.price)
             percentChange7dTxt.text = displayPercent("1w: ", ticker.quotes.usd.percentChange7d)
-
             tickerPriceTxt.text = presentPriceFormatUSD("", ticker.quotes.usd.price)
             percentChangeATxt.text = displayPercent("1w: ", ticker.quotes.usd.percentChange7d)
             percentChangeBTxt.text = displayPercent("1m: ", ticker.quotes.usd.percentChange30d)

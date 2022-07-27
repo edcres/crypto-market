@@ -12,9 +12,6 @@ import com.example.cryptomarket.R
 /** todo:
  * - Improve market overview UI (display top 10 ranked coins).
  * - put API data in charts
- *      - coins list item
- *          - take out the number values on the line
- *          - take out the click listener to display the price
  *      - sheet expanded
  *      - sheet collapsed
  * - colors dark mode
