@@ -12,6 +12,7 @@ import com.example.cryptomarket.R
 /** todo:
  * - put API data in charts
  *      - sheet expanded chart
+ *      - label, legend
  * - turn % changes red/green
  *      - in list items
  *      - collapsed sheet

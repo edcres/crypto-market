@@ -253,10 +253,8 @@ class CoinsListFragment : Fragment() {
         setExpandedChartData(chart, tickerData)
         // draw points over time
         chart.animateX(1000)
-        // get the legend (only possible after setting data)
-        val l: Legend = chart.legend
-        // draw legend entries as lines
-        l.form = Legend.LegendForm.LINE
+        chart.legend.isEnabled = false
+        chart.description.isEnabled = false
     }
 
     private fun setCollapsedChartData(chart: LineChart, tickerData: List<HistoricalTicker>) {
