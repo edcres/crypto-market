@@ -12,16 +12,15 @@
     <color name="main_dark">#a5adc5</color>
     <color name="color_accent">#f9f871</color>
     <color name="sheet_top_bar">#9BB0EF</color>
-    <!--    todo: these 2 are the same-->
     <color name="sheet_background">#D0DCFF</color>
     <color name="news_cardview">#D5DFFF</color>
     <color name="bottom_nav">#BCCDFF</color>
 
     <!--Pies-->
-    <color name="pies_background">#BEC9EC</color>
+    <color name="pies_background">#E5ECFF</color>
+    <color name="pie_hole">#EAEFFD</color>
     <color name="pies_labels">#220E0E</color>
     <color name="pies_inner_circle">#FFFFFF</color>
-    <color name="pie_hole">#C3CDEC</color>
 
     <!--Dark Theme-->
     <color name="color_background_dark">#2D3A67</color>
