@@ -108,14 +108,28 @@
                             tools:text="345687654" />
 
                         <!--price data-->
-                        <TextView
-                            android:id="@+id/percent_change_7d_txt"
-                            style="@style/TextAppearance.Material3.LabelMedium"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
-                            tools:text="7.6%" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
 
+                            <TextView
+                                android:id="@+id/percent_change_collapsed_txt"
+                                style="@style/TextAppearance.Material3.LabelMedium"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                tools:text="7.6%" />
+
+                            <TextView
+                                android:id="@+id/time_frame_txt"
+                                style="@style/TextAppearance.Material3.LabelMedium"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginTop="2dp"
+                                tools:text="1m" />
+
+                        </LinearLayout>
                     </LinearLayout>
 
                     <com.github.mikephil.charting.charts.LineChart
@@ -219,20 +233,46 @@
 
                             <TextView
                                 android:id="@+id/percent_change_a_txt"
+                                style="@style/TextAppearance.Material3.LabelMedium"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginEnd="4dp"
+                                android:textStyle="bold"
+                                app:layout_constraintEnd_toStartOf="@+id/frame_change_a_txt"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="12%" />
+
+                            <TextView
+                                android:id="@+id/frame_change_a_txt"
+                                style="@style/TextAppearance.Material3.LabelMedium"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textStyle="bold"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
-                                tools:text="1w 12%" />
+                                tools:text="1w" />
 
                             <TextView
                                 android:id="@+id/percent_change_b_txt"
+                                style="@style/TextAppearance.Material3.LabelMedium"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginEnd="4dp"
+                                android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintEnd_toStartOf="@+id/frame_change_b_txt"
                                 app:layout_constraintTop_toBottomOf="@+id/percent_change_a_txt"
-                                tools:text="1m -8%" />
+                                tools:text="-8%" />
+
+                            <TextView
+                                android:id="@+id/frame_change_b_txt"
+                                style="@style/TextAppearance.Material3.LabelMedium"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textStyle="bold"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/percent_change_b_txt"
+                                tools:text="1m" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
                     </com.google.android.material.card.MaterialCardView>

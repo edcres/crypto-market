@@ -63,27 +63,27 @@
             tools:text="$22,424" />
 
         <TextView
+            android:id="@+id/percent_change_txt"
+            style="@style/TextAppearance.Material3.LabelMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/time_frame"
+            app:layout_constraintTop_toTopOf="@id/collapsed_divider"
+            tools:text="-23%" />
+
+        <TextView
             android:id="@+id/time_frame"
             style="@style/TextAppearance.Material3.LabelMedium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toStartOf="@+id/percent_change_txt"
-            app:layout_constraintTop_toTopOf="@id/collapsed_divider"
-            tools:text="7d:" />
-
-        <TextView
-            android:id="@+id/percent_change_txt"
-            style="@style/TextAppearance.Material3.LabelMedium"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/collapsed_divider"
-            tools:text="-23%" />
+            tools:text="7d" />
 
         <com.github.mikephil.charting.charts.LineChart
             android:id="@+id/item_line_chart"
