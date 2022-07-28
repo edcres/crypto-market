@@ -153,7 +153,7 @@ class CoinsListFragment : Fragment() {
             percentChangeCollapsedTxt.text = displayPercent("1w: ", ticker.quotes.usd.percentChange7d)
             displayPercentChangeColor(percentChangeCollapsedTxt, ticker.quotes.usd.percentChange7d)
             timeFrameTxt // todo: use this txtView
-            
+
             frameChangeATxt.text = "1w"
             frameChangeBTxt.text = "1m"
             percentChangeATxt.text = displayPercent("", ticker.quotes.usd.percentChange7d)
@@ -349,33 +349,10 @@ class CoinsListFragment : Fragment() {
 //                set1.setDrawCircleHole(false)
             set1.setDrawCircles(false)
 
-            // customize legend entry
-            // todo: take out legend
-//                set1.formLineWidth = 1f
-//                set1.formLineDashEffect = DashPathEffect(floatArrayOf(10f, 5f), 0f)
-//                set1.formSize = 15f
-
-            // todo: get rid of this text (for the value of the data in the line)
-            // text size of values
-            set1.valueTextSize = 9f
             set1.setDrawValues(false)
 
-            // todo: take out the grids using this (probably)
-//                xAxis = lineChart.xAxis
-////        xAxis.enableGridDashedLine(10f, 10f, 0f)
-//                yAxis = lineChart.axisLeft
-////        // disable dual axis (only use LEFT axis)
-//                lineChart.axisRight.isEnabled = false
-////        // horizontal grid lines
-////        yAxis.enableGridDashedLine(10f, 10f, 0f)
-////        // axis range
-//                yAxis.axisMaximum = 200f
-//                yAxis.axisMinimum = -50f
-//                xAxis.setDrawGridLines(false)
-//                yAxis.setDrawGridLines(false)
+            chart.xAxis.setDrawGridLines(false)
             chart.axisRight.isEnabled = false
-
-
 
             val dataSets = ArrayList<ILineDataSet>()
             dataSets.add(set1) // add the data sets

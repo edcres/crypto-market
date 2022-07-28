@@ -247,7 +247,6 @@
                                 style="@style/TextAppearance.Material3.LabelMedium"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textStyle="bold"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
                                 tools:text="1w" />
@@ -269,7 +268,6 @@
                                 style="@style/TextAppearance.Material3.LabelMedium"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textStyle="bold"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintTop_toTopOf="@id/percent_change_b_txt"
                                 tools:text="1m" />
@@ -298,7 +296,10 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical"
-                                android:padding="16dp">
+                                android:paddingStart="16dp"
+                                android:paddingTop="8dp"
+                                android:paddingEnd="16dp"
+                                android:paddingBottom="8dp">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -406,8 +407,7 @@
                                     style="@style/TextAppearance.Material3.BodySmall"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/ath_label"
-                                    android:textSize="20sp" />
+                                    android:text="@string/ath_label" />
 
                                 <TextView
                                     android:id="@+id/ath_price_txt"

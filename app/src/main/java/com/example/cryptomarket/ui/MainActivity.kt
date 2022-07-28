@@ -16,7 +16,10 @@ import com.example.cryptomarket.R
  *      - smaller text size
  * - app icon
  * - colors dark mode
- * - news article link navigate to the website. When click on news recycler item
+ * - News fragment:
+ *      - news article link navigate to the website. When click on news recycler item
+ *      - improve UI look
+ *
  * - customize the charts
  *      - thicker lines
  *      - color lines
