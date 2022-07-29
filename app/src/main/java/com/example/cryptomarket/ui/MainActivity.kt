@@ -8,14 +8,20 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import com.example.cryptomarket.R
 
-// ATH = all time high
 /** todo:
  * - Make pie hole bigger
  * - colors light mode
+ *      - top appbar text color (it's white now)
+ *      - highlight
+ *          - bottom nave highlight color
+ *          - time frame picker highlight color
+ *      - time frame picker borders line color
+ *      - make lines in charts yellow (and thicker)
+ *      - pie chart colors
+ *      - notification bar color
+ * - app icon
  * - market overview layout (maybe)
  *      - smaller text size
- * - app icon
- * - colors dark mode
  * - News fragment:
  *      - news article link navigate to the website. When click on news recycler item
  *      - improve UI look
@@ -33,6 +39,7 @@ import com.example.cryptomarket.R
  *          - maybe put a circle at the center of the marker lines
  * - maybe put more logic in the viewModel
  * - bugs (at least the first 2, maybe just leave the rest for "eventually")
+ * - colors dark mode
  */
 
 /** bugs:

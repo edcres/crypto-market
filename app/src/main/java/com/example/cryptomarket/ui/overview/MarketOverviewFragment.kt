@@ -1,5 +1,6 @@
 package com.example.cryptomarket.ui.overview
 
+import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
 import android.text.SpannableString
@@ -21,11 +22,14 @@ import com.example.cryptomarket.ui.CryptoViewModel
 import com.example.cryptomarket.utils.*
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.PieChart
+import com.github.mikephil.charting.components.XAxis
+import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.PercentFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
+import com.github.mikephil.charting.utils.ColorTemplate.rgb
 import com.github.mikephil.charting.utils.MPPointF
 
 private const val TAG = "MarketListFrag__TAG"
@@ -124,17 +128,17 @@ class MarketOverviewFragment : Fragment() {
 
                 pieChart.isDrawHoleEnabled = true
                 pieChart.setHoleColor(resources.getColor(R.color.pie_hole))
-                pieChart.holeRadius = 50f
+                pieChart.holeRadius = 60f
                 pieChart.setTransparentCircleColor(resources.getColor(R.color.pies_inner_circle))
-//                pieChart.setTransparentCircleAlpha(0)
-//                pieChart.transparentCircleRadius = 62f
+                pieChart.setTransparentCircleAlpha(60)
+                pieChart.transparentCircleRadius = 62f
 
                 pieChart.setDrawCenterText(true)
 //                pieChart.setCenterTextColor(resources.getColor(R.color.pies_labels))
 //                pieChart.setCenterTextColor(Color.WHITE)
                 pieChart.rotationAngle = 0f
                 pieChart.isRotationEnabled = true
-                pieChart.isHighlightPerTapEnabled = true
+                pieChart.isHighlightPerTapEnabled = false
 //                pieChart.setOnChartValueSelectedListener(this)
                 pieChart.animateY(1400, Easing.EaseInOutQuad)
 
@@ -172,17 +176,23 @@ class MarketOverviewFragment : Fragment() {
         }
         val dataSet = PieDataSet(entries, "Top 10 Coins")
         dataSet.setDrawIcons(false)
-        dataSet.sliceSpace = 1f
-        dataSet.iconsOffset = MPPointF(0f, 40f)
-        dataSet.selectionShift = 5f
+        dataSet.sliceSpace = 0.5f
+        dataSet.selectionShift = 20f
+        dataSet.valueLineColor = resources.getColor(R.color.pie_value_line)
+//        dataSet.valueLinePart1Length = 0.15f
+//        dataSet.valueLinePart2Length = 0.15f
+        dataSet.valueLinePart1OffsetPercentage = 100f
         // todo: add custom colors
         val colors = java.util.ArrayList<Int>()
-        for (c in ColorTemplate.VORDIPLOM_COLORS) colors.add(c)
-        for (c in ColorTemplate.JOYFUL_COLORS) colors.add(c)
-        for (c in ColorTemplate.COLORFUL_COLORS) colors.add(c)
-        for (c in ColorTemplate.LIBERTY_COLORS) colors.add(c)
-        for (c in ColorTemplate.PASTEL_COLORS) colors.add(c)
-        colors.add(ColorTemplate.getHoloBlue())
+//        for (c in ColorTemplate.PASTEL_COLORS) colors.add(c)
+        colors.add(rgb("FFDE3A"))
+        colors.add(rgb("7FA3FF"))
+//        colors.add(rgb("76FFB4"))
+//        for (c in ColorTemplate.VORDIPLOM_COLORS) colors.add(c)
+//        for (c in ColorTemplate.JOYFUL_COLORS) colors.add(c)
+//        for (c in ColorTemplate.COLORFUL_COLORS) colors.add(c)
+//        for (c in ColorTemplate.LIBERTY_COLORS) colors.add(c)
+//        colors.add(ColorTemplate.getHoloBlue())
         dataSet.colors = colors
         dataSet.xValuePosition = PieDataSet.ValuePosition.OUTSIDE_SLICE
 
@@ -208,7 +218,7 @@ class MarketOverviewFragment : Fragment() {
         string.setSpan(RelativeSizeSpan(1.5f), 0, string.length, 0)
         string.setSpan(StyleSpan(Typeface.BOLD), 0, string.length, 0)
         string.setSpan(
-            ForegroundColorSpan(resources.getColor(R.color.pies_labels)),
+            ForegroundColorSpan(resources.getColor(R.color.center_pies_label)),
             0, string.length, 0
         )
         return string

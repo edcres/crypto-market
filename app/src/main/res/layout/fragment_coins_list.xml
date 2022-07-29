@@ -55,7 +55,7 @@
                             android:layout_height="?attr/actionBarSize"
                             android:background="?attr/selectableItemBackgroundBorderless"
                             android:src="@drawable/ic_drop_down_24"
-                            app:tint="@android:color/white" />
+                            app:tint="@android:color/black" />
 
                         <TextView
                             android:id="@+id/ticker_symbol_txt"
@@ -65,7 +65,7 @@
                             android:layout_marginStart="15dp"
                             android:layout_weight="1"
                             android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
-                            android:textColor="@android:color/white"
+                            android:textColor="@android:color/black"
                             tools:text="BTC" />
 
                     </LinearLayout>
