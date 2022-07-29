@@ -6,6 +6,7 @@
         <entry key="app/src/main/res/drawable/bottom_sheet_background.xml" value="0.1630120849609375" />
         <entry key="app/src/main/res/drawable/drop_down.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_close_24.xml" value="0.1355" />
+        <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.12" />
         <entry key="app/src/main/res/drawable/ic_newspaper_24.xml" value="0.1355" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19904632568359376" />
         <entry key="app/src/main/res/layout/coin_chart_recycler_item.xml" value="0.43174682617187504" />
@@ -20,6 +21,8 @@
         <entry key="app/src/main/res/layout/news_bottom_sheet.xml" value="0.20059880239520958" />
         <entry key="app/src/main/res/layout/news_recycler_item.xml" value="0.29648850069941624" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />
       </map>
     </option>
   </component>

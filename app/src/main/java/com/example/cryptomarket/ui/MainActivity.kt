@@ -16,21 +16,17 @@ import com.example.cryptomarket.R
  *      - news article link navigate to the website. When click on news recycler item
  *      - improve UI look
  *
+ * - bugs (at least the first 2, maybe just leave the rest for "eventually")
  * - customize the charts
- *      - thicker lines
- *      - color lines
  *      - expanded chart
  *          - fading background below the line
  *          - remove y-axis (horizontal) marker line
  *          - marker lines color
  *          - marker text color
  *          - put the x-axis numbers at the bottom
- *          - remove the x-axis (vertical) background grid lines
  *          - maybe put a circle at the center of the marker lines
  * - maybe put more logic in the viewModel
- * - bugs (at least the first 2, maybe just leave the rest for "eventually")
  * - colors dark mode
- * - maybe make blue colors lighter and adjust the yellow
  */
 
 /** bugs:
