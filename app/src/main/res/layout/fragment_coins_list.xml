@@ -171,35 +171,45 @@
                             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                             android:layout_width="60sp"
                             android:layout_height="wrap_content"
-                            android:text="@string/w_btn" />
+                            android:text="@string/w_btn"
+                            android:textSize="11sp"
+                            app:strokeColor="@color/time_frame_btns_border" />
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/m_btn"
                             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                             android:layout_width="60sp"
                             android:layout_height="wrap_content"
-                            android:text="@string/m_btn" />
+                            android:text="@string/m_btn"
+                            android:textSize="11sp"
+                            app:strokeColor="@color/time_frame_btns_border" />
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/q_btn"
                             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                             android:layout_width="60sp"
                             android:layout_height="wrap_content"
-                            android:text="@string/q_btn" />
+                            android:text="@string/q_btn"
+                            android:textSize="11sp"
+                            app:strokeColor="@color/time_frame_btns_border" />
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/six_m_btn"
                             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                             android:layout_width="60sp"
                             android:layout_height="wrap_content"
-                            android:text="@string/six_m_btn" />
+                            android:text="@string/six_m_btn"
+                            android:textSize="11sp"
+                            app:strokeColor="@color/time_frame_btns_border" />
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/y_btn"
                             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                             android:layout_width="60sp"
                             android:layout_height="wrap_content"
-                            android:text="@string/y_btn" />
+                            android:text="@string/y_btn"
+                            android:textSize="11sp"
+                            app:strokeColor="@color/time_frame_btns_border" />
 
                     </com.google.android.material.button.MaterialButtonToggleGroup>
 

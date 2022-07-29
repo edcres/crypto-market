@@ -9,16 +9,9 @@ import androidx.core.content.ContextCompat
 import com.example.cryptomarket.R
 
 /** todo:
- * - Make pie hole bigger
  * - colors light mode
- *      - top appbar text color (it's white now)
- *      - highlight
- *          - bottom nave highlight color
- *          - time frame picker highlight color
  *      - time frame picker borders line color
  *      - make lines in charts yellow (and thicker)
- *      - pie chart colors
- *      - notification bar color
  * - app icon
  * - market overview layout (maybe)
  *      - smaller text size
