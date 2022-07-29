@@ -11,18 +11,19 @@
 
         <TextView
             android:id="@+id/market_cap_label"
-            style="@style/TextAppearance.Material3.HeadlineSmall"
+            style="@style/TextAppearance.Material3.TitleLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:textSize="20sp"
             android:text="@string/market_cap"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/market_cap_txt"
-            style="@style/TextAppearance.Material3.BodyLarge"
+            style="@style/TextAppearance.Material3.BodyMedium"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
@@ -48,13 +49,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:textSize="20sp"
             android:text="@string/volume_24hr"
             app:layout_constraintStart_toEndOf="@+id/divider_1"
             app:layout_constraintTop_toTopOf="@+id/market_cap_label" />
 
         <TextView
             android:id="@+id/volume_24hr_usd_txt"
-            style="@style/TextAppearance.Material3.BodyLarge"
+            style="@style/TextAppearance.Material3.BodyMedium"
             android:layout_width="190dp"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
@@ -64,23 +66,24 @@
 
         <TextView
             android:id="@+id/bitcoin_dominance_percentage_txt"
-            style="@style/TextAppearance.Material3.HeadlineSmall"
+            style="@style/TextAppearance.Material3.TitleLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/divider_3"
             tools:text="45%" />
 
         <TextView
             android:id="@+id/bitcoin_dominance_label"
-            style="@style/TextAppearance.Material3.HeadlineSmall"
+            style="@style/TextAppearance.Material3.BodyMedium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="@string/bitcoin_dominance"
-            android:textSize="18sp"
+
             app:layout_constraintStart_toStartOf="@+id/bitcoin_dominance_percentage_txt"
             app:layout_constraintTop_toBottomOf="@+id/bitcoin_dominance_percentage_txt" />
 
@@ -104,13 +107,13 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="@string/market_cap_ath"
-            android:textSize="20sp"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="@+id/market_cap_label"
             app:layout_constraintTop_toBottomOf="@+id/market_cap_txt" />
 
         <TextView
             android:id="@+id/market_cap_ath_value_txt"
-            style="@style/TextAppearance.Material3.BodyLarge"
+            style="@style/TextAppearance.Material3.BodyMedium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
@@ -120,7 +123,7 @@
 
         <TextView
             android:id="@+id/market_cap_ath_date_txt"
-            style="@style/TextAppearance.Material3.BodyLarge"
+            style="@style/TextAppearance.Material3.BodyMedium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
@@ -147,6 +150,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:textSize="20sp"
             android:text="@string/top_10_coins"
             app:layout_constraintStart_toEndOf="@+id/divider_1"
             app:layout_constraintTop_toBottomOf="@+id/divider_2" />

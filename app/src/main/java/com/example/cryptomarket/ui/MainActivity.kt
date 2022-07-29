@@ -9,9 +9,9 @@ import androidx.core.content.ContextCompat
 import com.example.cryptomarket.R
 
 /** todo:
- * - app icon
  * - market overview layout (maybe)
  *      - smaller text size
+ *      - reorganize the layout (new branch)
  * - News fragment:
  *      - news article link navigate to the website. When click on news recycler item
  *      - improve UI look
