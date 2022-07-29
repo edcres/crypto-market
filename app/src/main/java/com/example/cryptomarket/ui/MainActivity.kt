@@ -30,6 +30,7 @@ import com.example.cryptomarket.R
  * - maybe put more logic in the viewModel
  * - bugs (at least the first 2, maybe just leave the rest for "eventually")
  * - colors dark mode
+ * - maybe make blue colors lighter and adjust the yellow
  */
 
 /** bugs:
@@ -55,6 +56,7 @@ import com.example.cryptomarket.R
  * check warnings
  * Comment code
  * Remove unused imports
+ * format code
  */
 
 class MainActivity : AppCompatActivity() {

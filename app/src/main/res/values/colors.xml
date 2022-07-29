@@ -8,6 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#00FFFFFF</color>
+    <color name="text_grey">#717171</color>
 
     <color name="color_background">#F3F6FF</color>
     <color name="main_dark">#5B6FAC</color>
@@ -19,6 +20,7 @@
     <color name="news_cardview">#D5DFFF</color>
     <color name="bottom_nav">#BCCDFF</color>
     <color name="time_frame_btns_border">#9DAAD1</color>
+    <color name="news_site">#F1D200</color>
 
     <!--Pies-->
     <color name="pies_background">#E5ECFF</color>
