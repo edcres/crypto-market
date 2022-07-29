@@ -9,9 +9,6 @@ import androidx.core.content.ContextCompat
 import com.example.cryptomarket.R
 
 /** todo:
- * - colors light mode
- *      - time frame picker borders line color
- *      - make lines in charts yellow (and thicker)
  * - app icon
  * - market overview layout (maybe)
  *      - smaller text size

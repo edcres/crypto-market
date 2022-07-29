@@ -185,7 +185,7 @@ class MarketOverviewFragment : Fragment() {
         // todo: add custom colors
         val colors = java.util.ArrayList<Int>()
 //        for (c in ColorTemplate.PASTEL_COLORS) colors.add(c)
-        colors.add(rgb("FFDE3A"))
+        colors.add(rgb("FFE253"))
         colors.add(rgb("7FA3FF"))
 //        colors.add(rgb("76FFB4"))
 //        for (c in ColorTemplate.VORDIPLOM_COLORS) colors.add(c)

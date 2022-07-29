@@ -12,7 +12,8 @@
     <color name="color_background">#F3F6FF</color>
     <color name="main_dark">#5B6FAC</color>
     <color name="color_accent">#d7a31a</color>
-    <color name="line_color">#f9f871</color>
+    <color name="item_line_color">#FFED71</color>
+    <color name="sheet_line_color">#FFE11A</color>
     <color name="sheet_top_bar">#9BB0EF</color>
     <color name="sheet_background">#D0DCFF</color>
     <color name="news_cardview">#D5DFFF</color>
@@ -36,4 +37,6 @@
     <color name="divider">#AB4A4A4A</color>
     <color name="positive_green">#2BED00</color>
     <color name="negative_red">#F10000</color>
+
+    <color name="negativjjbe_red">#FFE253</color>
 </resources>

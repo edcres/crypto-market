@@ -292,9 +292,9 @@ class CoinsListFragment : Fragment() {
             // Create a dataset and give it a type.
             set1 = LineDataSet(entries, "DataSet 1")
             set1.setDrawIcons(false)
-            set1.color = Color.BLACK        // todo: change the color of the line
+            set1.color = resources.getColor(R.color.sheet_line_color)        // todo: change the color of the line
             // Line thickness and point size.
-            set1.lineWidth = 1f         // todo: change the width of the line
+            set1.lineWidth = 3f         // todo: change the width of the line
             set1.setDrawCircles(false)
 //            set1.valueTextSize = 9f
 //            set1.valueTextColor = Color.WHITE
@@ -340,9 +340,9 @@ class CoinsListFragment : Fragment() {
             // draw dashed line
 //                set1.enableDashedLine(10f, 5f, 0f)
             // black lines and points
-            set1.color = Color.BLACK        // todo: change the color of the line
-            // line thickness and point size
-            set1.lineWidth = 1f     // todo: change the width of the line
+            set1.color = resources.getColor(R.color.sheet_line_color)        // todo: change the color of the line
+            // Line thickness and point size.
+            set1.lineWidth = 3f     // todo: change the width of the line
 
 //                set1.setCircleColor(Color.BLACK)
 //                set1.circleRadius = 3f
