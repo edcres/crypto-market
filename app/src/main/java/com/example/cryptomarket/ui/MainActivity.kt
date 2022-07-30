@@ -12,9 +12,9 @@ import com.example.cryptomarket.R
  * - market overview layout (maybe)
  *      - smaller text size
  *      - reorganize the layout (new branch)
+ *      - merge branches
  * - News fragment:
  *      - news article link navigate to the website. When click on news recycler item
- *      - improve UI look
  *
  * - bugs (at least the first 2, maybe just leave the rest for "eventually")
  * - customize the charts

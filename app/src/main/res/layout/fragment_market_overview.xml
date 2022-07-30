@@ -4,432 +4,446 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.overview.MarketOverviewFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/color_background">
+        android:background="@color/pies_background"
+        android:fadeScrollbars="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/market_cap_label"
-            style="@style/TextAppearance.Material3.TitleLarge"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:textSize="20sp"
-            android:text="@string/market_cap"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/market_cap_txt"
-            style="@style/TextAppearance.Material3.BodyMedium"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            app:layout_constraintStart_toStartOf="@+id/market_cap_label"
-            app:layout_constraintTop_toBottomOf="@+id/market_cap_label"
-            tools:text="$86525" />
-
-        <View
-            android:id="@+id/divider_1"
-            android:layout_width="0.5dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:background="@color/divider"
-            app:layout_constraintBottom_toTopOf="@+id/divider_4"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/volume_24hr_label"
-            style="@style/TextAppearance.Material3.HeadlineSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:textSize="20sp"
-            android:text="@string/volume_24hr"
-            app:layout_constraintStart_toEndOf="@+id/divider_1"
-            app:layout_constraintTop_toTopOf="@+id/market_cap_label" />
-
-        <TextView
-            android:id="@+id/volume_24hr_usd_txt"
-            style="@style/TextAppearance.Material3.BodyMedium"
-            android:layout_width="190dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            app:layout_constraintStart_toStartOf="@+id/volume_24hr_label"
-            app:layout_constraintTop_toBottomOf="@+id/volume_24hr_label"
-            tools:text="$2134" />
-
-        <TextView
-            android:id="@+id/bitcoin_dominance_percentage_txt"
-            style="@style/TextAppearance.Material3.TitleLarge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider_3"
-            tools:text="45%" />
-
-        <TextView
-            android:id="@+id/bitcoin_dominance_label"
-            style="@style/TextAppearance.Material3.BodyMedium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="@string/bitcoin_dominance"
-
-            app:layout_constraintStart_toStartOf="@+id/bitcoin_dominance_percentage_txt"
-            app:layout_constraintTop_toBottomOf="@+id/bitcoin_dominance_percentage_txt" />
-
-        <View
-            android:id="@+id/divider_2"
-            android:layout_width="0dp"
-            android:layout_height="0.5dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:background="@color/divider"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/divider_1"
-            app:layout_constraintTop_toBottomOf="@id/market_cap_txt" />
-
-        <TextView
-            android:id="@+id/market_cap_ath_label"
-            style="@style/TextAppearance.Material3.TitleLarge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/market_cap_ath"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@+id/market_cap_label"
-            app:layout_constraintTop_toBottomOf="@+id/market_cap_txt" />
-
-        <TextView
-            android:id="@+id/market_cap_ath_value_txt"
-            style="@style/TextAppearance.Material3.BodyMedium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            app:layout_constraintStart_toStartOf="@+id/market_cap_ath_label"
-            app:layout_constraintTop_toBottomOf="@+id/market_cap_ath_label"
-            tools:text="$14732" />
-
-        <TextView
-            android:id="@+id/market_cap_ath_date_txt"
-            style="@style/TextAppearance.Material3.BodyMedium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            app:layout_constraintStart_toStartOf="@+id/market_cap_ath_label"
-            app:layout_constraintTop_toBottomOf="@+id/market_cap_ath_value_txt"
-            tools:text="12/03/2018" />
-
-        <View
-            android:id="@+id/divider_3"
-            android:layout_width="0dp"
-            android:layout_height="0.5dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:background="@color/divider"
-            app:layout_constraintEnd_toStartOf="@+id/divider_1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/market_cap_ath_date_txt" />
-
-        <TextView
-            android:id="@+id/top_10_label"
-            style="@style/TextAppearance.Material3.HeadlineSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:textSize="20sp"
-            android:text="@string/top_10_coins"
-            app:layout_constraintStart_toEndOf="@+id/divider_1"
-            app:layout_constraintTop_toBottomOf="@+id/divider_2" />
-
-        <ScrollView
-            android:id="@+id/top_10_container"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="8dp"
-            android:fadeScrollbars="false"
-            app:layout_constraintBottom_toTopOf="@id/divider_4"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/top_10_label"
-            app:layout_constraintTop_toBottomOf="@+id/top_10_label">
-
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/overview_card_1"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintEnd_toStartOf="@+id/divider_1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                    <TextView
-                        style="@style/TextAppearance.Material3.BodySmall"
-                        android:layout_width="20sp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/one_1" />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/color_background"
+                        android:padding="16dp">
 
-                    <TextView
-                        android:id="@+id/top_coin_1"
-                        style="@style/TextAppearance.Material3.BodyMedium"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        tools:text="Bitcoin" />
+                        <TextView
+                            android:id="@+id/market_cap_label"
+                            style="@style/TextAppearance.Material3.TitleLarge"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/market_cap"
+                            android:textSize="20sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                </androidx.appcompat.widget.LinearLayoutCompat>
+                        <TextView
+                            android:id="@+id/market_cap_txt"
+                            style="@style/TextAppearance.Material3.BodyMedium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="8dp"
+                            app:layout_constraintStart_toStartOf="@+id/market_cap_label"
+                            app:layout_constraintTop_toBottomOf="@+id/market_cap_label"
+                            tools:text="$86525" />
 
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
+                        <TextView
+                            android:id="@+id/market_cap_ath_label"
+                            style="@style/TextAppearance.Material3.TitleLarge"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/market_cap_ath"
+                            android:textSize="18sp"
+                            app:layout_constraintStart_toStartOf="@+id/market_cap_label"
+                            app:layout_constraintTop_toBottomOf="@+id/market_cap_txt" />
+
+                        <TextView
+                            android:id="@+id/market_cap_ath_value_txt"
+                            style="@style/TextAppearance.Material3.BodyMedium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="8dp"
+                            app:layout_constraintStart_toStartOf="@+id/market_cap_ath_label"
+                            app:layout_constraintTop_toBottomOf="@+id/market_cap_ath_label"
+                            tools:text="$14732" />
+
+                        <TextView
+                            android:id="@+id/market_cap_ath_date_txt"
+                            style="@style/TextAppearance.Material3.BodyMedium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="8dp"
+                            app:layout_constraintStart_toStartOf="@+id/market_cap_ath_label"
+                            app:layout_constraintTop_toBottomOf="@+id/market_cap_ath_value_txt"
+                            tools:text="12/03/2018" />
+
+                        <View
+                            android:id="@+id/divider_2"
+                            android:layout_width="0dp"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="8dp"
+                            android:background="@color/divider"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/market_cap_ath_date_txt" />
+
+                        <TextView
+                            android:id="@+id/volume_24hr_label"
+                            style="@style/TextAppearance.Material3.HeadlineSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/volume_24hr"
+                            android:textSize="20sp"
+                            app:layout_constraintStart_toStartOf="@+id/market_cap_label"
+                            app:layout_constraintTop_toTopOf="@+id/divider_2" />
+
+                        <TextView
+                            android:id="@+id/volume_24hr_usd_txt"
+                            style="@style/TextAppearance.Material3.BodyMedium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="8dp"
+                            app:layout_constraintStart_toStartOf="@+id/volume_24hr_label"
+                            app:layout_constraintTop_toBottomOf="@+id/volume_24hr_label"
+                            tools:text="$2134" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_margin="8dp"
+                    app:layout_constraintEnd_toStartOf="@+id/divider_1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/overview_card_1">
 
-                    <TextView
-                        style="@style/TextAppearance.Material3.BodySmall"
-                        android:layout_width="20sp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/one_2" />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingStart="16dp"
+                        android:paddingTop="8dp"
+                        android:paddingEnd="16dp"
+                        android:paddingBottom="8dp">
 
-                    <TextView
-                        android:id="@+id/top_coin_2"
-                        style="@style/TextAppearance.Material3.BodyMedium"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        tools:text="Ethereum" />
+                        <TextView
+                            android:id="@+id/bitcoin_dominance_label"
+                            style="@style/TextAppearance.Material3.BodyMedium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/bitcoin_dominance"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                </androidx.appcompat.widget.LinearLayoutCompat>
+                        <TextView
+                            android:id="@+id/bitcoin_dominance_percentage_txt"
+                            style="@style/TextAppearance.Material3.BodySmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            app:layout_constraintStart_toStartOf="@+id/bitcoin_dominance_label"
+                            app:layout_constraintTop_toBottomOf="@+id/bitcoin_dominance_label"
+                            tools:text="45%" />
 
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <View
+                    android:id="@+id/divider_1"
+                    android:layout_width="0.5dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/transparent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_margin="8dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/divider_1"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                    <TextView
-                        style="@style/TextAppearance.Material3.BodySmall"
-                        android:layout_width="20sp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/one_3" />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/color_background"
+                        android:padding="16dp">
 
-                    <TextView
-                        android:id="@+id/top_coin_3"
-                        style="@style/TextAppearance.Material3.BodyMedium"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        <TextView
+                            android:id="@+id/top_10_label"
+                            style="@style/TextAppearance.Material3.HeadlineSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/top_10_coins"
+                            android:textSize="20sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                </androidx.appcompat.widget.LinearLayoutCompat>
+                        <LinearLayout
+                            android:id="@+id/linearLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:orientation="vertical"
+                            app:layout_constraintStart_toStartOf="@+id/top_10_label"
+                            app:layout_constraintTop_toBottomOf="@+id/top_10_label">
 
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
 
-                    <TextView
-                        style="@style/TextAppearance.Material3.BodySmall"
-                        android:layout_width="20sp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/one_4" />
+                                <TextView
+                                    style="@style/TextAppearance.Material3.BodySmall"
+                                    android:layout_width="20sp"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/one_1" />
 
-                    <TextView
-                        android:id="@+id/top_coin_4"
-                        style="@style/TextAppearance.Material3.BodyMedium"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                                <TextView
+                                    android:id="@+id/top_coin_1"
+                                    style="@style/TextAppearance.Material3.BodyMedium"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    tools:text="Bitcoin" />
 
-                </androidx.appcompat.widget.LinearLayoutCompat>
+                            </androidx.appcompat.widget.LinearLayoutCompat>
 
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
 
-                    <TextView
-                        style="@style/TextAppearance.Material3.BodySmall"
-                        android:layout_width="20sp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/one_5" />
+                                <TextView
+                                    style="@style/TextAppearance.Material3.BodySmall"
+                                    android:layout_width="20sp"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/one_2" />
 
-                    <TextView
-                        android:id="@+id/top_coin_5"
-                        style="@style/TextAppearance.Material3.BodyMedium"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                                <TextView
+                                    android:id="@+id/top_coin_2"
+                                    style="@style/TextAppearance.Material3.BodyMedium"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    tools:text="Ethereum" />
 
-                </androidx.appcompat.widget.LinearLayoutCompat>
+                            </androidx.appcompat.widget.LinearLayoutCompat>
 
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
 
-                    <TextView
-                        style="@style/TextAppearance.Material3.BodySmall"
-                        android:layout_width="20sp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/one_6" />
+                                <TextView
+                                    style="@style/TextAppearance.Material3.BodySmall"
+                                    android:layout_width="20sp"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/one_3" />
 
-                    <TextView
-                        android:id="@+id/top_coin_6"
-                        style="@style/TextAppearance.Material3.BodyMedium"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                                <TextView
+                                    android:id="@+id/top_coin_3"
+                                    style="@style/TextAppearance.Material3.BodyMedium"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
 
-                </androidx.appcompat.widget.LinearLayoutCompat>
+                            </androidx.appcompat.widget.LinearLayoutCompat>
 
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
 
-                    <TextView
-                        style="@style/TextAppearance.Material3.BodySmall"
-                        android:layout_width="20sp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/one_7" />
+                                <TextView
+                                    style="@style/TextAppearance.Material3.BodySmall"
+                                    android:layout_width="20sp"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/one_4" />
 
-                    <TextView
-                        android:id="@+id/top_coin_7"
-                        style="@style/TextAppearance.Material3.BodyMedium"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                                <TextView
+                                    android:id="@+id/top_coin_4"
+                                    style="@style/TextAppearance.Material3.BodyMedium"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
 
-                </androidx.appcompat.widget.LinearLayoutCompat>
+                            </androidx.appcompat.widget.LinearLayoutCompat>
 
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
 
-                    <TextView
-                        style="@style/TextAppearance.Material3.BodySmall"
-                        android:layout_width="20sp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/one_8" />
+                                <TextView
+                                    style="@style/TextAppearance.Material3.BodySmall"
+                                    android:layout_width="20sp"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/one_5" />
 
-                    <TextView
-                        android:id="@+id/top_coin_8"
-                        style="@style/TextAppearance.Material3.BodyMedium"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                                <TextView
+                                    android:id="@+id/top_coin_5"
+                                    style="@style/TextAppearance.Material3.BodyMedium"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
 
-                </androidx.appcompat.widget.LinearLayoutCompat>
+                            </androidx.appcompat.widget.LinearLayoutCompat>
 
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
 
-                    <TextView
-                        style="@style/TextAppearance.Material3.BodySmall"
-                        android:layout_width="20sp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/one_9" />
+                                <TextView
+                                    style="@style/TextAppearance.Material3.BodySmall"
+                                    android:layout_width="20sp"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/one_6" />
 
-                    <TextView
-                        android:id="@+id/top_coin_9"
-                        style="@style/TextAppearance.Material3.BodyMedium"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                                <TextView
+                                    android:id="@+id/top_coin_6"
+                                    style="@style/TextAppearance.Material3.BodyMedium"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
 
-                </androidx.appcompat.widget.LinearLayoutCompat>
+                            </androidx.appcompat.widget.LinearLayoutCompat>
 
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
 
-                    <TextView
-                        style="@style/TextAppearance.Material3.BodySmall"
-                        android:layout_width="20sp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/one_10" />
+                                <TextView
+                                    style="@style/TextAppearance.Material3.BodySmall"
+                                    android:layout_width="20sp"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/one_7" />
 
-                    <TextView
-                        android:id="@+id/top_coin_10"
-                        style="@style/TextAppearance.Material3.BodyMedium"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                                <TextView
+                                    android:id="@+id/top_coin_7"
+                                    style="@style/TextAppearance.Material3.BodyMedium"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
 
-                </androidx.appcompat.widget.LinearLayoutCompat>
+                            </androidx.appcompat.widget.LinearLayoutCompat>
 
-            </LinearLayout>
-        </ScrollView>
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
 
-        <View
-            android:id="@+id/divider_4"
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:background="@color/divider"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bitcoin_dominance_label" />
+                                <TextView
+                                    style="@style/TextAppearance.Material3.BodySmall"
+                                    android:layout_width="20sp"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/one_8" />
 
-        <androidx.core.widget.NestedScrollView
-            android:id="@+id/nestedScrollView"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:background="@color/pies_background"
-            android:fadeScrollbars="false"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider_4">
+                                <TextView
+                                    android:id="@+id/top_coin_8"
+                                    style="@style/TextAppearance.Material3.BodyMedium"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
 
-            <LinearLayout
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/TextAppearance.Material3.BodySmall"
+                                    android:layout_width="20sp"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/one_9" />
+
+                                <TextView
+                                    android:id="@+id/top_coin_9"
+                                    style="@style/TextAppearance.Material3.BodyMedium"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/TextAppearance.Material3.BodySmall"
+                                    android:layout_width="20sp"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/one_10" />
+
+                                <TextView
+                                    android:id="@+id/top_coin_10"
+                                    style="@style/TextAppearance.Material3.BodyMedium"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+                        </LinearLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/market_cap_pie"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="325dp" />
 
-                <com.github.mikephil.charting.charts.PieChart
-                    android:id="@+id/market_cap_pie"
-                    android:layout_width="match_parent"
-                    android:layout_height="325dp"
-                    android:layout_margin="8dp" />
+            <View
+                android:id="@+id/divider_5"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/divider" />
 
-                <View
-                    android:id="@+id/divider_5"
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    android:layout_marginStart="36dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="36dp"
-                    android:background="@color/divider" />
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/volume_24h_pie"
+                android:layout_width="match_parent"
+                android:layout_height="300dp" />
 
-                <com.github.mikephil.charting.charts.PieChart
-                    android:id="@+id/volume_24h_pie"
-                    android:layout_width="match_parent"
-                    android:layout_height="300dp" />
+            <View
+                android:id="@+id/divider_6"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:background="@color/divider" />
 
-                <View
-                    android:id="@+id/divider_6"
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    android:layout_marginStart="48dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="48dp"
-                    android:background="@color/divider" />
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/total_supply_pie"
+                android:layout_width="match_parent"
+                android:layout_height="300dp" />
 
-                <com.github.mikephil.charting.charts.PieChart
-                    android:id="@+id/total_supply_pie"
-                    android:layout_width="match_parent"
-                    android:layout_height="300dp" />
-
-            </LinearLayout>
-        </androidx.core.widget.NestedScrollView>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </layout>
