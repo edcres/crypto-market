@@ -155,23 +155,37 @@ class MarketOverviewFragment : Fragment() {
     private fun setPiesData(top10Tickers: List<Ticker>, pieChart: PieChart) {
         val entries = ArrayList<PieEntry>()
         for (i in top10Tickers.indices) {
-            // todo: what is (i % top10Tickers.size)?
             val thisTicker = top10Tickers[i % top10Tickers.size]
             binding?.apply {
-                entries.add(
-                    when (pieChart.id) {
-                        // Market Cap chart
-                        marketCapPie.id ->
-                            PieEntry(thisTicker.quotes.usd.marketCap.toFloat(), thisTicker.symbol)
-                        // 24h Volume chart
-                        volume24hPie.id ->
-                            PieEntry(thisTicker.quotes.usd.volume24h.toFloat(), thisTicker.symbol)
-                        // Total Supply chart
-                        totalSupplyPie.id ->
-                            PieEntry(thisTicker.totalSupply.toFloat(), thisTicker.symbol)
-                        else -> PieEntry(0f, "");
+                when (pieChart.id) {
+                    // Market Cap chart
+                    marketCapPie.id -> {
+                        entries.add(
+                            PieEntry(
+                                thisTicker.quotes.usd.marketCap.toFloat(), thisTicker.symbol
+                            )
+                        )
                     }
-                )
+                    // 24h Volume chart
+                    volume24hPie.id -> {
+                        if (thisTicker.quotes.usd.volume24h > 1.2542391858177426E9) {
+                            entries.add(
+                                PieEntry(
+                                    thisTicker.quotes.usd.volume24h.toFloat(),
+                                    thisTicker.symbol
+                                )
+                            )
+                        }
+                    }
+                    // Total Supply chart
+                    totalSupplyPie.id -> {
+                        if (thisTicker.totalSupply > 3858623534) {
+                            entries
+                                .add(PieEntry(thisTicker.totalSupply.toFloat(), thisTicker.symbol))
+                        }
+                    }
+                    else -> PieEntry(0f, "");
+                }
             }
         }
         val dataSet = PieDataSet(entries, "Top 10 Coins")
@@ -182,17 +196,9 @@ class MarketOverviewFragment : Fragment() {
 //        dataSet.valueLinePart1Length = 0.15f
 //        dataSet.valueLinePart2Length = 0.15f
         dataSet.valueLinePart1OffsetPercentage = 100f
-        // todo: add custom colors
         val colors = java.util.ArrayList<Int>()
-//        for (c in ColorTemplate.PASTEL_COLORS) colors.add(c)
-        colors.add(rgb("FFE253"))
-        colors.add(rgb("7FA3FF"))
-//        colors.add(rgb("76FFB4"))
-//        for (c in ColorTemplate.VORDIPLOM_COLORS) colors.add(c)
-//        for (c in ColorTemplate.JOYFUL_COLORS) colors.add(c)
-//        for (c in ColorTemplate.COLORFUL_COLORS) colors.add(c)
-//        for (c in ColorTemplate.LIBERTY_COLORS) colors.add(c)
-//        colors.add(ColorTemplate.getHoloBlue())
+        colors.add(rgb("FFE874"))   // yellow
+        colors.add(rgb("7FA3FF"))   // blue
         dataSet.colors = colors
         dataSet.xValuePosition = PieDataSet.ValuePosition.OUTSIDE_SLICE
 

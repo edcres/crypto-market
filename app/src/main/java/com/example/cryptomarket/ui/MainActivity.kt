@@ -9,16 +9,11 @@ import androidx.core.content.ContextCompat
 import com.example.cryptomarket.R
 
 /** todo:
- * - market overview layout (maybe)
- *      - smaller text size
- *      - reorganize the layout (new branch)
- *      - merge branches
  * - News fragment:
  *      - news article link navigate to the website. When click on news recycler item
- *
  * - bugs (at least the first 2, maybe just leave the rest for "eventually")
- * - customize the charts
- *      - expanded chart
+ * - change pie charts colors
+ * - customize the expanded chart
  *          - fading background below the line
  *          - remove y-axis (horizontal) marker line
  *          - marker lines color
@@ -26,6 +21,7 @@ import com.example.cryptomarket.R
  *          - put the x-axis numbers at the bottom
  *          - maybe put a circle at the center of the marker lines
  * - maybe put more logic in the viewModel
+ * - todos, warnings, etc
  * - colors dark mode
  */
 
