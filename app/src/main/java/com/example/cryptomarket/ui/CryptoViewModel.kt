@@ -1,7 +1,6 @@
 package com.example.cryptomarket.ui
 
 import android.util.Log
-import android.widget.TextView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,10 +9,8 @@ import com.example.cryptomarket.data.Repository
 import com.example.cryptomarket.data.coinsapi.GlobalData
 import com.example.cryptomarket.data.coinsapi.coin.CoinData
 import com.example.cryptomarket.data.coinsapi.ticker.HistoricalTicker
-import com.example.cryptomarket.data.coinsapi.ticker.PriceData
 import com.example.cryptomarket.data.coinsapi.ticker.Ticker
 import com.example.cryptomarket.data.newsapi.NewsCall
-import com.example.cryptomarket.data.newsapi.NewsPost
 import com.example.cryptomarket.utils.*
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
@@ -78,6 +75,11 @@ class CryptoViewModel : ViewModel() {
     fun setFragChosen(chosenFrag: FragChosen) {
         _fragChosen.postValue(chosenFrag)
     }
+
+    // Used to navigate directly yo the news site instead of the API site.
+    //  (does not work for all links)
+    fun redirectToNewsSite(newsDomain: String, middleSiteLink: String): String =
+        "https://${newsDomain}/${middleSiteLink.split("/").last()}"
     // HELPERS //
 
     // REPO QUERIES //

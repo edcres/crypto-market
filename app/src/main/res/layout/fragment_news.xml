@@ -22,7 +22,7 @@
             android:id="@+id/web_app_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/black"
+            android:background="@color/bottom_nav"
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:backgroundTint="@color/black"
+                android:backgroundTint="@color/bottom_nav"
                 android:src="@drawable/ic_close_24" />
 
         </LinearLayout>

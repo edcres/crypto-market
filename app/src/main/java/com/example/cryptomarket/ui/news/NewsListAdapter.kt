@@ -13,9 +13,8 @@ import com.example.cryptomarket.utils.reformatDate
 class NewsListAdapter(private val vm: CryptoViewModel) :
     ListAdapter<NewsPost, NewsListAdapter.NewsViewHolder>(NewsDiffCallback()) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
-        return NewsViewHolder.from(vm, parent)
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder =
+        NewsViewHolder.from(vm, parent)
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) =
         holder.bind(getItem(position))
@@ -30,7 +29,9 @@ class NewsListAdapter(private val vm: CryptoViewModel) :
                 newsTitleTxt.text = newsPost.title
                 sourceDomain.text = newsPost.domain
                 datePublishedTxt.text = reformatDate(newsPost.publishedAt)
-                newsItemContainer.setOnClickListener { vm.setNewsClicked(newsPost.url) }
+                newsItemContainer.setOnClickListener {
+                    vm.setNewsClicked(newsPost.url)
+                }
                 sourceDomain.setOnClickListener { vm.setNewsClicked(newsPost.domain) }
                 executePendingBindings()
             }

@@ -2,11 +2,15 @@ package com.example.cryptomarket.ui.news
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebResourceError
+import android.webkit.WebResourceRequest
+import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.activity.addCallback
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,7 +18,8 @@ import com.example.cryptomarket.R
 import com.example.cryptomarket.databinding.FragmentNewsBinding
 import com.example.cryptomarket.ui.CryptoViewModel
 import com.example.cryptomarket.utils.FragChosen
-import androidx.activity.addCallback
+import java.net.URL
+
 
 private const val TAG = "NewsListFrag__TAG"
 
@@ -49,6 +54,7 @@ class NewsFragment : Fragment() {
         setObservers()
     }
 
+
     override fun onDestroy() {
         super.onDestroy()
         binding = null
@@ -69,11 +75,33 @@ class NewsFragment : Fragment() {
     }
     // SETUP //
 
+    // WEB VIEW CLIENT //
+    private class CustomFormClient : WebViewClient() {
+        @Deprecated("Deprecated in Java")
+        override fun shouldOverrideUrlLoading(webview: WebView, url: String): Boolean {
+            webview.loadUrl(url)
+            Log.d(TAG, "shouldOverrideUrlLoading:\n$url")
+            return true
+        }
+
+        override fun onReceivedError(
+            view: WebView?,
+            request: WebResourceRequest?,
+            error: WebResourceError?
+        ) {
+            if (request != null) Log.d(TAG, "onReceivedError:\n${request.url}")
+            super.onReceivedError(view, request, error)
+        }
+    }
+    // WEB VIEW CLIENT //
+
     // HELPERS //
-    private fun showWebView(url: String) {
+    private fun showWebView(link: String) {
         binding?.apply {
-            newsWebView.webViewClient = WebViewClient()
-            newsWebView.loadUrl(url)
+            val url = URL(link)
+            url.openConnection()
+            newsWebView.webViewClient = CustomFormClient()
+            newsWebView.loadUrl(link)
             newsWebView.visibility = View.VISIBLE
             webAppBar.visibility = View.VISIBLE
         }
@@ -84,7 +112,7 @@ class NewsFragment : Fragment() {
             newsWebView.visibility = View.GONE
             webAppBar.visibility = View.GONE
             // Set it to a safe website
-            newsWebView.loadUrl("https://" + "cryptopanic.com");
+//            newsWebView.loadUrl("https://" + "cryptopanic.com");
         }
     }
     // HELPERS //

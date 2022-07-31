@@ -6,7 +6,6 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
-import retrofit2.http.Path
 
 private const val API_TOKEN = BuildConfig.NEWS_API_AUTH_TOKEN
 private const val API_VERSION = "v1"
@@ -27,7 +26,7 @@ interface NewsApiService {
 }
 
 object NewsApi {
-    val newsApiService : NewsApiService by lazy {
+    val newsApiService: NewsApiService by lazy {
         retrofit.create(NewsApiService::class.java)
     }
 }
