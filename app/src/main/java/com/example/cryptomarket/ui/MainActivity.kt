@@ -9,10 +9,8 @@ import androidx.core.content.ContextCompat
 import com.example.cryptomarket.R
 
 /** todo:
- * - News fragment:
- *      - news article link navigate to the website. When click on news recycler item
  * - bugs (at least the first 2, maybe just leave the rest for "eventually")
- * - change pie charts colors
+ * - todos, warnings, etc
  * - customize the expanded chart
  *          - fading background below the line
  *          - remove y-axis (horizontal) marker line
@@ -21,14 +19,13 @@ import com.example.cryptomarket.R
  *          - put the x-axis numbers at the bottom
  *          - maybe put a circle at the center of the marker lines
  * - maybe put more logic in the viewModel
- * - todos, warnings, etc
  * - colors dark mode
  */
 
 /** bugs:
+ * - Make more data class attributes optionals. Sometime API data is null
  * - collapsed sheet '1w: -3.24%' does not update with timeframe change
  * - MAJOR: Wrong data is displayed on the expanded sheet sometimes.
- * - Make more data class attributes optionals. Sometime API data is null
  */
 
 /**
