@@ -30,6 +30,8 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import java.util.*
+import kotlin.collections.ArrayList
 
 private const val TAG = "CoinsListFrag__TAG"
 
@@ -152,26 +154,8 @@ class CoinsListFragment : Fragment() {
             collapsedSymbolTxt.text = ticker.symbol
             collapsedPriceTxt.text = presentPriceFormatUSD("", ticker.quotes.usd.price)
             tickerPriceTxt.text = presentPriceFormatUSD("", ticker.quotes.usd.price)
-
-            // todo: change this according to timeFrame (in collapsed sheet)
-            percentChangeCollapsedTxt.text =
-                displayPercent("1w: ", ticker.quotes.usd.percentChange7d ?: 0.0)
-            displayPercentChangeColor(
-                percentChangeCollapsedTxt, ticker.quotes.usd.percentChange7d ?: 0.0
-            )
-            timeFrameTxt // todo: use this txtView
-
-            frameChangeATxt.text = "1w"
-            frameChangeBTxt.text = "1m"
-            percentChangeATxt.text =
-                displayPercent("", ticker.quotes.usd.percentChange7d ?: 0.0)
-            percentChangeBTxt.text =
-                displayPercent("", ticker.quotes.usd.percentChange30d ?: 0.0)
-            displayPercentChangeColor(
-                percentChangeATxt, ticker.quotes.usd.percentChange7d ?: 0.0
-            )
-            displayPercentChangeColor(
-                percentChangeBTxt, ticker.quotes.usd.percentChange30d ?: 0.0
+            setTimeFrameText(
+                DateFrame.MONTH, ticker.quotes.usd.percentChange30d ?: 0.0, ticker
             )
             setMoreInfoDataToUI(ticker.quotes.usd, ticker.id)
         }
@@ -188,24 +172,40 @@ class CoinsListFragment : Fragment() {
     private fun timeFrameClickListeners(tickerID: String) {
         binding?.apply {
             mBtn.isChecked = true
+            val ticker = vm.tickerClicked.value ?: vm.tickers.value!![0]
             timeframeBtnGroup.addOnButtonCheckedListener { _, checkedId, isChecked ->
                 if (isChecked) {
                     when (checkedId) {
-                        wBtn.id -> populateCharts(
-                            vm.getHistoricalTickerData(true, tickerID, DateFrame.WEEK)
-                        )
-                        mBtn.id -> populateCharts(
-                            vm.getHistoricalTickerData(true, tickerID, DateFrame.MONTH)
-                        )
-                        qBtn.id -> populateCharts(
-                            vm.getHistoricalTickerData(true, tickerID, DateFrame.QUARTER)
-                        )
-                        sixMBtn.id -> populateCharts(
-                            vm.getHistoricalTickerData(true, tickerID, DateFrame.HALF_YEAR)
-                        )
-                        yBtn.id -> populateCharts(
-                            vm.getHistoricalTickerData(true, tickerID, DateFrame.YEAR)
-                        )
+                        wBtn.id -> {
+                            setTimeFrameText(DateFrame.WEEK, ticker.quotes.usd.percentChange7d, ticker)
+                            populateCharts(
+                                vm.getHistoricalTickerData(true, tickerID, DateFrame.WEEK)
+                            )
+                        }
+                        mBtn.id -> {
+                            setTimeFrameText(DateFrame.MONTH, ticker.quotes.usd.percentChange30d, ticker)
+                            populateCharts(
+                                vm.getHistoricalTickerData(true, tickerID, DateFrame.MONTH)
+                            )
+                        }
+                        qBtn.id -> {
+                            setTimeFrameText(DateFrame.QUARTER, null, ticker)
+                            populateCharts(
+                                vm.getHistoricalTickerData(true, tickerID, DateFrame.QUARTER)
+                            )
+                        }
+                        sixMBtn.id -> {
+                            setTimeFrameText(DateFrame.HALF_YEAR, null, ticker)
+                            populateCharts(
+                                vm.getHistoricalTickerData(true, tickerID, DateFrame.HALF_YEAR)
+                            )
+                        }
+                        yBtn.id -> {
+                            setTimeFrameText(DateFrame.YEAR, ticker.quotes.usd.percentChange1y, ticker)
+                            populateCharts(
+                                vm.getHistoricalTickerData(true, tickerID, DateFrame.YEAR)
+                            )
+                        }
                     }
                 }
             }
@@ -305,7 +305,8 @@ class CoinsListFragment : Fragment() {
             // Create a dataset and give it a type.
             set1 = LineDataSet(entries, "DataSet 1")
             set1.setDrawIcons(false)
-            set1.color = resources.getColor(R.color.sheet_line_color)        // todo: change the color of the line
+            set1.color =
+                resources.getColor(R.color.sheet_line_color)        // todo: change the color of the line
             // Line thickness and point size.
             set1.lineWidth = 3f         // todo: change the width of the line
             set1.setDrawCircles(false)
@@ -385,6 +386,37 @@ class CoinsListFragment : Fragment() {
                 collapsedDataContainer.visibility = View.GONE
                 appBarLayout.visibility = View.VISIBLE
             }
+        }
+    }
+
+    private fun setTimeFrameText(timeFrame: DateFrame, percentChange: Double?, ticker: Ticker) {
+        binding?.apply {
+            if (percentChange != null) {
+                // Collapsed Sheet
+                percentChangeCollapsedTxt.text = displayPercent("", percentChange)
+                displayPercentChangeColor(percentChangeCollapsedTxt, percentChange)
+                timeFrameTxt.text = timeFrame.abbrev
+                percentChangeCollapsedTxt.visibility = View.VISIBLE
+                // Expanded Sheet
+                frameChangeBTxt.text = timeFrame.abbrev
+                percentChangeBTxt.text = displayPercent("", percentChange)
+                displayPercentChangeColor(percentChangeBTxt, percentChange)
+                percentChangeBTxt.visibility = View.VISIBLE
+            } else {
+                // Collapsed Sheet
+                timeFrameTxt.text = timeFrame.abbrev
+                percentChangeCollapsedTxt.visibility = View.INVISIBLE
+                // Expanded Sheet
+                frameChangeBTxt.text = timeFrame.abbrev
+                percentChangeBTxt.visibility = View.INVISIBLE
+            }
+            // todo: do this for the list items too
+            frameChangeATxt.text = "1w"
+            percentChangeATxt.text =
+                displayPercent("", ticker.quotes.usd.percentChange7d ?: 0.0)
+            displayPercentChangeColor(
+                percentChangeATxt, ticker.quotes.usd.percentChange7d ?: 0.0
+            )
         }
     }
     // HELPERS

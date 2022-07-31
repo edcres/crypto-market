@@ -1,7 +1,6 @@
 package com.example.cryptomarket.data.coinsapi
 
 import com.example.cryptomarket.data.coinsapi.coin.CoinData
-import com.example.cryptomarket.data.coinsapi.coin.CoinFromList
 import com.example.cryptomarket.data.coinsapi.ticker.HistoricalTicker
 import com.example.cryptomarket.data.coinsapi.ticker.Ticker
 import com.squareup.moshi.Moshi
