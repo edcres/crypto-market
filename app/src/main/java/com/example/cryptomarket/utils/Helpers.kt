@@ -4,7 +4,6 @@ import android.util.Log
 import com.example.cryptomarket.data.coinsapi.TeamMember
 import com.example.cryptomarket.data.coinsapi.ticker.PriceData
 import java.text.DecimalFormat
-import java.time.Month
 import java.util.Locale
 
 const val GLOBAL_TAG = "Global__TAG"
@@ -26,7 +25,7 @@ enum class Months(val position: Int, val lastDay: Int) {
     MARCH(3, 31), APRIL(4, 30),
     MAY(5, 31), JUNE(6, 30),
     JULY(7, 31), AUGUST(8, 31),
-    SEPTEMBER(9, 30), OCTOBER(10,31),
+    SEPTEMBER(9, 30), OCTOBER(10, 31),
     NOVEMBER(11, 30), DECEMBER(12, 31),
 }
 
@@ -47,20 +46,18 @@ fun getCorrectDayOfMonth(startTime: String): String {
     val startTimeSplit = startTime.split("/")
     val dayOfMonth = startTimeSplit[2].toInt()
     val monthOfYear = startTimeSplit[1].toInt()
-    if (dayOfMonth <= 28) {
-        return startTime
+    return if (dayOfMonth <= 28) {
+        startTime
     } else if (monthOfYear == Months.FEBRUARY.position) {
         // If it's over 28 and February
-        return "${startTimeSplit[0]}/${startTimeSplit[1]}/28"
+        "${startTimeSplit[0]}/${startTimeSplit[1]}/28"
     } else if (
-        monthOfYear == Months.SEPTEMBER.position ||
-        monthOfYear == Months.APRIL.position ||
-        monthOfYear == Months.JUNE.position ||
-        monthOfYear == Months.NOVEMBER.position
+        monthOfYear == Months.SEPTEMBER.position || monthOfYear == Months.APRIL.position ||
+        monthOfYear == Months.JUNE.position || monthOfYear == Months.NOVEMBER.position
     ) {
         // Is over 28, NOT February, and is one of the four 30 day months
-        return if (dayOfMonth == 29) startTime else "${startTimeSplit[0]}/${startTimeSplit[1]}/30"
-    } else return startTime
+        if (dayOfMonth == 29) startTime else "${startTimeSplit[0]}/${startTimeSplit[1]}/30"
+    } else startTime
 }
 
 fun reformatDate(rawDateString: String?): String {
