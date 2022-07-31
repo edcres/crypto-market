@@ -4,7 +4,8 @@ import android.util.Log
 import com.example.cryptomarket.data.coinsapi.TeamMember
 import com.example.cryptomarket.data.coinsapi.ticker.PriceData
 import java.text.DecimalFormat
-import java.util.*
+import java.time.Month
+import java.util.Locale
 
 const val GLOBAL_TAG = "Global__TAG"
 
@@ -12,12 +13,21 @@ enum class FragChosen { MARKET, COINS, NEWS }
 
 // 'abbre' means abbreviation
 enum class DateFrame(val abbrev: String, val interval: String) {
-    //    DAY('d', "1h"),
+    //    DAY('1d', "1h"),
     WEEK("1w", "1d"),
     MONTH("1m", "1d"),
     QUARTER("1q", "1d"),
     HALF_YEAR("6m", "1d"),
     YEAR("1y", "7d")
+}
+
+enum class Months(val position: Int, val lastDay: Int) {
+    JANUARY(1, 31), FEBRUARY(2, 28),   // 29 IN A LEAP YEAR
+    MARCH(3, 31), APRIL(4, 30),
+    MAY(5, 31), JUNE(6, 30),
+    JULY(7, 31), AUGUST(8, 31),
+    SEPTEMBER(9, 30), OCTOBER(10,31),
+    NOVEMBER(11, 30), DECEMBER(12, 31),
 }
 
 fun pickPercentChange(timeFrame: DateFrame, priceData: PriceData) = when (timeFrame) {
@@ -27,6 +37,30 @@ fun pickPercentChange(timeFrame: DateFrame, priceData: PriceData) = when (timeFr
     DateFrame.QUARTER -> null
     DateFrame.HALF_YEAR -> null
     DateFrame.YEAR -> "${priceData.percentChange1y}%"
+}
+
+fun getCorrectDayOfMonth(startTime: String): String {
+    // Make sure the month selected has the date of the month selected.
+    // 28 days have February, and 29 in each leap year
+    // 30 days have September, April, June, and November
+    // All the rest have 31
+    val startTimeSplit = startTime.split("/")
+    val dayOfMonth = startTimeSplit[2].toInt()
+    val monthOfYear = startTimeSplit[1].toInt()
+    if (dayOfMonth <= 28) {
+        return startTime
+    } else if (monthOfYear == Months.FEBRUARY.position) {
+        // If it's over 28 and February
+        return "${startTimeSplit[0]}/${startTimeSplit[1]}/28"
+    } else if (
+        monthOfYear == Months.SEPTEMBER.position ||
+        monthOfYear == Months.APRIL.position ||
+        monthOfYear == Months.JUNE.position ||
+        monthOfYear == Months.NOVEMBER.position
+    ) {
+        // Is over 28, NOT February, and is one of the four 30 day months
+        return if (dayOfMonth == 29) startTime else "${startTimeSplit[0]}/${startTimeSplit[1]}/30"
+    } else return startTime
 }
 
 fun reformatDate(rawDateString: String?): String {
@@ -47,7 +81,7 @@ fun addZerosToDate(baseDate: String) =
         } else it
     }
 
-fun getPercentChangeNum(percentChangeString: String) : Double =
+fun getPercentChangeNum(percentChangeString: String): Double =
     percentChangeString.split("%")[0].toDouble()
 
 fun displayTeam(team: List<TeamMember>?): String {
@@ -70,8 +104,8 @@ fun displayIsOpenSource(isOpenSource: Boolean?) = when (isOpenSource) {
 }
 
 fun displayMoreInfo(label: String, info: String?) = if (info != null) {
-        "$label $info"
-    } else "$label not available"
+    "$label $info"
+} else "$label not available"
 
 fun displayStartedAt(startDate: String?) = if (startDate != null) "Started at $startDate" else ""
 
@@ -92,7 +126,7 @@ fun roundToNDecimals(num: Double, n: Int) = "%.${n}f".format(num)
 
 // Note: it doesn't round up the decimals, it just cuts the rest off.
 fun presentPriceFormatUSD(label: String, num: Double?) =
-    if (num != null){
+    if (num != null) {
         if (num < 10) "$label$${"%,.6f".format(Locale.ENGLISH, num)}"
         else "$label$${"%,.2f".format(Locale.ENGLISH, num)}"
     } else "$label price not available"
@@ -105,5 +139,5 @@ fun displayLong(num: Long): String {
 fun displayPercent(label: String, num: Double) = "$label${removeTrailing2Zeros(num.toString())}%"
 
 fun displayHashAlgorithm(hash: String?) = if (hash != null) {
-        "Hash algorithm: $hash"
-    } else "Hash algorithm not available"
+    "Hash algorithm: $hash"
+} else "Hash algorithm not available"

@@ -13,10 +13,7 @@ import com.example.cryptomarket.data.coinsapi.ticker.HistoricalTicker
 import com.example.cryptomarket.data.coinsapi.ticker.PriceData
 import com.example.cryptomarket.data.coinsapi.ticker.Ticker
 import com.example.cryptomarket.data.newsapi.NewsCall
-import com.example.cryptomarket.utils.DateFrame
-import com.example.cryptomarket.utils.FragChosen
-import com.example.cryptomarket.utils.addZerosToDate
-import com.example.cryptomarket.utils.pickPercentChange
+import com.example.cryptomarket.utils.*
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.net.UnknownHostException
@@ -69,6 +66,8 @@ class CryptoViewModel : ViewModel() {
     // HELPERS //
 
     // REPO QUERIES //
+    // todo: clean upo this code. Consider that the month might not have > 28 days and
+    //      'Calendar.DAY_OF_MONTH, -7' does not cover this bug
     fun getHistoricalTickerData(forSheet: Boolean, tickerId: String, timeFrame: DateFrame):
             LiveData<List<HistoricalTicker>> {
         val tickerData = MutableLiveData<List<HistoricalTicker>>()
@@ -93,12 +92,17 @@ class CryptoViewModel : ViewModel() {
                         currentDate.add(Calendar.DAY_OF_YEAR, +1)
                     }
                 }
-                val startTime = "${currentDate.get(Calendar.YEAR)}/" +
+                var startTime = "${currentDate.get(Calendar.YEAR)}/" +
                         "${currentDate.get(Calendar.MONTH) + 1}/" +
                         "${currentDate.get(Calendar.DAY_OF_MONTH) + 1}"
+                startTime = getCorrectDayOfMonth(startTime)
                 // Handle when the API rejects the request when making too many.
                 try {
                     try {
+                        Log.d(TAG, "getHistoricalTickerData: " +
+                            "\nid = $tickerId" +
+                            "\nstart = ${addZerosToDate(startTime)}" +
+                            "\ninterval ${timeFrame.interval}")
                         val historicalData = repo
                             .getHistoricalTickers(
                                 tickerId,
@@ -109,6 +113,28 @@ class CryptoViewModel : ViewModel() {
                         chartsData[tickerId] = historicalData
                     } catch (e: HttpException) {
                         Log.e(TAG, "getHistoricalTickerData: \n$e")
+//                        try {
+//                            // Cover up a bug if the month doesn't have > 28 days (make day the 28th).
+//                            Log.d(TAG, "getHistoricalTickerData: $startTime")
+//                            val dayOfMonth = startTime.split("/")[2]
+//                            // If the crash happened and the day of month is over 28.
+//                            if (dayOfMonth.toInt() > 28) {
+//                                Log.d(TAG, "getHistoricalTickerData: > 28")
+//                                val newStartSplit = startTime.split("/")
+//                                val newStartTime = "${newStartSplit[0]}/${newStartSplit[1]}/28"
+//                                Log.d(TAG, "getHistoricalTickerData: new start $newStartTime")
+//                                val historicalData = repo
+//                                    .getHistoricalTickers(
+//                                        tickerId,
+//                                        addZerosToDate(newStartTime),
+//                                        timeFrame.interval
+//                                    )
+//                                tickerData.postValue(historicalData)
+//                                chartsData[tickerId] = historicalData
+//                            } else Log.d(TAG, "getHistoricalTickerData: NOT > 28")
+//                        } catch (e: HttpException) {
+//                            Log.e(TAG, "probably too many requests $e")
+//                        }
                     }
                 } catch (e: UnknownHostException) {
                     Log.e(TAG, "Error Getting Historical Ticker Data $e")

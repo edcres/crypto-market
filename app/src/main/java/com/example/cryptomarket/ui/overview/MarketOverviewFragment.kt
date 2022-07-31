@@ -197,8 +197,8 @@ class MarketOverviewFragment : Fragment() {
 //        dataSet.valueLinePart2Length = 0.15f
         dataSet.valueLinePart1OffsetPercentage = 100f
         val colors = java.util.ArrayList<Int>()
-        colors.add(rgb("FFE874"))   // yellow
-        colors.add(rgb("7FA3FF"))   // blue
+        colors.add(rgb("FFE874"))   // Yellow
+        colors.add(rgb("7FA3FF"))   // Blue
         dataSet.colors = colors
         dataSet.xValuePosition = PieDataSet.ValuePosition.OUTSIDE_SLICE
 
