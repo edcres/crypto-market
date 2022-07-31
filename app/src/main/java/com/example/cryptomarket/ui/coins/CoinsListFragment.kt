@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.TextView
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LiveData
@@ -59,6 +60,9 @@ class CoinsListFragment : Fragment() {
             coinsListRecycler.adapter = coinsListAdapter
             coinsListRecycler.layoutManager = LinearLayoutManager(requireContext())
             minimizeBtn.setOnClickListener {
+                bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+            }
+            requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
                 bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
             }
             expandedSheetMainContainer.setOnClickListener {
