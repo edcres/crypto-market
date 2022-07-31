@@ -13,25 +13,25 @@ data class PriceData(
     @Json(name = "market_cap")
     val marketCap: Long,
     @Json(name = "market_cap_change_24h")
-    val marketCapChange24h: Double,
+    val marketCapChange24h: Double?,
     @Json(name = "percent_change_15m")
     val percentChange15m: Double,
     @Json(name = "percent_change_30m")
     val percentChange30m: Double,
     @Json(name = "percent_change_1h")
-    val percentChange1h: Double,
+    val percentChange1h: Double?,
     @Json(name = "percent_change_6h")
-    val percentChange6h: Double,
+    val percentChange6h: Double?,
     @Json(name = "percent_change_12h")
-    val percentChange12h: Double,
+    val percentChange12h: Double?,
     @Json(name = "percent_change_24h")
-    val percentChange24h: Double,
+    val percentChange24h: Double?,
     @Json(name = "percent_change_7d")
-    val percentChange7d: Double,
+    val percentChange7d: Double?,
     @Json(name = "percent_change_30d")
-    val percentChange30d: Double,
+    val percentChange30d: Double?,
     @Json(name = "percent_change_1y")
-    val percentChange1y: Double,
+    val percentChange1y: Double?,
     @Json(name = "ath_price")
     val athPrice: Double?,
     @Json(name = "ath_date")

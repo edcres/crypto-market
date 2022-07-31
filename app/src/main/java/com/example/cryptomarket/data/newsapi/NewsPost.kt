@@ -7,15 +7,15 @@ data class NewsPost(
     @Json(name = "id")
     val id: Int,
     @Json(name = "kind")
-    val kind: String,
+    val kind: String?,
     @Json(name = "domain")
     val domain: String,
     @Json(name = "title")
     val title: String,
     @Json(name = "published_at")
-    val publishedAt: String,
+    val publishedAt: String?,
     @Json(name = "slug")
-    val slug: String,
+    val slug: String?,
     @Json(name = "url")
     val url: String
     // 'currencies' is used in an API request that will not be used.

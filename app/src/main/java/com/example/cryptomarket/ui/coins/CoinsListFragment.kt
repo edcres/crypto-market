@@ -154,16 +154,25 @@ class CoinsListFragment : Fragment() {
             tickerPriceTxt.text = presentPriceFormatUSD("", ticker.quotes.usd.price)
 
             // todo: change this according to timeFrame (in collapsed sheet)
-            percentChangeCollapsedTxt.text = displayPercent("1w: ", ticker.quotes.usd.percentChange7d)
-            displayPercentChangeColor(percentChangeCollapsedTxt, ticker.quotes.usd.percentChange7d)
+            percentChangeCollapsedTxt.text =
+                displayPercent("1w: ", ticker.quotes.usd.percentChange7d ?: 0.0)
+            displayPercentChangeColor(
+                percentChangeCollapsedTxt, ticker.quotes.usd.percentChange7d ?: 0.0
+            )
             timeFrameTxt // todo: use this txtView
 
             frameChangeATxt.text = "1w"
             frameChangeBTxt.text = "1m"
-            percentChangeATxt.text = displayPercent("", ticker.quotes.usd.percentChange7d)
-            percentChangeBTxt.text = displayPercent("", ticker.quotes.usd.percentChange30d)
-            displayPercentChangeColor(percentChangeATxt, ticker.quotes.usd.percentChange7d)
-            displayPercentChangeColor(percentChangeBTxt, ticker.quotes.usd.percentChange30d)
+            percentChangeATxt.text =
+                displayPercent("", ticker.quotes.usd.percentChange7d ?: 0.0)
+            percentChangeBTxt.text =
+                displayPercent("", ticker.quotes.usd.percentChange30d ?: 0.0)
+            displayPercentChangeColor(
+                percentChangeATxt, ticker.quotes.usd.percentChange7d ?: 0.0
+            )
+            displayPercentChangeColor(
+                percentChangeBTxt, ticker.quotes.usd.percentChange30d ?: 0.0
+            )
             setMoreInfoDataToUI(ticker.quotes.usd, ticker.id)
         }
     }

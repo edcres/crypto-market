@@ -22,7 +22,7 @@ data class Ticker(
     @Json(name = "beta_value")
     val betaValue: Double,
     @Json(name = "first_data_at")
-    val firstDataAt: String,
+    val firstDataAt: String?,
     @Json(name = "last_updated")
     val last_updated: String,
     @Json(name = "quotes")

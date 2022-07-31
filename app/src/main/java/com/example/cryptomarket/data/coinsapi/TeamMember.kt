@@ -9,5 +9,5 @@ data class TeamMember (
     @Json(name = "name")
     val name: String,
     @Json(name = "position")
-    val position: String,
+    val position: String?,
 )
