@@ -37,7 +37,7 @@ class MarketOverviewFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val fragmentBinding = FragmentMarketOverviewBinding.inflate(inflater, container, false)
         binding = fragmentBinding
         return fragmentBinding.root

@@ -29,18 +29,6 @@ import com.example.cryptomarket.R
  * - collapsed sheet '1w: -3.24%' does not update with timeframe change
  * - MAJOR: Wrong data is displayed on the expanded sheet sometimes.
  * - Make more data class attributes optionals. Sometime API data is null
- *
- * - Start fragment is created twice at startup. Maybe other views are too
- * - (Looks like this is fixed now, maybe it was a problem
- *      displaying too big strings in the textViews) Some chart data are not loaded
- *      within a good amount of time, idk what triggers eventual loading (some seem to never load)
- *      - put the queries that make it crash in a queue to be don later and store the
- *                  in the vm map (I don't need this put it's cool)
- *          - maybe override onViewRecycled(on the adapter)
- *          - maybe a map <id, request>
- *          - maybe there's something in retrofit or another library that queues requests
- *      - quick fix (kind of): click on the item,
- *              when its loaded on the sheet load it to the recycler item
  */
 
 /**

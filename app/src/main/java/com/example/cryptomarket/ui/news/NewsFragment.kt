@@ -6,6 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebView
+import android.webkit.WebViewClient
+import androidx.core.view.doOnDetach
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,7 +28,7 @@ class NewsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val fragmentBinding = FragmentNewsBinding.inflate(inflater, container, false)
         binding = fragmentBinding
         return fragmentBinding.root
@@ -33,13 +36,18 @@ class NewsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        newsListAdapter = NewsListAdapter()
+        newsListAdapter = NewsListAdapter(vm)
         binding?.apply {
             lifecycleOwner = viewLifecycleOwner
             newsListRecycler.adapter = newsListAdapter
             newsListRecycler.layoutManager = LinearLayoutManager(requireContext())
+//            newsWebView.doOnDetach {  }   todo:
+
         }
         setObservers()
+
+
+//        requireActivity().onBackPressed()
     }
 
     override fun onDestroy() {
@@ -58,6 +66,17 @@ class NewsFragment : Fragment() {
             }
         }
         vm.newsCall.observe(viewLifecycleOwner) { newsListAdapter.submitList(it.results) }
+        vm.newsClicked.observe(viewLifecycleOwner) { showWebView(it.domain) }
     }
     // SETUP //
+
+    // HELPERS //
+    private fun showWebView(url: String) {
+        binding?.apply {
+            newsWebView.webViewClient = WebViewClient()
+            newsWebView.loadUrl(url)
+            newsWebView.visibility = View.VISIBLE
+        }
+    }
+    // HELPERS //
 }

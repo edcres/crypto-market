@@ -13,6 +13,7 @@ import com.example.cryptomarket.data.coinsapi.ticker.HistoricalTicker
 import com.example.cryptomarket.data.coinsapi.ticker.PriceData
 import com.example.cryptomarket.data.coinsapi.ticker.Ticker
 import com.example.cryptomarket.data.newsapi.NewsCall
+import com.example.cryptomarket.data.newsapi.NewsPost
 import com.example.cryptomarket.utils.*
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
@@ -28,6 +29,8 @@ class CryptoViewModel : ViewModel() {
     val fragChosen: LiveData<FragChosen> get() = _fragChosen
     private var _tickerClicked = MutableLiveData<Ticker>()
     val tickerClicked: LiveData<Ticker> get() = _tickerClicked
+    private var _newsClicked = MutableLiveData<NewsPost>()
+    val newsClicked: LiveData<NewsPost> get() = _newsClicked
 
     private var _tickers = MutableLiveData<List<Ticker>>()
     val tickers: LiveData<List<Ticker>> get() = _tickers
@@ -64,6 +67,10 @@ class CryptoViewModel : ViewModel() {
     }
 
     // HELPERS //
+    fun setNewsClicked(newsPost: NewsPost) {
+        _newsClicked.postValue(newsPost)
+    }
+
     fun setTickerClicked(ticker: Ticker) {
         _tickerClicked.postValue(ticker)
     }
