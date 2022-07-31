@@ -112,12 +112,6 @@ class CryptoViewModel : ViewModel() {
                 // Handle when the API rejects the request when making too many.
                 try {
                     try {
-                        Log.d(
-                            TAG, "getHistoricalTickerData: " +
-                                    "\nid = $tickerId" +
-                                    "\nstart = ${addZerosToDate(startTime)}" +
-                                    "\ninterval ${timeFrame.interval}"
-                        )
                         val historicalData = repo
                             .getHistoricalTickers(
                                 tickerId,
@@ -141,7 +135,11 @@ class CryptoViewModel : ViewModel() {
         val coinData = MutableLiveData<CoinData>()
         viewModelScope.launch {
             try {
-                coinData.postValue(repo.getCoinData(coinID))
+                try {
+                    coinData.postValue(repo.getCoinData(coinID))
+                } catch (e: HttpException) {
+                    Log.e(TAG, "getCoinData: \n$e")
+                }
             } catch (e: UnknownHostException) {
                 Log.e(TAG, "Error getting coin data $e")
             }
