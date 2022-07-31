@@ -42,6 +42,8 @@ class NewsFragment : Fragment() {
             newsListRecycler.adapter = newsListAdapter
             newsListRecycler.layoutManager = LinearLayoutManager(requireContext())
 //            newsWebView.doOnDetach {  }   todo:
+            newsWebView.settings.javaScriptEnabled = true
+            closeWebBtn.setOnClickListener { closeWebView() }
 
         }
         setObservers()
@@ -59,14 +61,14 @@ class NewsFragment : Fragment() {
     private fun setObservers() {
         vm.fragChosen.observe(viewLifecycleOwner) {
             val navController = findNavController()
-            when(it) {
+            when (it) {
                 FragChosen.MARKET -> navController.navigate(R.id.action_news_to_market)
                 FragChosen.COINS -> navController.navigate(R.id.action_news_to_coins)
                 else -> Log.i(TAG, "setObservers: from News to $it")
             }
         }
         vm.newsCall.observe(viewLifecycleOwner) { newsListAdapter.submitList(it.results) }
-        vm.newsClicked.observe(viewLifecycleOwner) { showWebView(it.domain) }
+        vm.newsClicked.observe(viewLifecycleOwner) { showWebView(it) }
     }
     // SETUP //
 
@@ -76,6 +78,16 @@ class NewsFragment : Fragment() {
             newsWebView.webViewClient = WebViewClient()
             newsWebView.loadUrl(url)
             newsWebView.visibility = View.VISIBLE
+            webAppBar.visibility = View.VISIBLE
+        }
+    }
+
+    private fun closeWebView() {
+        binding?.apply {
+            newsWebView.visibility = View.GONE
+            webAppBar.visibility = View.GONE
+            // Set it to a safe website
+            newsWebView.loadUrl("https://" + "cryptopanic.com");
         }
     }
     // HELPERS //

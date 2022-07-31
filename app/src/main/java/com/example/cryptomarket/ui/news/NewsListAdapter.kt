@@ -30,7 +30,8 @@ class NewsListAdapter(private val vm: CryptoViewModel) :
                 newsTitleTxt.text = newsPost.title
                 sourceDomain.text = newsPost.domain
                 datePublishedTxt.text = reformatDate(newsPost.publishedAt)
-                newsItemContainer.setOnClickListener { vm.setNewsClicked(newsPost) }
+                newsItemContainer.setOnClickListener { vm.setNewsClicked(newsPost.url) }
+                sourceDomain.setOnClickListener { vm.setNewsClicked(newsPost.domain) }
                 executePendingBindings()
             }
         }

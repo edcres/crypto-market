@@ -29,8 +29,8 @@ class CryptoViewModel : ViewModel() {
     val fragChosen: LiveData<FragChosen> get() = _fragChosen
     private var _tickerClicked = MutableLiveData<Ticker>()
     val tickerClicked: LiveData<Ticker> get() = _tickerClicked
-    private var _newsClicked = MutableLiveData<NewsPost>()
-    val newsClicked: LiveData<NewsPost> get() = _newsClicked
+    private var _newsClicked = MutableLiveData<String>()
+    val newsClicked: LiveData<String> get() = _newsClicked
 
     private var _tickers = MutableLiveData<List<Ticker>>()
     val tickers: LiveData<List<Ticker>> get() = _tickers
@@ -67,8 +67,8 @@ class CryptoViewModel : ViewModel() {
     }
 
     // HELPERS //
-    fun setNewsClicked(newsPost: NewsPost) {
-        _newsClicked.postValue(newsPost)
+    fun setNewsClicked(url: String) {
+        _newsClicked.postValue(url)
     }
 
     fun setTickerClicked(ticker: Ticker) {
