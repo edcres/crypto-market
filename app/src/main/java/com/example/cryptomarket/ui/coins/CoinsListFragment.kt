@@ -30,7 +30,6 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import kotlin.collections.ArrayList
 
 private const val TAG = "CoinsListFrag__TAG"
 
@@ -270,30 +269,22 @@ class CoinsListFragment : Fragment() {
         chart.description.isEnabled = false
     }
 
-    // todo
     private fun makeExpandedChart(chart: LineChart, tickerData: List<HistoricalTicker>) {
         chart.setBackgroundColor(resources.getColor(R.color.sheet_background))
-//            chart.setTouchEnabled(true)
-
         chart.setDrawGridBackground(false)
-
-        // create marker to display box when values are selected
-        // Set the marker to the chart
+        // Create marker to display box when values are selected
         chartMarker.chartView = chart
         chart.marker = chartMarker
-
-        // enable scaling and dragging
-//            chart.isDragEnabled = true
         chart.setScaleEnabled(false)
-        // chart.setScaleXEnabled(true);
-        // chart.setScaleYEnabled(true);
-
-        // force pinch zoom along both axis
-//            chart.setPinchZoom(true)
-
-        // add data
+        val y = chart.axisLeft
+//        y.setLabelCount(4, false)
+        y.textColor = Color.GRAY
+        y.setPosition(YAxis.YAxisLabelPosition.INSIDE_CHART)
+        val x = chart.xAxis
+        x.textColor = Color.GRAY
+        x.isEnabled = false
+        // Add data
         setExpandedChartData(chart, tickerData)
-        // draw points over time
         chart.animateX(1000)
         chart.legend.isEnabled = false
         chart.description.isEnabled = false
@@ -343,11 +334,8 @@ class CoinsListFragment : Fragment() {
     private fun setExpandedChartData(chart: LineChart, tickerData: List<HistoricalTicker>) {
         val set1: LineDataSet?
         val entries = ArrayList<Entry>()
-
         for (i in tickerData.indices) {
-            entries.add(
-                Entry(i.toFloat(), tickerData[i].price.toFloat())
-            )
+            entries.add(Entry(i.toFloat(), tickerData[i].price.toFloat()))
         }
         if (chart.data != null && chart.data.dataSetCount > 0) {
             // If data has already been created.
@@ -357,31 +345,24 @@ class CoinsListFragment : Fragment() {
             chart.data.notifyDataChanged()
             chart.notifyDataSetChanged()
         } else {
-            // create a dataset and give it a type
+            // Create a dataset and give it a type
             set1 = LineDataSet(entries, "DataSet 1")
             set1.setDrawIcons(false)
-            // draw dashed line
-//                set1.enableDashedLine(10f, 5f, 0f)
-            // black lines and points
             set1.color = Color.BLACK
-            // line thickness and point size
             set1.lineWidth = 1f
-
-//                set1.setCircleColor(Color.BLACK)
-//                set1.circleRadius = 3f
-//                set1.setDrawCircleHole(false)
             set1.setDrawCircles(false)
-
             set1.setDrawValues(false)
+
+            set1.highLightColor = resources.getColor(R.color.chart_marker)
+            set1.highlightLineWidth = 2f
+            set1.setDrawHorizontalHighlightIndicator(false)
 
             chart.xAxis.setDrawGridLines(false)
             chart.axisRight.isEnabled = false
-
             val dataSets = ArrayList<ILineDataSet>()
-            dataSets.add(set1) // add the data sets
-            // create a data object with the data sets
+            dataSets.add(set1)
+            // Create a data object with the data sets
             val data = LineData(dataSets)
-            // set data
             chart.data = data
         }
     }
