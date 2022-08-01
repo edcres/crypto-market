@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.activity.addCallback
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LiveData
@@ -28,6 +29,7 @@ import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
+import com.github.mikephil.charting.formatter.IFillFormatter
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
@@ -330,7 +332,6 @@ class CoinsListFragment : Fragment() {
         }
     }
 
-    // todo
     private fun setExpandedChartData(chart: LineChart, tickerData: List<HistoricalTicker>) {
         val set1: LineDataSet?
         val entries = ArrayList<Entry>()
@@ -348,7 +349,8 @@ class CoinsListFragment : Fragment() {
             // Create a dataset and give it a type
             set1 = LineDataSet(entries, "DataSet 1")
             set1.setDrawIcons(false)
-            set1.color = Color.BLACK
+            set1.color = resources.getColor(R.color.color_accent)
+//            set1.color = Color.BLACK
             set1.lineWidth = 1f
             set1.setDrawCircles(false)
             set1.setDrawValues(false)
@@ -356,6 +358,13 @@ class CoinsListFragment : Fragment() {
             set1.highLightColor = resources.getColor(R.color.chart_marker)
             set1.highlightLineWidth = 2f
             set1.setDrawHorizontalHighlightIndicator(false)
+
+            // Fill color under data set line
+            set1.setDrawFilled(true)
+            set1.fillFormatter =
+                IFillFormatter { dataSet, dataProvider -> chart.axisLeft.axisMinimum }
+            val drawable = ContextCompat.getDrawable(requireContext(), R.drawable.fade_chart_fill)
+            set1.fillDrawable = drawable
 
             chart.xAxis.setDrawGridLines(false)
             chart.axisRight.isEnabled = false

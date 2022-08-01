@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable-v24/fade_red.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/bottom_sheet_background.xml" value="0.1630120849609375" />
         <entry key="app/src/main/res/drawable/drop_down.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_close_24.xml" value="0.1355" />

@@ -8,19 +8,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import com.example.cryptomarket.R
 
-/** todo:
- * - customize the expanded chart
- *          - fading background below the line
- *          - remove y-axis (horizontal) marker line
- *          - Marker (in the ChartMarker file in utils)
- *              - marker lines color
- *              - marker text color
- *          - put the x-axis numbers at the bottom
- *          - maybe put a circle at the center of the marker lines
- * - todos, warnings, imports
- * - maybe put more logic in the viewModel
- * - colors dark mode
- */
+
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
