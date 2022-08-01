@@ -19,9 +19,12 @@ class ChartMarker(context: Context?, layoutResource: Int) : MarkerView(context, 
     // content (user-interface)
     override fun refreshContent(e: Entry, highlight: Highlight) {
         if (e is CandleEntry) {
-            tvContent.text = Utils.formatNumber(e.high, 0, true)
+//            tvContent.text = Utils.formatNumber(e.high, 0, true)
+            val textString = presentPriceFormatUSD("", e.y.toDouble())
+            tvContent.text = textString
         } else {
-            tvContent.text = Utils.formatNumber(e.y, 0, true)
+//            tvContent.text = Utils.formatNumber(e.y, 0, true)
+            tvContent.text = presentPriceFormatUSD("", e.y.toDouble())
         }
         super.refreshContent(e, highlight)
     }
