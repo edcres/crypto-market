@@ -4,7 +4,7 @@ import com.example.cryptomarket.data.coinsapi.TeamMember
 import com.squareup.moshi.Json
 
 // https://api.coinpaprika.com/#operation/getCoinById
-data class CoinData (
+data class CoinData(
     @Json(name = "id")
     val id: String,
     @Json(name = "name")

@@ -20,7 +20,6 @@ import com.example.cryptomarket.ui.CryptoViewModel
 import com.example.cryptomarket.utils.FragChosen
 import java.net.URL
 
-
 private const val TAG = "NewsListFrag__TAG"
 
 class NewsFragment : Fragment() {

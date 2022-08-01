@@ -9,7 +9,7 @@
         <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.12" />
         <entry key="app/src/main/res/drawable/ic_newspaper_24.xml" value="0.1355" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19904632568359376" />
-        <entry key="app/src/main/res/layout/coin_chart_recycler_item.xml" value="0.43174682617187504" />
+        <entry key="app/src/main/res/layout/coin_chart_recycler_item.xml" value="0.2918454935622318" />
         <entry key="app/src/main/res/layout/coins_bottom_sheet.xml" value="0.13737945556640624" />
         <entry key="app/src/main/res/layout/dummy_recycler_item.xml" value="0.2778314208984375" />
         <entry key="app/src/main/res/layout/expanded_bottom_sheet.xml" value="0.22754669189453128" />

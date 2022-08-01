@@ -1,4 +1,4 @@
-package com.example.cryptomarket.ui.coins
+package com.example.cryptomarket.utils
 
 import android.content.Context
 import android.widget.TextView
@@ -10,9 +10,9 @@ import com.github.mikephil.charting.highlight.Highlight
 import com.github.mikephil.charting.utils.MPPointF
 import com.github.mikephil.charting.utils.Utils
 
-class LinearMarker(context: Context?, layoutResource: Int) : MarkerView(context, layoutResource) {
+// todo: Edit this marker
+class ChartMarker(context: Context?, layoutResource: Int) : MarkerView(context, layoutResource) {
 
-    // todo: maybe edit this
     private val tvContent: TextView = findViewById(R.id.marker_content)
 
     // runs every time the MarkerView is redrawn, can be used to update the

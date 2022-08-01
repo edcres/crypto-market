@@ -1,7 +1,6 @@
 package com.example.cryptomarket.ui.coins
 
 import android.content.res.Resources
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
@@ -28,14 +27,14 @@ class CoinsListAdapter(
     private val viewLifecycleOwner: LifecycleOwner,
     private val chosenTimeFrame: DateFrame,
     private val resources: Resources,
-    private val linearMarker: LinearMarker,
+    private val chartMarker: ChartMarker,
     private val vm: CryptoViewModel
 ) :
     ListAdapter<Ticker, CoinsListAdapter.CoinsViewHolder>(CoinsDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CoinsViewHolder {
         return CoinsViewHolder
-            .from(viewLifecycleOwner, chosenTimeFrame, resources, linearMarker, vm, parent)
+            .from(viewLifecycleOwner, chosenTimeFrame, resources, chartMarker, vm, parent)
     }
 
     override fun onBindViewHolder(holder: CoinsViewHolder, position: Int) =
@@ -45,7 +44,7 @@ class CoinsListAdapter(
         private val viewLifecycleOwner: LifecycleOwner,
         private val chosenTimeFrame: DateFrame,
         private val resources: Resources,
-        private val linearMarker: LinearMarker,
+        private val chartMarker: ChartMarker,
         private val vm: CryptoViewModel,
         private val binding: CoinChartRecyclerItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
@@ -93,8 +92,8 @@ class CoinsListAdapter(
             chart.setDrawGridBackground(false)
             // Create marker to display box when values are selected.
             // Set the marker to the chart.
-            linearMarker.chartView = chart
-            chart.marker = linearMarker
+            chartMarker.chartView = chart
+            chart.marker = chartMarker
             // Add data to chart
             setLinearData(chart, tickerData)
             // Get the legend (only possible after setting data).
@@ -147,7 +146,7 @@ class CoinsListAdapter(
                 viewLifecycleOwner: LifecycleOwner,
                 chosenTimeFrame: DateFrame,
                 resources: Resources,
-                linearMarker: LinearMarker,
+                chartMarker: ChartMarker,
                 vm: CryptoViewModel,
                 parent: ViewGroup
             ): CoinsViewHolder {
@@ -156,7 +155,7 @@ class CoinsListAdapter(
                     .inflate(layoutInflater, parent, false)
                 return CoinsViewHolder(
                     viewLifecycleOwner, chosenTimeFrame, resources,
-                    linearMarker, vm, binding
+                    chartMarker, vm, binding
                 )
             }
         }

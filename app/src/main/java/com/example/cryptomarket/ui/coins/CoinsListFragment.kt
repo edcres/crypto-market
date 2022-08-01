@@ -30,7 +30,6 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import java.util.*
 import kotlin.collections.ArrayList
 
 private const val TAG = "CoinsListFrag__TAG"
@@ -41,7 +40,7 @@ class CoinsListFragment : Fragment() {
     private val vm: CryptoViewModel by activityViewModels()
     private lateinit var coinsListAdapter: CoinsListAdapter
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<FrameLayout>
-    private lateinit var linearMarker: LinearMarker
+    private lateinit var chartMarker: ChartMarker
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,9 +53,9 @@ class CoinsListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        linearMarker = LinearMarker(requireContext(), R.layout.line_chart_marker)
+        chartMarker = ChartMarker(requireContext(), R.layout.line_chart_marker)
         coinsListAdapter =
-            CoinsListAdapter(viewLifecycleOwner, DateFrame.MONTH, resources, linearMarker, vm)
+            CoinsListAdapter(viewLifecycleOwner, DateFrame.MONTH, resources, chartMarker, vm)
         binding?.apply {
             lifecycleOwner = viewLifecycleOwner
             coinsListRecycler.adapter = coinsListAdapter
@@ -177,13 +176,21 @@ class CoinsListFragment : Fragment() {
                 if (isChecked) {
                     when (checkedId) {
                         wBtn.id -> {
-                            setTimeFrameText(DateFrame.WEEK, ticker.quotes.usd.percentChange7d, ticker)
+                            setTimeFrameText(
+                                DateFrame.WEEK,
+                                ticker.quotes.usd.percentChange7d,
+                                ticker
+                            )
                             populateCharts(
                                 vm.getHistoricalTickerData(true, tickerID, DateFrame.WEEK)
                             )
                         }
                         mBtn.id -> {
-                            setTimeFrameText(DateFrame.MONTH, ticker.quotes.usd.percentChange30d, ticker)
+                            setTimeFrameText(
+                                DateFrame.MONTH,
+                                ticker.quotes.usd.percentChange30d,
+                                ticker
+                            )
                             populateCharts(
                                 vm.getHistoricalTickerData(true, tickerID, DateFrame.MONTH)
                             )
@@ -201,7 +208,11 @@ class CoinsListFragment : Fragment() {
                             )
                         }
                         yBtn.id -> {
-                            setTimeFrameText(DateFrame.YEAR, ticker.quotes.usd.percentChange1y, ticker)
+                            setTimeFrameText(
+                                DateFrame.YEAR,
+                                ticker.quotes.usd.percentChange1y,
+                                ticker
+                            )
                             populateCharts(
                                 vm.getHistoricalTickerData(true, tickerID, DateFrame.YEAR)
                             )
@@ -247,8 +258,8 @@ class CoinsListFragment : Fragment() {
         chart.setDrawGridBackground(false)
         // Create marker to display box when values are selected
         // Set the marker to the chart
-        linearMarker.chartView = chart
-        chart.marker = linearMarker
+        chartMarker.chartView = chart
+        chart.marker = chartMarker
         chart.setBackgroundColor(resources.getColor(R.color.sheet_background))
         // Add data to chart
         setCollapsedChartData(chart, tickerData)
@@ -259,8 +270,8 @@ class CoinsListFragment : Fragment() {
         chart.description.isEnabled = false
     }
 
+    // todo
     private fun makeExpandedChart(chart: LineChart, tickerData: List<HistoricalTicker>) {
-        // todo
         chart.setBackgroundColor(resources.getColor(R.color.sheet_background))
 //            chart.setTouchEnabled(true)
 
@@ -268,8 +279,8 @@ class CoinsListFragment : Fragment() {
 
         // create marker to display box when values are selected
         // Set the marker to the chart
-        linearMarker.chartView = chart
-        chart.marker = linearMarker
+        chartMarker.chartView = chart
+        chart.marker = chartMarker
 
         // enable scaling and dragging
 //            chart.isDragEnabled = true
@@ -305,10 +316,9 @@ class CoinsListFragment : Fragment() {
             // Create a dataset and give it a type.
             set1 = LineDataSet(entries, "DataSet 1")
             set1.setDrawIcons(false)
-            set1.color =
-                resources.getColor(R.color.sheet_line_color)        // todo: change the color of the line
+            set1.color = resources.getColor(R.color.sheet_line_color)
             // Line thickness and point size.
-            set1.lineWidth = 3f         // todo: change the width of the line
+            set1.lineWidth = 3f
             set1.setDrawCircles(false)
 //            set1.valueTextSize = 9f
 //            set1.valueTextColor = Color.WHITE
@@ -329,8 +339,8 @@ class CoinsListFragment : Fragment() {
         }
     }
 
+    // todo
     private fun setExpandedChartData(chart: LineChart, tickerData: List<HistoricalTicker>) {
-        // todo
         val set1: LineDataSet?
         val entries = ArrayList<Entry>()
 
@@ -354,9 +364,9 @@ class CoinsListFragment : Fragment() {
             // draw dashed line
 //                set1.enableDashedLine(10f, 5f, 0f)
             // black lines and points
-            set1.color = Color.BLACK        // todo: change the color of the line
+            set1.color = Color.BLACK
             // line thickness and point size
-            set1.lineWidth = 1f     // todo: change the width of the line
+            set1.lineWidth = 1f
 
 //                set1.setCircleColor(Color.BLACK)
 //                set1.circleRadius = 3f
@@ -410,8 +420,8 @@ class CoinsListFragment : Fragment() {
                 frameChangeBTxt.text = timeFrame.abbrev
                 percentChangeBTxt.visibility = View.INVISIBLE
             }
-            // todo: do this for the list items too
-            frameChangeATxt.text = "1w"
+            // todo: Do this for the list items too
+            frameChangeATxt.text = DateFrame.WEEK.abbrev
             percentChangeATxt.text =
                 displayPercent("", ticker.quotes.usd.percentChange7d ?: 0.0)
             displayPercentChangeColor(

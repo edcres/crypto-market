@@ -66,9 +66,7 @@ class MarketOverviewFragment : Fragment() {
                 else -> Log.i(TAG, "setObservers: from Market to $it")
             }
         }
-        vm.globalData.observe(viewLifecycleOwner) {
-            populateView(it)
-        }
+        vm.globalData.observe(viewLifecycleOwner) { populateView(it) }
         vm.tickers.observe(viewLifecycleOwner) {
             binding?.apply {
                 val top10Tickers = it.take(10)
@@ -114,20 +112,17 @@ class MarketOverviewFragment : Fragment() {
         binding?.apply {
             val piesToMake = listOf(marketCapPie, volume24hPie, totalSupplyPie)
             for (pieChart in piesToMake) {
-
                 pieChart.setUsePercentValues(true)
                 pieChart.description.isEnabled = false
                 pieChart.setExtraOffsets(5f, 10f, 5f, 5f)
                 pieChart.dragDecelerationFrictionCoef = 0.85f
                 pieChart.centerText = generateCenterSpannableText(pieChart)
-
                 pieChart.isDrawHoleEnabled = true
                 pieChart.setHoleColor(resources.getColor(R.color.pie_hole))
                 pieChart.holeRadius = 60f
                 pieChart.setTransparentCircleColor(resources.getColor(R.color.pies_inner_circle))
                 pieChart.setTransparentCircleAlpha(60)
                 pieChart.transparentCircleRadius = 62f
-
                 pieChart.setDrawCenterText(true)
 //                pieChart.setCenterTextColor(resources.getColor(R.color.pies_labels))
 //                pieChart.setCenterTextColor(Color.WHITE)
@@ -136,17 +131,15 @@ class MarketOverviewFragment : Fragment() {
                 pieChart.isHighlightPerTapEnabled = false
 //                pieChart.setOnChartValueSelectedListener(this)
                 pieChart.animateY(1400, Easing.EaseInOutQuad)
-
                 pieChart.setEntryLabelColor(resources.getColor(R.color.pies_labels))
                 pieChart.setEntryLabelTextSize(12f)
-
                 pieChart.legend.isEnabled = false
                 setPiesData(top10Tickers, pieChart)
             }
         }
     }
 
-    // todo: probably send this to the vm
+    // todo: Have this in the vm
     private fun setPiesData(top10Tickers: List<Ticker>, pieChart: PieChart) {
         val entries = ArrayList<PieEntry>()
         for (i in top10Tickers.indices) {
@@ -156,9 +149,7 @@ class MarketOverviewFragment : Fragment() {
                     // Market Cap chart
                     marketCapPie.id -> {
                         entries.add(
-                            PieEntry(
-                                thisTicker.quotes.usd.marketCap.toFloat(), thisTicker.symbol
-                            )
+                            PieEntry(thisTicker.quotes.usd.marketCap.toFloat(), thisTicker.symbol)
                         )
                     }
                     // 24h Volume chart
@@ -166,8 +157,7 @@ class MarketOverviewFragment : Fragment() {
                         if (thisTicker.quotes.usd.volume24h > 1.2542391858177426E9) {
                             entries.add(
                                 PieEntry(
-                                    thisTicker.quotes.usd.volume24h.toFloat(),
-                                    thisTicker.symbol
+                                    thisTicker.quotes.usd.volume24h.toFloat(), thisTicker.symbol
                                 )
                             )
                         }
@@ -179,7 +169,7 @@ class MarketOverviewFragment : Fragment() {
                                 .add(PieEntry(thisTicker.totalSupply.toFloat(), thisTicker.symbol))
                         }
                     }
-                    else -> PieEntry(0f, "");
+                    else -> PieEntry(0f, "")
                 }
             }
         }
@@ -196,20 +186,18 @@ class MarketOverviewFragment : Fragment() {
         colors.add(rgb("9FBAFF"))   // Blue
         dataSet.colors = colors
         dataSet.xValuePosition = PieDataSet.ValuePosition.OUTSIDE_SLICE
-
         val data = PieData(dataSet)
         data.setValueFormatter(PercentFormatter(pieChart))
         data.setValueTextSize(11f)
         data.setValueTextColor(resources.getColor(R.color.pies_labels))
         pieChart.data = data
-
         // undo all highlights
         pieChart.highlightValues(null)
         pieChart.invalidate()
     }
 
     // for pie chart
-    private fun generateCenterSpannableText(chart: PieChart): SpannableString? {
+    private fun generateCenterSpannableText(chart: PieChart): SpannableString {
         val string = when (chart.id) {
             binding!!.marketCapPie.id -> SpannableString("Market Cap")
             binding!!.volume24hPie.id -> SpannableString("Volume\n24 Hours")

@@ -49,7 +49,7 @@ interface CoinsApiService {
 }
 
 object CoinsApi {
-    val coinsApiService : CoinsApiService by lazy {
+    val coinsApiService: CoinsApiService by lazy {
         retrofit.create(CoinsApiService::class.java)
     }
 }

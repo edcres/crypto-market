@@ -82,7 +82,7 @@ class CryptoViewModel : ViewModel() {
         "https://${newsDomain}/${middleSiteLink.split("/").last()}"
     // HELPERS //
 
-    // todo: clean this function
+    // todo: Clean this function
     // REPO QUERIES //
     fun getHistoricalTickerData(forSheet: Boolean, tickerId: String, timeFrame: DateFrame):
             LiveData<List<HistoricalTicker>> {

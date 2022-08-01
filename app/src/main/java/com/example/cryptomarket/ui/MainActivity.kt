@@ -9,30 +9,17 @@ import androidx.core.content.ContextCompat
 import com.example.cryptomarket.R
 
 /** todo:
- * - bugs (at least the first 2, maybe just leave the rest for "eventually")
- * - todos, warnings, etc
  * - customize the expanded chart
  *          - fading background below the line
  *          - remove y-axis (horizontal) marker line
- *          - marker lines color
- *          - marker text color
+ *          - Marker (in the ChartMarker file in utils)
+ *              - marker lines color
+ *              - marker text color
  *          - put the x-axis numbers at the bottom
  *          - maybe put a circle at the center of the marker lines
+ * - todos, warnings, imports
  * - maybe put more logic in the viewModel
  * - colors dark mode
- */
-
-/** bugs:
- * - getting the 6 m time frame
- * - MAJOR: Wrong data is displayed on the expanded sheet sometimes.
- */
-
-/**
- * check todos
- * check warnings
- * Comment code
- * Remove unused imports
- * format code
  */
 
 class MainActivity : AppCompatActivity() {
