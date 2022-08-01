@@ -5,19 +5,28 @@
     android:layout_height="40dp"
     tools:ignore="Overdraw">
 
-    <TextView
-        android:id="@+id/marker_content"
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="7dp"
         android:layout_marginRight="5dp"
-        android:ellipsize="end"
-        android:singleLine="true"
-        android:text=""
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@android:color/white"
-        android:textSize="12sp" />
+        android:backgroundTint="@color/marker_background">
 
+        <TextView
+            android:id="@+id/marker_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            style="@style/TextAppearance.Material3.BodyMedium"
+            android:textStyle="bold"
+            android:ellipsize="end"
+            android:padding="4dp"
+            android:singleLine="true"
+            tools:text="1234"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/chart_marker"
+            android:textSize="12sp" />
+
+    </com.google.android.material.card.MaterialCardView>
 </RelativeLayout>

@@ -349,7 +349,6 @@ class CoinsListFragment : Fragment() {
                 Entry(i.toFloat(), tickerData[i].price.toFloat())
             )
         }
-
         if (chart.data != null && chart.data.dataSetCount > 0) {
             // If data has already been created.
             set1 = chart.data.getDataSetByIndex(0) as LineDataSet
