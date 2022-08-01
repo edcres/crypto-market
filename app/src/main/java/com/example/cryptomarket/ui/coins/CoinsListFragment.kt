@@ -355,7 +355,7 @@ class CoinsListFragment : Fragment() {
             set1.setDrawCircles(false)
             set1.setDrawValues(false)
 
-            set1.highLightColor = resources.getColor(R.color.chart_marker)
+            set1.highLightColor = resources.getColor(R.color.color_accent)
             set1.highlightLineWidth = 2f
             set1.setDrawHorizontalHighlightIndicator(false)
 
