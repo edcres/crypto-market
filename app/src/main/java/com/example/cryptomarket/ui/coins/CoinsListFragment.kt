@@ -405,7 +405,7 @@ class CoinsListFragment : Fragment() {
             } else {
                 // Collapsed Sheet
                 timeFrameTxt.text = timeFrame.abbrev
-                percentChangeCollapsedTxt.visibility = View.INVISIBLE
+                percentChangeCollapsedTxt.visibility = View.GONE
                 // Expanded Sheet
                 frameChangeBTxt.text = timeFrame.abbrev
                 percentChangeBTxt.visibility = View.INVISIBLE

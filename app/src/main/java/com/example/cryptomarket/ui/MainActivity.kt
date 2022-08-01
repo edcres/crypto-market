@@ -9,7 +9,6 @@ import androidx.core.content.ContextCompat
 import com.example.cryptomarket.R
 
 /** todo:
- * - BUG: getting the 6 m time frame
  * - bugs (at least the first 2, maybe just leave the rest for "eventually")
  * - todos, warnings, etc
  * - customize the expanded chart
@@ -24,6 +23,7 @@ import com.example.cryptomarket.R
  */
 
 /** bugs:
+ * - getting the 6 m time frame
  * - MAJOR: Wrong data is displayed on the expanded sheet sometimes.
  */
 

@@ -82,6 +82,7 @@ class CryptoViewModel : ViewModel() {
         "https://${newsDomain}/${middleSiteLink.split("/").last()}"
     // HELPERS //
 
+    // todo: clean this function
     // REPO QUERIES //
     fun getHistoricalTickerData(forSheet: Boolean, tickerId: String, timeFrame: DateFrame):
             LiveData<List<HistoricalTicker>> {
@@ -107,19 +108,21 @@ class CryptoViewModel : ViewModel() {
                         currentDate.add(Calendar.DAY_OF_YEAR, +6)
                     }
                 }
+                // Day of month + 1 to make sure it is within the API allowed time frame parameters.
+                val dayOfMonth = currentDate.get(Calendar.DAY_OF_MONTH)
+                val updatedDayOfMonth = if (dayOfMonth == 31) dayOfMonth else dayOfMonth + 1
                 var startTime = "${currentDate.get(Calendar.YEAR)}/" +
                         "${currentDate.get(Calendar.MONTH) + 1}/" +
-                        "${currentDate.get(Calendar.DAY_OF_MONTH) + 1}"
+                        "$updatedDayOfMonth"
                 startTime = getCorrectDayOfMonth(startTime)
                 // Handle when the API rejects the request when making too many.
                 try {
                     try {
-                        val historicalData = repo
-                            .getHistoricalTickers(
-                                tickerId,
-                                addZerosToDate(startTime),
-                                timeFrame.interval
-                            )
+                        val historicalData = repo.getHistoricalTickers(
+                            tickerId,
+                            addZerosToDate(startTime),
+                            timeFrame.interval
+                        )
                         tickerData.postValue(historicalData)
                         chartsData[tickerId] = historicalData
                     } catch (e: HttpException) {
