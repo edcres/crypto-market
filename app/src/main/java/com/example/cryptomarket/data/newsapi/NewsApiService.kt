@@ -10,7 +10,6 @@ import retrofit2.http.GET
 private const val API_TOKEN = BuildConfig.NEWS_API_AUTH_TOKEN
 private const val API_VERSION = "v1"
 private const val BASE_URL = "https://cryptopanic.com/api/$API_VERSION/"
-// https://cryptopanic.com/api/v1/posts/?auth_token=03cdeeb873984d7cf7a0723c49cb22676fcd56f6&kind=news
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
