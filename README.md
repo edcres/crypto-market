@@ -1,6 +1,6 @@
 # crypto-market
 
-Android App that shows recent data on the cryptocurrency market, inclusing coins, overall market data, and current news.
+Android App that shows recent data on the cryptocurrency market, including coins, overall market data, and current news.
 
 ---
 
