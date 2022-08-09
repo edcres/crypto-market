@@ -11,6 +11,7 @@ Android App that shows recent data on the cryptocurrency market, including coins
 - Jetpack Navigation Component
 - Bottom navigation
 - Standard Bottom Sheet
+- SQLite Room local storage
 - REST APIs
   - Retrifit 2
     - For the coinpaprika and the cryptopanic APIs
