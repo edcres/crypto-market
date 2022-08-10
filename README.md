@@ -7,6 +7,7 @@ Android App that shows recent data on the cryptocurrency market, including coins
 ### Tools and skills used:
 
 - MVVM architecture
+  - Shared ViewModel
 - Material Design
 - Jetpack Navigation Component
 - Bottom navigation
