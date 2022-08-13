@@ -31,7 +31,14 @@ Android App that shows recent data on the cryptocurrency market, including coins
 
 ### Coins Screen:
 
-<img align="center" width=132 src="https://user-images.githubusercontent.com/79296181/183276703-95e14097-c6f2-42f5-9e6f-37fc187833d4.gif" />
+<p align="left" style="display:flex">
+    <a href="https://github.com/edcres/crypto-market">
+        <img width=180 src="https://user-images.githubusercontent.com/79296181/184467923-dd1653d0-6d15-4fd9-915a-7d98d4bd5e3e.jpg" />
+    </a>
+    <a href="https://github.com/edcres/crypto-market">
+        <img width=180 src="https://user-images.githubusercontent.com/79296181/184467761-4b013efa-d543-4309-8c4e-b5b8fe83f893.gif" />
+    </a>
+</p>
 
 - The app first displays a long list of crypto coins ordered by rank with charted data and the percentage changed within a specific time frame.
 - There is a collapsed bottom sheet displaying the top ranked coin by default
