@@ -48,7 +48,7 @@ Android App that shows recent data on the cryptocurrency market, including coins
 
 ### Overall Market:
 
-<img align="center" width=132 src="https://user-images.githubusercontent.com/79296181/183534949-a1ab13be-1a95-46a8-b762-fa28bfc2455b.gif" />
+<img align="center" width=180 src="https://user-images.githubusercontent.com/79296181/183534949-a1ab13be-1a95-46a8-b762-fa28bfc2455b.gif" />
 
 - Displays broad information about the overall cryptocurrency market
 - Contains interactive pie charts comparing some of the top 10 coins on different categories
@@ -57,7 +57,7 @@ Android App that shows recent data on the cryptocurrency market, including coins
 
 ### News Screen:
 
-<img align="center" width=132 src="https://user-images.githubusercontent.com/79296181/183535995-dff45901-6c09-448e-ba6d-d406a1a36508.gif" />
+<img align="center" width=180 src="https://user-images.githubusercontent.com/79296181/183535995-dff45901-6c09-448e-ba6d-d406a1a36508.gif" />
 
 - Displays a list of recent news about cryptocurrency
 - Each is clickable and opens a webview containing a post of the article with a link to the article
