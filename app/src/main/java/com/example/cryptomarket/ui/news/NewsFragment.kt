@@ -45,6 +45,7 @@ class NewsFragment : Fragment() {
             newsListRecycler.adapter = newsListAdapter
             newsListRecycler.layoutManager = LinearLayoutManager(requireContext())
             newsWebView.settings.javaScriptEnabled = true
+            newsWebView.setBackgroundColor(resources.getColor(R.color.bottom_nav))
             requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
                 newsWebView.goBack()
             }
