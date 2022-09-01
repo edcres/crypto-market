@@ -32,7 +32,7 @@ class NewsListAdapter(private val vm: CryptoViewModel) :
                 newsItemContainer.setOnClickListener {
                     vm.setNewsClicked(newsPost.url)
                 }
-                sourceDomain.setOnClickListener { vm.setNewsClicked(newsPost.domain) }
+                sourceDomain.setOnClickListener { vm.setNewsClicked("https://${newsPost.domain}") }
                 executePendingBindings()
             }
         }
