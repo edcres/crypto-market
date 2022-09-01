@@ -1,38 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="transparent">#00FFFFFF</color>
-    <color name="text_grey">#717171</color>
-
+    <color name="icon_color">#FFC20A</color>
     <color name="color_background">#F9FBFF</color>
     <color name="main_dark">#6F7EAA</color>
-    <color name="color_accent">#d7a31a</color>
-    <color name="item_line_color">#FFEE79</color>
-    <color name="sheet_line_color">#FFE06E</color>
+    <color name="color_accent">#d6a419</color>
+    <color name="chart_line_color">#FFB000</color>
     <color name="sheet_top_bar">#BFC9EC</color>
     <color name="sheet_background">#E9EFFF</color>
-    <color name="news_cardview">#C5D3FF</color>
     <color name="bottom_nav">#CFDAFF</color>
     <color name="time_frame_btns_border">#B0B9D5</color>
-    <color name="news_site">#D8BE00</color>
-    <color name="icon_color">#F8CF00</color>
     <color name="chart_marker">#FFDD2F</color>
-    <color name="chart_fill">#FFD500</color>
     <color name="marker_background">#B4717171</color>
 
     <!--Pies-->
     <color name="pies_background">#E5ECFF</color>
     <color name="pie_hole">#EAEFFD</color>
-    <color name="pies_labels">#220E0E</color>
+    <color name="pies_labels">#656565</color>
     <color name="center_pies_label">#717171</color>
     <color name="pies_inner_circle">#FFFFFF</color>
-    <color name="pie_value_line">#C3C3C3</color>
+    <!--    <color name="pie_value_label">#95838383</color>-->
+    <color name="pie_value_label">#98A1BA</color>
+    <color name="pie_value_line">#95C3C3C3</color>
+
+    <color name="pie_value_1">#ffeecb</color>
+    <color name="pie_value_2">#cccce5</color>
+    <color name="pie_value_3">#ceacb2</color>
+    <color name="pie_value_4">#b6acc9</color>
+    <color name="pie_value_5">#c3b299</color>
 
     <!--Dark Theme-->
     <color name="color_background_dark">#2D3A67</color>
@@ -43,4 +37,14 @@
     <color name="divider">#AB4A4A4A</color>
     <color name="positive_green">#2BED00</color>
     <color name="negative_red">#F10000</color>
+
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="text_grey">#717171</color>
 </resources>

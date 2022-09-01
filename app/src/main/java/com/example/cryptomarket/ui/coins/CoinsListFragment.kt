@@ -309,7 +309,7 @@ class CoinsListFragment : Fragment() {
             // Create a dataset and give it a type.
             set1 = LineDataSet(entries, "DataSet 1")
             set1.setDrawIcons(false)
-            set1.color = resources.getColor(R.color.sheet_line_color)
+            set1.color = resources.getColor(R.color.chart_line_color)
             // Line thickness and point size.
             set1.lineWidth = 3f
             set1.setDrawCircles(false)
@@ -349,13 +349,13 @@ class CoinsListFragment : Fragment() {
             // Create a dataset and give it a type
             set1 = LineDataSet(entries, "DataSet 1")
             set1.setDrawIcons(false)
-            set1.color = resources.getColor(R.color.color_accent)
+            set1.color = resources.getColor(R.color.chart_line_color)
 //            set1.color = Color.BLACK
             set1.lineWidth = 1f
             set1.setDrawCircles(false)
             set1.setDrawValues(false)
 
-            set1.highLightColor = resources.getColor(R.color.color_accent)
+            set1.highLightColor = resources.getColor(R.color.chart_line_color)
             set1.highlightLineWidth = 2f
             set1.setDrawHorizontalHighlightIndicator(false)
 

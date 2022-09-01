@@ -54,7 +54,6 @@ class NewsFragment : Fragment() {
         setObservers()
     }
 
-
     override fun onDestroy() {
         super.onDestroy()
         binding = null

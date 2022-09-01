@@ -122,7 +122,7 @@ class MarketOverviewFragment : Fragment() {
                 pieChart.holeRadius = 60f
                 pieChart.setTransparentCircleColor(resources.getColor(R.color.pies_inner_circle))
                 pieChart.setTransparentCircleAlpha(60)
-                pieChart.transparentCircleRadius = 62f
+                pieChart.transparentCircleRadius = 64f
                 pieChart.setDrawCenterText(true)
 //                pieChart.setCenterTextColor(resources.getColor(R.color.pies_labels))
 //                pieChart.setCenterTextColor(Color.WHITE)
@@ -131,8 +131,8 @@ class MarketOverviewFragment : Fragment() {
                 pieChart.isHighlightPerTapEnabled = false
 //                pieChart.setOnChartValueSelectedListener(this)
                 pieChart.animateY(1400, Easing.EaseInOutQuad)
-                pieChart.setEntryLabelColor(resources.getColor(R.color.pies_labels))
-                pieChart.setEntryLabelTextSize(12f)
+                pieChart.setEntryLabelColor(resources.getColor(R.color.pie_value_label))
+                pieChart.setEntryLabelTextSize(11f)
                 pieChart.legend.isEnabled = false
                 setPiesData(top10Tickers, pieChart)
             }
@@ -182,13 +182,16 @@ class MarketOverviewFragment : Fragment() {
 //        dataSet.valueLinePart2Length = 0.15f
         dataSet.valueLinePart1OffsetPercentage = 100f
         val colors = java.util.ArrayList<Int>()
-        colors.add(rgb("FFEC8A"))   // Yellow
-        colors.add(rgb("9FBAFF"))   // Blue
+        colors.add(resources.getColor(R.color.pie_value_1))
+        colors.add(resources.getColor(R.color.pie_value_2))
+        colors.add(resources.getColor(R.color.pie_value_3))
+        colors.add(resources.getColor(R.color.pie_value_4))
+        colors.add(resources.getColor(R.color.pie_value_5))
         dataSet.colors = colors
         dataSet.xValuePosition = PieDataSet.ValuePosition.OUTSIDE_SLICE
         val data = PieData(dataSet)
         data.setValueFormatter(PercentFormatter(pieChart))
-        data.setValueTextSize(11f)
+        data.setValueTextSize(10f)
         data.setValueTextColor(resources.getColor(R.color.pies_labels))
         pieChart.data = data
         // undo all highlights
