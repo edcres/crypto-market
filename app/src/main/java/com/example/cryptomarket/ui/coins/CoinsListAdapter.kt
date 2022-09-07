@@ -118,6 +118,8 @@ class CoinsListAdapter(
                 // Create a dataset and give it a type.
                 set1 = LineDataSet(entries, "DataSet 1")
                 set1.setDrawIcons(false)
+                set1.mode = LineDataSet.Mode.CUBIC_BEZIER
+                set1.cubicIntensity = 0.2f
                 set1.color = resources.getColor(R.color.chart_line_color)
                 // Line thickness and point size.
                 set1.lineWidth = 3f
