@@ -76,6 +76,9 @@ class CryptoViewModel : ViewModel() {
         _fragChosen.postValue(chosenFrag)
     }
 
+    fun filterSearch(coinName: String): List<Ticker> =
+        tickers.value!!.filter { it.name.lowercase().contains(coinName.lowercase()) }
+
     // Used to navigate directly yo the news site instead of the API site.
     //  (does not work for all links)
     fun redirectToNewsSite(newsDomain: String, middleSiteLink: String): String =

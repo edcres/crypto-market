@@ -23,9 +23,11 @@
                 app:layout_constraintTop_toTopOf="parent" >
 
                 <SearchView
+                    android:id="@+id/search_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/color_background"
+                    android:background="@color/white"
+                    android:queryHint="@string/search"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />

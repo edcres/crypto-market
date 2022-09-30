@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import android.widget.SearchView.OnQueryTextListener
 import android.widget.TextView
 import androidx.activity.addCallback
 import androidx.core.content.ContextCompat
@@ -72,6 +73,7 @@ class CoinsListFragment : Fragment() {
                 //  up a bug clicking list items behind the sheet.
             }
         }
+        setUpSearchView()
         setObservers()
         setBottomSheetBehavior()
     }
@@ -87,6 +89,22 @@ class CoinsListFragment : Fragment() {
     }
 
     // SETUP //
+    private fun setUpSearchView() {
+        binding?.apply {
+            searchView.clearFocus()
+            searchView.setOnQueryTextListener(object : OnQueryTextListener {
+                override fun onQueryTextSubmit(p0: String?): Boolean {
+                    return true
+                }
+                override fun onQueryTextChange(p0: String?): Boolean {
+                    if ((p0 ?: "").isNotEmpty()) {
+                        coinsListAdapter.submitList(vm.filterSearch(p0 ?: ""))
+                    } else coinsListAdapter.submitList(vm.tickers.value)
+                    return true
+                }
+            })
+        }
+    }
     private fun setBottomSheetBehavior() {
         binding?.apply {
             bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetView)
