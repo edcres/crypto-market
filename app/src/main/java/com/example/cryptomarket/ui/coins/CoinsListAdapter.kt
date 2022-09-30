@@ -2,6 +2,7 @@ package com.example.cryptomarket.ui.coins
 
 import android.content.res.Resources
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.lifecycle.LifecycleOwner
@@ -37,8 +38,9 @@ class CoinsListAdapter(
             .from(viewLifecycleOwner, chosenTimeFrame, resources, chartMarker, vm, parent)
     }
 
-    override fun onBindViewHolder(holder: CoinsViewHolder, position: Int) =
+    override fun onBindViewHolder(holder: CoinsViewHolder, position: Int) {
         holder.bind(getItem(position))
+    }
 
     class CoinsViewHolder private constructor(
         private val viewLifecycleOwner: LifecycleOwner,
@@ -52,6 +54,8 @@ class CoinsListAdapter(
         fun bind(ticker: Ticker) {
             populateUI(ticker)
             binding.apply {
+                if (ticker.rank == 1.0) collapsedDivider.visibility = View.INVISIBLE
+                else collapsedDivider.visibility = View.VISIBLE
                 itemContainer.setOnClickListener {
                     vm.setTickerClicked(ticker)
                 }

@@ -47,4 +47,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="text_grey">#717171</color>
+    <color name="subtle_grey">#AAAAAA</color>
 </resources>

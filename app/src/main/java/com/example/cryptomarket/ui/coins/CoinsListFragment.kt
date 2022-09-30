@@ -12,6 +12,7 @@ import android.widget.SearchView.OnQueryTextListener
 import android.widget.TextView
 import androidx.activity.addCallback
 import androidx.core.content.ContextCompat
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LiveData
@@ -91,18 +92,15 @@ class CoinsListFragment : Fragment() {
     // SETUP //
     private fun setUpSearchView() {
         binding?.apply {
-            searchView.clearFocus()
-            searchView.setOnQueryTextListener(object : OnQueryTextListener {
-                override fun onQueryTextSubmit(p0: String?): Boolean {
-                    return true
-                }
-                override fun onQueryTextChange(p0: String?): Boolean {
-                    if ((p0 ?: "").isNotEmpty()) {
-                        coinsListAdapter.submitList(vm.filterSearch(p0 ?: ""))
-                    } else coinsListAdapter.submitList(vm.tickers.value)
-                    return true
-                }
-            })
+            searchClose.setOnClickListener {
+                searchEt.setText("")
+                searchEt.clearFocus()
+            }
+            searchEt.doAfterTextChanged {
+                if (it.toString().isNotEmpty()) {
+                    coinsListAdapter.submitList(vm.filterSearch(it.toString()))
+                } else coinsListAdapter.submitList(vm.tickers.value)
+            }
         }
     }
     private fun setBottomSheetBehavior() {
