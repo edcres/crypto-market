@@ -10,7 +10,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.FrameLayout
-import android.widget.SearchView.OnQueryTextListener
 import android.widget.TextView
 import androidx.activity.addCallback
 import androidx.core.content.ContextCompat
@@ -111,6 +110,7 @@ class CoinsListFragment : Fragment() {
             }
         }
     }
+
     private fun setBottomSheetBehavior() {
         binding?.apply {
             bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetView)
