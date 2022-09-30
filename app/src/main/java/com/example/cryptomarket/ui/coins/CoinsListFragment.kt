@@ -1,12 +1,14 @@
 package com.example.cryptomarket.ui.coins
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.FrameLayout
 import android.widget.SearchView.OnQueryTextListener
 import android.widget.TextView
@@ -95,11 +97,17 @@ class CoinsListFragment : Fragment() {
             searchClose.setOnClickListener {
                 searchEt.setText("")
                 searchEt.clearFocus()
+                val manager = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE)
+                        as InputMethodManager
+                manager.hideSoftInputFromWindow(requireView().windowToken, 0)
             }
             searchEt.doAfterTextChanged {
                 if (it.toString().isNotEmpty()) {
                     coinsListAdapter.submitList(vm.filterSearch(it.toString()))
-                } else coinsListAdapter.submitList(vm.tickers.value)
+                } else {
+                    coinsListAdapter.submitList(vm.tickers.value)
+                    coinsListRecycler.layoutManager?.scrollToPosition(0)
+                }
             }
         }
     }
