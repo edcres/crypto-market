@@ -158,6 +158,9 @@ class CoinsListFragment : Fragment() {
                 DateFrame.MONTH, ticker.quotes.usd.percentChange30d ?: 0.0, ticker
             )
             setMoreInfoDataToUI(ticker.quotes.usd, ticker.id)
+            populateCharts(
+                vm.getHistoricalTickerData(true, ticker.id, DateFrame.MONTH)
+            )
         }
     }
 
@@ -173,6 +176,7 @@ class CoinsListFragment : Fragment() {
         binding?.apply {
             mBtn.isChecked = true
             val ticker = vm.tickerClicked.value ?: vm.tickers.value!![0]
+
             timeframeBtnGroup.addOnButtonCheckedListener { _, checkedId, isChecked ->
                 if (isChecked) {
                     when (checkedId) {
