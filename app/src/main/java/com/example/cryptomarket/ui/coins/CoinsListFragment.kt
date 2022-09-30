@@ -139,8 +139,9 @@ class CoinsListFragment : Fragment() {
         }
         vm.tickers.observe(viewLifecycleOwner) {
             coinsListAdapter.submitList(it)
-            setCoinOnSheet(it[0])
-            timeFrameClickListeners(it[0].id)
+            val currentTicker = vm.tickerClicked.value ?: vm.tickers.value!![0]
+            setCoinOnSheet(currentTicker)
+            timeFrameClickListeners(currentTicker.id)
             populateCharts(vm.getHistoricalTickerData(true, it[0].id, DateFrame.MONTH))
         }
     }
@@ -174,7 +175,6 @@ class CoinsListFragment : Fragment() {
         binding?.apply {
             mBtn.isChecked = true
             val ticker = vm.tickerClicked.value ?: vm.tickers.value!![0]
-
             addTimeFrameWidgetListener(ticker, tickerID)
         }
     }
@@ -201,7 +201,6 @@ class CoinsListFragment : Fragment() {
 
     private fun populateCharts(tickerData: LiveData<List<HistoricalTicker>>) {
         binding?.apply {
-            Log.d(TAG, "populateCharts: called")
             tickerData.observe(viewLifecycleOwner) {
                 makeCollapsedChart(tickerChartCollapsed, it)
                 makeExpandedChart(tickerChartExpanded, it)
