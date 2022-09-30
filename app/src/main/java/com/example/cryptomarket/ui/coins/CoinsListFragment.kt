@@ -158,9 +158,7 @@ class CoinsListFragment : Fragment() {
                 DateFrame.MONTH, ticker.quotes.usd.percentChange30d ?: 0.0, ticker
             )
             setMoreInfoDataToUI(ticker.quotes.usd, ticker.id)
-            populateCharts(
-                vm.getHistoricalTickerData(true, ticker.id, DateFrame.MONTH)
-            )
+            populateCharts(vm.getHistoricalTickerData(true, ticker.id, DateFrame.MONTH))
         }
     }
 
@@ -177,54 +175,7 @@ class CoinsListFragment : Fragment() {
             mBtn.isChecked = true
             val ticker = vm.tickerClicked.value ?: vm.tickers.value!![0]
 
-            timeframeBtnGroup.addOnButtonCheckedListener { _, checkedId, isChecked ->
-                if (isChecked) {
-                    when (checkedId) {
-                        wBtn.id -> {
-                            setTimeFrameText(
-                                DateFrame.WEEK,
-                                ticker.quotes.usd.percentChange7d,
-                                ticker
-                            )
-                            populateCharts(
-                                vm.getHistoricalTickerData(true, tickerID, DateFrame.WEEK)
-                            )
-                        }
-                        mBtn.id -> {
-                            setTimeFrameText(
-                                DateFrame.MONTH,
-                                ticker.quotes.usd.percentChange30d,
-                                ticker
-                            )
-                            populateCharts(
-                                vm.getHistoricalTickerData(true, tickerID, DateFrame.MONTH)
-                            )
-                        }
-                        qBtn.id -> {
-                            setTimeFrameText(DateFrame.QUARTER, null, ticker)
-                            populateCharts(
-                                vm.getHistoricalTickerData(true, tickerID, DateFrame.QUARTER)
-                            )
-                        }
-                        sixMBtn.id -> {
-                            setTimeFrameText(DateFrame.HALF_YEAR, null, ticker)
-                            populateCharts(
-                                vm.getHistoricalTickerData(true, tickerID, DateFrame.HALF_YEAR)
-                            )
-                        }
-                        yBtn.id -> {
-                            setTimeFrameText(
-                                DateFrame.YEAR,
-                                ticker.quotes.usd.percentChange1y,
-                                ticker
-                            )
-                            populateCharts(
-                                vm.getHistoricalTickerData(true, tickerID, DateFrame.YEAR)
-                            )
-                        }
-                    }
-                }
-            }
+            addTimeFrameWidgetListener(ticker, tickerID)
         }
     }
 
@@ -250,6 +201,7 @@ class CoinsListFragment : Fragment() {
 
     private fun populateCharts(tickerData: LiveData<List<HistoricalTicker>>) {
         binding?.apply {
+            Log.d(TAG, "populateCharts: called")
             tickerData.observe(viewLifecycleOwner) {
                 makeCollapsedChart(tickerChartCollapsed, it)
                 makeExpandedChart(tickerChartExpanded, it)
@@ -421,6 +373,63 @@ class CoinsListFragment : Fragment() {
             displayPercentChangeColor(
                 percentChangeATxt, ticker.quotes.usd.percentChange7d ?: 0.0
             )
+        }
+    }
+
+    private fun addTimeFrameWidgetListener(ticker: Ticker, tickerID: String) {
+        // This function exists to fix a bug that holds a button checked listener on all
+        //      previous coins, causing them all to load when a btn is clicked
+        binding?.apply {
+            timeframeBtnGroup.clearOnButtonCheckedListeners()
+            timeframeBtnGroup.addOnButtonCheckedListener { _, checkedId, isChecked ->
+                if (isChecked) {
+                    when (checkedId) {
+                        wBtn.id -> {
+                            setTimeFrameText(
+                                DateFrame.WEEK,
+                                ticker.quotes.usd.percentChange7d,
+                                ticker
+                            )
+                            populateCharts(
+                                vm.getHistoricalTickerData(true, tickerID, DateFrame.WEEK)
+                            )
+                        }
+                        mBtn.id -> {
+                            setTimeFrameText(
+                                DateFrame.MONTH,
+                                ticker.quotes.usd.percentChange30d,
+                                ticker
+                            )
+                            populateCharts(
+                                vm.getHistoricalTickerData(true, tickerID, DateFrame.MONTH)
+                            )
+                        }
+                        qBtn.id -> {
+                            setTimeFrameText(DateFrame.QUARTER, null, ticker)
+                            populateCharts(
+                                vm.getHistoricalTickerData(true, tickerID, DateFrame.QUARTER)
+                            )
+                        }
+                        sixMBtn.id -> {
+                            setTimeFrameText(DateFrame.HALF_YEAR, null, ticker)
+                            populateCharts(
+                                vm.getHistoricalTickerData(true, tickerID, DateFrame.HALF_YEAR)
+                            )
+                        }
+                        yBtn.id -> {
+                            setTimeFrameText(
+                                DateFrame.YEAR,
+                                ticker.quotes.usd.percentChange1y,
+                                ticker
+                            )
+                            populateCharts(
+                                vm.getHistoricalTickerData(true, tickerID, DateFrame.YEAR)
+                            )
+                        }
+                    }
+                    addTimeFrameWidgetListener(ticker, tickerID)
+                }
+            }
         }
     }
     // HELPERS
