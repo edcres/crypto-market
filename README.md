@@ -32,7 +32,7 @@ Android App that shows recent data on the cryptocurrency market, including coins
 
 <p align="left" style="display:flex">
     <a href="https://github.com/edcres/crypto-market">
-        <img width=180 src="https://user-images.githubusercontent.com/79296181/189295811-f6ff1e0b-5c94-4ae7-a131-ab95c123340c.jpg" />
+        <img width=180 src="https://user-images.githubusercontent.com/79296181/194726761-c1a3f668-d1e0-4353-a97a-a50eff434dff.jpg" />
     </a>
     <a href="https://github.com/edcres/crypto-market">
         <img width=180 src="https://user-images.githubusercontent.com/79296181/189295746-f73b6773-87c7-4308-8afe-d12a157b3bfe.gif" />
