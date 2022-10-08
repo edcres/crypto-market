@@ -13,14 +13,14 @@ Android App that shows recent data on the cryptocurrency market, including coins
 - Bottom navigation
 - Standard Bottom Sheet
 - REST APIs
-  - Retrifit 2
+  - Retrofit 2
     - For the coinpaprika and the cryptopanic APIs
-    - Complex GET quieries
+    - Complex GET queries
   - Moshi
 - LiveData
   - Livedata Observers
   - Kotlin Flow
-- Kotlin coroutines (for synchronous excecutions)
+- Kotlin coroutines (for synchronous executions)
 - Custom line and pie charts using the MPAndroidChat library
 - RecyclerView
 
