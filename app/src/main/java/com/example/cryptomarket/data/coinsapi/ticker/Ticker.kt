@@ -13,8 +13,9 @@ data class Ticker(
     val symbol: String,
     @Json(name = "rank")
     val rank: Double,
-    @Json(name = "circulating_supply")
-    val circulatingSupply: Double,
+    // The API removed this feature for me access
+//    @Json(name = "circulating_supply")
+//    val circulatingSupply: Double,
     @Json(name = "total_supply")
     val totalSupply: Long,
     @Json(name = "max_supply")
